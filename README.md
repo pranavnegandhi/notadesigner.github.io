@@ -1,4 +1,4 @@
-## Valknut &ndash; Workout Tracking
+# Valknut &ndash; Workout Tracking
 
 The primary motivation for this project is to design and implement a model project template for the ASP.NET MVC framework. Between a choice of correct and expeditious, I've usually chosen the former, even if it means learning an obscure aspect of the ASP.NET MVC framework.
 

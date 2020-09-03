@@ -23,3 +23,5 @@ The architecture of the application still aspires to be amended into a desktop-b
 Valknut follows classical MVC architecture. The application is separated into two major projects for the website and the entity model classes. The website project contains classes that implement the web controller interfaces and the views. The models project is a class library to implement the entities that make up the domain model.
 
 [Domain Model](domain-model.md)
+
+[Localisation](localisation.md)

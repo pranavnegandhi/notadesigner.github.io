@@ -27,3 +27,7 @@ Valknut follows classical MVC architecture. The application is separated into tw
 [Localisation](localisation.md)
 
 [Validation](validation.md)
+
+[View Models](view-models.md)
+
+[JSON Handler](json-handler.md)

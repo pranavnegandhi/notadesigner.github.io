@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>c# | Not a Designer | Page 4</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://localhost:81/wp/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="http://localhost:81/wp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="http://localhost:81/wp/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; c# Tag Feed" href="http://localhost:81/wp/tag/c/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/tags/19" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="http://localhost:81/wp/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive paged tag tag-c tag-19 paged-4 tag-paged-4">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://localhost:81/wp/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					c#				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-581" class="post-581 post type-post status-publish format-standard hentry category-demonstration tag-c tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/wpf-game-of-life/" rel="bookmark">WPF Game of Life</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>I was introduced to cellular automatons a good decade ago through books written by Peter Small. Back then, we were using Adobe (then Macromedia) Director as our primary development platform, where object-oriented programming was still a bit of a novelty. Small&#8217;s writings explained OOP using artificial life forms such as cellular automatons, with Conway&#8217;s Game of Life being an oft used concrete example. <span style="letter-spacing: 0.05em; line-height: 1.6875;">I was hooked and would spend hours running patterns on a simple implementation of the game that shipped with Windows Entertainment Pack.</span></p>
+<p>But I never got around to implementing the application myself until now. The game has a fairly simple model that does not take much effort to build. This is handy when learning a new platform or language, leaves the programmer free to explore the features of the framework instead of spending cycles trying to nail down the business logic correctly using an unfamiliar language syntax.</p>
+<h3>Background</h3>
+<p>There are plenty of resources available online that describe, implement and demonstrate this game. The basic essence of the game is a two-dimensional array of cells and an endless loop that iterates over these cells to update their state depending upon some simple rules.</p>
+<ol>
+<li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+<li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+<li>Any live cell with more than three live neighbours dies, as if by overcrowding.</li>
+<li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+</ol>
+<div>This implementation of the game also consists of the following features for convenience.</div>
+<div>
+<ol>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">Clicking on a cell toggles its state between being alive or dead.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Randomize button initializes the board by randomly setting the state of all cells to either alive or dead.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Stop button lets the user stop the cell update iterations in order to observe the arrangement of the board at any given time. This is useful for times when an interesting pattern appears on the screen that seeks further observation.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Next button complements the Stop button to let the user iterate to progressive generations of the board, one step at a time.</span></li>
+</ol>
+</div>
+<h3>Implementation</h3>
+<p>This implementation is made up of the following classes.</p>
+<h4>MainWindow.xaml and MainWindow.xaml.cs</h4>
+<div>
+<p>The application window is a XAML class called MainWindow.xaml, which defines the layout of the application. The layout is built around a DockPanel that divides the screen into two &#8211; a controller toolbar and the board view.</p>
+<pre>&lt;DockPanel Name="layout"&gt;
+    &lt;ToolBar DockPanel.Dock="Top"&gt;
+        &lt;Button Content="Start" Name="btnStart" Height="23" Width="75" Margin="5" Click="toggleStart_Click" /&gt;
+        &lt;Button Content="Next" Name="btnNext" Height="23" Width="75" Margin="5" Click="nextIteration_Click" /&gt;
+        &lt;Button Content="Clear" Name="btnClear" Height="23" Width="75" Margin="5" Click="clear_Click" /&gt;
+        &lt;Button Content="Randomize" Name="btnRandomize" Height="23" Width="75" Margin="5" Click="randomize_Click" /&gt;
+    &lt;/ToolBar&gt;
+    &lt;ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"&gt;
+        &lt;life:BoardView x:Name="view" DockPanel.Dock="Top" Margin="10" Click="view_Click"&gt;&lt;/life:BoardView&gt;
+    &lt;/ScrollViewer&gt;
+&lt;/DockPanel&gt;</pre>
+</div>
+<p>The MainWindow class stores a reference to an instance of BoardModel as a private field. <span style="letter-spacing: 0.05em; line-height: 1.6875;">Buttons in the toolbar are wired to trigger event handlers in the MainWindow class, which in turn trigger public methods exposed by the model and view instances.</span></p>
+<h4><span style="letter-spacing: 0.05em; line-height: 1.6875;">BoardModel.cs</span></h4>
+<div>
+<p>The model class is where the business logic behind the application is implemented. It contains two arrays of bytes of identical length, which store the state of the board in the current iteration and the next iteration. It also initializes a timer that is used to iterate over the board state automatically. In addition, it exposes public methods to control the state of the board &#8211; Next(), Start(), Stop(), Clear() and Randomize().</p>
+<p>The model instance dispatches an Update event every time the board changes. The window class listens for this event and passes on the contents of the new board cells to the Update() method of the view instance.</p>
+</div>
+<h4>BoardView.cs</h4>
+<div>
+<p>The view class inherits from System.Windows.FrameworkElement in order to take advantage of its built-in layout functionality. The board is drawn using low-level Visual elements. While it is easier to implement the cell drawing by using Drawings or Shapes, it also adds a lot of overhead for unnecessary features such as styles, data binding, automatic layout and input events. DrawingVisuals provide a much more performant way of drawing large numbers of objects on the screen.</p>
+<pre>private void drawCells()
+{
+    if (null == this.values)
+    {
+        return;
+    }
+
+    using (DrawingContext dc = this.cells.RenderOpen())
+    {
+        int x = 0;
+        int y = 0;
+        Rect rect = new Rect(OUTLINE_WIDTH, OUTLINE_WIDTH, Constants.CELL_SIZE - OUTLINE_WIDTH, Constants.CELL_SIZE - OUTLINE_WIDTH);
+
+        for (int i = 0; i &amp;amp;lt; values.Length; i++)
+        {
+            x = (i % Constants.CELLS_X);
+            y = (i / Constants.CELLS_X);
+            rect.Location = new Point((x * Constants.CELL_SIZE) + OUTLINE_WIDTH, (y * Constants.CELL_SIZE) + OUTLINE_WIDTH);
+
+            if (1 == values[i])
+            {
+                dc.DrawRectangle(Brushes.Red, null, rect);
+            }
+        }
+    }
+}</pre>
+</div>
+<p>One must fetch a reference to a DrawingContext in order to draw content onto a DrawingVisual. This is done through the RenderOpen() method of the DrawingVisual. Since we are only drawing basic rectangles, we can use the in-built DrawRectangle() method of the DrawingContext class to draw this shape for us. Internally, this method still uses a GeometryDrawing and a subclass of the Geometry class, but abstracts away those details for convenience.</p>
+<p>The drawing is displayed on the screen by adding the Visual instances to the visual tree of the BoardView class, which is done in its constructor.</p>
+<pre>public BoardView()
+    : base()
+{
+    this.AddVisualChild(this.grid);
+    this.AddLogicalChild(this.grid);
+
+    this.AddVisualChild(this.cells);
+    this.AddLogicalChild(this.cells);
+
+    this.visuals = new DrawingVisual[] { this.grid, this.cells };
+
+    this.drawGrid();
+    this.drawCells();
+}</pre>
+<p>Additionally, the BoardView class also overrides the VisualChildrenCount, GetVisualChild and MeasureOverride members of the FrameworkElement class.</p>
+<pre>protected override int VisualChildrenCount
+{
+    get
+    {
+        return this.visuals.Length;
+    }
+}
+
+protected override Visual GetVisualChild(int index)
+{
+    if (index &lt; 0 || index &gt; this.visuals.Length)
+    {
+        throw new ArgumentOutOfRangeException("index");
+    }
+
+    return this.visuals[index];
+}
+
+protected override Size MeasureOverride(Size availableSize)
+{
+    return new Size(Constants.CELLS_X * Constants.CELL_SIZE, Constants.CELLS_Y * Constants.CELL_SIZE);
+}</pre>
+<p>The BoardView class instance also dispatches an event when the user clicks on a cell on the board. This is in turn passed over to the model instance via the window, causing the model to toggle the state of the cell that was clicked.</p>
+<h4>ClickEventArgs.cs</h4>
+<div>An instance of this class is passed as a parameter along with the Click event is dispatched from the BoardView class. It exposes two parameters to identify the X and Y coordinates of the cell which was clicked upon, relative to the board.</div>
+<div>
+<p>The Visual Studio solution for this project can be <a href="http://www.notadesigner.com/wp-content/uploads/2013/04/conwayslife.zip">downloaded from here as a ZIP archive</a>.</p>
+</div>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2013-04-14T14:21:24+05:30">April 14, 2013</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/wpf-game-of-life/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-570" class="post-570 post type-post status-publish format-standard hentry category-technique tag-bit-hacking tag-c tag-programming">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">Storing Values with Bit Packing and Unpacking</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Bit packing and unpacking is a handy way of consolidating multiple data values into a single variable, thus compressing the amount of data being stored or transmitted. The number of values that can be stored depends upon the width of the data to be stored as well as the type of the value that it is packed into. A simple byte can store up to 8 bits of data. Larger types such as ints can store up to 16, 32 or 64 bits. This is an especially efficient technique for storing several small-width values, often smaller than the smallest width supported by a platform (such as byte or boolean flags) into a single large value such as a 32-bit integer.</p>
+<p>Bit flags are commonly used for implementing low-level features, such as storing file access-permissions or packing values into a single value before transmitting across a bus. However, they can be applied with equal ease to higher level tasks such as storing user preferences or choosing which widgets to display from an enumerated list. We will see here how to use bit flags to store font formatting preferences, and apply them later to a label.</p>
+<h3>Bitwise Operators</h3>
+<p>There are a couple of operators we need to understand before we can move on to the implementation. Bitwise operators, by definition, work on individual bits inside a value. Since they are implemented directly by the processor itself, they are much faster than arithmetic operators such as division and multiplication. We will use bitwise AND (&amp;), bitwise OR (|) and left shifts (&lt;&lt;) in this exercise.</p>
+<p>A bitwise AND operation takes the binary representations of two values and performs a logical AND operation on each bit. The result is 1 in every position where both the bits are 1, and 0 if either or both bits are 0.</p>
+<pre>    001010
+AND 011011
+    ------
+    001010</pre>
+<p>Bitwise OR on the other hand, compares two bits in corresponding positions, and sets the result to 1 if either of them is 1, or to 0 if both of them are 0.</p>
+<pre>    001010
+OR  011011
+    ------
+    011011</pre>
+<p>Bitwise left shift operator moves individual bits within a single value by the number of places specified in the second operand. The value is padded with 0s on the right, and the left-most bits are dropped off.</p>
+<pre>    001010 &lt;&lt; 1 = 010100</pre>
+<h3>Implementation</h3>
+<p>We set up a simple Windows Forms project and draw three checkboxes and one label on the form. The aim is to have the checkboxes control three font properties of the label &#8211; weight, style and underlining. All checkboxes are given appropriate labels and configured to execute the _changeFormatting method of the form every time the CheckStateChanged event is fired. The code for this method is shown below.</p>
+<pre>private void _changeFormatting(object sender, EventArgs e)
+{
+    byte flags = 0;
+
+    flags = (byte)(
+        Convert.ToByte(this.chkUnderline.Checked) &lt;&lt; 2 |
+        Convert.ToByte(this.chkItalic.Checked) &lt;&lt; 1 |
+        Convert.ToByte(this.chkBold.Checked)
+        );
+
+    Font f = new Font(this.label1.Font.FontFamily, this.label1.Font.Size, (FontStyle)(
+        (flags &amp; (byte)FontStyle.Underline) |
+        (flags &amp; (byte)FontStyle.Italic) |
+        (flags &amp; (byte)FontStyle.Bold)
+        ));
+
+    this.label1.Font = f;
+}</pre>
+<h4>Packing</h4>
+<p>In the first statement, the flags variable is populated with the values of each checkbox. We want to store the three flags in the last three bits of a single byte.</p>
+<table>
+<tbody>
+<tr>
+<th>Position</th>
+<th>Setting</th>
+</tr>
+<tr>
+<td>7</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Underline</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Italic</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Bold</td>
+</tr>
+</tbody>
+</table>
+<p>In order to do so, we take the value of each boolean (either true or false), convert it into a byte, then shift it by an appropriate number of positions. The value of the underline flag is to be stored in the 2nd bit (starting from 0). So we left-shift its value by 2. Similarly, the italic flag is stored in the 1st position, so its boolean value is shifted by 1. The value of the bold flag does not need to be shifted at all.</p>
+<pre>    00000001 &lt;&lt; 2 = 00000100 // Underline
+    00000001 &lt;&lt; 1 = 00000010 // Italic
+    00000001                 // Bold (no shifting required)</pre>
+<p>A consolidated value can be generated by ORing the three values together.</p>
+<pre>    00000100
+ OR 00000010
+ OR 00000001
+    --------
+    00000111 // Decimal value 7</pre>
+<pre>    00000000
+ OR 00000010
+ OR 00000001
+    --------
+    00000011 // Decimal value 3</pre>
+<pre>    00000100
+ OR 00000000
+ OR 00000001
+    --------
+    00000101 // Decimal value 5</pre>
+<p>The decimal value can then be stored in a database or other persistent storage system as an integer or byte. This is better than having to store three boolean fields. This information can transmitted across systems too as a packed unit, to be unpacked later only when the preferences have to be applied to a display element.</p>
+<p>In our example, we are unpacking and applying the values immediately for brevity. But a more practical situation would probably involve serializing the value somewhere, then deserializing and applying the font properties later at another location.</p>
+<h4>Unpacking</h4>
+<p>In order to apply the font styles on a display element, the individual values of each style parameter must be extracted from the packed value and then applied. The .NET framework defines enumerations for each of these style parameters in the System.Drawing.FontStyle enum. The values for each style parameter are listed below.</p>
+<table>
+<tbody>
+<tr>
+<th>Setting</th>
+<th>Decimal Value</th>
+<th>Binary Value</th>
+</tr>
+<tr>
+<td>Regular</td>
+<td>0</td>
+<td>00000000</td>
+</tr>
+<tr>
+<td>Bold</td>
+<td>1</td>
+<td>00000001</td>
+</tr>
+<tr>
+<td>Italic</td>
+<td>2</td>
+<td>00000010</td>
+</tr>
+<tr>
+<td>Underline</td>
+<td>4</td>
+<td>00000100</td>
+</tr>
+</tbody>
+</table>
+<p>You will notice that each enumeration is double the value of its predecessor, hence moving the digit 1 by one position leftwards with every increase. This is a key feature of bit flags. Each element differs from the others only in the position of the 1 bit. Thus, the value of a given flag can be extracted from the packed value by ANDing the packed value with the value of the enumeration.</p>
+<pre>     00000111 // Packed value decimal 7
+AND  00000100 // Underline enum decimal 4
+     --------
+     00000100 // Result - show underlines</pre>
+<p>This operations shows that the value of the underline flag is true. If the packed value was the decimal 3 instead of 7, then the operation would play out as shown below, resulting in the value 0 for the underline flag.</p>
+<pre>     00000011 // Packed value
+AND  00000100 // Underline enum
+     --------
+     00000010 // Result - hide underlines</pre>
+<p>All that is needed then is to convert the result byte into a boolean and apply it wherever required. In our example above, the constructor of the Font class requires the values packed together any way as a FontStyle enum. To do this, each bit is ANDed with its corresponding enum, then all of them are combined together again using an OR operation. The resultant byte is cast into a FontStyle before being passed to the constructor.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2013-02-08T16:56:38+05:30">February 8, 2013</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-513" class="post-513 post type-post status-publish format-standard hentry category-demonstration tag-c">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/a-binary-clock-using-c/" rel="bookmark">A Binary Clock using C#</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Bit manipulations are second nature to electronics engineers, embedded programmers and a swathe of engineers who work with low-level systems software such as operating systems, languages and critical frameworks. While it does seem daunting at first, the fundamentals are very simple as explained in my previous post. This post builds upon those concepts to implement a simple binary clock using C#.</p>
+<p>The core of the clock is in the BinaryClock class that inherits PictureBox, since this is primarily a visual control and needs a visual context to display its output. Inheriting from PictureBox also makes it easy to use as a drag-and-drop control in the Visual Studio IDE.</p>
+<p>BinaryClock consolidates the timekeeping and drawing capabilities into a single class (the OO design crowd may cringe now). An instance of the Timer class ticks every second to invalidate the display and trigger a refresh. The mode field determines the method used to display the clock face &#8211; pure binary or binary-coded decimals. Its value can be set from one of the values in the imaginatively-named enum in the same class called Modes.</p>
+<p>This brings us to the paint method which is triggered whenever the control has to be redrawn.</p>
+<pre>void _paint(object sender, PaintEventArgs e)
+{
+    DateTime dt;
+    int h;
+    int m;
+    int s;
+    Rectangle area;
+    int offsetX;
+    int offsetY;
+
+    dt = DateTime.Now;
+    h = dt.Hour;
+    m = dt.Minute;
+    s = dt.Second;
+
+    area = new Rectangle(0, this.Height - BinaryClock.RECT_SIZE, BinaryClock.RECT_SIZE, BinaryClock.RECT_SIZE);
+    offsetX = this._columns * (BinaryClock.RECT_SIZE + BinaryClock.RECT_OFFSET);
+    offsetY = BinaryClock.COL_OFFSET;
+
+    // Get bits for the hours component
+    this._draw(h, e.Graphics, ref area);
+    area.Offset(offsetX, offsetY);
+
+    // Get bits for the minutes component
+    this._draw(m, e.Graphics, ref area);
+    area.Offset(offsetX, offsetY);
+
+    // Get bits for the seconds component
+    this._draw(s, e.Graphics, ref area);
+}</pre>
+<p>This method begins by fetching the current time and extracting its components. Offset values required for the drawing are also initialized depending upon the current display mode. It then makes three calls to the drawing method to draw the appropriate graphics for the hour, minute and second values. Two draw methods are implemented in this class &#8211; drawBinary and drawBCD. Both take three parameters &#8211; the value to be represented, the Graphics object, and initial position.</p>
+<h3>Binary Drawing</h3>
+<p>The drawBinary method draws 6 boxes, vertically stacked, in a single column to represent the value in pure binary.</p>
+<div id="attachment_521" style="width: 410px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-521" loading="lazy" class="size-full wp-image-521" title="binary" src="http://www.notadesigner.com/wp-content/uploads/2012/11/binary.png" alt="" width="400" height="315" /><p id="caption-attachment-521" class="wp-caption-text">The application running in pure binary mode</p></div>
+<pre>for (i = 0; i &lt; 6; i++)
+{
+    bit = value &amp; (1 &lt;&lt; i);
+
+    if (0 == bit)
+        g.FillRectangle(_offBrush, area);
+    else
+        g.FillRectangle(_onBrush, area);
+
+    area.Offset(0, - (BinaryClock.RECT_SIZE + BinaryClock.RECT_OFFSET));
+}</pre>
+<p>The value of each bit in a single number is extracted through the following snippet.</p>
+<pre>bit = value &amp; (1 &lt;&lt; i);</pre>
+<p>This is an application of testing if the n-th bit is set in a number. The digit 1 (0b00000001) is left-shifted to the position at which the bit in the value is to be inspected, then ANDed with the value.</p>
+<pre>0b00001010 &amp; 0b00000001 = 0b00000000
+0b00001010 &amp; 0b00000010 = 0b00000010
+0b00001010 &amp; 0b00000100 = 0b00000000
+0b00001010 &amp; 0b00001000 = 0b00001000</pre>
+<p>The bit has been set if the result is greater than 0.</p>
+<p>This is applied in a continuous loop through all the bits in the number. The colour of the box is determined by the value of the bit in that position. Zero is filled with the off colour, and any other value is filled with the on colour.</p>
+<h3>Binary-coded Decimal</h3>
+<p>The second function &#8211; drawBCD &#8211; has the same signature as drawBinary. The only difference is in the way it represents the number on the canvas. Instead of drawing the component value in a single column, it splits it into two decimal digits and draws each digit in its own column. The individual digits are extracted by dividing and modding with 10, then calling the drawBinary function for each digit.</p>
+<div id="attachment_522" style="width: 410px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-522" loading="lazy" class="size-full wp-image-522" title="binary-coded-decimal" src="http://www.notadesigner.com/wp-content/uploads/2012/11/binary-coded-decimal.png" alt="" width="400" height="315" /><p id="caption-attachment-522" class="wp-caption-text">The application running in BCD mode</p></div>
+<p>The Visual Studio solution for this project can be <a href="http://www.notadesigner.com/wp-content/uploads/2012/11/binaryclock.zip">downloaded from here as a ZIP archive</a>.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2012-11-27T14:51:10+05:30">November 27, 2012</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/a-binary-clock-using-c/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text">Posts navigation</h1>
+		<div class="nav-links">
+
+			
+						<div class="nav-next"><a href="http://localhost:81/wp/tag/c/page/3/" >Newer posts <div class="arrow">&rarr;</div></a></div>
+			
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>version-control | Not a Designer</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://notadesigner.com/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="https://notadesigner.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="https://notadesigner.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; version-control Tag Feed" href="https://notadesigner.com/tag/version-control/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://notadesigner.com/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='https://notadesigner.com/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='https://notadesigner.com/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://notadesigner.com/wp-json/" /><link rel="alternate" type="application/json" href="https://notadesigner.com/wp-json/wp/v2/tags/43" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://notadesigner.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="https://notadesigner.com/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive tag tag-version-control tag-43">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="https://notadesigner.com/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="https://notadesigner.com/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					version-control				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-61" class="post-61 post type-post status-publish format-standard hentry category-construction tag-version-control">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark">A Gentle Introduction to Version Control &#8211; Part II</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<h3>Using SVN</h3>
+<p>Subversion, or svn, is a very popular version control tool, used by some of the best software teams in the world. The fact that it is free and open source, in addition to being really, really good may have something to do with that. Like most good version control tools, Subversion too is split into two components – a server and a client.</p>
+<p>You don’t need to worry about the server usually because it is set up on a system far out of your reach. If you are located in North America or Europe, it means that your company has outsourced the Subversion hosting somewhere in South America or India. Funnily enough, good companies in Bangalore (or Pune) usually outsource their Subversion hosting to a really, really good outfit in LA (read, Dreamhost). Silly. But that’s how the global economy works, and which is why it is more fun to be a software developer than to be an economist.</p>
+<p>Coming back to our topic&#8230;</p>
+<p>What you will use on a day-to-day basis is the Subversion command-line client (or TortoiseSVN, a GUI replacement).</p>
+<p><strong>Disclaimer:</strong> This article touches briefly upon how to get started with the client, without worrying about details. If you are a svn alpha-geek who dreams about hosting your own repository someday or whatever else you svn alpha-geeks dream about, and find my guide to be incomplete, don’t email me to write about the 10,542 variations in syntax that the svn client allows. I know you adore your svn client. But this article is targeted at people who don’t as much as <em>know</em> about svn, much less adore it.</p>
+<p>Once the client is installed, you can launch a command prompt session by typing cmd into the Run dialog box in Windows and hitting enter. Once on the command prompt, type the following and hit enter.</p>
+<pre lang="dos">C:\svn help</pre>
+<p>Detailed help is also available for some of the more oft-used commands by modifying the help command like so –</p>
+<pre lang="dos">C:\svn help import</pre>
+<h3>Import</h3>
+<p>You can use the import command to <strong>add files from your computer into the repository for the first time</strong>, and hence, begin versioning them.</p>
+<pre lang="dos">C:\svn import trunk/ file:///F:/projects/notadesigner/trunk/web/index.htm -m “Initial import”</pre>
+<h3>Checkout</h3>
+<p>If you are a new developer on a team that has been using Subversion for a while, you can use the checkout command <strong>to retrieve the source code from the repository onto your hard drive</strong>.</p>
+<pre lang="dos">C:\cd projects\notadesigner\trunk
+C:\projects\notadesigner\trunk\web&gt;svn checkout https://notadesigner.com/svn/trunk</pre>
+<p>Note how the active directory is first changed to the path where the files have to be stored, and then the checkout command is called.</p>
+<p>Alternatively, you can also specify the path to the working folder as a parameter to the checkout command.</p>
+<pre lang="dos">C:\svn checkout https://notadesigner.com/svn/trunk C:\projects\notadesigner\trunk</pre>
+<h3>Update</h3>
+<p>This is probably the next most used command in the Subversion client. Millions of developers across the globe run this command every morning to retrieve the latest version of files from the repository into their working folder. Running this command makes sure that you are running abreast of everyone else on your team, by bringing the latest changes they have committed to the repository onto your machine (and likewise, your latest changes get updated on their machines).</p>
+<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn update</pre>
+<p>Like true Zen, it is a deceptively simple command. Just two words that do you a whole lot of good.</p>
+<h3>Add / Delete</h3>
+<p>These commands do just what they say. They make changes to your working copy, and schedule the same change to the repository when you commit your changes later.</p>
+<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn add locations.htm
+C:\projects\notadesigner\trunk\web&gt;svn delete directions.htm
+C:\projects\notadesigner\trunk\web&gt;svn commit –m “Added new locations. Deleted directions because we’re spread all over the city and I didn’t know where to send them.”</pre>
+<h3>Copy / Move</h3>
+<p>Copy and move work exactly as they do on your operating system, except that they are targeted at the repository.</p>
+<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn copy jobs.htm https://notadesigner.com/svn/trunk -m “Adding new jobs page”</pre>
+<p>Move requires a separate commit to implement your changes into the repository.</p>
+<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn move jobs.htm jobs/index.htm
+C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into separate folder”</pre>
+<h3>Revert</h3>
+<p>This command rolls back any changes made to a file in your working folder, and restores it to the version on the repository.</p>
+<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn revert contact.htm</pre>
+<h3>Using TortoiseSVN</h3>
+<p>TortoiseSVN lets you perform all actions that the svn command-line client lets you, without messing with the command-line. If you are new to Subversion, it’s a compelling replacement to the regular svn client.</p>
+<h3>Finally, DON’T Do This</h3>
+<p>I have found a shockingly large number of people doing silly things while using a VCS. I am tired of telling them not to do it and so if you abuse a VCS in any of the following ways and I catch you at it, I’ll make you write this list on a blackboard that screeches, for at least a week&#8230;without ear muffs.</p>
+<p>It’s not that difficult to avoid them. So listen up.</p>
+<h4>DON’T make a copy of your working folder to make edits</h4>
+<p>If you are checking out files from the repository in a working folder and then making a copy of that folder to make edits because you don’t want to overwrite your old files, you’re plain crazy and haven’t understood the most basic premise of version control.</p>
+<p>The repository already has a copy of your files which compile correctly. If you make a mistake, revert your files and you’re back where you began from.</p>
+<h4>DON’T make a copy of your folder in the repository before editing your files</h4>
+<p>A more severe case of the previous symptom is when a developer copies the entire trunk in the repository into trunk-2 (effectively creating a branch) and making edits to that.</p>
+<p>If you are still unable to understand how the trunk is managed, branching is definitely out of bounds for you. Get back in line.</p>
+<h4>DON’T delete old files from the repository before adding the edited working copy</h4>
+<p>The whole point of version control is to have a history of your file over time. If you delete the file from your repository, you destroy that history. If you do it every time, somebody who looks at your file six months down the line will have no idea about the pedigree of your file, the bugs that have been fixed or the new code that has been added to it.</p>
+<h4>DON’T forget to add comments when committing changes</h4>
+<p>You’ve got to be really lazy to not add comments at the time of committing your changes. Vague comments such as “updated file” are just as useless.</p>
+<p>It helps to be descriptive in the changelog because that’s the first place people go to find out what’s been cooking in your files. If you don’t tell them up front what you’ve been up to, they’ll just think that you’ve been messing up and saddle you with all the blame.</p>
+<h4>DON’T forget to add new files to the repository</h4>
+<p>This is a common mistake and can happen by even the most seasoned developers. But I’m writing it here to simply reinforce it that this should be avoided.</p>
+<h3>References</h3>
+<p>If you find this article doesn’t quite quench your thirst about version control systems or Subversion, you can learn more stuff by visiting the following websites.</p>
+<p><a href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a><br />
+&#8211; Colloquially referred to as the svn-book, this is the granddaddy of all Subversion books. Contains detailed explanations about the history of svn, repository and server setup and administration, detailed explanations about the acrobatic feats that the client lets you do, and if you’re really interested, a description of the C API’s that let you hook up svn with your own applications.</p>
+<p><a href="http://www.joelonsoftware.com/">http://www.joelonsoftware.com</a><br />
+– A delightful collection of extremely well-written and funny articles about computers, software and management by Joel Spolsky. This should be a must-read for every developer.</p>
+<p><a href="http://www.ericsink.com/scm/source_control.html">http://www.ericsink.com/scm/source_control.html</a><br />
+&#8211; Eric Sink is the founder of SourceGear, a company that specializes in selling version control software. You can’t get anybody better to write about version control.</p>
+<p><a href="http://betterexplained.com/articles/a-visual-guide-to-version-control/">http://betterexplained.com/articles/a-visual-guide-to-version-control/</a><br />
+&#8211; Kalid Azad maintains this brilliant blog about all things mathematical and computer-sciencey. It’s a refreshing view to everyday complexities that you take for granted.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2008-02-23T12:54:31+05:30">February 23, 2008</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-59" class="post-59 post type-post status-publish format-standard hentry category-construction tag-version-control">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/a-gentle-introduction-to-version-control-part-i/" rel="bookmark">A Gentle Introduction to Version Control &#8211; Part I</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>In our rush to Web 2.0 our lives, we seem to have forgotten to imbibe the essentials. Everyone is guilty of that – from fruit farmers using artificial fertilizer, to politicians driving nations to war, to developers not using version control.</p>
+<p>Shocking, really.</p>
+<p>I do not have much pull with the fruit farmers or international diplomats. But as a fellow developer, it’s my duty to bring back the lost software teams of today into the fold. Forget ‘enterprisey architectures’ for a while and look at the basics. In this article I will introduce you to the wholesome goodness of Subversion, a fantastic version control tool.</p>
+<h3>Essentially Missing</h3>
+<p>Version control is an essential tool in any software team’s kit. In spite of that, I regularly run into senior developers with years of experience who have never used it. Which is, to be honest, quite frustrating because then their working directory tends to look like this –</p>
+<p>Product-latest</p>
+<p>Prodcut-new-12-march (yes, it is misspelled)</p>
+<p>Product-new-mar-15</p>
+<p>&#8230;<a title="The Best-est Version Control" href="http://thedailywtf.com/Articles/The_Best-est_Version_Control.aspx">and the disaster repeats till eternity</a>.</p>
+<p>If you notice, this directory structure is already functions as a basic version control repository, in that it separates successive updates to the product, but without all the extra goodies that a true version control tool would let you have such as comments, labels and developer history.</p>
+<h3>Towards the Light</h3>
+<p>Whenever I have had the good fortune of introducing developers to version control – even with rogue tools like Visual SourceSafe – they knew this was the elixir they were missing for so long. It takes some work to actually drive it into their system. But once there, it stays on forever.</p>
+<p>The single biggest advantage all of them cite is how easy it becomes to <strong>synchronize files between team members</strong>. Because everybody is updating their files every morning from the same location, it becomes easier to keep abreast with everyone’s changes.</p>
+<p>The next biggest advantage is <strong>the ability to roll back mistakes</strong>. If a file has not been checked in, simply revert it back and the VCS replaces it with the latest one in the repository. Even after the file has been checked in, a previous version of the file can be retrieved from the repository and used to restore the changes made.</p>
+<p>A side-effect of this feature is the ability to <strong>sandbox major changes</strong>. Rewriting core algorithms of your accounting product using that new design patterns book? (Hah!) Do it in a local working copy, test it and then <s>throw it away when you discover you suck at patterns</s> check it in after it works fine.</p>
+<p>As a project’s requirements evolve, files mutate into completely different beasts from their initial incarnation. By logging a note about each change made to the file in the VCS, developers are able to <strong>track the project history</strong> in the long term.</p>
+<p>Another nice feature of the tracking tools is that they help <strong>assign ownership</strong> by logging the person who has made a change. This proves to be quite helpful when giving credit, or more frequently, blamestorming.</p>
+<p>And the greatest relief that a VCS provides to all stakeholders is the <strong>daily backup that occurs</strong> <strong>automatically </strong>when developers check-out the latest changes every morning. It’s rare for a team using VCS to lose a lot of data due to hard drive failures.</p>
+<h3>The VCS Dictionary</h3>
+<p>Let’s begin with learning the terminology used when dealing with version control.</p>
+<h4>Parts of a VCS</h4>
+<ul>
+<li>Repository: The database storing the files. The repository is usually expected to be on a central location such as a network server, although it can exist on locally stored directories.</li>
+<li>Server: The computer storing the repository. If the repository is stored on a directory on your own computer, then your computer is called the server although there is no network access involved.</li>
+<li>Client: The computer connecting to the repository. Your computer.</li>
+<li>Working Set/Working Copy: Your local directory of files, where you make changes.</li>
+<li>Trunk/Main: The primary location for code in the repository. This is the in-progress version of code, with untested or partially implemented features. Feature-complete snapshots are stored in a branch folder.</li>
+</ul>
+<h4>Common Terms</h4>
+<ul>
+<li>Revision: What version a file is on (v1, v2, v3, etc.).</li>
+<li>Head: The latest revision in the repository.</li>
+<li>Commit Message: A short message entered at the time of committing a file, describing what was changed.</li>
+<li>Changelog/History: A list of changes made to a file since it was created.</li>
+</ul>
+<h4>Basic Actions</h4>
+<ul>
+<li>Add: Put a file into the repository for the first time.</li>
+<li>Check-out: Download a file from the repository.</li>
+<li>Commit/Check-in: Upload a file to the repository. The file gets a new revision number, and people can “check out” the latest one.</li>
+<li>Update/Sync: Synchronize your files with the latest from the repository. This lets you grab the latest revisions of all files. Do this at least once a day.</li>
+<li>Revert: Throw away your local changes and return to the latest version from the repository.</li>
+<li>Diff/Change/Delta: Finding the differences between two files. Useful for seeing what changed between revisions. This only works on text files (e.g. .as, .htm, .cs). Binary files (e.g. .psd, .fla, .doc) cannot be diffed.</li>
+</ul>
+<h4>Advanced Actions</h4>
+<ul>
+<li>Branch: Create a separate copy of a file/folder for private use (bug fixing, testing, etc). Branch is both a verb (”branch the code”) and a noun (”Which branch is it in?”).</li>
+<li>Merge: Apply the changes from one file to another, to bring it up-to-date. For example, you can merge features from one branch into another.</li>
+<li>Conflict: Occurs when two people edit the same file simultaneously. The first person to edit the file does not face any error. However, the file on the server is now out of sync with the file on the second person’s working folder. When he attempts to commit the file to the repository he gets a conflict.
+<p>Conflicts can be resolved for text files by manually selecting which lines of code to keep and which ones to discard.</p>
+<p>There is no way to resolve binary files. If there is a conflict in binary files, then the second person has to begin again by retrieving the latest file, and re-creating the changes made to it before the conflict occurred.</p>
+<p>To avoid conflicts on binary files, a user can lock the file before editing.
+</li>
+</ul>
+<ul>
+<li>Resolve: Fixing the changes that contradict each other and checking in the correct version.</li>
+<li>Locking: Flagging a file for exclusive use until it is committed again.</li>
+<li>Breaking the lock: Forcibly unlocking a file so you can edit it. It may be needed if someone locks a file and goes on vacation (or “calls in sick” the day Halo 3 comes out).</li>
+</ul>
+<h3>An Illustrated Example</h3>
+<p>Pop Candy is a Java developer who has just joined the team at Timeless Software. Her task is to <a title="Zawinski's Law" href="http://www.iwar.org.uk/hackers/resources/faq/jargon.htm#Zawinski's%20Law">add an email client to their product</a>. She <strong>creates a folder on her hard drive</strong> for the project, and proceeds to <strong>check out the files from the repository</strong>.</p>
+<p>Once she has the entire product code check out onto her hard drive, she compiles it and familiarizes herself with its features.</p>
+<p>Once she’s ready, and <a title="Painless Functional Specifications - Why Bother?" href="http://www.joelonsoftware.com/articles/fog0000000036.html">has read the spec</a>, she begins editing the first file. She adds a few more files to the project, compiles and tests. Makes a few changes, goes back and compiles and tests, and in no time at all, she has reached her first milestone. Her email client connects to the server and successfully <a title="Simple Mail Transfer Protocol Sample" href="http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol#Sample_communications">handles the server’s response to HELO</a>.</p>
+<p>She feels she’s achieved quite a bit for the day and proceeds to add her changes to the repository. The first step is to <strong>select the new files</strong> she’s created and <strong>adding them to the repository</strong>. Then, she selects the new files, and the ones she’s modified and <strong>commits them </strong>all in a single operation. She remembers to <strong>enter a log comment</strong> that describes the change clearly. When the other developers come in the next day and <strong>update their working copies</strong>, they’ll see that Candy has begun working on the email client.</p>
+<p>The next day Candy is working on adding a rich text editor into the email client. She uses an off-the-shelf JavaScript library to do the job to save time. Smart!</p>
+<p>But when her team lead reviews it, he points out to her that the terms of license of this library conflict with those of their commercial product. Candy is grumpy because it took an entire day to integrate the editor. It was her fault, though. The spec clearly stated that no off-the-shelf library is to be used. So she has to go back and undo her changes. She <strong>deletes all the unversioned files</strong> in the project folder and proceeds to <strong>revert the edited files</strong> to their head version.</p>
+<p>A few days into development, as the email client begins adding bulk, the testers complain that the product itself seems to be very sluggish. Everybody scrambles to get their hands on <strong>the changelog</strong> on the date since when the testers noticed the slowdown.</p>
+<p>All fingers are pointed at Candy’s code for the moment, but the team lead defers any decision until he’s actually reviewed her commits on that particular day. He retrieves the files of the previous revision and runs them through the tests. On a whim, he decides to replace their in-house SMTP test server with the live email server.</p>
+<p>Luckily, it turns out that it was their testing SMTP server which was misbehaving. Instead of closing the connections on receiving QUIT, it continued to hold them. And the testers were the only ones to notice this because they sent the client through a gruelling 1,000,000 rounds of sending and receiving email.</p>
+<p>You now see how easy it is to manipulate readers into seeing from your viewpoint with a contrived example veiling your actual agenda.</p>
+<p>Oops!</p>
+<p>No, that’s not what I meant. The moral of this story is that it is always a good idea to use version control. Version control is mother’s love and apple pie. It is the cat’s whiskers and the bee’s knees. And you just gotta have it!</p>
+<p><a title="A Gentle Introduction to Version Control – Part II" href="http://www.notadesigner.com/a-gentle-introduction-to-version-control-part-ii/">Move on to part two here</a>.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2008-02-22T12:48:36+05:30">February 22, 2008</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/a-gentle-introduction-to-version-control-part-i/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+			
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='https://notadesigner.com/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

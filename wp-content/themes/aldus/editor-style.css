@@ -1,0 +1,359 @@
+/*
+Theme Name: Aldus 
+Description: Used to style the TinyMCE editor.
+*/
+
+
+/**
+ * Table of Contents:
+ *
+ * 1.0 - Body
+ * 2.0 - Headings
+ * 3.0 - Text Elements
+ * 4.0 - Links
+ * 5.0 - Alignment
+ * 6.0 - Tables
+ * 7.0 - Images
+ * 8.0 - RTL
+ * ----------------------------------------------------------------------------
+ */
+
+
+/**
+ * 1.0 Body
+ * ----------------------------------------------------------------------------
+ */
+
+html .mceContentBody {
+	font-size: 100%;
+	max-width: 520px;
+}
+
+body {
+	color: #222;
+	font-family: Lora, Georgia, sans-serif;
+	line-height: 1.5;
+	text-rendering: optimizeLegibility;
+	vertical-align: baseline;
+}
+
+
+/**
+ * 2.0 Headings
+ * ----------------------------------------------------------------------------
+ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	clear: both;
+	line-height: 1.3;
+}
+
+h1 {
+	font-size: 30px;
+	margin: 0 0 30px 0;
+}
+
+h2 {
+	font-size: 26px;
+	margin: 0 0 26px 0;
+}
+
+h3 {
+	font-size: 19px;
+	margin: 0 0 19px 0;
+}
+
+h4 {
+	font-size: 16px;
+	margin: 0 0 16px 0;
+}
+
+h5 {
+	font-size: 16px;
+	font-style: italic;
+	margin: 0 0 16px 0;
+}
+
+h6 {
+	font-size: 16px;
+	font-style: italic;
+	font-weight: normal;
+	margin: 0 0 16px 0;
+}
+
+hr {
+	border-top: 1px dotted #ccc;
+	height: 1px;
+	margin: 0 0 24px;
+}
+
+
+/**
+ * 3.0 Text Elements
+ * ----------------------------------------------------------------------------
+ */
+
+p {
+	margin: 0 0 23px;
+}
+
+ol,
+ul {
+	margin: 16px 0;
+	padding: 0;
+}
+
+ul {
+	list-style-type: square;
+}
+
+ol {
+	list-style: decimal outside;
+}
+
+li > ul,
+li > ol {
+	margin: 0;
+	padding-left: 30px;
+}
+
+dl {
+	margin: 0 19px;
+}
+
+dt {
+	font-weight: bold;
+}
+
+dd {
+	margin: 0 0 19px;
+}
+
+strong {
+	font-weight: bold;
+}
+
+code,
+kbd,
+pre,
+samp {
+	font-family: monospace, serif;
+	font-size: 14px;
+	-webkit-hyphens: none;
+	-moz-hyphens:    none;
+	-ms-hyphens:     none;
+	hyphens:         none;
+}
+
+pre {
+	background: #f5f5f5;
+	color: #666;
+	font-family: monospace;
+	font-size: 1rem;
+	margin: 1rem 0;
+	overflow: auto;
+	padding: 1.159rem;
+	width: 750px;
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+blockquote,
+q {
+	-webkit-hyphens: none;
+	-moz-hyphens:    none;
+	-ms-hyphens:     none;
+	hyphens:         none;
+	quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+	content: none;
+}
+
+blockquote {
+	font-size: 16px;
+	font-style: italic;
+	font-weight: 300;
+	margin: 19px 0 19px 42px;
+}
+
+blockquote blockquote {
+	margin-right: 0;
+}
+
+blockquote cite,
+blockquote small {
+	font-size: 16px;
+	font-weight: normal;
+	text-transform: uppercase;
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+address {
+	font-style: italic;
+	margin: 0 0 26px;
+}
+
+del {
+	color: #333;
+}
+
+ins {
+	background: #fff9c0;
+	text-decoration: none;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sup {
+	top: -0.5em;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+
+/**
+ * 4.0 Links
+ * ----------------------------------------------------------------------------
+ */
+
+a {
+	border-bottom: 1px solid #dfdfdf;
+	color: #c00;
+	text-decoration: none;
+}
+
+a:visited {
+	color: #c00;
+}
+
+a:focus {
+	outline: thin dotted;
+}
+
+a:active,
+a:hover {
+	outline: 0;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+/**
+ * 5.0 Alignment
+ * ----------------------------------------------------------------------------
+ */
+
+.alignleft {
+	display: inline;
+	float: left;
+	margin-right: 26px; 
+}
+
+.alignright {
+	display: inline;
+	float: right;
+	margin-left: 26px;
+}
+
+.aligncenter {
+	clear: both;
+	display: block;
+	margin: 0 auto;
+}
+
+/**
+ * 6.0 Tables
+ * ----------------------------------------------------------------------------
+ */
+
+table {
+	border-bottom: 1px solid #ccc;
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 14px;
+	line-height: 2;
+	margin: 0 0 26px;
+	width: 100%;
+}
+
+caption,
+th,
+td {
+	font-weight: normal;
+	text-align: left;
+}
+
+caption {
+	font-size: 16px;
+	margin: 26px 0;
+}
+
+th {
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+td {
+	border-top: 1px solid #ccc;
+	padding: 6px 10px 6px 0;
+}
+
+
+/**
+ * 7.0 Images
+ * ----------------------------------------------------------------------------
+ */
+
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.wp-caption {
+	background: transparent;
+	border: none;
+	padding-bottom: 1rem;
+	max-width: 520px;
+}
+
+.wp-caption.alignleft {
+}
+
+.wp-caption.alignright {
+}
+
+.wp-caption .wp-caption-text,
+.wp-caption-dd {
+	color: #222;
+	font-size: 14px;
+	line-height: 1.5;
+	margin-top: 14px;
+	padding: 0;
+	text-align: center;
+}

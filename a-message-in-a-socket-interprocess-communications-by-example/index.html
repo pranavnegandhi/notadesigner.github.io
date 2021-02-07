@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>A Message in a Socket &ndash; Interprocess Communications by Example | Not a Designer</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://notadesigner.com/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="https://notadesigner.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="https://notadesigner.com/comments/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://notadesigner.com/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='https://notadesigner.com/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='https://notadesigner.com/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://notadesigner.com/wp-json/" /><link rel="alternate" type="application/json" href="https://notadesigner.com/wp-json/wp/v2/posts/884" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://notadesigner.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+<link rel="canonical" href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/" />
+<link rel='shortlink' href='https://notadesigner.com/?p=884' />
+<link rel="alternate" type="application/json+oembed" href="https://notadesigner.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%3A81%2Fwp%2Fa-message-in-a-socket-interprocess-communications-by-example%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://notadesigner.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Flocalhost%3A81%2Fwp%2Fa-message-in-a-socket-interprocess-communications-by-example%2F&#038;format=xml" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="https://notadesigner.com/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="post-template-default single single-post postid-884 single-format-standard">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="https://notadesigner.com/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-ancestor current-menu-parent menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-1259"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/" aria-current="page">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="https://notadesigner.com/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			
+<article id="post-884" class="post-884 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-c">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/" rel="bookmark">A Message in a Socket &ndash; Interprocess Communications by Example</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<h3>Introduction</h3>
+<p>I couldn&#8217;t help but feel like a luddite as I sat down to write down this article. Who works on Flash applications in 2016 any more? Aren&#8217;t we all done with it now?</p>
+<p>The Flash Player might have its own set of problems, which is a topic for another discussion. The ActionScript language, however, is fun to work with. It is syntactically similar to Java, has a class-based inheritance model, a choice between static or dynamic typing, or both, within the same code base, namespaces, and a host of easy to use and powerful APIs for 2D and 3D graphics, network operations, animation, audio processing, XML and text processing, and more. Frameworks like the open source Flex SDK make it possible to do even more interesting things on top of this.</p>
+<p>But, more importantly, we are heavily invested into the Flash ecosystem for the VMX platform at Vertika. We have 9 years of effort and 40,000 lines of code written in ActionScript and MXML, which would be very expensive to port over to a new platform without a very compelling business reason. So here we are today.</p>
+<p>Unfortunately, the Flash Platform also comes with its idiosyncrasies, one of which is addressed in this article.</p>
+<p>For those losing interest at the mention of Flash, the good thing about this client architecture is that it can easily be ported over to literally any other platform with little change and still work. And the server-side stuff is written in C#. Collectively, this solution covers a plethora of different concepts such as socket programming, data structure design, a custom-built lightweight ORM framework and design patterns.</p>
+<h3>Raison D&#8217;être</h3>
+<p>The Great Catsby is a rather upset feline. He is fond of company and loves nothing more than to kick back with a saucerful of heavy cream milk and a stack of Calvin &amp; Hobbes comics with his human pals. But they just won&#8217;t let him out of his cage. Catsby, you see, is a 300 kilogram Bengal Tiger at the zoo. And no matter how much he pleads, they are not going to let him out and explore the city.</p>
+<p>It&#8217;s a rather bleak state of affairs for the poor cat.</p>
+<p>The guys at Adobe (then Macromedia) had the same ideas when they designed the Flash Player, which was designed primarily as a browser plug-in to play specially authored content served off websites. And as every competent security-minded person knows, it can be a very bad idea to allow strange websites to gain unrestricted access to your computer. Even if every ActionScript programmer pinky-swore not abuse their users&#8217; trust, the guys at Macromedia were not going allow them free rein over the computers running the Flash Player. Hence, Flash content runs in a sandbox with several restrictions, one of them being no direct access the file system.</p>
+<p>This is a tough situation for many programmers who need any kind of runtime application logging. No file system access means there is no persistent data storage on the client.</p>
+<p>It is not that there&#8217;s no logging at all. The Flash Player Debugger exposes a very limited, plain-text log file access that is disabled by default, and requires a configuration flag in a specific plain-text file in order to be activated. The state of this flag cannot be queried or controlled from within the Flash Player. Extracting the file is a task and a half because it&#8217;s buried deep within the file system hierarchy. The log file is shared among all Flash Player applications which are executed on that computer. While there is no possibility of data conflicts, filtering and extraction of the data that is relevant to your application becomes a challenge. Finally, since this is a plain-text file, there is no structured information storage facility available here other than what can be achieved with plain text files (such as comma-separated values).</p>
+<p>Did I mention that even this facility is only available on a special Debugger edition of the Flash Player that most people don’t use?</p>
+<p>In effect, it&#8217;s impossible to have any kind of reliable, persistent runtime logging on a production computer. A third-party intervention is essential. And this is the challenge that is addressed in this article – a logging framework that allows Flash content to delegate the task of persistent storage to another process, which runs at a higher privilege level and has access to the file system. The persistence process can be running locally on the same computer, or on another computer. The mechanism works identically as long as the two computers are able to establish a connection with each other over standard sockets.</p>
+<h3>Hi! It&#8217;s me, your brother!</h3>
+<p>Parents are like the operating system of the family. They spawn child processes, manage resources and schedule time for tasks. A well-organised family is like Unix. Every child gets their own space, and nobody gets into each other&#8217;s way. When they have to communicate, they send messages to pre-designated points. These could be a cell phone, a sticky note on the fridge or a whiteboard in the hallway. They could also speak across the dinner table, but nobody does that in 2016. So that&#8217;s out.</p>
+<p>Speaking over the cell phone is more versatile because it works whether the person is at home or away at work, out running an errand, or at a party. A message on a sticky note is only delivered when the person returns back home and checks the fridge.</p>
+<p>Operating systems also offer similar means to communicate between processes. You could send a message to the recipient over a socket, or write to a file that the recipient checks periodically. Since we have already discussed earlier that writing to files is out, that leaves us with socket communications.</p>
+<p>Fortunately, the Flash Player has an API to communicate over TCP sockets. It works identically when communicating with a different device or another process on the same computer where the Flash application is being run. The Flash Player Socket API can only make client-side calls. It cannot listen for connections from another process. Therefore, the external application must play the role of a server and begin listening for connection requests from the Flash Player on a known port number. Once the connection is established, the two processes can send messages back and forth.</p>
+<p>This mechanism can be utilised to create an external logging tool that listens for messages from a Flash Player client, and logs them to a persistent storage such as hard disk. Since the socket API works locally as well as remotely, the logging server can be situated at an offsite location, and as long as the two computers can communicate with each other, log messages will be successfully delivered and logged.</p>
+<h3>Flex Logging API</h3>
+<p>A lot of work that is needed to establish a robust logging API has already been implemented as part of the Flex SDK in form of the Logging API, which is loosely modelled on its Java framework equivalent. This API provides a convenient way to create structured log messages with severity levels and named categories. A log message is triggered by simple API calls, and is printed to a destination by a target object. Targets can be programmed to listen for messages at a certain severity level (and above), as well as certain categories only. For example, low-latency logging such as an in-memory temporary store can be used for diagnostic messages which are triggered more often, while infrequent but critical errors can be dispatched to remote persistent storage.</p>
+<p>The SDK ships with two in-built logging targets – LineFormattedTarget and TraceTarget – which provide basic logging facilities to the application. TraceTarget prints the message to the Flash Builder or fdb console and extends LineFormattedTarget.</p>
+<p>The Flex Logging API is documented elsewhere in sufficient detail. However, I&#8217;ll cover it briefly in this article to provide context to the reader for how it is used.</p>
+<p>The API is centred around four types.</p>
+<ol>
+<li>mx.logging.Log</li>
+<li>mx.logging.ILogger</li>
+<li>mx.logging.LogEvent</li>
+<li>mx.logging.ILoggingTarget</li>
+</ol>
+<p>The SDK ships with a mx.logging.AbstractTarget class that implements the ILoggingTarget interface. Developers can extend this class to build their own custom logging target implementations.</p>
+<h4>How the Flex Logging API Works</h4>
+<p>The ILogger interface provides methods to send messages to one or more targets. The developer doesn&#8217;t create the logger instance directly. Rather, they call upon the getLogger static method of the Log class to retrieve an ILogger implementation instance. The getLogger method takes a string parameter called category, which can be used to filter log messages down to a particular sub-system within an application.</p>
+<p>The category is conventionally set to the fully-qualified name of the class that calls the ILogger API.</p>
+<p>The ILogger interface also exposes methods to perform log operations at five different severity levels, and a generic log method that takes the severity level as a parameter.</p>
+<p>The severity levels in increasing order are DEBUG, INFO, WARN, ERROR and FATAL.</p>
+<pre>var logger:ILogger = Log.getLogger("com.notadesigner.ExpletiveGenerator");
+logger.info("Sonofagun!");
+logger.log(LogEventLevel.FATAL, "Crumbs!");</pre>
+<p>A logging target receives the log message and prints it to the destination medium. The logging target has a property called level, which determines the severity of messages that it will receive.</p>
+<pre>var target:ILoggingTarget = new TraceTarget();
+target.level = LogEventLevel.INFO;</pre>
+<p>The target receives all messages of its assigned severity level and below. For example, the target instance in the example above would be able to receive DEBUG and INFO messages.</p>
+<p>A logging target instance also has a filters property of type array that contains the categories which this instance should listen for.</p>
+<pre>target.filters = [ "com.notadesigner.ExpletiveGenerator" ]; // Category name must match</pre>
+<p>This snippet enables the target to receive all log messages whose category is set to &#8220;com.notadesigner.Example&#8221;. The filters array can contain more than one category.</p>
+<pre>target.filters.push("com.notadesigner.GreetingsGenerator");</pre>
+<p>The target is actually of greatest interest in this article, because it is this class that performs the message printing. In order to send the message to an external process, we need to build a custom logging target that is able to dispatch messages over a socket.</p>
+<h4>com.notadesigner.sockPuppet.SocketTarget</h4>
+<p>The SocketTarget class extends AbstractTarget rather than LineFormattedTarget, because the latter merges all the message fields into a single string, which we don&#8217;t want. By keeping them as separate fields of their native types, we get maximum control over the structure of the message, as well as the least amount of memory usage.</p>
+<p>We begin by instantiating the class.</p>
+<pre>var target:SocketTarget = new SocketTarget("localhost", 1337);</pre>
+<p>The constructor takes two parameters for the host name and the port number on which the socket server is already ready and running. We will gloss over the details of performing the connection and maintaining it.</p>
+<p>When a message is received, the logging framework triggers the logEvent method of the SocketTarget instance. This is defined as an empty method in the AbstractTarget class that takes a parameter of type LogEvent. By overriding this method, the SocketTarget instance can then dispatch the message to the server.</p>
+<h3>Making It Real</h3>
+<p>Before Daryl got into the programming business, he used to wait at the local deli. His job was to take orders from diners and pass them on to the kitchen, and serve the completed order after it was prepared by the kitchen staff. Daryl’s task was simple. He would jot down a list of orders from the table and pass it on to the chef. The chef would then prepare whatever items came up in the queue, and ring up the waiting staff once it was ready. The staff picked the completed order and served it fresh and hot to their patrons.</p>
+<p>You want a burger and fries? Sure! Footlong with everything? On its way, sir. Need coffee with extra cream? Here it comes.</p>
+<p>The food was good and footfalls were high. The entire team loved their job and did their best to stick to the process because it was so efficient. It abstracted away the underlying complexity of preparing a meal with all its customisations into a simple, mechanical task, while still retaining all necessary details that the kitchen staff would need to build an order.</p>
+<p>In the years that followed, Daryl was on his way to become an accomplished software developer of some fame. It was during this period that he learned about design patterns in software engineering and came across the command pattern. In his mind, he could relate immediately.</p>
+<blockquote><p>A command is a <em>reified method call</em>. – Bob Nystrom, Game Programming Patterns</p></blockquote>
+<p>I find Bob’s explanation to be much more relateable than the longer definition defined in the GOF book. There’s a beauty in its terseness. To understand it, of course you need to understand what reified means. To borrow another quote from Bob’s book</p>
+<blockquote><p>“Reify” comes from the Latin “res”, for “thing”, with the English suffix “–fy”. So it basically means “thingify”, which, honestly, would be a more fun word to use.</p></blockquote>
+<p>So there we are. The command pattern converts an abstract item like a deli order into a real, fresh, piping hot meal. I’m sure even reading about this makes you hungry. Maybe you would like to repeat the experience right about now, and issue a command to your local delivery joint for a large pizza with Coke. Go ahead. I’ll wait.</p>
+<p>Are you back? Let’s continue.</p>
+<p>Returning to the task at hand, we are now at a stage in the logging operation where the message is to be dispatched to the socket server process. The Flex framework already provides all the necessary structured information in an event handler – the logEvent method – that is overridden by the SocketTarget class. It is a matter of sending this information to the external process, so that it can be logged to disk. Reify the log, if you please. We need some infrastructure in order to implement this mechanism.</p>
+<h4>A Standard for Commands</h4>
+<p>The invention of the assembly line provided a massive boost to human progress during the industrial revolution. It was a break from the previous practice of having few master-craftsmen assembling a product from start to finish. By delegating each part of the assembly to a single individual, the human skill required was greatly diminished and productivity soared. Rather than having one exceptionally good worker build a single sword in a day, factories were able to assemble dozens by assigning several average-skilled workers, each handling only one aspect of the assembly process. All workers just followed one instruction – assemble the product. But what each did in response to this instruction was different. Somewhat akin to what we do with the ICommand interface.</p>
+<p>This interface unifies all commands so that they can be guaranteed to have a single method for execution. The ActionScript implementation looks like this.</p>
+<pre class="">public interface ICommand
+{
+    function execute():ByteArray;
+}</pre>
+<p>The obvious follow up is why have a command interface at all when the only operation we need is to trace messages. However, it’s a small leap from where we are now (sending plain-text messages for printing) into communicating more elaborate commands such as enabling and disabling logging, force-flushing the log to disk, clearing the log or sending other structured diagnostic information such as internal data structures. It becomes easier to swap out one command for another, much like the assembly line, if they all must adhere to a common interface. All these commands can be triggered from the Flash application by instantiating an appropriate command class instance, serialising it, and dispatching the result over the connection.</p>
+<p>The details of the execution of the command are specific to the command. The common operation is serialisation of the message from a Flash object to something that the server can read. For this, we use a byte-array because it is compact and efficient to send over a socket.</p>
+<p>Trace generates a certain kind of layout in the byte array, which contains the string to be traced in the message log. Another possible message might be to toggle the state of the logging operation itself. In this case, the byte array could only require a Boolean value to indicate the toggle state. A more complex diagnostic message might send across complete object instances after serialisation, along with information on how they are to be deserialised again.</p>
+<p>While message specifics are different, they all share a common structure called the message header. The header in the current version of this API requires the following elements.</p>
+<ol>
+<li>Message length (32-bit integer) – The total length of the message in bytes (including the header and all parameters).</li>
+<li>Instruction (byte) – An 8-bit integer value that contains the instruction code. Each command has a unique instruction number associated with it. This makes the message more compact than sending the human-readable command name as a string.</li>
+<li>Message timestamp in UTC (32-bit integer) – The date and time that the message was created in the Flash Player, encoded as seconds since the UNIX epoch. The time is calculated relative to UTC and must be converted into local time as an additional step by the receiver of the message, if needed.</li>
+<li>Number of parameters (32-bit integer) – A count of the number of parameters attached to the message.</li>
+</ol>
+<p>The instruction for the Trace command is assigned the value 0×02. The byte array needed to trace the string “Hello” at severity level INFO is shown in the table below. Each cell represents 1 byte.</p>
+<table class="default" border="0" cellspacing="0" cellpadding="2">
+<tbody>
+<tr>
+<td colspan="5">Message Length (4 bytes)</td>
+</tr>
+<tr>
+<td>0×00</td>
+<td>0×00</td>
+<td>0×00</td>
+<td>0×20</td>
+<td class="hidden" style="transition: transform 1s ease 0s;"></td>
+</tr>
+<tr>
+<td colspan="5">Instruction (1 byte)</td>
+</tr>
+<tr>
+<td>0×02</td>
+<td class="hidden" colspan="4"></td>
+</tr>
+<tr>
+<td colspan="5">Timestamp (4 bytes)</td>
+</tr>
+<tr>
+<td>0×57</td>
+<td>0×CD</td>
+<td>0×AC</td>
+<td>0×31</td>
+<td class="hidden"></td>
+</tr>
+<tr>
+<td colspan="5">Parameter Count (4 bytes)</td>
+</tr>
+<tr>
+<td>0×00</td>
+<td>0×00</td>
+<td>0×00</td>
+<td>0×03</td>
+<td class="hidden"></td>
+</tr>
+<tr>
+<td colspan="5">String Length (2 bytes)</td>
+</tr>
+<tr>
+<td>0×00</td>
+<td>0×04</td>
+<td class="hidden" colspan="3"></td>
+</tr>
+<tr>
+<td colspan="5">Severity Level (&#8220;INFO&#8221;, variable-length string)</td>
+</tr>
+<tr>
+<td>0×49</td>
+<td>0×4e</td>
+<td>0×46</td>
+<td>0×4f</td>
+<td class="hidden"></td>
+</tr>
+<tr>
+<td colspan="5">String Length (2 bytes)</td>
+</tr>
+<tr>
+<td>0×00</td>
+<td>0×04</td>
+<td class="hidden" colspan="3"></td>
+</tr>
+<tr>
+<td colspan="5">Category (&#8220;Main&#8221;, variable-length string)</td>
+</tr>
+<tr>
+<td>0×4d</td>
+<td>0×61</td>
+<td>0×69</td>
+<td>0×6e</td>
+<td class="hidden"></td>
+</tr>
+<tr>
+<td colspan="5">String Length (2 bytes)</td>
+</tr>
+<tr>
+<td>0×00</td>
+<td>0×05</td>
+<td class="hidden" colspan="3"></td>
+</tr>
+<tr>
+<td colspan="5">Message (&#8220;Hello&#8221;, variable-length string)</td>
+</tr>
+<tr>
+<td>0×48</td>
+<td>0×65</td>
+<td>0×6c</td>
+<td>0×6c</td>
+<td>0×6f</td>
+</tr>
+</tbody>
+</table>
+<p>The first 4 bytes contain the message length. The next 1 byte contains the instruction code (0×02). Four bytes are allocated to sending the timestamp in seconds (1,473,096,753 seconds since 1 January 1970). The next 4 bytes contain the number of parameters attached to this message (3). The contents of the rest of the message are specific to the Trace command. It is made up of 3 data fragments that encode a string prefixed by its length as a 16-bit integer. A string is an array of characters. C-style strings mark the end of the array by placing a null character in the last position of the array. When a piece of code needs to perform any string operation, it walks the length of the array until it arrives at the null terminating character. Alternative to this are length-prefixed strings, or Pascal strings, which prefix the length of the character array at the beginning. Pascal strings do not require a null terminating character as the length of the string is already known beforehand.</p>
+<p>This kind of data structure has an advantage of speed over null-terminated strings. Any operation that requires the length of the string can peek into the beginning of the sequence, making it a constant time operation. Finding the length of null terminated strings, on the other hand, is a linear operation because it requires walking the entire byte array to locate the null terminator. Longer strings take more time, shorter strings take less.</p>
+<p>The writeUTF method of the ActionScript ByteArray class uses Pascal strings. Programmers do not have a choice in this matter. Therefore, all commands, present as well as new ones in the future, use this same structure to encode strings.</p>
+<h3>A Pregnant Pause</h3>
+<p>Once the message has been serialised into a byte array, the send method of the Socket class is used to dispatch the message over the network.</p>
+<p>At this point, the message is out of the realm of the Flash Player and is crossing boundaries into the .NET runtime. If the server at the other end receives the message in full (which is more or less guaranteed due to the TCP stack), it can be parsed, deserialised and acted upon by the server. If the message fails for any reason, the Socket class raises an error event within the Flash Player for the programmer to handle. For brevity, we ignore that aspect and proceed with the assumption that the message has been received successfully and in full. Transparent to the ActionScript programmer, the server dispatches an ACK response to acknowledge receipt of the message. There is nothing more that the Flash Player has to after this point and it can return back to its steady state.</p>
+<p>Keep watching this space for part two of this article that explores receiving the message on the server, interpreting it into its component parts, then acting upon the instruction contained in it.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2016-09-26T22:11:00+05:30">September 26, 2016</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+					<div class="entry-categories-tags">
+								<p class="categories">Posted in: <a href="https://notadesigner.com/category/software-engineering/technique/" rel="category tag">Technique</a>				
+								<p class="tags">Tagged: <a href="https://notadesigner.com/tag/actionscript/" rel="tag">actionscript</a>, <a href="https://notadesigner.com/tag/c/" rel="tag">c#</a>							</div>
+			
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+				<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+
+			<div class="nav-previous"><a href="https://notadesigner.com/whats-in-a-name/" rel="prev"><div class="arrow">&larr;</div><div class="link">What&#8217;s in a Name?</div></a></div>			<div class="nav-next"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/" rel="next"><div class="arrow">&rarr;</div><div class="link">Socket Talk – Interprocess Communications by Example</div></a></div>
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+			
+		
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-1231"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/" aria-current="page">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='https://notadesigner.com/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

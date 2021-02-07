@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>Demonstration | Not a Designer</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://localhost:81/wp/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="http://localhost:81/wp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="http://localhost:81/wp/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Demonstration Category Feed" href="http://localhost:81/wp/category/software-engineering/demonstration/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/categories/40" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="http://localhost:81/wp/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive category category-demonstration category-40">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://localhost:81/wp/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					Demonstration				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-1006" class="post-1006 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/adding-some-life/" rel="bookmark">Adding Some Life</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>The previous installment in the Building FitNet series explained how to connect a view-model with a view, using a modular and extensible architecture. In this episode, I explain how interactivity can be added to the user interface.</p>
+<p>The simplest interactive UI control is a button. You click on it, and it executes some action. Buttons in Windows Forms worked the same way. But WPF takes the button and turns the knob up to 11. Buttons in WPF can take on literally any appearance that you can dream of. Building the user interface using XAML is already so much better than using the Designer or literal code statements. Features such as data binding are added bonus and allow for more dynamism in the user interface. You can bind the appearance of a Button instance to a view-model that reacts to the state of the application and literally make things dance.</p>
+<p>The change in architecture also extends to the use of the event handlers. The built-in System.Windows.Controls.Button class has a property called Command, which can be bound to the view-model of the instance. The Command property is of type System.Windows.Input.ICommand. Any class that implements this interface can be attached to this property.</p>
+<p>This sounds a bit counterintuitive at first. Why have a special type, when a simple function can suffice?</p>
+<p>And the answer is separation of concerns. A command decouples the object that invokes the command from the object that executes the command.</p>
+<p>The ICommand interface also provides additional properties that make it easy to control the state of the button with a bit of additional code.</p>
+<pre>public class RelayCommand : ICommand<br>{<br>&nbsp;&nbsp;&nbsp; public RelayCommand(Action execute, Func&lt;bool&gt; canExecute)<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _execute = execute;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _canExecute = canExecute;<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; event EventHandler ICommand.CanExecuteChanged<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Event dispatched event when the state of the CanExecute property changes<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; …<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; bool ICommand.CanExecute(object parameter)<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return null == _canExecute ? true : _canExecute();<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; void ICommand.Execute(object parameter)<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; _execute();<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>}</pre>
+<p>The Command property of the button is assigned an instance of RelayCommand. This class constructor takes two parameters – an Action delegate called execute and a Func&lt;bool&gt; delegate called canExecute. The Action is called when the command is to be executed, whereas the Func&lt;bool&gt; determines if the command can be executed at all or not.</p>
+<p>This is useful for performing runtime checks on the validity of input. The CanExecute delegate is triggered automatically by the framework periodically, which keeps the state of the button updated at all times.</p>
+<p>The Command object should be made available through the view-model so that the button can be bound to it.</p>
+<pre>public class CalculatorViewModel<br>{<br>&nbsp;&nbsp;&nbsp; public CalculatorViewModel()<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TryCalculateCommand = new RelayCommand(TryCalcuate, CanTryCalculate);<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; public ICommand TryCalculateCommand<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; get;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; private set;<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; private void TryCalcuate()<br>&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp; }<br><br>&nbsp;&nbsp;&nbsp; private bool CanTryCalculate()<br>&nbsp;&nbsp;&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; // Validate the input fields and return a boolean<br>&nbsp;&nbsp;&nbsp;&nbsp; }<br>}</pre>
+<p>That’s it! All that’s left is to bind the Command property of the Button instance to the TryCalculateCommand property in the view-model.</p>
+<pre>&lt;Button Content="Calculate" Command="{Binding TryCalculateCommand}"/&gt;</pre>
+<p>Collectively, these minor improvements in paradigm make WPF a much nicer framework to use over its predecessors.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2016-12-22T06:41:00+05:30">December 22, 2016</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/adding-some-life/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-994" class="post-994 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/in-with-the-new/" rel="bookmark">In With the New</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>It turns out that there is a much better way to manipulate the user interface in WPF which is based on view-models. I cover this aspect in this episode of Building FitNet.</p>
+<p>The System.Windows.Application class is the core of a WPF program. An instance of this class remains in memory for as long as the application is running. In order for the application to do something useful, programmers must extend this class and customise its behaviour to the needs of their own application. By convention, the primary application window is also instantiated by this class in the OnStartup event handler.</p>
+<pre>private ShellViewModel _shellViewModel;
+
+override public void OnStartup(StartupEventArgs e)
+{
+  base.OnStartup(e);
+  _shellViewModel = new ShellViewModel();
+
+  var window = new Shell();
+  window.DataContext = _shellViewModel;
+  window.Show();
+}</pre>
+<p>An instance of the ShellViewModel class is assigned as the view-model for the application window through its DataContext property. When the properties in the view-model instance change, it dispatches a PropertyChanged event along with the name of the changed property. Corresponding event handlers in the window object then query the view-model for the new state and update the appearance of the display. The ShellViewModel class must implement the System.ComponentModel.INotifyPropertyChanged interface for this behaviour.</p>
+<p>The following example illustrates this by changing the title of the application window.</p>
+<pre>public class ShellViewModel
+{
+  …
+  public string Title
+  {
+   get
+   {
+     return _title;
+   }
+
+   set
+   {
+      _title = value;
+     var e = new PropertyChangedEventArgs(“Title”);
+     PropertyChanged(this, e);
+    }
+  }
+}</pre>
+<p>Specific properties of the view are bound to their corresponding counterparts in the view-model. In this example, the Title property of the Window class is bound to its namesake in the view-model.</p>
+<pre>&lt;Window … Title=”{Binding Path=Title}&gt;
+  …
+&lt;/Window&gt;</pre>
+<p>Therefore, when the title changes on the view-model, the change gets reflected on the view. The key here is assigning an instance of the ShellViewModel to the DataContext property, which establishes the bindings between the view and the view-model.</p>
+<p>This concept is key to understanding and implementing properly architected WPF applications.</p>
+<h4>Binding On-Screen Views</h4>
+<p>This concept of binding a view to data can be extended to any type. Primitive types are rendered as strings. For complex types, programmers can build composite views made up of several different fundamental UI elements such as labels, text fields and buttons. Properties in the view-model are bound to these controls.</p>
+<p>In order to render the content in the window, the application must instantiate ContentControl, which is shipped along with WPF. This class has a property called Content, which can be bound to any property in the view-model.</p>
+<pre>&lt;ContentControl Content="{Binding Title}"/&gt;</pre>
+<p>The output of the program written so far is shown below.</p>
+<p><img loading="lazy" class="aligncenter size-full wp-image-996" src="http://www.notadesigner.com/wp-content/uploads/2018/01/view.binding.demonstration.png" alt="A string binding between a view-model and a view" width="656" height="438" /></p>
+<p>When the value of Title in the view-model changes, the text rendered inside the ContentControl instance is updated to reflect the new text.</p>
+<h4>Building Compound User Interfaces</h4>
+<p>The third part of the equation is assigning a data template to the view, which describes the visual structure of an object. A data template is a window resource.</p>
+<pre>&lt;Window…&gt;
+  &lt;Window.Resources&gt;
+    &lt;DataTemplate DataType=”{Type system:String}”&gt;
+      &lt;TextBlock Text=”{Binding StringFormat={}The application name is &amp;#x2014; {0}}”/&gt;
+    &lt;DataTemplate&gt;
+  &lt;/Window.Resources&gt;
+  …
+&lt;/Window&gt;</pre>
+<p>This modifies the appearance of the ContentControl instance. Instead of rendering plain text with just the name of the application, the output is decorated with some additional text and special characters, and looks like this.</p>
+<p><img loading="lazy" class="aligncenter size-full wp-image-997" src="http://www.notadesigner.com/wp-content/uploads/2018/01/view.binding.demonstration-02.png" alt="An annotated string binding between a view-model and a view" width="656" height="438" /></p>
+<h3>The Big Picture</h3>
+<p>Essentially, the outcome of what appears on the screen is now split into three classes – a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
+<p>It’s a small step from here to building complete user interfaces using this style of programming.</p>
+<p>This is done by having a custom view-model class for the window as shown above, then adding another view-model to it as a public, bindable property called SelectedView.</p>
+<pre>public class ShellViewModel
+{
+  …
+  private Object _selectedView;
+
+  public Object SelectedView
+  {
+    get
+    {
+      return _selectedView;
+    }
+
+    set
+    {
+      if (value == _selectedView)
+      {
+        return;
+      }
+
+      _selectedView = value;
+      OnPropertyChanged(nameof(SelectedView));
+    }
+  }
+}</pre>
+<p>It is preferred that SelectedView be a custom type instead of System.Object. A different view-model is required for each view that the application needs to render. For example, if the application requires tabs for a calories consumed calculator and a speed calculator, then two view-models must be made for each of these tabs. Having a common base class between them ensures type-safety when switching between the two view-models.</p>
+<p>A custom renderer is also required for each view. Renderers are typically built on top of the UserControl class. The declarative syntax of XAML makes it very easy to build a user interface with any kind of layout.</p>
+<p>The example below shows a SpeedCalculatorView that computes the value of speed based on the time taken and distance covered.</p>
+<pre>&lt;UserControl …&gt;
+  &lt;Grid&gt;
+    &lt;Grid.ColumnDefinitions&gt;
+      &lt;ColumnDefinition Width="150"/&gt;
+      &lt;ColumnDefinition Width="250"/&gt;
+    &lt;/Grid.ColumnDefinitions&gt;
+
+    &lt;Grid.RowDefinitions&gt;
+      &lt;RowDefinition Height="Auto"/&gt;
+      &lt;RowDefinition Height="Auto"/&gt;
+      &lt;RowDefinition Height="Auto"/&gt;
+    &lt;/Grid.RowDefinitions&gt;
+    &lt;TextBlock Grid.Column="0" Grid.Row="0" Text="Time"/&gt;
+    &lt;TextBlock Grid.Column="0" Grid.Row="1" Text="Distance"/&gt;
+    &lt;TextBlock Grid.Column="0" Grid.Row="2" Text="Speed"/&gt;
+
+    &lt;TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Time}"/&gt;
+    &lt;TextBox Grid.Column="1" Grid.Row="1" Text="{Binding Distance}"/&gt;
+    &lt;TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Speed}"/&gt;
+  &lt;/Grid&gt;
+&lt;/UserControl&gt;</pre>
+<p>The window resources contains a DataTemplate declaration to associate the SpeedCalculatorView with the SpeedCalculatorViewModel. The user interface is changed by setting the value of SelectedView in ShellViewModel to an instance of SpeedCalculatorViewModel.</p>
+<p>In the next part, I will cover how to add interactivity to this application.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/in-with-the-new/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-986" class="post-986 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/out-with-the-old/" rel="bookmark">Out With the Old</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>In the previous post I described the rationale and the approach to building a custom fitness tracker for the desktop. The application was to be built using the Windows Presentation Foundation. As far as execution goes, I had a lot to learn about the correct way to use WPF. The first commit of the application followed so many WinForms paradigms that it made zero sense to involve the overhead of WPF.</p>
+<p><img style="display: inline; background-image: none;" title="FitNet Desktop screenshot" src="http://www.notadesigner.com/wp-content/uploads/2018/01/fitnet.desktop.png" alt="FitNet Desktop screenshot" border="0" /></p>
+<p>This is what the XAML that implements the above screen looked like.</p>
+<pre>&lt;TabControl&gt;
+     &lt;TabItem Header="Summary"&gt;
+         &lt;fit:Summary/&gt;
+     &lt;/TabItem&gt;
+     &lt;TabItem Header="Reports"&gt;
+         &lt;Label&gt;Reports View&lt;/Label&gt;
+     &lt;/TabItem&gt;
+     &lt;TabItem Header="Tracking"&gt;
+         &lt;Label&gt;Tracking View&lt;/Label&gt;
+     &lt;/TabItem&gt;
+&lt;/TabControl&gt;</pre>
+<p>Perfectly readable, but it would quickly devolve either into a big ball of mud with XML nodes nested several layers deep in a single file, or turn into a pile of nested classes inheriting unrelated behaviour from a few common base classes. Either case was unacceptable. But I didn&#8217;t know that yet.</p>
+<p>The second mistake was borrowing a data-access implementation from a previous project which was based on a primitive architecture. The template pattern that this layer implemented was fine for a small number of data objects. But it becomes tedious to build a separate reader and writer sub-class and its associated ancillary classes for every aggregate data type (and FitNet requires quite a few of those). I needed something that was easier to extend when it came to data access.</p>
+<p><img loading="lazy" class="size-full wp-image-990 aligncenter" src="http://www.notadesigner.com/wp-content/uploads/2018/01/fitnet.desktop-01-solution.png" alt="FitNet Desktop Solution View" width="371" height="561" /></p>
+<p>The third major flaw was having monolithic namespaces out of ignorance of the WPF architectural style, and not using its paradigms to the best benefit. This resulted in the application turning into three projects &#8211; a Desktop project as the primary executable, a Desktop.Lib library project as a massive collection of view classes, and a Persistence project which implemented the aforementioned half-functioning data access layer.</p>
+<p>I went through this path for several weeks before finally realising my folly, by which time I had actually built quite a bit of useful functionality in the application. But it was getting unwieldy to make any modifications or add new functionality. It seemed like I was constantly fighting against the framework in order to get things done.</p>
+<p>I had finally had enough of this struggle when I had to implement a flyout for modifying the list of exercises in the database. Adding yet another node to the already crowded main window file and more inline click event handlers in the backing CS file were a clear indicator that I was doing this wrong. There was no way this could scale up elegantly.</p>
+<p>This is where I decided to take a step back and try to understand what the heck was going on.</p>
+<p>Fortunately I stumbled upon XPence, an expense tracking application built on WPF by Siddhartha S. and hosted with an in-depth development tutorial on Code Project.</p>
+<p>Hang on for the next part where I finally begin to turn this ship around to a more meaningful course.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2016-12-08T20:13:00+05:30">December 8, 2016</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/out-with-the-old/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-977" class="post-977 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/introducing-fitnet/" rel="bookmark">Introducing FitNet</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>The recent surge in fitness-related technology innovations bodes well for the future of many people. And though the Cheeto-munching, Red Bull-guzzling stereotype for the technologists behind this progress still sticks, the truth is that more people, including programmers, are gaining awareness of their physical health and nutrition and changing lifestyles to seek improvement.</p>
+<p>Latching on to this bandwagon came a surge of fitness tracking apps. FitNotes, StrongLifts 5&#215;5, the Starting Strength App by legendary strength-training coach Mark Rippetoe, Strong App for iOS, and many more, provide ample choice to the enthusiast as well as advanced lifter. These apps cover various aspects, from simple tracking, to full blown programme design with progressions and periodisation. Some applications work online. Your data is stored on their server, and requires an internet connection to access and update. Others are offline, or a hybrid of both modes. Many are free and use ad revenue to sustain operations. Some of the fancier ones are paid. They all have their pros and cons.</p>
+<p>Having used a small subset of them in the past few years, I have identified certain shortcomings between them.</p>
+<h4>Incompatible Storage</h4>
+<p>This is especially annoying because most of these applications use the same database engine &#8211; SQLite. But it&#8217;s impossible to move from one application to another without a lot of manual re-entry of data.</p>
+<p>Now this is an understandable shortcoming. Database design is an engineering activity. People approach the same problem differently based on their skill levels and priorities. Copying databases between applications will never work directly. But the problem can be mitigated to a great extent by the industry agreeing to a common minimum format that they all support, which can be used to send data out of the application. Customers do not like being locked in.</p>
+<h4>Changing Platforms</h4>
+<p>Mobile phones change often. I have found myself switching between Blackberry to Android to iOS in a few short years. Fitness journeys last a lifetime. Phones last a few years, at best.</p>
+<p>This is to some extent, a manifestation of point 1 above. If the common minimum format were to come together, changing platforms would become much easier. However, there&#8217;s another more subtle point. The one unchanged platform over all these years has been the desktop and the Windows operating system. People usually have access to at least one Windows computer. Even though Android has become the most popular operating system, the Windows desktop remains firmly lodged into place at workplaces, schools and homes. It&#8217;s still a very stable and dependable platform to target.</p>
+<h4>Privacy</h4>
+<p>It is possible to cast all these troubles away and switch to a web-based application. However, people are not always comfortable with storing sensitive personal information on a server that is not in their control. Not to mention the risk of the company going belly-up and taking their precious PR logs along with it.</p>
+<p>This is a no-brainer. Put the data on the user&#8217;s own computer, where they do not have to worry about losing their privacy. Include an automated backup feature that saves the encrypted data on their cloud-storage service. The data remains reasonably safe from loss as well as from prying eyes. Again, a common minimum format can prove to be very useful in the worst case scenario of 100% loss of the physical computer itself.</p>
+<p>These were real and personal pain-points I experienced first-hand. And being a programmer gave me the ability to actually work on a solution that addresses these problems.</p>
+<h3>Introducing FitNet</h3>
+<p>The easiest replacement to these woes was a spreadsheet. Smack a new row for every workout, see real-time graph updates. It works as a log, but getting a report out of it is a chore. Besides, programming fancy reports into a spreadsheet eventually turns it into a prime feature for The Daily WTF. So that was out. Microsoft Access used to be a very good tool for this kind of tasks, but it still leaves out graphical reports. And the new monthly subscription model for Office 365 just isn&#8217;t for me.</p>
+<h4>Enter Windows Presentation Foundation.</h4>
+<p>I have been using Windows Forms since the longest time as the tool of choice for building desktop applications on Windows. It&#8217;s easy and it&#8217;s straightforward, and anybody who&#8217;s working with the previous Windows API feels perfectly at home with the new managed API that WinForms represents.</p>
+<p>Windows Presentation Foundation is different. It is not just a wrapper around the Windows API. It&#8217;s a whole different framework which eschews the disparate development sub-frameworks from the Windows API in favour of a single well-integrated and extensible library. It also accounts for differing device capabilities in a more resilient fashion by abstracting away tasks like drawing objects relative to the device resolution and hardware accelerated graphics available out of the box without any extra effort. Finally, WPF brings a new type of resource &#8211; a XAML file &#8211; to be used as a declarative approach to building and programming user-interface elements rather than the procedural approach required by the Windows API.</p>
+<p>This means that the following 50 lines of code…</p>
+<pre>WNDCLASSEX wc;
+HWND hwnd;
+MSG Msg;
+
+// Registering the Window Class
+wc.cbSize        = sizeof(WNDCLASSEX);
+wc.style         = 0;
+wc.lpfnWndProc   = WndProc;
+wc.cbClsExtra    = 0;
+wc.cbWndExtra    = 0;
+wc.hInstance     = hInstance;
+wc.hIcon         = LoadIcon(NULL, IDI_APPLICATION);
+wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
+wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+1);
+wc.lpszMenuName  = NULL;
+wc.lpszClassName = g_szClassName;
+wc.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);
+
+if (!RegisterClassEx(&amp;wc))
+{
+MessageBox(NULL, "Window Registration Failed!", "Error!",
+MB_ICONEXCLAMATION | MB_OK);
+return 0;
+}
+
+// Create the window
+hwnd = CreateWindowEx(
+WS_EX_CLIENTEDGE,
+g_szClassName,
+"FitNet Desktop",
+WS_OVERLAPPEDWINDOW,
+CW_USEDEFAULT, CW_USEDEFAULT, 400, 300,
+NULL, NULL, hInstance, NULL);
+
+if (NULL == hwnd)
+{
+MessageBox(NULL, "Could not create application window.", "Error", MB_ICONEXCLAMATION | MB_OK);
+
+return 0;
+}
+
+ShowWindow(hwnd, nCmdShow);
+UpdateWindow(hwnd);
+
+// Message loop
+while(GetMessage(&amp;Msg, NULL, 0, 0) &gt; 0)
+{
+TranslateMessage(&amp;Msg);
+DispatchMessage(&amp;Msg);
+}
+return Msg.wParam;</pre>
+<p>…can be distilled down to…</p>
+<pre>&lt;Window x:Class="WpfApplication1.Window1"
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+Title="FitNet Desktop" Height="400" Width="300" /&gt;</pre>
+<p>Now it can be argued that the Windows Forms API also offers similar succinctness. But WPF takes this to a whole different level as I learned through the course of my project.</p>
+<p>This series of articles is an ongoing log of my journey of building FitNet &#8211; a fitness tracker that meets my own needs.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2016-12-01T19:56:42+05:30">December 1, 2016</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/introducing-fitnet/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-728" class="post-728 post type-post status-publish format-standard hentry category-demonstration tag-php tag-spreadsheet tag-wordpress">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/a-spreadsheet-of-posts-for-wordpress/" rel="bookmark">A Spreadsheet of Posts for WordPress</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>When Microsoft was working on Excel during the early nineteen nineties, their research indicated that many people did not use spreadsheets for the mathematical tasks (such as financial planning, bookkeeping or simulations) which were the original goals of the spreadsheet genre. Instead, they were used for making lists &#8211; grocery shopping, planning parties for their kids, logging project tasks, so on. Microsoft took this research into account and reoriented the functional specifications to make list-making much easier than the competition and previous versions of their own product. Joel Spolsky, who was program manager for Microsoft Excel during this period, states the following.</p>
+<blockquote><p>When we were designing Excel 5.0, the first major release to use serious activity-based planning, we only had to watch about five customers using the product before we realized that an enormous number of people just use Excel to keep lists. They are not entering any formulas or doing any calculation at all! We hadn&#8217;t even considered this before. Keeping lists turned out to be far more popular than any other activity with Excel. And this led us to invent a whole slew of features that make it easier to keep lists: easier sorting, automatic data entry, the AutoFilter feature which helps you see a slice of your list, and multi-user features which let several people work on the same list at the same time while Excel automatically reconciles everything.</p></blockquote>
+<p><a href="http://www.joelonsoftware.com/uibook/chapters/fog0000000065.html">The Process of Designing a Product</a>, Joel on Software</p>
+<p>If you abstract away the specifics of the application, you can easily see that the spreadsheet grid is a one-table database. Having multiple tables can be much more efficient, but a single table is easier to understand for people who do not use databases regularly.</p>
+<p>The simplicity of spreadsheets as databases goes beyond just reading.</p>
+<p>Adding columns? A database engine needs, at the least, the column name and its data type. In a spreadsheet all you need to do is place the cursor over the first empty cell in the first row and type its name. Filtering is one of the simpler tasks in a database, but spreadsheets even make that easier by providing a dropdown of valid values to choose from. Even inserting new records is much easier in a spreadsheet as compared to a database engine. And more importantly, the grid is a good way of capturing an aggregate view of the entire database and making wholesale changes to groups of records quickly.</p>
+<p>A spreadsheet application can be the subject of some really grimy IT horror stories that can involve file shares, multiple users and overwritten records. But if put into a proper data validation framework, the spreadsheet interface is robust and easy to use. Many database management clients use the it to represent their table interface, even for multiple relationships.</p>
+<p>Extending to multiple dimensions comes at the cost of some loss of elegance when representing one-to-many relationships. While this UI works, it likely marks the limits of a spreadsheet interface. Nested relationships quickly become difficult to understand. And each nested level can represent only one relationship. It comes as no surprise then that so many database-oriented applications (not the management clients themselves) eschew the spreadsheet interface in favour of a form-driven approach.</p>
+<p>But I still think that the spreadsheet interface is vastly underused on the web. As I have mentioned above, it does work for simpler collections of records, such as articles in a content management system or user lists.</p>
+<p>Spreadsheet of Posts is a WordPress plugin that aggregates all posts into a spreadsheet interface. While WordPress is a fairly simple to use product for even laypersons, the Post creation process leaves a bit to be desired. The sheer amount of shuffling back and forth between the All Posts and the Edit Posts screen takes away a lot of time. This is similar to the REP loop that interpreted languages provide. The visual difference between two screens is bad enough. To that, the delay caused by network activity, fetching the same data repeatedly from the database, regenerating almost identical markup each time and then rendering it again on the client side increases the effort of getting into the flow. Any boredom while performing such a task is justified.</p>
+<p>Spreadsheet of Posts attempts to address these shortcomings by putting all the posts into a grid. Edits are made in-place on the grid itself. New records are inserted by filling in a blank row. Records are deleted by selecting any cell and hitting delete. The record that corresponds to the selected row is deleted. The plugin uses standard page-based navigation to cycle through records that do not fit into a single page. It also provides an alternative to display all the records in a single page. Cell heights can be varied to fit the content, or be set to a fixed constant.</p>
+<p><img loading="lazy" class="aligncenter size-medium wp-image-730" title="spreadsheet-of-posts" src="http://www.notadesigner.com/wp-content/uploads/2014/03/spreadsheet-of-posts-783x600.png" alt="" width="783" height="600" srcset="http://localhost:81/wp/wp-content/uploads/2014/03/spreadsheet-of-posts-783x600.png 783w, http://localhost:81/wp/wp-content/uploads/2014/03/spreadsheet-of-posts-1044x800.png 1044w, http://localhost:81/wp/wp-content/uploads/2014/03/spreadsheet-of-posts.png 1252w" sizes="(max-width: 783px) 100vw, 783px" /></p>
+<p>The underlying grid is the <a href="http://www.handsontable.com">Hands on Table</a> jQuery grid editor. While there are more functionally complete alternatives, the interactions and appearance of Hands on Table come closest to replicating Excel. Even the bare bones demo on their home page evokes a lot of familiarity to Microsoft&#8217;s product. This is a big necessity to make users more comfortable with Spreadsheet of Posts. The rest of the back end of the plugin uses the standard WordPress framework.</p>
+<p>Spreadsheet of Posts is still work in development. <a title="Spreadsheet of Posts" href="http://wordpress.org/plugins/spreadsheet-of-posts/">A current version can be downloaded from here</a>.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2014-03-05T15:44:12+05:30">March 5, 2014</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/a-spreadsheet-of-posts-for-wordpress/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-581" class="post-581 post type-post status-publish format-standard hentry category-demonstration tag-c tag-wpf">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/wpf-game-of-life/" rel="bookmark">WPF Game of Life</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>I was introduced to cellular automatons a good decade ago through books written by Peter Small. Back then, we were using Adobe (then Macromedia) Director as our primary development platform, where object-oriented programming was still a bit of a novelty. Small&#8217;s writings explained OOP using artificial life forms such as cellular automatons, with Conway&#8217;s Game of Life being an oft used concrete example. <span style="letter-spacing: 0.05em; line-height: 1.6875;">I was hooked and would spend hours running patterns on a simple implementation of the game that shipped with Windows Entertainment Pack.</span></p>
+<p>But I never got around to implementing the application myself until now. The game has a fairly simple model that does not take much effort to build. This is handy when learning a new platform or language, leaves the programmer free to explore the features of the framework instead of spending cycles trying to nail down the business logic correctly using an unfamiliar language syntax.</p>
+<h3>Background</h3>
+<p>There are plenty of resources available online that describe, implement and demonstrate this game. The basic essence of the game is a two-dimensional array of cells and an endless loop that iterates over these cells to update their state depending upon some simple rules.</p>
+<ol>
+<li>Any live cell with fewer than two live neighbours dies, as if caused by under-population.</li>
+<li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+<li>Any live cell with more than three live neighbours dies, as if by overcrowding.</li>
+<li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+</ol>
+<div>This implementation of the game also consists of the following features for convenience.</div>
+<div>
+<ol>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">Clicking on a cell toggles its state between being alive or dead.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Randomize button initializes the board by randomly setting the state of all cells to either alive or dead.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Stop button lets the user stop the cell update iterations in order to observe the arrangement of the board at any given time. This is useful for times when an interesting pattern appears on the screen that seeks further observation.</span></li>
+<li><span style="letter-spacing: 0.05em; line-height: 1.6875;">A Next button complements the Stop button to let the user iterate to progressive generations of the board, one step at a time.</span></li>
+</ol>
+</div>
+<h3>Implementation</h3>
+<p>This implementation is made up of the following classes.</p>
+<h4>MainWindow.xaml and MainWindow.xaml.cs</h4>
+<div>
+<p>The application window is a XAML class called MainWindow.xaml, which defines the layout of the application. The layout is built around a DockPanel that divides the screen into two &#8211; a controller toolbar and the board view.</p>
+<pre>&lt;DockPanel Name="layout"&gt;
+    &lt;ToolBar DockPanel.Dock="Top"&gt;
+        &lt;Button Content="Start" Name="btnStart" Height="23" Width="75" Margin="5" Click="toggleStart_Click" /&gt;
+        &lt;Button Content="Next" Name="btnNext" Height="23" Width="75" Margin="5" Click="nextIteration_Click" /&gt;
+        &lt;Button Content="Clear" Name="btnClear" Height="23" Width="75" Margin="5" Click="clear_Click" /&gt;
+        &lt;Button Content="Randomize" Name="btnRandomize" Height="23" Width="75" Margin="5" Click="randomize_Click" /&gt;
+    &lt;/ToolBar&gt;
+    &lt;ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"&gt;
+        &lt;life:BoardView x:Name="view" DockPanel.Dock="Top" Margin="10" Click="view_Click"&gt;&lt;/life:BoardView&gt;
+    &lt;/ScrollViewer&gt;
+&lt;/DockPanel&gt;</pre>
+</div>
+<p>The MainWindow class stores a reference to an instance of BoardModel as a private field. <span style="letter-spacing: 0.05em; line-height: 1.6875;">Buttons in the toolbar are wired to trigger event handlers in the MainWindow class, which in turn trigger public methods exposed by the model and view instances.</span></p>
+<h4><span style="letter-spacing: 0.05em; line-height: 1.6875;">BoardModel.cs</span></h4>
+<div>
+<p>The model class is where the business logic behind the application is implemented. It contains two arrays of bytes of identical length, which store the state of the board in the current iteration and the next iteration. It also initializes a timer that is used to iterate over the board state automatically. In addition, it exposes public methods to control the state of the board &#8211; Next(), Start(), Stop(), Clear() and Randomize().</p>
+<p>The model instance dispatches an Update event every time the board changes. The window class listens for this event and passes on the contents of the new board cells to the Update() method of the view instance.</p>
+</div>
+<h4>BoardView.cs</h4>
+<div>
+<p>The view class inherits from System.Windows.FrameworkElement in order to take advantage of its built-in layout functionality. The board is drawn using low-level Visual elements. While it is easier to implement the cell drawing by using Drawings or Shapes, it also adds a lot of overhead for unnecessary features such as styles, data binding, automatic layout and input events. DrawingVisuals provide a much more performant way of drawing large numbers of objects on the screen.</p>
+<pre>private void drawCells()
+{
+    if (null == this.values)
+    {
+        return;
+    }
+
+    using (DrawingContext dc = this.cells.RenderOpen())
+    {
+        int x = 0;
+        int y = 0;
+        Rect rect = new Rect(OUTLINE_WIDTH, OUTLINE_WIDTH, Constants.CELL_SIZE - OUTLINE_WIDTH, Constants.CELL_SIZE - OUTLINE_WIDTH);
+
+        for (int i = 0; i &amp;amp;lt; values.Length; i++)
+        {
+            x = (i % Constants.CELLS_X);
+            y = (i / Constants.CELLS_X);
+            rect.Location = new Point((x * Constants.CELL_SIZE) + OUTLINE_WIDTH, (y * Constants.CELL_SIZE) + OUTLINE_WIDTH);
+
+            if (1 == values[i])
+            {
+                dc.DrawRectangle(Brushes.Red, null, rect);
+            }
+        }
+    }
+}</pre>
+</div>
+<p>One must fetch a reference to a DrawingContext in order to draw content onto a DrawingVisual. This is done through the RenderOpen() method of the DrawingVisual. Since we are only drawing basic rectangles, we can use the in-built DrawRectangle() method of the DrawingContext class to draw this shape for us. Internally, this method still uses a GeometryDrawing and a subclass of the Geometry class, but abstracts away those details for convenience.</p>
+<p>The drawing is displayed on the screen by adding the Visual instances to the visual tree of the BoardView class, which is done in its constructor.</p>
+<pre>public BoardView()
+    : base()
+{
+    this.AddVisualChild(this.grid);
+    this.AddLogicalChild(this.grid);
+
+    this.AddVisualChild(this.cells);
+    this.AddLogicalChild(this.cells);
+
+    this.visuals = new DrawingVisual[] { this.grid, this.cells };
+
+    this.drawGrid();
+    this.drawCells();
+}</pre>
+<p>Additionally, the BoardView class also overrides the VisualChildrenCount, GetVisualChild and MeasureOverride members of the FrameworkElement class.</p>
+<pre>protected override int VisualChildrenCount
+{
+    get
+    {
+        return this.visuals.Length;
+    }
+}
+
+protected override Visual GetVisualChild(int index)
+{
+    if (index &lt; 0 || index &gt; this.visuals.Length)
+    {
+        throw new ArgumentOutOfRangeException("index");
+    }
+
+    return this.visuals[index];
+}
+
+protected override Size MeasureOverride(Size availableSize)
+{
+    return new Size(Constants.CELLS_X * Constants.CELL_SIZE, Constants.CELLS_Y * Constants.CELL_SIZE);
+}</pre>
+<p>The BoardView class instance also dispatches an event when the user clicks on a cell on the board. This is in turn passed over to the model instance via the window, causing the model to toggle the state of the cell that was clicked.</p>
+<h4>ClickEventArgs.cs</h4>
+<div>An instance of this class is passed as a parameter along with the Click event is dispatched from the BoardView class. It exposes two parameters to identify the X and Y coordinates of the cell which was clicked upon, relative to the board.</div>
+<div>
+<p>The Visual Studio solution for this project can be <a href="http://www.notadesigner.com/wp-content/uploads/2013/04/conwayslife.zip">downloaded from here as a ZIP archive</a>.</p>
+</div>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2013-04-14T14:21:24+05:30">April 14, 2013</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/wpf-game-of-life/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-513" class="post-513 post type-post status-publish format-standard hentry category-demonstration tag-c">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/a-binary-clock-using-c/" rel="bookmark">A Binary Clock using C#</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Bit manipulations are second nature to electronics engineers, embedded programmers and a swathe of engineers who work with low-level systems software such as operating systems, languages and critical frameworks. While it does seem daunting at first, the fundamentals are very simple as explained in my previous post. This post builds upon those concepts to implement a simple binary clock using C#.</p>
+<p>The core of the clock is in the BinaryClock class that inherits PictureBox, since this is primarily a visual control and needs a visual context to display its output. Inheriting from PictureBox also makes it easy to use as a drag-and-drop control in the Visual Studio IDE.</p>
+<p>BinaryClock consolidates the timekeeping and drawing capabilities into a single class (the OO design crowd may cringe now). An instance of the Timer class ticks every second to invalidate the display and trigger a refresh. The mode field determines the method used to display the clock face &#8211; pure binary or binary-coded decimals. Its value can be set from one of the values in the imaginatively-named enum in the same class called Modes.</p>
+<p>This brings us to the paint method which is triggered whenever the control has to be redrawn.</p>
+<pre>void _paint(object sender, PaintEventArgs e)
+{
+    DateTime dt;
+    int h;
+    int m;
+    int s;
+    Rectangle area;
+    int offsetX;
+    int offsetY;
+
+    dt = DateTime.Now;
+    h = dt.Hour;
+    m = dt.Minute;
+    s = dt.Second;
+
+    area = new Rectangle(0, this.Height - BinaryClock.RECT_SIZE, BinaryClock.RECT_SIZE, BinaryClock.RECT_SIZE);
+    offsetX = this._columns * (BinaryClock.RECT_SIZE + BinaryClock.RECT_OFFSET);
+    offsetY = BinaryClock.COL_OFFSET;
+
+    // Get bits for the hours component
+    this._draw(h, e.Graphics, ref area);
+    area.Offset(offsetX, offsetY);
+
+    // Get bits for the minutes component
+    this._draw(m, e.Graphics, ref area);
+    area.Offset(offsetX, offsetY);
+
+    // Get bits for the seconds component
+    this._draw(s, e.Graphics, ref area);
+}</pre>
+<p>This method begins by fetching the current time and extracting its components. Offset values required for the drawing are also initialized depending upon the current display mode. It then makes three calls to the drawing method to draw the appropriate graphics for the hour, minute and second values. Two draw methods are implemented in this class &#8211; drawBinary and drawBCD. Both take three parameters &#8211; the value to be represented, the Graphics object, and initial position.</p>
+<h3>Binary Drawing</h3>
+<p>The drawBinary method draws 6 boxes, vertically stacked, in a single column to represent the value in pure binary.</p>
+<div id="attachment_521" style="width: 410px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-521" loading="lazy" class="size-full wp-image-521" title="binary" src="http://www.notadesigner.com/wp-content/uploads/2012/11/binary.png" alt="" width="400" height="315" /><p id="caption-attachment-521" class="wp-caption-text">The application running in pure binary mode</p></div>
+<pre>for (i = 0; i &lt; 6; i++)
+{
+    bit = value &amp; (1 &lt;&lt; i);
+
+    if (0 == bit)
+        g.FillRectangle(_offBrush, area);
+    else
+        g.FillRectangle(_onBrush, area);
+
+    area.Offset(0, - (BinaryClock.RECT_SIZE + BinaryClock.RECT_OFFSET));
+}</pre>
+<p>The value of each bit in a single number is extracted through the following snippet.</p>
+<pre>bit = value &amp; (1 &lt;&lt; i);</pre>
+<p>This is an application of testing if the n-th bit is set in a number. The digit 1 (0b00000001) is left-shifted to the position at which the bit in the value is to be inspected, then ANDed with the value.</p>
+<pre>0b00001010 &amp; 0b00000001 = 0b00000000
+0b00001010 &amp; 0b00000010 = 0b00000010
+0b00001010 &amp; 0b00000100 = 0b00000000
+0b00001010 &amp; 0b00001000 = 0b00001000</pre>
+<p>The bit has been set if the result is greater than 0.</p>
+<p>This is applied in a continuous loop through all the bits in the number. The colour of the box is determined by the value of the bit in that position. Zero is filled with the off colour, and any other value is filled with the on colour.</p>
+<h3>Binary-coded Decimal</h3>
+<p>The second function &#8211; drawBCD &#8211; has the same signature as drawBinary. The only difference is in the way it represents the number on the canvas. Instead of drawing the component value in a single column, it splits it into two decimal digits and draws each digit in its own column. The individual digits are extracted by dividing and modding with 10, then calling the drawBinary function for each digit.</p>
+<div id="attachment_522" style="width: 410px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-522" loading="lazy" class="size-full wp-image-522" title="binary-coded-decimal" src="http://www.notadesigner.com/wp-content/uploads/2012/11/binary-coded-decimal.png" alt="" width="400" height="315" /><p id="caption-attachment-522" class="wp-caption-text">The application running in BCD mode</p></div>
+<p>The Visual Studio solution for this project can be <a href="http://www.notadesigner.com/wp-content/uploads/2012/11/binaryclock.zip">downloaded from here as a ZIP archive</a>.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2012-11-27T14:51:10+05:30">November 27, 2012</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/a-binary-clock-using-c/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-55" class="post-55 post type-post status-publish format-standard hentry category-demonstration tag-actionscript">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/" rel="bookmark">Creating an Underwater Effect in ActionScript</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>ActionScript is very well suited to creating old-school demo effects due to its rich drawing API and absence of memory management. Speed would have been a concern a few years ago, but as long as you’re not replicating Heaven7, current releases of Flash player should still be able to handle complex animations with minimal performance problems.</p>
+<p>Let me show you a simple wave effect, reminiscing of looking at an object through a wall of water.</p>
+<p>Demo effects require a program structure that redraws the entire screen several times every second. The faster the screen refresh, the smoother the resulting animation, at a commensurately higher computation penalty. While traditional languages like C require some kind of a timer mechanism, Flash abstracts away the timers into a frame-rate. We can set up a handler to listen to the ENTER_FRAME event and refresh the screen every time it is triggered.</p>
+<p>Demo effects implemented in C often use direct access to the display hardware for performance reasons. Since Flash does not provide direct access to physical devices, we must settle for using the BitmapData class as our drawing buffer and optimize our code within the bounds of its API.</p>
+<p>But before we get around to simulating our effect, let us first spend some time understand the principles behind how it is created.</p>
+<h3>The Sine Wave</h3>
+<p>A sine wave is mathematical function that plots a smooth, repetitive oscillation and is represented in its simplest form as y(t) = A · sin(ωt + Φ) where A is the amplitude or peak deviation of the function from its centre position, ω is the frequency and specifies how many oscillations occur in a unit time interval in radians per second and Φ is the phase, which specifies where the oscillation cycle begins when t = 0.</p>
+<p>With this information we can create a simple function to plot a sine wave.</p>
+<pre lang="actionscript">public function Draw(e:Event):void 
+{
+    var x1:Number = -1;
+    var x2:Number = -1;
+    var y1:int = -1;
+    var y2:int = -1;
+    var amplitude:Number = 120;
+    var frequency:Number = 1 * Math.PI / 180; // Convert degree to radians
+
+    for (x1 = 0; x1 &lt; 320; x1++)
+    {
+        y1 = Math.round(amplitude * Math.sin(frequency * x1)) + 120;
+        DrawingUtils.lineBresenham2(this.m_bd, x1, y1, x2, y2, 0xFF000000);
+        x2 = x1;
+        y2 = y1;
+    }
+}</pre>
+<p><div id="swfcb621">This movie requires Flash Player 9</div>
+<script type="text/javascript">
+	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/wave.swf", "swfcb621", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
+</script>
+</p>
+<p>We use <a title="Breaking Free from Your API" href="http://www.notadesigner.com/breaking-free-from-your-api/">the Bresenham line drawing algorithm</a> instead of setPixel to plot the curve on the bitmap for better fidelity.</p>
+<div id="attachment_176" style="width: 352px" class="wp-caption alignleft"><img aria-describedby="caption-attachment-176" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2012/10/wave-effect-a.jpg" alt="" title="wave-effect-a" width="342" height="302" class="size-full wp-image-176" /><p id="caption-attachment-176" class="wp-caption-text">Image A: The image is taller than the red viewport</p></div>
+<h3>Creating Waves with Images</h3>
+<p>The same principles can be used to create a wave effect on an image. Instead of plotting points on a canvas, columns of an image are scaled up or down depending upon the shape of the wave. The image is scaled down at points where the wave forms a crest and scaled up wherever the wave forms a trough.</p>
+<p>Because of the scaling required, the image we use is larger than the viewable area. Image A illustrates this. The red outline is the viewable area of our movie, whereas the image used is taller than that. If the image is not tall enough you will see white patches at the bottom of the movie when the animation begins.</p>
+<div id="attachment_182" style="width: 352px" class="wp-caption alignright"><img aria-describedby="caption-attachment-182" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2010/04/wave-effect-b.jpg" alt="" title="wave-effect-b" width="342" height="265" class="size-full wp-image-182" /><p id="caption-attachment-182" class="wp-caption-text">Image B: Extract a single vertical slice</p></div>
+<div id="attachment_177" style="width: 352px" class="wp-caption alignright"><img aria-describedby="caption-attachment-177" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2012/10/wave-effect-c.jpg" alt="" title="wave-effect-c" width="342" height="265" class="size-full wp-image-177" /><p id="caption-attachment-177" class="wp-caption-text">Image C: Scale the extracted portion</p></div>
+<div id="attachment_178" style="width: 352px" class="wp-caption alignright"><a href="http://www.notadesigner.com/wp-content/uploads/2012/10/wave-effect-d.jpg"><img aria-describedby="caption-attachment-178" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2012/10/wave-effect-d.jpg" alt="" title="wave-effect-d" width="342" height="262" class="size-full wp-image-178" /></a><p id="caption-attachment-178" class="wp-caption-text">Image D: Paste the slice back into the image</p></div>
+<p>Each time the screen is to be refreshed, the function cycles over all the columns in the image. The columns are 1 pixel wide in the movie, but for illustration, image B shows the columns as 40 pixels wide. Image C shows how the extracted image column is then scaled down.</p>
+<p>When all images are placed next to each other, they appear to make a wave, as shown in image D. While the effect looks very blocky in this illustration due to the wider column widths used, thinner columns used in the final movie give a smoother output.</p>
+<p>Further fine-tuning can be done by changing the wavelength of the sine wave. A large value is used in the example below, causing all the columns in the image to shrink and expand at almost the same rate. A smaller value used in its place would have caused a broad discrepancy in the scaling values for each column. Having columns with both large and small values in the same frame would cause a wider range of distortion in the image, and speed up the motion. Effectively, frequency can be used to increase or decrease the speed of the animation, simulating choppy or calm waters as needed.</p>
+<p>The function we use is as shown below.</p>
+<pre lang="actionscript">public function Draw(e:Event):void
+{
+    var img:int;
+    var wd:int;
+    var y:Number;
+    var mx:Matrix;
+
+    for (y = 0; y &lt; 240; y++)
+    {
+        img = 0; 
+        wd = Math.round(Math.sin(aa) * 20) + 320;
+        mx = new Matrix();
+        mx.scale(1, wd / 320);
+
+        this.m_bd.draw(this.m_rg[img], mx, null, null, new Rectangle(0, y, 320, 1), true);
+        aa += 0.01;
+    }
+
+    aa = ab;
+    ab += 1 * Math.PI / 180;
+}</pre>
+<p><div id="swfcb622">This movie requires Flash Player 9</div>
+<script type="text/javascript">
+	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/underwater.swf", "swfcb622", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
+</script>
+</p>
+<p class="allied-info">Underwater in Egypt used under CC <a href="http://www.flickr.com/photos/ehole/" rel="cc:attributionURL">from http://www.flickr.com/photos/ehole/</a> / <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">CC BY 2.0</a></p>
+<p>The only difference we need to make in our scaffolding code is to call the Draw effect repeatedly when trying to animate the wave effect, whereas drawing the sine wave can be done by calling the function just once on startup.</p>
+<p>The entire codebase with both the effects and scaffolding code is <a href='http://www.notadesigner.com/wp-content/uploads/2010/04/wave-effects.zip'>available for download here</a>. To change the effect shown, change the value of the m_fxName variable in Main.as to either SineWave or WaveEffect. New effects can be added by extending the BaseEffect class and changing the value of the m_fxName variable to the newly created class name.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2010-04-27T12:46:51+05:30">April 27, 2010</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-44" class="post-44 post type-post status-publish format-standard hentry category-demonstration tag-actionscript">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/breaking-free-from-your-api/" rel="bookmark">Breaking Free from Your API</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>I have been noticing off-late that as a UI developer, I dabble less in what can be considered programming and more often in HTML and CSS and making them work across the bazillion browsers out there. The closest I get to what can be considered writing lines of code is where the interaction requires a few lines of JavaScript to transition a control in or out of the screen or some Ajax operation to send data across the wire or update the view. And even such programming is greatly abstracted away, thanks to frameworks such as jQuery. With the browser taking care of everything, from drawing widgets, to layout, to handling user interaction, there is little left to do other than send the page layout to the browser. Sadly, that is the lot of most UI developers who have been reduced to pixel-pushers in this advent of web-based applications.</p>
+<p>Even the folks who develop RIA’s on platforms such as Flash and Silverlight do not feel the need to get into performance oriented code beyond optimizing network requests.</p>
+<p>Don’t worry about widgets. Don’t fiddle with the whatchamacallit. Don’t! Don’t! It is all done! Just fetch me another recordset, sonny. And make it snappy!</p>
+<p>And though this kind of work does pay the bills, every once in a while someone runs into a problem that cannot be addressed through an API call. When that happens, the first reaction of the average development team is to clutch at their hair and run around in circles screaming “Omigod! Omigod! Omigod!” And though someone on the team usually manages to whack something out over a weekend, it often isn’t the best solution because nobody has done this before! Whereas programmers of yore that I worked with never flinched at getting their hands dirty with low-level stuff, even up to writing custom extensions to their platform in a language like C, many of today’s programmers work on enough abstractions to make the underlying hardware and operating system entirely irrelevant. To them, the browser or virtual machine is the machine.</p>
+<h3>Where Does One Draw the Line?</h3>
+<p>Let me lead you through a programming exercise using ActionScript that demonstrates the joy of extending missing API calls. We are not inventing new algorithms here, but implementing a simple, well-defined solution for drawing lines on raster displays using the slope-intercept formula. Then we are coming up with a better implementation, using a better algorithm, trading performance and accuracy to reach a balanced result in the end.</p>
+<p><div id="swfcb623">This movie requires Flash Player 9</div>
+<script type="text/javascript">
+	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/line.swf", "swfcb623", "400", "400", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
+</script>
+</p>
+<h3>The Shape of a Line</h3>
+<p>For those who do not remember high-school geometry and algebra, a line can be specified by providing its start and end coordinates, using the slope-intercept formula to determine the path between these two points. This information used to be enough to display lines on vector displays of yore, which could draw all sorts of mathematically defined shapes. But with the advent of raster displays which only allow discrete pixels to be turned on, lines and other shapes are now displayed by calculating the pixels which approximate the ideal line as closely as possible.</p>
+<p>The slope intercept formula goes as follows –</p>
+<p>y = (y1 – y0) / (x1 – x0) * x + b</p>
+<p>This is further condensed into –</p>
+<p>y = m * x + b</p>
+<p>Here m is the slope of the line, which is the ratio of rise against the run. The value b represents the y-intercept, which is the location where the line crosses the origin on the y-axis. So to compute the y-coordinate on any given x-coordinate on that line, you multiply the slope of the line with the x-coordinate and add the y-intercept to the result. To extend this into drawing lines, you would run a loop incrementing a value between the start and end x-coordinates and computing the y-coordinate with each iteration.</p>
+<p>Here is an implementation.</p>
+<pre lang="actionscript">public static function lineSimple(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Naive implementation of slope-intercept formula
+	 */
+
+	var m:Number;
+	var b:Number;
+	var dx:Number, dy:Number;
+
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	if (dx != 0)
+	{
+		m = dy / dx;
+		b = y0 - m * x0;
+		dx = (x1 &gt; x0) ? 1 : -1;
+
+		while (x0 != x1)
+		{
+			x0 += dx;
+			y0 = m * x0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}</pre>
+<p>This is a very straight-forward implementation and leaves a lot to be desired. But let us take it line by line to understand it.</p>
+<p>The first 2 lines calculate the difference between the start and end points in both axes. Then it divides dy by dx after checking for a potential ‘Divide by zero’ error and then calculates the slope and the y-intercept of the line. It also changes the value of dx to 1 if the x-coordinate of the second point is greater than the x-coordinate of the first point, or -1 if it is less than.</p>
+<p>We now enter the loop which continues until x0 becomes greater than or equal to x1. Inside this loop it increments the value of x0 by dx (1 or -1) and calculates the value of y0 using the slope-intercept formula. It then places a pixel at the newly calculated coordinate and continues the loop.</p>
+<p>This is a very simple implementation and just barely does the job. In fact, it does not even cover all possible cases that a line-drawing function might run into. For example, this will not work correctly if the slope of the line is greater than 1 (in other words, if the line is taller than it is wider). As the loop iterates over values in the x-axis, it plots exactly one pixel in every column while possibly plotting more than one pixel in the same row. But when the line becomes steep, there are fewer columns than rows. Since the algorithm iterates over the x-axis and computes the position in the y-axis, the distance between consecutive pixels on the y-axis increases as the line becomes steeper and makes for a discontinuous line.</p>
+<h3>Resolution for Slopes Greater than 1 or Negative Slopes</h3>
+<p>To resolve this issue, with come up with a second iteration of our line drawing function. This function first calculates the slope of the line and if it is less than 1 then it continues using the previously demonstrated algorithm. But if the slope is greater than 1 or less than -1 then it increments the value of the y-axis in the loop and computes the position in the x-axis. The complete implementation is shown below.</p>
+<pre lang="actionscript">public static function lineImproved(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Advanced implementation of slope-intercept formula
+	 * to handle slopes greater than 1 or less than -1
+	 */
+
+	var m:Number;
+	var b:Number;
+	var dx:Number, dy:Number;
+
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	if (Math.abs(dx) &gt; Math.abs(dy))
+	{
+		/**
+		 * Slope is &lt; 1 or &gt; -1
+		 * Increment horizontally
+		 */
+
+		m = dy / dx;
+		b = y0 - m * x0;
+		dx = (x1 &gt; x0) ? 1 : -1;
+
+		while (x0 != x1)
+		{
+			x0 += dx;
+			y0 = m * x0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+	else if (dy != 0)
+	{
+		/*
+		 * Slope is &gt; 1 or &lt; -1
+		 * Increment vertically
+		 */
+
+		m = dx / dy;
+		b = x0 - m * y0;
+		dy = (dy &lt; 0) ? -1 : 1;
+
+		while (y0 != y1)
+		{
+			y0 += dy;
+			x0 = m * y0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}</pre>
+<p>This program is essentially the same as the previous one but functionally complete to render lines correctly for all possible cases. But there is plenty of room for optimization. Firstly, it uses floating point numbers for what is eventually to be plotted on screen as pixels, which are in whole numbers. Secondly, it computes the value of the next pixel using the slope-intercept formula. This can be optimized away by pre-calculating this equation once out of the loop and then incrementing the value of the row or column in the loop.</p>
+<h3>Optimization of Inner Loops</h3>
+<pre lang="actionscript">public static function lineDDA(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Line drawn using DDA algorithm
+	 * Optimizations are made by replacing the repetitive
+	 * calculations of the slope-intercept formula in
+	 * the loop with 2 division operations outside it
+	 * and instead incrementing the values of x and y
+	 * variables with these pre-computed numbers
+	 * inside the loop
+	 */
+
+	var dx:Number, dy:Number;
+	var steps:Number;
+	var m:Number;
+	var x:Number, y:Number;
+	var xinc:Number, yinc:Number;
+
+	// Determine the direction of incrementation based on the slope
+	dx = x1 - x0;
+	dy = y1 - y0;
+	if (Math.abs(dx) &gt; Math.abs(dy))
+		steps = Math.abs(dx);
+	else
+		steps = Math.abs(dy);
+
+	// Calculate the incrementation for each axes
+	xinc = dx / steps;
+	yinc = dy / steps;
+
+	x = x0;
+	y = y0;
+
+	for (var i:Number = 1; i &lt; steps; i++)
+	{
+		x += xinc;
+		y += yinc;
+		bmdCanvas.setPixel32(x, y, lColor);
+	}
+}</pre>
+<p>This algorithm does not use the slope-intercept formula at all. Instead, it calculates the difference between the start and end points and increments the position on both axes in the loop. Whereas calculating the y-coordinate with the slope-intercept formula requires the use of one multiplication and one addition, incrementing the y-coordinate only requires a single addition operation, which makes it blazingly fast.</p>
+<h3>Further Speed Gains</h3>
+<p>Floating point operations are desirable for plotting on vector graphics terminals because they are capable for drawing a continuous line. But when using raster displays, which only allow plotting discrete points to approximate a true line, floating point data becomes redundant. Thus, if we can find a way to compute a line using only integers, we can speed up our algorithm, while not losing any substantial information because the pixels used to approximate the line are whole numbers anyway.</p>
+<p>Bresenham’s Line Drawing Algorithm uses integers to plot a line on the screen. An implementation is shown below.</p>
+<pre lang="actionscript">public static function lineBresenham2(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	var dx:int;
+	var dy:int;
+	var stepx:int
+	var stepy:int;
+	var counter:int
+
+	// Calculate the difference between the start and end coordinates
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	// Determine the direction of the increment in both axes
+	if (dx &lt; 0)
+	{
+		dx = -dx;
+		stepx = -1;
+	}
+	else
+	{
+		stepx = 1;
+	}
+
+	if (dy &lt; 0)
+	{
+		dy = -dy;
+		stepy = -1;
+	}
+	else
+	{
+		stepy = 1;
+	}
+
+	bmdCanvas.setPixel32(x0, y0, lColor);
+
+	dx &lt;&lt;= 1;
+	dy &lt;&lt;= 1;
+
+	if (dx &gt; dy)
+	{
+		/** Line is wider than it is taller */
+
+		/**
+		 * Counter is used to track the number of times
+		 * dx is divisible by dy. The value of dy is
+		 * repeatedly subtracted from it on every iteration
+		 * until it becomes less than or equal to 0.
+		 * When that happens, the y-coordinate is incremented
+		 * by stepy and counter is reset to dx.
+		 */
+		counter = dx;
+
+		while (x0 != x1)
+		{
+			/**
+			 * Increment the y-coordinate by stepy when
+			 * the counter becomes less than 0
+			 */
+			if (counter &lt;= 0)
+			{
+				y0 += stepy;
+				counter += dx;
+			}
+
+			// Increment the x-coordinate on every iteration
+			x0 += stepx;
+
+			// Reduce the counter by dy
+			counter -= dy;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+	else
+	{
+		/** Line is taller than it is wider */
+
+		counter = dy &gt;&gt; 1;
+
+		while (y0 != y1)
+		{
+			if (counter &lt;= 0)
+			{
+				x0 += stepx;
+				counter += dy;
+			}
+
+			y0 += stepy;
+			counter -= dx;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}</pre>
+<p>Division here is implemented as a series of continuous subtractions. The initial value of the variable fraction is set to dx. Assuming that the line is to be plotted from 0,0 to 100, 10, the values of dx and dy are 100 and 10, respectively. Thus, fraction is assigned the value 100. The variables x0 and y0 are the starting coordinates of the line. With each iteration of the loop, x0 is increased by 1 and the value of dy subtracted from fraction. When the fraction becomes less than or equal to 0, the y-coordinate is incremented by 1 and the counter reset to dx. The variable dy can be subtracted from counter dx / dy times before it becomes less than or equal to 0, making it a brute-force form of division.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2009-06-05T11:05:13+05:30">June 5, 2009</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/breaking-free-from-your-api/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+			
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

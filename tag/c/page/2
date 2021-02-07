@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>c# | Not a Designer | Page 2</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://localhost:81/wp/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="http://localhost:81/wp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="http://localhost:81/wp/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; c# Tag Feed" href="http://localhost:81/wp/tag/c/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/tags/19" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="http://localhost:81/wp/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive paged tag tag-c tag-19 paged-2 tag-paged-2">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://localhost:81/wp/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					c#				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-1149" class="post-1149 post type-post status-publish format-standard hentry category-construction tag-abstract-factory tag-c tag-practical-design-patterns">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The abstract factory design pattern provides an interface to create instances of related objects which operate in sync with each other. This pattern is a superset of the factory method design pattern, as it separates the object creation from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+
+
+
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code. </p>
+
+
+
+<p>
+A database operation requires types to make a connection to the 
+database, a command to contain the query and a type to hold a query 
+parameter. All three have to belong to the same family in order to 
+operate correctly. Swapping any type of them for a type from another 
+family is not allowed. E.g. a MySQL connection instance will not be able
+ to operate with a SQL Server command instance. Therefore, if a program 
+has to offer the ability to work with various types of database engines,
+ it has to guarantee that only compatible types are instantiated at a 
+given time.
+
+</p>
+
+
+
+<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+
+
+
+<p>The core API is provided by the IDbFactory interface.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IDbFactory
+{
+    IDbConnection CreateDbConnection();
+
+    IDbCommand CreateDbCommand();
+
+    IDbDataParameter CreateDbDataParameter();
+}
+</pre>
+
+
+<p><strong>IDbFactory</strong> defines methods for the database factory.&nbsp; <strong>IDbConnection</strong>, <strong>IDbCommand</strong> and <strong>IDbDataParameter</strong> are interfaces provided by the framework in the System.Data namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces.
+
+</p>
+
+
+
+<h3> SQL Server Factory </h3>
+
+
+
+<p>
+When the application has to operate against SQL Server, it instantiates the <strong>SqlFactory</strong> class, which implements the IDbFactory interface and returns the SQL Server-specific concrete types for IDbConnection, IDbCommand and IDbDataParameter.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class SqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new System.Data.SqlClient.SqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new System.Data.SqlClient.SqlDbCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParmeter()
+    {
+        return new System.Data.SqlClient.SqlParameter();
+    }
+}
+</pre>
+
+
+<h3>MySQL Factory</h3>
+
+
+
+<p>
+The <strong>MySqlFactory</strong> class operates in the same way and returns objects from the MySql.Data.MySqlClient namespace.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class MySqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new MySql.Data.MySqlClient.MySqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new MySql.Data.MySqlClient.MySqlCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParameter()
+    {
+        return new MySql.Data.MySqlClient.MySqlParameter();
+    }
+}
+</pre>
+
+
+<h3>Usage</h3>
+
+
+
+<p>When the application is launched, it determines the active database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate IDbFactory implementation. All objects required to operate on the database are subsequently instantiated from this IDbFactory instance. </p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        IDbFactory factory;
+
+        if (&quot;sql&quot; == args[1])
+        {
+            factory = new SqlFactory();
+        }
+        else
+        {
+            factory = new MySqlFactory();
+        }
+
+        using (var connection = factory.CreateDbConnection())
+        {
+            connection.Open();
+            var command = factory.CreateDbCommand();
+            command.Connection = connection;
+            command.CommandText = &quot;SELECT * FROM [Users] WHERE [UserId] = ?&quot;;
+            var param = factory.CreateDbDataParameter();
+            param.DbType = DbType.Int32;
+            param.Value = 42;
+            command.Parameters.Add(param);
+
+            command.ExecuteReader();
+        }
+    }
+}
+</pre>			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1276" class="post-1276 post type-post status-publish format-standard hentry category-construction tag-c tag-factory-method tag-practical-design-patterns">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The factory method is exactly what is says on the label &#8211; a method that produces object instances on demand. Ergo, a factory method. This method separates the creation of object instances from the consumption. It adds very little value to a code-base on its own in most cases. However, the factory method is the foundation to the abstract factory, which offers much more utility.</p>
+
+
+
+<p>In this example, we look at an application that has to write data to one of two different file formats. Separate file writer classes are required for each format, but both must share a common interface for this pattern to work. The correct class is instantiated and the Write method invoked upon it to perform the save operation.</p>
+
+
+
+<p>All writer classes are required to implement the IFileWriter interface.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IFileWriter
+{
+    void Write(byte[] data, string filename);
+}
+</pre>
+
+
+<p>This interface is implemented by each writer class. The example below shows the JpegWriter and PngWriter classes.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class JpegWriter : IFileWriter
+{
+    void Write(byte[] data, string filename) { … }
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class PngWriter : IFileWriter
+{
+    void Write(byte[] data, string filename) { … }
+}
+</pre>
+
+
+<p>Then a factory interface is declared, and a factory class created for each file type.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IFileWriterFactory
+{
+    public IFileWriter Create();
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class JpegWriterFactory : IFileWriterFactory
+{
+    public Create()
+    {
+        return new JpegWriter();
+    }
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class PngWriterFactory : IFileWriterFactory
+{
+    public Create()
+    {
+        return new PngWriter();
+    }
+}
+</pre>
+
+
+<h3>Usage</h3>
+
+
+
+<p>The application determines the file type that is required, then invokes the Create method on the appropriate writer factory, which in turn returns a concrete implementation of the IFileWriter class. </p>
+
+
+
+<p>The application then invokes the Write method on the writer instance, which handles format-specific details such as endianness, file headers, encoding and more.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+static class Program
+{
+    private static _jpegWriterFactory = new JpegWriterFactory();
+
+    private static _pngWriterFactory = new PngWriterFactory();
+
+    static void Main()
+    {
+        // Image created and serialized into byte[]
+        …
+
+        IFileWriter writer;
+        if (&quot;jpg&quot; == args[1])
+        {
+            writer = _jpegWriterFactory.Create();
+        }
+        else
+        {
+            writer = _pngWriterFactory.Create();
+        }
+
+        writer.Write(data, &quot;lena&quot;);
+    }
+}
+</pre>
+
+
+<p></p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1108" class="post-1108 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/the-content-data-context/" rel="bookmark">The Content Data Context</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the application’s Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
+
+
+
+<p>The DbContext primarily fulfils the following roles.</p>
+
+
+
+<h4>Querying</h4>
+
+
+
+<p>Provides an interface to convert statements from LINQ-to-Entities (using queries as well as method syntax) to the SQL syntax specific to the underlying database provider.</p>
+
+
+
+<h4>Object Materialisation</h4>
+
+
+
+<p>Converts database records from ADO.NET types such as DataSet to application-specific types through mapping rules.</p>
+
+
+
+<h4>Change Tracking</h4>
+
+
+
+<p>Tracks the state of newly created, modified or deleted entities for later committing to the database.</p>
+
+
+
+<h4>Persistence</h4>
+
+
+
+<p>Triggering INSERT, UPDATE or DELETE queries on changed entities when the SaveChanges method is called.</p>
+
+
+
+<h4>Caching</h4>
+
+
+
+<p>Provides a local, lightweight embedded store for recently retrieved entities to avoid repeated querying against the primary database.</p>
+
+
+
+<h3>Connecting to the Database</h3>
+
+
+
+<p>The DbContext class automatically creates a database whose name is derived from the fully-qualified name of the context class. However, this behaviour can be overridden by the programmer by passing a custom connection string, database name, or connection string name from the .config file associated with the running application.</p>
+
+
+
+<p>The DbContext class has 7 variants of the constructor to provide different ways of establishing a connection to the database server. The default constructor triggers the behaviour described above.</p>
+
+
+
+<p>The constructor variant that takes a string parameter can be used to specify any one of the following.</p>
+
+
+
+<ol><li>A standard connection string.</li><li>A name of a connection string declared in the configuration file (using the syntax “name=connectionString”).</li><li>An Entity Framework connection string declared in the configuration file.</li><li>A database name (which is sought on the server .\SQLEXPRESS by default).</li></ol>
+
+
+
+<p>Alternative constructors can accept DbConnection or ObjectContext instances instead of a string in order to work with already open connections.</p>
+
+
+
+<h3>Entity Collections</h3>
+
+
+
+<p>Records in the database tables are referenced through a DbSet instance, which is an implementation of the set abstract data type specifically designed for Entity Framework. A collection can be&nbsp;non-generic by using the System.Data.Entity.DbSet type, or generic through the use of System.Data.Entity.DbSet&lt;TEntity&gt; type.</p>
+
+
+
+<p>Collections of root entities are often exposed as DbSet properties of the application’s context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
+
+
+
+<p>The DbSet class exposes methods to perform your standard CRUD operations on the table. The most important methods are Create, Add, Find, Remove and Attach. You will notice that most of these methods are also available on the Set ADT, which the DbSet type is based on.</p>
+
+
+
+<p>Create, Add and Attach sound similar in nature, but are quite different. The Create method instantiates an entity without adding it to the DbSet. The Add method is used to add the entity to the database and mark it for saving later. Finally, Attach adds an entity to the collection without marking it for saving. This is useful for adding temporary entities to read-only collections.</p>
+
+
+
+<p>The revised ContentContext class for this application looks like this.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext(“Notadesigner”)
+        {
+        }
+
+        public virtual DbSet Blogs
+        {
+            get;
+            set;
+        }
+
+        public virtual DbSet Posts
+        {
+            get;
+            set;
+        }
+
+        public virtual DbSet Categories
+        {
+            get;
+            set;
+        }
+    }
+}
+</pre>
+
+
+<p>Based on this structure, the code to retrieve a specific Post by its primary key would be as shown below.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Find(10);
+</pre>
+
+
+<p>Inserting a new record is done in two parts. First, the entity instance is created, then it is added to the collection and the changes saved to the database.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Create();
+post.Title = &quot;Ways to Try and Take Over the World&quot;;
+post.Slug = GenerateSlug(post.Title);
+// Set other properties on the entity
+…
+db.Posts.Add(post);
+db.SaveChanges();
+</pre>
+
+
+<p>Attach is useful when you wish to update only a few properties in a record which contains many columns.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts
+                .AsNoTracking()
+                .Where(p =&gt; p.PostId = 10)
+                .FirstOrDefault();
+// Change the title only
+post.Title = &quot;More Ways to Try and Take Over the World&quot;;
+db.Posts.Attach(post);
+db.SaveChanges();
+</pre>
+
+
+<p>The above code generates an update statement that only affects the Title column, as opposed to updating all the columns in the Posts table.</p>
+
+
+
+<p>Deleting records is as simple as finding an entity and marking it for deletion through the Remove method.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Find(10);
+db.Posts.Remove(post);
+db.SaveChanges();
+</pre>
+
+
+<p>Irrespective of the method used, changes are committed only if the SaveChanges method is called on the context instance.</p>
+
+
+
+<h3>Conventions, Overrides</h3>
+
+
+
+<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called “Posts”. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
+
+
+
+<p>Some of the most essential default conventions are shown below.</p>
+
+
+
+<h4>Schema</h4>
+
+
+
+<p>The dbo schema is used for all database operations by default.</p>
+
+
+
+<h4>Tables</h4>
+
+
+
+<p>Table names are derived from the plural form of the entity they represent.</p>
+
+
+
+<h4>Primary and Foreign Keys</h4>
+
+
+
+<p>The Id property or &lt;Entity&gt;Id property is the default primary key. A property with the same name is required in the dependent table. The foreign key is named by combining the dependent navigation property name with the principal primary key property name, separated by an underscore (i.e. Post_OwnerId).</p>
+
+
+
+<h4>Nullability</h4>
+
+
+
+<p>Columns to store reference type and nullable primitive type properties are nullable, and primitive type properties are stored in non-nullable columns.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/the-content-data-context/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1070" class="post-1070 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/laying-the-groundwork/" rel="bookmark">Laying the Groundwork</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Many application developers prefer a code-first approach to implementing a business application with Entity Framework. In this workflow, the programmer begins by writing classes that represent entities in the domain model. As we are aware, each instance of these classes represents a single row from the database. The entity classes correspond to a single table. Public properties on the class are mapped to columns in this table.</p>
+
+
+
+<p>For example, a Person class maps to the Persons table in the database in the conventional Entity Framework implementation. The properties Name (string), Age (int) and Gender (enum), correspond to columns Name (nvarchar), Age (int) and Gender (int). When a row is retrieved from the database, the values from its columns are loaded into the properties of this instance. Conversely, modified values in the Person instance can be written back to the table by passing its reference back into the appropriate Entity Framework APIs.</p>
+
+
+
+<p>Traditionalists would cringe at the thought of writing application code without a rock-solid database model already in place to back it up. And their outlook is borne out of poor outcomes from automatic table-generation tools. Fortunately, Entity Framework (and several other modern ORM tools) address the table performance characteristics and data integrity problems very well.</p>
+
+
+
+<p>If performance or correctness are a problem, they are probably a result of poor description of the application domain by the programmer, rather than a shortcoming of the ORM. Being able to generate entity structures from the application layer does not take away the need to understand the performance characteristics of a database engine. And errors in designing or describing the domain model by inexperienced application developer can still affect the product adversely.</p>
+
+
+
+<h3>The Business Model</h3>
+
+
+
+<p>The subject of this exercise is a multi-user blog that can be used to host and serve posts authored by one or more registered users. Posts are created and owned by any user with the appropriate level of access to the editor interface. The owner can then invite more authors to collaborate with them. Collaborators can edit the contents of a post, but cannot delete it.</p>
+
+
+
+<p>Finally, anonymous users can view the post by visiting a specific URL for each post. The blog home page is a read-only index of all posts, sorted in reverse chronological order.</p>
+
+
+
+<h4>The Blog</h4>
+
+
+
+<p>The blog is the primary entity in our application. It has several descriptive properties of the site itself, such as the name, description and URL. A blog is owned by a user who has super-admin rights to the application. This user has to be created and linked to the blog at the time of setup.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+using System.ComponentModel.DataAnnotations;
+
+namespace Notadesigner.Blog.Models
+{
+    public class Blog
+    {
+        [Key]
+        public int BlogId { get; set; }
+
+        [Required]
+        [StringLength(128)]
+        public string Name { get; set; }
+
+        [Required]
+        public string BaseUrl { get; set; }
+
+        [Required]
+        [ForeignKey(“Owner”)]
+        public int OwnerId { get; set; }
+
+        public User Owner { get; set; }
+
+        public ICollection&lt;Category&gt; Categories { get; set; }
+
+        public ICollection&lt;Post&gt; Posts { get; set; }
+
+        public ICollection&lt;User&gt; Users { get; set; }
+    }
+}
+</pre>
+
+
+<p>This example introduces several classes from the DataAnnotations namespace which Entity Framework uses when creating the database tables.</p>
+
+
+
+<h5>Key</h5>
+
+
+
+<p>The default convention of the framework is to make any property suffixed with the word Id into the primary key for the corresponding table. The Key attribute is not required on the BlogId property. But making it explicit helps maintenance later down the line. The index in the database engine is prefixed with IX_, e.g. IX_PostId.</p>
+
+
+
+<h5>Required</h5>
+
+
+
+<p>Nullable columns are the default convention in Entity Framework. The Required attribute changes this and marks them as non-nullable. In addition to enforcing data integrity, this attribute is also used to provide client-side validation in the MVC framework.</p>
+
+
+
+<h5>StringLength</h5>
+
+
+
+<p>This attribute defines an explicit maximum on the size of string columns, such as nvarchar in MS SQL. Like Required, this attribute is also usable for client-side validation.</p>
+
+
+
+<h5>ForeignKey</h5>
+
+
+
+<p>This attribute defines a foreign key between two entities which enforces relational integrity between tables in the database. The UserId column can only contain a value which already exists in the corresponding column in the User table.</p>
+
+
+
+<p>This attribute requires the name of the property which contains the referenced entity record. In this case, the parameter is “Owner”, which is of type User. The User class is described further below.</p>
+
+
+
+<h4>Users &amp; Roles</h4>
+
+
+
+<p>A User is the unique identification of a person who operates or accesses content from the blog. Is is composed of a minimum of a unique identification number and a unique user name. A person who wishes to identify as a particular User in the application also requires the password for that account. Passwords are stored as salted and hashed strings.</p>
+
+
+
+<p>Roles are coarse-level controls over the actions that a single User can perform in the application. A role is composed of several granular permissions, which can either be explicitly granted or denied. Permissions are not provided by individual modules in the application. For example, the Posts module might have the permissions view, create, edit-title, edit-body, edit-attributes, publish, unpublish and delete. The Users module might offer the permissions create, reset-password, recover, edit-attributes and delete. A Role organises these permissions into a cohesive group of related permissions (e.g. Subscriber, Publisher, Content Creator, Intern, Moderator, Administrator, etc.).</p>
+
+
+
+<p>In a typical usage scenario, Users must belong to at least one role in order to be able to perform any useful identifying activity in the application. But the application can also be configured to allow anonymous access to the entire application.</p>
+
+
+
+<h4>Posts</h4>
+
+
+
+<p>A Post is a single unit of content in the application. It is created and owned by a single user, and can have one or more collaborators who contribute to the content.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+using System.ComponentModel.DataAnnotations;
+
+namespace Notadesigner.Blog.Models
+{
+    public class Post
+    {
+        [Key]
+        public int PostId { get; set; }
+
+        [Required]
+        [StringLength(256)]
+        public string Title { get; set; }
+
+        [Required]
+        [Index(IsUnique = true)]
+        [StringLength(128)]
+        public string Slug { get; set; }
+
+        [StringLength(102400)]
+        public string Body { get; set; }
+
+        [Required]
+        public PostStatus Status { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
+
+        [Required]
+        [ForeignKey(“Owner”)]
+        public OwnerId { get; set; }
+
+        public User Owner { get; set; }
+
+        public ICollection&lt;User&gt; Collaborators { get; set; }
+
+        public ICollection&lt;Category&gt; Categories { get; set; }
+    }
+}
+</pre>
+
+
+<p>The class is fairly vanilla, and has all the data annotations which were described previously. It also introduces the Index attribute on the Slug property. A slug is a human-friendly identifier for a post. Words and phrases add more context to the human mind than plain integers. So it is easier to remember and parse what the phrase “a-field-guide-to-entity-framework” points to, than it is to remember the post ID.</p>
+
+
+
+<p>In order for slugs to work correctly, they have to be unique. Therefore, the model requires a unique constraint on the value contained in the slug. This instruction is converted into a unique, clustered index in the database table.</p>
+
+
+
+<p>A single entity can have multiple indexes, only one of which can be clustered. An index can be composed of multiple properties.</p>
+
+
+
+<h4>Categories</h4>
+
+
+
+<p>Categories provide the taxonomy framework to organise posts into groups of common topics. It is a fairly common feature in all content management systems.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+using System.ComponentModel.DataAnnotations;
+
+namespace Notadesigner.Blog.Models
+{
+    public class Category
+    {
+        [Key]
+        public int CategoryId { get; set; }
+
+        [Required]
+        [StringLength(256)]
+        public string Name { get; set; }
+
+        [Required]
+        [Index(IsUnique = true)]
+        public string Slug { get; set; }
+
+        [Required]
+        [ForeignKey(“Owner”)]
+        public OwnerId { get; set; }
+
+        public User Owner { get; set; }
+
+        public ICollection&lt;Post&gt; Posts { get; set; }
+    }
+}
+</pre>
+
+
+<p>These classes collectively provide all the data objects needed to store and manipulate records from the database in the application. The next post in the series will cover the process of connecting to a data source and loading records into memory by using the data context.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-08-04T14:28:17+05:30">August 4, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/laying-the-groundwork/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1046" class="post-1046 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/domain-entities/" rel="bookmark">Domain Entities</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-2" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>An entity class is written in your application programming language using standard language constructs such as the qualifier, class name and public properties. All properties must have an accessor and a mutator.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class Post
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public DateTime CreatedOn { get; set; }
+    }
+}
+</pre>
+
+
+<p>The class is utilised into the Entity Framework by creating a DbSet instance property for it in the DbContext.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public DbSet Posts { get; set; }
+    }
+}
+</pre>
+
+
+<h3>Scalar Properties</h3>
+
+
+
+<p>Entity classes have scalar properties to represent values which are stored in the database column directly. For example, the values for PostId, Title, Body and CreatedOn fields are stored in columns in the Posts table in the database.</p>
+
+
+
+<h3>Navigation Properties</h3>
+
+
+
+<p>Navigation properties are used to represent relationships between database tables. Entity Framework supports relationship multiplicities of zero-or-one, one, zero-or-many, or one-or-many. Object references are used to represent relationships. Properties whose type is of another entity are used for zero-or-one, or one multiplicity. Properties whose type is a generic collection instance represent zero-or-many, or one-or-many relationships.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class Post
+    {
+        public int PostId { get; set; }
+        …
+        // Multiplicity of one or zero-or-one
+        public Author CreatedBy { get; set; }
+
+        // Multiplicity of zero-or-many, or many
+        public ICollection { get; set; }
+    }
+}
+</pre>
+
+
+<h3>Entity States</h3>
+
+
+
+<p>Each entity class instance has an associated state which is maintained by the Entity Framework internally. The value of the state property changes automatically based on the operations that the developer performs on the entity instance or the database context instance.</p>
+
+
+
+<p>This property can transition between the following enumerations.</p>
+
+
+
+<ul><li>Added</li><li>Modified</li><li>Deleted</li><li>Unchanged</li><li>Detached</li></ul>
+
+
+
+<p>The context instance in the object service layer is responsible for maintaining the current state and changing it in response to API calls. When the SaveChanges method is called, the context instance determines what database operation has to be performed on each entity instance in the DbSet collection based on the value of its State property.</p>
+
+
+
+<p>An insert operation is performed for entities whose state is set to Added, update for entities whose state property is set to Modified and delete for entities whose state property is set to Deleted.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-07-29T03:59:46+05:30">July 29, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/domain-entities/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1044" class="post-1044 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/the-database-context/" rel="bookmark">The Database Context</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>DbContext is probably the single most important class in the EF API, as it directly represents a connection with the database from the application. A minimal context class inherits from DbContext and exposes DbSet instances for each entity type which has to be stored or retrieved from the database.</p>
+
+
+
+<p>Querying for information retrieval and storage is done through the DbContext instance. If the developer has not overridden any configuration settings, Entity Framework attempts to connect to a database with the fully qualified name of the DbContext class itself.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext()
+        {
+        }
+    }
+}
+</pre>
+
+
+<p>In the above example, Entity Framework automatically tries to connect to a database called “Notadesigner.Blog.ContentContext”. This can be overridden by setting the configuration in various ways.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext(“Notadesigner”)
+        {
+        }
+    }
+}
+</pre>
+
+
+<p>Other ways to override the default connection name is to add a connection string in the application configuration file and supplying it as a parameter to the DbContext constructor.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/the-database-context/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1042" class="post-1042 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/operating-entity-framework/" rel="bookmark">Operating Entity Framework</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+<h3>Basics of Entity Framework</h3>
+<p><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></p>
+<h3>Code First</h3>
+<p><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></p>
+<h3>Database First</h3>
+<p><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></p>
+<hr />
+<h3>Define the Model</h3>
+<p>Entity Framework begins be preparing an in-memory model of the entity objects and their relationships, and the mapping of this model to the storage model. A default configuration can be derived by using conventional names for entities and their properties. Programmers can achieve finer control for exceptional cases by overriding configuration settings through various mechanisms.</p>
+<p>If the database does not exist, or the configuration directs automatic modification or recreation of the database, then the database is modified or created to match the fields in the conceptual model.</p>
+<h3>Data Creation, Retrieval, Modification &amp; Storage</h3>
+<p>An entity is instantiated from its defining class and added to the database context through the object service. Querying to retrieve records is also done through the same layer. Any modifications to the data are performed on the entity instances, followed by a call to the SaveChanges API to commit them to the database.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-07-15T17:53:37+05:30">July 15, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/operating-entity-framework/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1040" class="post-1040 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/components-of-entity-framework/" rel="bookmark">Components of Entity Framework</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+<h3>Basics of Entity Framework</h3>
+<p><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-5" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></p>
+<h3>Code First</h3>
+<p><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-5" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></p>
+<h3>Database First</h3>
+<p><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-5" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></p>
+<hr />
+<p>Like most well-designed APIs, Entity Framework is composed of several discrete components which complement each other. There are three high-level components – the Entity Data Model, the Querying API and the Persistence API.</p>
+<p>Collectively, these components allow application programmers to operate upon classes which are specific to their business domain rather than indulging in the low-level details of ADO.NET and SQL.</p>
+<h3>Entity Data Model</h3>
+<h4>Conceptual Model</h4>
+<p>This layer of the data access layer is built by the application programmer. It contains class representations of the domain model for whatever business requirement that the application aims to achieve. The programmer identifies the objects which make up the given domain, then implements them as classes. The classes have public properties that correspond to properties of the domain object, and are also converted into database columns by the Storage Model. At runtime, these classes are instantiated as CLR objects and their properties are populated with values from corresponding database columns.</p>
+<h4>Storage Model</h4>
+<p>The database and its various elements – the tables, views, stored procedures, indexes and keys – make up this layer. This is a relational database such as SQL Server or PostgreSQL, although future versions of the Entity Framework are said to support NoSQL databases.</p>
+<h4>Mappings</h4>
+<p>Object-oriented programming can be mapped to relational schemas quite closely in most standard scenarios. A class can easily have the same properties as a table column and use equivalent data types to represent it in memory at runtime. Object references are represented as relationships between two tables with all accompanying aspects such as defining keys between tables.</p>
+<p>Data constraints and default values can also be declared in this layer by using the appropriate configuration APIs. Any mismatch between the objects, tables and mapping results in a runtime exception which can be handled by the programmer.</p>
+<h3>Querying API</h3>
+<p>There are two APIs that programmers can use to interact with the database from Entity Framework.</p>
+<h4>LINQ to Entities</h4>
+<p>This is a query language that retrieves data from the storage model, and with the aid of mappings, converts it into object instances from the conceptual model.</p>
+<h4>Entity SQL</h4>
+<p>This is a dialect of SQL which operates upon conceptual models instead of relational tables. It is independent of the underlying SQL engine, and as a result, can be used unchanged between various database engines.</p>
+<p>Both querying languages are operational through the Entity Client data provider, which manages connections, translates queries into data source-specific SQL syntax, and returns a data reader with records for conversion into entity instances. By dint of being an abstraction over the connection, Entity Client can also be used to breach the Entity Framework abstraction and interact with the database directly with ADO.NET APIs.</p>
+<h3>Persistence API</h3>
+<h4>Object Service</h4>
+<p>The programmer interacts with the object service to access information from the database. It is the primary actor in the process of converting the records retrieved from the data provider into an entity object instance.</p>
+<h4>Entity Client Data Provider</h4>
+<p>The Entity Client Data Provider works the other way around, to translate queries written in LINQ-to-Entity into SQL queries that the database understands. This layer interacts with the ADO.NET data provider to fetch from or send data into the database.</p>
+<h4>ADO.NET Data Provider</h4>
+<p>This is the standard data access framework from Microsoft. Entity Framework is an entity-level abstraction over the APIs provided by this library.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-07-08T17:53:00+05:30">July 8, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/components-of-entity-framework/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1038" class="post-1038 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/" rel="bookmark">Introduction to ORM &#038; Entity Framework</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+<h3>Basics of Entity Framework</h3>
+<p><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-6" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></p>
+<h3>Code First</h3>
+<p><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-6" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></p>
+<h3>Database First</h3>
+<p><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-6" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></p>
+<hr />
+<p>Having application programmers design, implement and maintain databases has often been a challenge. Maintainability and performance have taken a hit, resulting in less than stellar application performance and poor extensibility.</p>
+<p>Object Relational Mapping libraries have been written since a long time to gloss over lack of proficiency in SQL and database design. However, they too have been cited as a major bottleneck to performance due to abstracting over the underlying relational model, and generating bloated and inefficient queries.</p>
+<p>Newer generation ORM tools have solved performance and design problems to a large extent, resulting in frameworks which developers can use with confidence even for large-scale and high-availability applications.</p>
+<h3>What is Entity Framework?</h3>
+<p>Entity Framework is Microsoft’s offering in this space for use with the .NET framework. It is built upon the traditional ADO.NET framework and therefore, can be made to work with almost any relational database with bindings for the .NET framework.</p>
+<p>Entity Framework is an open source ORM library which is published by Microsoft. It complements the .NET framework and is built upon the ADO.NET framework.</p>
+<p>Entity Framework frees up the programmer from having to translate information between .NET instances and DataSet objects which are used by ADO.NET to retrieve, insert and update records in the data store.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-07-01T17:45:29+05:30">July 1, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1030" class="post-1030 post type-post status-publish format-standard hentry category-construction tag-c tag-practical-design-patterns tag-state">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-state/" rel="bookmark">Practical Design Patterns in C# &ndash; State</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The purpose of the state design pattern is to allow an object to alter its behaviour when its internal state changes.</p>
+
+
+
+<p>The example of a logging function below is a model candidate for conversion into a state implementation.</p>
+
+
+
+<p>The requirements of this function are as follows.</p>
+
+
+
+<ol><li>Write the log entry to the end of a text file by default.</li><li>The file size is unlimited by default, denoted by setting the value of the maximum file size to 0.</li><li>If the value of the maximum file size is greater than 0 then the log file is archived when it reaches this size, and the entry is written to a new empty log file.</li><li>If the recycle attribute is enabled and the maximum file size is set to a value greater than 0, then the oldest entry in the log file is erased to make space for the new entry instead of archiving the entire log file.</li></ol>
+
+
+
+<p>The implementation of the actual mechanism for writing to disk is not relevant in this example. Rather, the focus is on creating a framework that enables selecting the correct mechanism based on the preferences set.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public void Log(string message)
+{
+    if (LimitSize)
+    {
+        if (file.Length &lt; MAX_SIZE)
+        {
+            // Write to the end of the log file
+        }
+        else
+        {
+            if (Recycle)
+            {
+                // Clear room at the top of the log file
+            }
+            else
+            {
+                // Create a new log file with current time stamp
+            }
+
+            // Write to the end of the log file
+        }
+    }
+    else
+    {
+        // Write to the end of the log file
+    }
+}
+</pre>
+
+
+<p>The implementation shown above is very naïve, tightly coupled, rigid and brittle. However, it is also a fairly common occurrence in most code bases due to its straightforward approach to addressing the problem.</p>
+
+
+
+<p>The complicated logical structure is difficult to decipher, debug and extend. The tasks of determining file size limits, recovering disk space, creating a new file and writing to the file are all discrete from each other and should have no dependency between themselves. But they are all interwoven in this approach and add a huge cognitive overhead in order to understand the execution path.</p>
+
+
+
+<p>There are multiple conditions being evaluated before the log entry is made. The programmer has to simulate the computer’s own execution path for each statement before even arriving at the important lines related to writing to disk. A couple of blocks are duplicated code. It would be nice if the execution path could be streamlined and duplicate code removed.</p>
+
+
+
+<h3>Restructured Code </h3>
+
+
+
+<p>
+An eager approach to selecting the preferred mechanism breaks up the conditional statements into manageable chunks. It is logically no different from having the same code in the Log method. But moving it into the mutator makes it easier to understand by adding context into the logic rather than handing it all in a single giant function.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public int MaxFileSize
+{
+    get
+    {
+        return _maxFileSize;
+    }
+
+    set
+    {
+        _maxFileSize = value;
+
+        if (0 == MaxFileSize)
+        {
+            // Activate the unlimited logger
+            return;
+        }
+
+        if (Recycle)
+        {
+            // Activate the recycling logger
+        }
+        else
+        {
+            // Activate the rotating logger
+        }
+    }
+}
+
+public bool Recycle
+{
+    get
+    {
+        return _recycle;
+    }
+
+    set
+    {
+        _recycle = value;
+
+        if (0 == MaxFileSize)
+        {
+            // Recycling is not applicable when file sizes are unlimited
+            return;
+        }
+
+        if (Recycle)
+        {
+            // Activate the recycling logger
+        }
+        else
+        {
+            // Activate the rotating logger
+        }
+    }
+}
+</pre>
+
+
+<p>
+The comments indicate that you’re still missing some code that actually performs the operation. This is the spot where the behaviour is selected and applied based on the state of the object. We use C# delegates to alter the behaviour of the object at runtime.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public delegate void LogDelegate(Level level, string statement)
+
+public LogDelegate Log
+{
+    get;
+    private set;
+}
+</pre>
+
+
+<p>
+The Logger class contains private methods that implement the same signature as the Log delegate.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+private void AppendAndLog(Level level, string message)
+{
+}
+
+private void RotateAndLog(Level level, string message)
+{
+}
+
+private void RecycleAndLog(Level level, string message)
+{
+}
+</pre>
+
+
+<p>
+When the condition evaluation is completed and the logging method has to be selected, a new instance of the Log delegate is created which points to the correct logging method.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+if (Recycle)
+{
+    Log = new LogDelegate(RecycleAndLog);
+}
+else
+{
+    Log = new LogDelegate(RotateAndLog);
+}
+</pre>
+
+
+<p>
+This separates the selection of the correct logging technique to use from the implementation of the technique itself. The logging method implementations can be changed at will to fix bugs or extend their features without adding risk to breaking the rest of the code.
+
+</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-06-11T10:13:00+05:30">June 11, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-state/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text">Posts navigation</h1>
+		<div class="nav-links">
+
+						<div class="nav-previous"><a href="http://localhost:81/wp/tag/c/page/3/" ><div class="arrow">&larr;</div>Older posts</a></div>
+			
+						<div class="nav-next"><a href="http://localhost:81/wp/tag/c/" >Newer posts <div class="arrow">&rarr;</div></a></div>
+			
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-7" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-7" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-7" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

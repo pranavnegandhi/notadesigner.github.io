@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>Technique | Not a Designer | Page 2</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://localhost:81/wp/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="http://localhost:81/wp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="http://localhost:81/wp/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Technique Category Feed" href="http://localhost:81/wp/category/software-engineering/technique/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/categories/38" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="http://localhost:81/wp/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive paged category category-technique category-38 paged-2 category-paged-2">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://localhost:81/wp/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					Technique				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-748" class="post-748 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark">Sharing Code &#8211; Static and Dynamic Libraries in ActionScript</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>When I was in school, practically nobody had access to the internet. As a result, every student would have two essential items in his toolkit &#8211; an encyclopedia and a membership to a library. Homework, projects and supplementary studies were highly dependent on both of them.</p>
+<p>Encyclopedias ranged from simple one-book units that specialized in a single subject, to multi-volume tomes spanning practically every topic imaginable (or at least deemed allowably imaginable by its publishers) by a school student. In both cases, the research was already done by someone else. When we were assigned a project on the solar system, nobody expected us to discover the planets in it. The planets remained discovered. All we had to do was read about them and share the information when making a presentation to the class.</p>
+<h3>Code Libraries</h3>
+<p>It is heartening to know that somebody creating computer languages took this to heart and invented the concept of code libraries &#8211; units of code written by people who are really good in the domain, then shared with the also rans who just wanted to implement their business applications without knowing the mathematics of relational databases or the bit-juggling that network libraries perform.</p>
+<p>Libraries are compiled separately from the application that ends up eventually using them. They are linked to the application through a process that maps function calls in the application code with function addresses in the library. This process, predictably, is called linking.</p>
+<p>Code stored in statically linked libraries is copied into the application executable at compile time, resulting an individual copy being created for every application that uses the library. Static libraries become an integral part of the application that uses them and cannot be shared with other applications. If the library is modified in any manner, the application must be recompiled and relinked with the new version in order to utilize those changes.</p>
+<p>Dynamic libraries are stored in a shared location, and are linked to the application at runtime by the operating system or other environment controller such as a virtual machine. The metaphor falls apart a bit when it comes to sharing dynamic libraries &#8211; in a physical library, only one member can borrow a book at a time, whereas any number of programs can concurrently use the code stored in a dynamic library.</p>
+<p>With static linking, it is enough to include those parts of the library that are directly and indirectly referenced by the target executable (or target library). With dynamic libraries, the entire library is loaded, as it is not known in advance which functions will be invoked by applications. Whether this advantage is significant in practice depends on the structure of the library.</p>
+<p>Other than the obvious benefit of being able to compile units of code separately, either type of libraries offer their own individual benefits also. Statically linked code guarantees that all required code units are present and compatible with the application. Dynamically linked libraries may be of a different version than what the application requires, or not be present at all. Either case either causes a runtime error, or requires defensive code and reduced functionality in the application. Static linking also simplifies product distribution by reducing the number of files to be shipped and installed.</p>
+<p>All said and done, both types of libraries are popular and well-worn concepts in computer programming. Many modern languages support either method, usually both.</p>
+<h3>Code Libraries in the Flash Ecosystem</h3>
+<p>Adobe&#8217;s MXML compiler offers several parameters for programmers to employ libraries &#8211; both static and dynamic &#8211; in their code.</p>
+<p>Static linking is almost identical to how it is used in conventional languages. Dynamic linking works slightly differently from Windows&#8217; Dynamically Linked Libraries and Unix&#8217;s Shared Objects due to the browser-based operation of the Flash Player. But these differences are at an implementation level only. The concepts remain the same.</p>
+<h4>Static Linking</h4>
+<p>To statically link a library into an application, the compiler offers the library-path and include-libraries directives.</p>
+<h5>library-path</h5>
+<p>When a library is specified using the library-path directive, the compiler includes only those assets and classes that are referenced in the application. For example, if the Math library contains IntegerArithmetic and FloatArithmetic for performing arithmetic operations on two separate numeric data types, but the client application only uses integers, the FloatArithmetic class is excluded from the output. This reduces the file size of the application SWF.</p>
+<pre>mxmlc Main.mxml -output=Main.swf -library-path=math.swc</pre>
+<h5>include-libraries</h5>
+<p>The include-libraries directive packages the entire library, irrespective of what the compiler thinks is used in the application. This comes in handy in a dynamic language like ActionScript because all method calls do not necessarily get tested for linkages by the compiler.</p>
+<pre>var classRef:Class = getDefinitionByName("com.notadesigner.math.FloatArithmetic") as Class;
+var instance:Object = new classRef();
+instance["add"](10.5, 2.5); // Linkage not tested by the compiler</pre>
+<p>The include-libraries directive is used like this.</p>
+<pre>mxmlc Main.mxml -output=Main.swf -include-libraries=math.swc</pre>
+<h5>static-link-runtime-shared-libraries</h5>
+<p>This directive is a convenient shortcut to convert runtime shared libraries into static libraries without significant changes to the compiler configuration files. Simply setting its value to true causes the compiler to embed all RSLs into the application. This is a handy way to investigate library-related problems when debugging the application.</p>
+<pre>mxml Main.mxml -output=Main.swf -static-link-runtime-shared-libraries=true</pre>
+<h4>Dynamic Linking</h4>
+<p>A Runtime Shared Library (commonly abbreviated to RSL) is loaded by the application before it begins execution. Loading a RSL is a complicated task if done in plain ActionScript, but is taken care of automatically if the application builds on the Spark or MX Application class.</p>
+<p>Adobe-provided framework libraries are the most obvious use case for using RSLs. All Flex-based applications depend upon these files. By caching them after the first time they are downloaded, future applications can be started much faster as they do not need to download the same code again. Custom libraries can also take advantage of the same technique.</p>
+<p>Flash libraries are compiled using the compc utility, that ships as part of the Flex SDK. It generates a SWC file which is a compressed archive containing a SWF (named library.swf) and an XML (catalog.xml). To use this library, the developer must manually extract the SWF from the SWC using an archival utility (such as PKZip) and place it where the application can download it at runtime. As a good practice, the SWF is also usually renamed from library.swf to something more meaningful.</p>
+<h5>runtime-shared-library-path</h5>
+<p>This directive is used to specify the location of RSL files for the compiler. The compiler requires the names of both, the SWC as well as the extracted SWF, separated by a comma.</p>
+<pre>mxmlc -o=main.swf -runtime-shared-library-path=libs/math.swc,bin/math.swf Main.mxml</pre>
+<h4>Related Directives</h4>
+<p>The Flex compiler provides two other directives to externalize the application&#8217;s assets and code fragments. The compiler tests linkages against these assets at compile-time, but leaves them out of the application binary. Libraries that contain these assets or classes are required at runtime, and the Flash Player throws a runtime error if they are not available.</p>
+<p>These directives are useful when creating modules which are loaded dynamically into an application that they share code with. The application is linked to the requisite RSL, and the module does not need to fetch it again. However, the compiler still needs to test the linkages against the symbols &#8211; either against the original source code or a compiled binary. These directives assist in that task.</p>
+<h5>external-library-path</h5>
+<p>The compiler uses SWC files specified at these paths to test linkages with the application code, but does not compile the binaries into the application itself.</p>
+<h5>externs</h5>
+<p>This directive points to source files containing assets or classes which will be available at runtime. The compiler uses the source files for link testing, but does not compile them into the application binary.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2014-09-18T17:27:46+05:30">September 18, 2014</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-570" class="post-570 post type-post status-publish format-standard hentry category-technique tag-bit-hacking tag-c tag-programming">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">Storing Values with Bit Packing and Unpacking</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Bit packing and unpacking is a handy way of consolidating multiple data values into a single variable, thus compressing the amount of data being stored or transmitted. The number of values that can be stored depends upon the width of the data to be stored as well as the type of the value that it is packed into. A simple byte can store up to 8 bits of data. Larger types such as ints can store up to 16, 32 or 64 bits. This is an especially efficient technique for storing several small-width values, often smaller than the smallest width supported by a platform (such as byte or boolean flags) into a single large value such as a 32-bit integer.</p>
+<p>Bit flags are commonly used for implementing low-level features, such as storing file access-permissions or packing values into a single value before transmitting across a bus. However, they can be applied with equal ease to higher level tasks such as storing user preferences or choosing which widgets to display from an enumerated list. We will see here how to use bit flags to store font formatting preferences, and apply them later to a label.</p>
+<h3>Bitwise Operators</h3>
+<p>There are a couple of operators we need to understand before we can move on to the implementation. Bitwise operators, by definition, work on individual bits inside a value. Since they are implemented directly by the processor itself, they are much faster than arithmetic operators such as division and multiplication. We will use bitwise AND (&amp;), bitwise OR (|) and left shifts (&lt;&lt;) in this exercise.</p>
+<p>A bitwise AND operation takes the binary representations of two values and performs a logical AND operation on each bit. The result is 1 in every position where both the bits are 1, and 0 if either or both bits are 0.</p>
+<pre>    001010
+AND 011011
+    ------
+    001010</pre>
+<p>Bitwise OR on the other hand, compares two bits in corresponding positions, and sets the result to 1 if either of them is 1, or to 0 if both of them are 0.</p>
+<pre>    001010
+OR  011011
+    ------
+    011011</pre>
+<p>Bitwise left shift operator moves individual bits within a single value by the number of places specified in the second operand. The value is padded with 0s on the right, and the left-most bits are dropped off.</p>
+<pre>    001010 &lt;&lt; 1 = 010100</pre>
+<h3>Implementation</h3>
+<p>We set up a simple Windows Forms project and draw three checkboxes and one label on the form. The aim is to have the checkboxes control three font properties of the label &#8211; weight, style and underlining. All checkboxes are given appropriate labels and configured to execute the _changeFormatting method of the form every time the CheckStateChanged event is fired. The code for this method is shown below.</p>
+<pre>private void _changeFormatting(object sender, EventArgs e)
+{
+    byte flags = 0;
+
+    flags = (byte)(
+        Convert.ToByte(this.chkUnderline.Checked) &lt;&lt; 2 |
+        Convert.ToByte(this.chkItalic.Checked) &lt;&lt; 1 |
+        Convert.ToByte(this.chkBold.Checked)
+        );
+
+    Font f = new Font(this.label1.Font.FontFamily, this.label1.Font.Size, (FontStyle)(
+        (flags &amp; (byte)FontStyle.Underline) |
+        (flags &amp; (byte)FontStyle.Italic) |
+        (flags &amp; (byte)FontStyle.Bold)
+        ));
+
+    this.label1.Font = f;
+}</pre>
+<h4>Packing</h4>
+<p>In the first statement, the flags variable is populated with the values of each checkbox. We want to store the three flags in the last three bits of a single byte.</p>
+<table>
+<tbody>
+<tr>
+<th>Position</th>
+<th>Setting</th>
+</tr>
+<tr>
+<td>7</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Unused</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Underline</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Italic</td>
+</tr>
+<tr>
+<td>0</td>
+<td>Bold</td>
+</tr>
+</tbody>
+</table>
+<p>In order to do so, we take the value of each boolean (either true or false), convert it into a byte, then shift it by an appropriate number of positions. The value of the underline flag is to be stored in the 2nd bit (starting from 0). So we left-shift its value by 2. Similarly, the italic flag is stored in the 1st position, so its boolean value is shifted by 1. The value of the bold flag does not need to be shifted at all.</p>
+<pre>    00000001 &lt;&lt; 2 = 00000100 // Underline
+    00000001 &lt;&lt; 1 = 00000010 // Italic
+    00000001                 // Bold (no shifting required)</pre>
+<p>A consolidated value can be generated by ORing the three values together.</p>
+<pre>    00000100
+ OR 00000010
+ OR 00000001
+    --------
+    00000111 // Decimal value 7</pre>
+<pre>    00000000
+ OR 00000010
+ OR 00000001
+    --------
+    00000011 // Decimal value 3</pre>
+<pre>    00000100
+ OR 00000000
+ OR 00000001
+    --------
+    00000101 // Decimal value 5</pre>
+<p>The decimal value can then be stored in a database or other persistent storage system as an integer or byte. This is better than having to store three boolean fields. This information can transmitted across systems too as a packed unit, to be unpacked later only when the preferences have to be applied to a display element.</p>
+<p>In our example, we are unpacking and applying the values immediately for brevity. But a more practical situation would probably involve serializing the value somewhere, then deserializing and applying the font properties later at another location.</p>
+<h4>Unpacking</h4>
+<p>In order to apply the font styles on a display element, the individual values of each style parameter must be extracted from the packed value and then applied. The .NET framework defines enumerations for each of these style parameters in the System.Drawing.FontStyle enum. The values for each style parameter are listed below.</p>
+<table>
+<tbody>
+<tr>
+<th>Setting</th>
+<th>Decimal Value</th>
+<th>Binary Value</th>
+</tr>
+<tr>
+<td>Regular</td>
+<td>0</td>
+<td>00000000</td>
+</tr>
+<tr>
+<td>Bold</td>
+<td>1</td>
+<td>00000001</td>
+</tr>
+<tr>
+<td>Italic</td>
+<td>2</td>
+<td>00000010</td>
+</tr>
+<tr>
+<td>Underline</td>
+<td>4</td>
+<td>00000100</td>
+</tr>
+</tbody>
+</table>
+<p>You will notice that each enumeration is double the value of its predecessor, hence moving the digit 1 by one position leftwards with every increase. This is a key feature of bit flags. Each element differs from the others only in the position of the 1 bit. Thus, the value of a given flag can be extracted from the packed value by ANDing the packed value with the value of the enumeration.</p>
+<pre>     00000111 // Packed value decimal 7
+AND  00000100 // Underline enum decimal 4
+     --------
+     00000100 // Result - show underlines</pre>
+<p>This operations shows that the value of the underline flag is true. If the packed value was the decimal 3 instead of 7, then the operation would play out as shown below, resulting in the value 0 for the underline flag.</p>
+<pre>     00000011 // Packed value
+AND  00000100 // Underline enum
+     --------
+     00000010 // Result - hide underlines</pre>
+<p>All that is needed then is to convert the result byte into a boolean and apply it wherever required. In our example above, the constructor of the Font class requires the values packed together any way as a FontStyle enum. To do this, each bit is ANDed with its corresponding enum, then all of them are combined together again using an OR operation. The resultant byte is cast into a FontStyle before being passed to the constructor.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2013-02-08T16:56:38+05:30">February 8, 2013</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-100" class="post-100 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-memory-leaks">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/the-secret-lives-of-timer-objects/" rel="bookmark">The Secret Lives of Timer Objects</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>One of the better side-effects of working in memory-managed languages is that you don’t have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
+<p>What could be simpler?</p>
+<h3>Great Power, Great Responsibility</h3>
+<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). There’s an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
+<p>Take that, Java!</p>
+<p>Several of these features mean that its legacy garbage collection techniques have to be replaced with less aggressive methods to identify unused memory. This in turn requires more developer intervention than before to identify which references are no longer required and which ones must be left untouched. The new AS3 garbage collector uses reference counting and mark sweeping (both techniques are covered by Grant Skinner here). And while things are still better than completely manual memory management, building complex or long-running applications requires that the developer have at least a passing understanding of how memory is allocated, references stored, passed around and cleared, and the potential for memory leaks in the midst of all this.</p>
+<p>This is where the typical ActionScript programmer stumbles, mainly because people programming in AS3 often do not have a formal background in computer science or programming and have usually learned the language on their own through books or online tutorials. It is not uncommon to find ActionScript developers for whom this is their first taste of programming.</p>
+<h3>Our Subject for Today</h3>
+<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward – create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
+<p>A Timer object is different from other types of objects because the garbage collector does not clear it unless it is stopped, even if there are no active references to it.</p>
+<p>Let’s repeat that.</p>
+<p><strong>A Timer object is not cleared by the garbage collector as long as it is running, even when its references are set to null or the variable goes out of scope, and it continues to fire TIMER events as long as it is active</strong>.</p>
+<p>The only way to clear the object from memory and stop events from being fired is to stop it using the stop() or reset() methods.</p>
+<p>The following piece of code illustrates the permanence of Timer objects which haven’t been stopped.</p>
+<pre lang="actionscript">package 
+{
+    import flash.display.Sprite;
+    import flash.events.Event;
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Main extends Sprite 
+    {
+        public function Main():void 
+        {
+             var t:Timer; // Create timer as a local variable
+
+             t = new Timer(1000);
+             t.addEventListener(TimerEvent.TIMER, this.m_tick);
+             t.start(); // Reference ends here; Timer continues to exist and trigger events
+        }
+
+        private function m_tick(e:TimerEvent):void
+        {
+             trace("tick");
+        }
+    }
+}</pre>
+<p>This may look like a design flaw in the language to the casual passer-by and elicit a very obvious question.</p>
+<p>“Everything else is cleared automatically. Why leave behind timers?”</p>
+<p>Some thought on the subject will make you realize that the language designers at Adobe weren’t off their rockers after all. This behaviour is by design. In the example code shown above, ‘t’ is a local variable inside the constructor. When the function ends, the variable goes out of scope and<br />
+there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
+<p>Conversely, a Timer instance which remains active with no way for it to be accessed and stopped is terrible. The object continues to maintain references to listeners and triggers events on them regularly. Listeners can never be garbage collected either because their reference count never goes down to zero. And finally, each active timer occupies a slice of CPU time, bringing the processor down to its knees gradually.</p>
+<p>The Timer object always passes a reference to itself in the target property of the TimerEvents it triggers. The listener can use this reference to stop the Timer. When the listener function ends, the event object goes out of scope and is cleared, taking the reference to the Timer object along with it and in turn, making it available for garbage collection.</p>
+<p>Here is an example that illustrates how this memory leak can inadvertently occur.</p>
+<pre lang="actionscript">package 
+{
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Slideshow
+    {
+        private var m_timer:Timer;
+
+        private var m_isActive:Boolean;
+
+        /**
+         * Example how not to use a timer
+         */
+        public function Start():void
+        {
+             this.m_timer = new Timer(5000); // Create and start a new timer
+             this.m_timer.addEventListener(TimerEvent.TIMER, this.m_next);
+             this.m_timer.start();
+        }
+
+        private function Pause(e:TimerEvent):void
+        {
+             this.m_isActive = false;
+        }
+
+        private function m_next(e:TimerEvent):void
+        {
+             if (!this.m_isActive) return;
+
+             // Code to move to next slide
+        }
+    }
+}</pre>
+<p>Slideshow.as</p>
+<p>In the example above, the programmer using this slideshow component is expected to call removeChild() to remove it from the stage. However, because the component does not stop the Timer when it is removed, it will continue to fire the TIMER event for as long as the application is run, and also prevent the memory used by the component from being garbage collected by holding a reference to its m_next method. If multiple instances of the slideshow object are created and disposed using removeChild(), their timers will continue to fire and none of the components will actually be cleared from memory.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/the-secret-lives-of-timer-objects/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-50" class="post-50 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/mathematical-elegance-in-programming/" rel="bookmark">Mathematical Elegance in Programming</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>Project Euler is a collection of mathematical problems for the programmer who enjoys taxing his brain cells once in a while. The problems are ordered to be successively difficult to solve, which explains why, as of today, 91,510 people have solved problem one, while problem 283 is solved only by 9 people. Not only are they successively more taxing, but going through so many problems itself is a tedious task that requires mental stamina even when taken in installments over several days.</p>
+<div class="side-note">
+<h3>Understanding the sum of numbers from 1 to N</h3>
+<p>Diagram A shows a square with each side 10 units long. A green diagonal cuts the square into two equal triangles. The number of squares making up the square equals 10 x 10 = 100.</p>
+<div id="attachment_163" style="width: 160px" class="wp-caption alignleft"><img aria-describedby="caption-attachment-163" loading="lazy" class="size-full wp-image-163" title="sum-of-numbers-a" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-a.png" alt="" width="150" height="149" /><p id="caption-attachment-163" class="wp-caption-text">Diagram A</p></div>
+<p>Diagram B shows one half of the triangle, whose base and height are 10 units for a total of 55 cells. The number of cells can be calculated by adding the number of cells in each column, i.e. 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 55.</p>
+<p>A similar blue triangle is placed above the red triangle in diagram C, in a way that both triangles are touching but do not overlap. Both triangles encompass 55 units and have sides of 10 units each. They combine to make a rectangle that is 10 units wide and 11 units tall. The total number of cells in the rectangle is 55 + 55 = 10 * 11 = 110.</p>
+<div id="attachment_164" style="width: 160px" class="wp-caption alignright"><img aria-describedby="caption-attachment-164" loading="lazy" class="size-full wp-image-164" title="sum-of-numbers-b" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-b.png" alt="" width="150" height="149" /><p id="caption-attachment-164" class="wp-caption-text">Diagram B</p></div>
+<p>Thus it can be seen how the total number of cells in one triangle (i.e. N + (N &#8211; 1) + (N &#8211; 2)&#8230;+ 1) can be computed by calculating the area encompassed by a rectangle that is N * (N + 1) and dividing the result by 2.</p>
+<p><a href="http://www.reddit.com/r/math/comments/bbezn/help_needed_to_understand_summation_formula/">Thanks Reddit!</a></p>
+<p>The good part is that solving a problem helps an individual build an insight that is useful while solving another one later down the line.</p>
+<div id="attachment_165" style="width: 160px" class="wp-caption alignleft"><img aria-describedby="caption-attachment-165" loading="lazy" class="size-full wp-image-165" title="sum-of-numbers-c" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-c.png" alt="" width="150" height="158" /><p id="caption-attachment-165" class="wp-caption-text">Diagram C</p></div>
+<p>The first problem in Project Euler asks to add all the natural numbers below 1000 which are multiples of 3 or 5. The straightforward way to resolve this is to use a loop from 1 to 999 that uses a modulus operation to evaluate each integer between 1 and 1000 with 3 and 5, adding the ones that are perfectly divisible and discarding the rest.</p>
+<p>Here’s an implementation of this code in ActionScript.</p>
+<pre lang="actionscript">var sum:uint = 0;
+for (var i:uint = 1; i &lt; 1000; i++)
+    if ((0 == i % 3) || (0 == x % 5)) sum += i;
+trace(sum);</pre>
+<p>But the secondary goal of these problems is to have an implementation that can return an answer in less than one minute. Problem one is not all that taxing for a modern computer, making even a naïve implementation run well within the required time frame. But complexity for later problems increases exponentially, making the selection of a fast algorithm very essential.</p>
+<p>Hence, it is required that one should understand the mathematical principle behind each problem in order to write an efficient solution.</p>
+<p>A step-by-step breakdown of the complex, but more efficient solution goes as follows.</p>
+<p>The smallest multiple of 3 greater than 1 is 3 itself.</p>
+<p>The largest multiple of 3 less than 1000 can be computed easily.</p>
+<pre lang="actionscript">multiples = (1000 - 1) / 3
+multiples = 333.33
+multiples = floor(remainder)
+multiples = 333</pre>
+<p>The floor() function is used to discard the decimal part of the result by mapping the real number into the previous smallest integer.</p>
+<p>The result, 333, is the number of multiples of 3 between 1 and 1000. So the sum of these values can be computed by adding the multiples together.</p>
+<pre lang="actionscript">(1 * 3) + (2 * 3) + (3 * 3)...+ (333 * 3)
+= 3 (1 + 2 + 3...333)</pre>
+<p>The sum of numbers between 1 and n is n (n + 1) / 2. So the sum of 1 to 333 is 333 (333 + 1) / 2, which is 55,611. Multiplying that by 3 gives you 166,833, which is the sum of all multiples of 3 between 1 and 1000.</p>
+<p>The same method can be used to compute the sum of multiples of 5 between 1 and 1,000, to get a result of 99,500.</p>
+<p>The problem asks to compute the sum of multiples of 3 or 5. What we have done so far is compute the sum of multiples of 3 and 5. To remove the overlap between the two sets, compute the least common multiple of the two numbers, which is 15, and calculate the sum of multiples of that number between 1 and 1000. Subtracting that set from the first two will result in a set which contains numbers which are either multiples of 3 or 5 but not both.</p>
+<p>The same principle also applies when the sum of multiples of 15 is deducted from the sum of multiples of 3 plus the sum of multiples of 5.</p>
+<p>So your final solution is sumOfMultiples(3) + sumOfMultiples(5) &#8211; sumOfMultiples(15).</p>
+<p>The complete implementation of the program is as follows.</p>
+<pre lang="actionscript">package 
+{
+    import flash.display.Sprite;
+
+    /**
+     * Project Euler solutions entry point
+     */
+    public class Main extends Sprite 
+    {
+        public function Main():void 
+        {
+            var p:IProblem = new Problem1();
+            trace(p.solve());
+        }
+    }
+}
+
+package  
+{
+    /**
+     * If we list all the natural numbers below 10 that are
+     * multiples of 3 or 5, we get 3, 5, 6 and 9. The sum
+     * of these multiples is 23.
+     * 
+     * Find the sum of all the multiples of 3 or 5 below 1000.
+     */
+    public class Problem1 implements IProblem
+    {
+        public function solve():uint
+        {
+            var limit:uint = 999;
+            trace((sumOfMultiples(3, limit) + sumOfMultiples(5, limit)) - sumOfMultiples(15, limit));
+        }
+
+        private function sumOfMultiples(factor:uint, limit:uint):uint
+        {
+            return factor * sum1toN(limit / factor);
+        }
+
+        private function sum1toN(n:uint):uint
+        {
+            return Math.round((n * (n + 1)) / 2);
+        }
+    }
+}</pre>
+</div>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2010-04-01T11:10:25+05:30">April 1, 2010</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/mathematical-elegance-in-programming/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-46" class="post-46 post type-post status-publish format-standard hentry category-technique tag-coding-horror tag-php">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/" rel="bookmark">How to Write Unmaintainable Code &#8211; PHP Redux</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>How to Write Unmaintainable Code is a satirical piece of programming advice written by Roedy Green a long time ago. That it remains his most popular essay till date speaks volumes about the programming skills of human society as a whole. Collectively, we are either a massive bunch of shit-chucking apes who take this essay seriously, or a small bunch of highly skilled developers seeking relief from daily disillusionment in our work behind its biting humour.</p>
+<p>I hope to hell that it’s the latter.</p>
+<p>Green’s essay is written with Java and C programmers in mind, but many of the techniques described can be applied to any programming language. Consider this essay as a ‘lite’ version of Green’s to keep us script kiddies from feeling left out.</p>
+<h3>Write code. Or markup. Or both. Together.</h3>
+<p>PHP has a very unique ability of allowing the programmer to intersperse program code with HTML markup in the same file by using special PHP tags to identify code blocks. And as with all things PHP, there is more than one way to skin a cat.</p>
+<pre>&lt;? echo “Hello, World!”; &gt; // What is referred to as the ‘old style’.
+
+&lt;? echo “Hello, World!”; ?&gt; // What is referred to as the ‘first new style’. Note the added question mark in the end tag.
+
+&lt;?php echo “Hello, World!”; ?&gt; // The ‘second new style’ is similar to the first new style and most recommended
+
+&lt;script language=”php”&gt;
+    echo “Hello, World!”; &gt; // What else? The ‘third new style’ of tags
+&lt;/script&gt;
+
+&lt;% echo “Hello, World!”; %&gt; // And finally, a fourth way that uses ASP-style tags</pre>
+<p>This in itself opens whole new avenues for abuse for a programmer used to the sharper separation of code and presentation enforced in a more serious language. What’s worse is that the tag rules can be changed on individual systems through the php.ini file. Develop with all style flags enabled. Tell your colleagues that you’re doing it in the interest of maximum compatibility with third-party libraries. For added fun, find (or write your own) library that liberally switches between all five types of tags and make it an indispensible part of your project. Or keep switching coding standards every few weeks until there’s a healthy mix of all types of PHP tags scattered throughout your code. Refuse to replace previously used styles with the current favourite because it’s better to leave well enough alone.</p>
+<p>Do not document this anywhere.</p>
+<p>This is in the interest of avoiding single-step deployments on a stock (or sane) PHP installation. Force system administrators to find the problem in your code and then comb through the php.ini file for the appropriate settings. Always say that you have security in mind, which is encouraged by having the system administrator read each line of the settings file.</p>
+<p>But the ability of the language to intersperse HTML markup even inside if&#8230;else or loop blocks evidences the sheer the heinousness that must have enveloped the language designers when they wrote that bit of the specification.</p>
+<p>There are so many ways to abuse this ‘feature’.</p>
+<p>A tamer way would be –</p>
+<pre>&lt;?php if (foo == null): ?&gt;
+    &lt;p&gt; Invalid foo&lt;/p&gt;
+&lt;? elseif (foo == 1): ?&gt;
+    &lt;p&gt;Foo is too small.&lt;/p&gt;
+&lt;? else ?&gt;
+    &lt;p&gt;Correct foo entered&lt;/p&gt;
+&lt;?php endif ?&gt;</pre>
+<p>A more advanced programmer might use something like this –</p>
+<pre>&lt;div class=”query_output”&gt;
+    &lt;?
+        $sql=”select * from names”;
+        if (db_connect()): ?&gt;
+            &lt;p&gt;Error!&lt;/p&gt;
+        &lt;?php else: ?&gt;
+            &lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt;&lt;/p&gt;
+        &lt;?
+            $res = db_query($sql);
+            $names = db_result($res);
+            foreach ($names as $names): ?&gt;
+                &lt;!--span&gt;&lt;?php echo $name ?&gt;&lt;/span--&gt;
+                &lt;li class=”name”&gt;&lt;? echo $name ?&gt;&lt;/li&gt;
+        &lt;? endforeach; ?&gt;
+    &lt;? endif; ?&gt;
+&lt;/div&gt;</pre>
+<p>By closely coupling the business logic with the presentation layer, your manager will have to assign a qualified programmer to make even innocuous changes to the front-end code rather than assign them to a design trainee. Male lions in the wild mark their territory by pissing on trees. Programmers should mark theirs by pissing all over the front-end markup.</p>
+<h3>Reinvent the wheel. Poorly</h3>
+<p>If there’s one thing that PHP is famous for, it’s the rich selection of extremely useful, but badly named functions in its libraries and standard extensions. Make things worse by ignoring the in-built functions entirely and rolling your own instead. Feign ignorance, which is a pretty valid excuse when talking about PHP because it has extensions for everything you might dream about, and some things you might have never even heard of (can you spell Swish-e?).</p>
+<p>Write your functions in the most naïve and inefficient manner possible. You get bonus points if it is error prone due to subtle variations in the input.</p>
+<p>For example, PHP has an in-built strtotime() function that can convert ‘about any English textual datetime description into a Unix timestamp’. Ignore it. Take a date/time string and split it into its component values by using hardcoded delimiters. Don’t take regional differences into account. Everybody should just be using ISO 8601 anyways.</p>
+<h3>Naming is the key</h3>
+<p>Begin programming before the domain model is fully ready or understood. That way you get to create your own colourful terminology for objects which haven’t been named yet. For example, suppose you’re building a web-based interface for a controller in a bakery. Look up the thesaurus for the term ‘mould’ and use an unrelated synonym such as ‘die’ in place of the mould. Repeated instances of the word ‘die’ will make the maintenance programmer wonder if you wanted to pass a subliminal message on to him through your code.</p>
+<p>Take this to the next level by using different naming conventions for the same element. If your database field stores the machine operator’s name in a ‘username’ field, store the value in a variable called ‘user_machine_op_curr’, ‘machine_operator_curuser’, ‘machop_current’ and ‘machine_operator_current_user’ in different places where you need the value.</p>
+<p>For maximum effect, instead of encapsulating usage of this variable in a single module, apply the RYE principle to litter the code across all the files. Suppose you need a widget to display the active username at the top of the page. Write the query and code to do this on every page with subtle variations in field names and joining random bits of data from unrelated or unneeded tables. The maintenance programmer will have no idea whether the query really needs the other fields, which will dissuade him from refactoring the code into a single module.</p>
+<p>Tell everyone who asks that you are caching data for later use in order to improve performance.</p>
+<h3>Code formatting is hard. Let’s go shopping.</h3>
+<p>Randomize whitespace rules in your project. Use tabs in some places, spaces in another, or you can even mix and match both on the same line. Aggressively prevent any kind of structure from appearing in the code through indentation. Nested if&#8230;else blocks or loops are best for this kind of camouflage. The unwary programmer will not notice a nested loop if it is not indented further than its parent. Compound this complexity with the ability to enter and exit PHP code blocks at random locations within the file.</p>
+<h3>Repeat Yourself Everywhere (RYE)</h3>
+<p>Functions and objects are for weenies. Duplicating large chunks of badly formatted code all over the project puts hair on your chest. Even if you are a girl.</p>
+<p>This is the ultimate abuse of a maintenance programmer in any language. But by effectively combining the previous principles, PHP gives this technique the potential to become a lifelong nightmare of bugs which are hard to find, fix or test.</p>
+<h3>Putting on the Pounds</h3>
+<p>By diligently following all the pointers given above you can be sure to reach file sizes of magnanimous proportions. The ultimate goal is to make a file large enough to timeout the version control server while a network operation is in progress. Make enough of those and the maintenance programmer will be caught between a hard place and a rock. On one hand, there is the fragility of the code which requires frequent commits to keep from making too big a change. On the other there are constant network errors while trying to commit changes to version control.</p>
+<h3>Database Abuse</h3>
+<p>PHP’s ultimate utility is its excellent data-processing pedigree. Numerous extensions have been written to enable connecting PHP with different database servers. And the one common thing that all database publishers extol is to consolidate query operations through the use of joins for fewer disk operations and lower network transfer.</p>
+<p>Ignore them.</p>
+<p>Instead, run multiple queries – one to retrieve the master table and the rest while cycling through the result set to retrieve values from the secondary table, using the current record as the selection criteria. If you have enough values in the master table, this will slow your server down enough to frustrate the end user. Use the techniques mentioned above to obfuscate and entangle your queries with unrelated code to make it resistant to change.</p>
+<p>For added joy, create a new connection at random places in your code to the same database server. This will confuse the casual maintenance programmer into thinking that you’re actually retrieving information from two databases, and hence justify you not using a join.</p>
+<h3>Summary</h3>
+<p>Perform enough of these activities in a single project and you can be assured of months of job security. The best part about working in a language like PHP is that you don’t have to worry about making it not look maintainable. Legions of bad programmers have given the language such a bad rep that people almost expect PHP code to look bad.</p>
+<p>Which kind of makes this whole essay moot, though.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2010-02-21T11:06:15+05:30">February 21, 2010</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-42" class="post-42 post type-post status-publish format-standard hentry category-technique tag-c-lang">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/difference-between-a-pointer-and-a-pointer-to-pointer-in-c/" rel="bookmark">Difference Between a Pointer and a Pointer-to-pointer in C</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>C passes variables by value. So if you pass 2 int’s x and y to the function square(), it creates a copy of both variables, populates them with the same value as x and y and hands them over to the function to process.</p>
+<pre lang="c">int square(int x, int y)
+{
+  return x * y;
+}
+
+int main(void)
+{
+  square(a, b);
+}</pre>
+<p>The same thing happens with pointers. A char *a points to location 0x000000 (or NULL) in memory. The variable is then passed to a function initString(). Now a copy of the pointer is created, which also points to the value 0x000000 and is processed by the initString() function. Within initString(), new memory is allocated using malloc() to the variable a.</p>
+<pre lang="c">void initString(char *x)
+{
+  x = malloc(6 * sizeof(char));
+  sprintf(x, "%s", "Hello");
+}
+
+int main(void)
+{
+  char *a = NULL;
+  initString(a);
+
+  printf("%s\n", a);
+}</pre>
+<p>Output</p>
+<pre lang="dos">(null)</pre>
+<p>What happens in this case is that a fresh pointer variable is created, which happens to point at the same location as a, which is initially NULL. Then memory is allocated to this pointer in the initString() function, so it begins to point to the location returned by malloc(). When the function returns, the x variable is destroyed (and the memory allocated to it is now unreferenced, which creates a memory leak). In the meantime, a is still pointing to NULL.</p>
+<p>Now let us change the signature of the initString() function.</p>
+<pre lang="c">void initString(char **x)
+{
+  *x = malloc(6 * sizeof(char));
+  sprintf(*x, "%s", "Hello");
+}
+
+int main(void)
+{
+  char *a = NULL;
+
+  initString(&amp;a);
+  printf("%s\n", a);
+}</pre>
+<p>Output</p>
+<pre lang="dos">Hello</pre>
+<p>In this case, a is still pointing to NULL. However, instead of passing a directly, initString() is handed over a reference to the pointer a – a pointer to a pointer. This causes a pointer variable to be created which points to the memory location of a. Now, the dereference operator (*) can be used to locate the address of a. Thus the memory address returned by malloc() can be assigned to a.</p>
+<p>This method is not needed if you have already allocated memory to a char array in the calling function. This is because the pointer parameter in the callee function also refers to the same memory address allocated in the caller function.</p>
+<p>Here’s a quick working example that demonstrates the differences between a pointer and a pointer-to-pointer when passed on to a function.</p>
+<pre lang="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+void initString1(char *a)
+{
+  a = malloc(6 * sizeof(char));
+  strcpy(a, "Hello");
+  printf("initString1():\t%s\t%p\t%p\n", a, a, &amp;a);
+}
+
+void initString2(char **a)
+{
+  *a = malloc(6 * sizeof(char));
+  strcpy(*a, "World");
+  printf("initString2():\t%s\t%p\t%p\n", *a, *a, &amp;*a);
+}
+
+int main(int argc, int *argv[])
+{
+  char *b = NULL;
+
+  printf("Function |\tValue\tPoints to\tAddress\n", b, b, &amp;b);
+  initString1(b);
+  //strcpy(b, "World"); // Crashes
+  printf("main() :\t%s\t%p\t%p\n", b, b, &amp;b);
+
+  initString2(&amp;b);
+  strcpy(b, "Hello");
+  printf("main() :\t%s\t%p\t%p\n", b, b, &amp;b);
+
+  return 0;
+}</pre>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2008-11-18T11:03:51+05:30">November 18, 2008</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/difference-between-a-pointer-and-a-pointer-to-pointer-in-c/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-29" class="post-29 post type-post status-publish format-standard hentry category-technique tag-apache tag-mysql tag-php">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/the-amp-tango/" rel="bookmark">The AMP Tango</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>I have recently moved to a smaller city that can’t quite boast of the public transport system that Mumbai provides to its citizens. It does exist on paper, and when you go out you do have the option of trying to locate a public utility bus or train. But that task is so difficult that most people cave in to the temptation of flagging an auto rickshaw. Even if it costs up to ten times the price of a bus.</p>
+<p>Which brings us to another problem that the people of Mumbai never have to face &#8211; auto rickshaw drivers often quote a fixed price to take you to your destination. That figure doesn’t always correspond to what the meter might have indicated had it been used. So you can either yield to their demands while feeling frustrated at being robbed in broad daylight, or haggle with them to bring them down to what you might consider a fair price. And if you don’t like haggling too much, the experience isn’t going to be very pleasant.</p>
+<p>I spent the afternoon haggling with some rather brilliant code, trying to coax it to work as it was advertised it would. I’m documenting the efforts I went through out here so that I can reduce some of the agony the next time I have to do this.</p>
+<h3>A Brief Background</h3>
+<p>Developers and software managers everywhere laud the power and elegance of the Apache, MySQL and PHP stack. Several commercial outfits have built their entire business model around them. I have been going through the ritual of installing these three on Windows for a long time now and yet, I stumble every time I try to integrate them.</p>
+<p>Installing Apache is a cinch. The developers have packaged it into a very nice installer that sets it up on your system within minutes. The default settings are fine enough for almost anybody who does not want to play system administrator. And you don’t even need to restart your system in most cases.</p>
+<p>Integrating PHP on top of Apache used to be a bit of a task, but lately it’s been becoming easier. I had to add 3 lines to the Apache httpd.conf file to get it to work. There is a huge dependency on the PHP initialization file, php.ini, but the risk is reduced because the default settings in that file too are sufficient for a typical developer machine.</p>
+<p>MySQL too comes with its own installer that takes away most of the pain from the setup process.</p>
+<h3>The Problem</h3>
+<p>But this is where the ease of use disappears. Making MySQL work with the Apache and PHP stack always seems to be a pain. Since I don’t do this very often, I can’t remember the integration recipe very well. I’m usually not even sure if I faced the same problems the last time around &#8211; much less the resolution.</p>
+<p>This article is a guideline for me to follow the next time I have to go through installing these applications. The problem I faced and its resolution is still fresh in my mind since I only stepped through it this afternoon.</p>
+<p>It all started when I attempted to load the php_mysqli.dll extension to integrate MySQL into the stack. For extensions to load, PHP needs to be given the path to the folder where the .dll files are stored. The default location is the “ext” folder under the PHP root folder. This path is defined in the variable “extensions_dir” in php.ini.</p>
+<p>For some reason the path was not interpreted correctly by PHP on start-up. The Apache error log kept showing the following error &#8211;</p>
+<p style="background: #ffff99; padding: 5px; border: 1px solid #000;">PHP Warning: PHP Startup: Unable to load dynamic library &#8216;E:\\apps\\php-5.2.3\\ext\\php_mysqli.dll&#8217; &#8211; The specified module could not be found.\r\n in Unknown on line 0</p>
+<p>The double backslashes in the path baffled me because the value in php.ini was definitely not typed that way. It is a common convention to escape certain characters by placing the backslash before it, so I felt that this was mangling the path.</p>
+<h3>Resolutions</h3>
+<p>I searched the web and found that many people have faced this issue. The solutions proposed were varied.</p>
+<p>Some suggested that the library file libmysql.dll bundled with PHP 5.2.3 was buggy. I replaced it with the recommended earlier version (from PHP 5.2.1) but the error still persisted. Others suggested that the extensions that were needed could be moved to the System32 folder, so that they would be found by the PATH system variable. But I refused to corrupt my OS folders with such unnecessary files.</p>
+<p>The obvious other solution was to add the extensions folder to my system path, which I duly did. But to my surprise the extension still didn’t load. I checked and rechecked that the folder was included in the system path.</p>
+<p>By chance I happened to run a script in my browser that called the phpinfo() function. Browsing through the values, I came upon the Apache Environment section that described how Apache interacted within the OS. And that’s where I found the problem. For some reason, even after a restarting the service, Apache continued to maintain the old system variables in its memory. Because of this, PHP didn’t know where to search for extensions and kept returning the same error.</p>
+<p>Restarting Windows solved the problem.</p>
+<p>I still haven’t figured out why the “extensions_dir” variable doesn’t work as expected. I have tried various combinations of front- and backslashes, besides experimenting with several relative and absolute path names without any luck. Backslashes are always escaped in the error log, although front slashes are left as-is.</p>
+<p>In all, I learnt that restarting your machine does often solve problems &#8211; not through magic but through simply realigning different portions of memory that may be connected in some obscure manner. Not bad for an afternoon.</p>
+<h3>WAMP Installation Checklist</h3>
+<p>For the benefit of those struggling with the kind of problems I faced, here’s the complete checklist to follow when installing the AMP stack on Windows.</p>
+<ol>
+<li>Download and install Apache</li>
+<li>Download the PHP archive and unzip into a folder of your choice</li>
+<li>Add the following line to httpd.conf depending upon the version of Apache installed -LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2.dll&#8221;<br />
+or<br />
+LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2_2.dll&#8221;</li>
+<li>Add the following line to httpd.conf -AddType application/x-httpd-php .php</li>
+<li>Add the following line to httpd.conf -PHPIniDir &#8220;E:/apps/php-5.2.3&#8221;</li>
+<li>Add the PHP folder to the Windows PATH variable.</li>
+<li>Restart your system after completing the last step to make sure that Apache refreshes the environment values. For some reason this does not happen simply by restarting Apache.</li>
+<li>Download and install MySQL.</li>
+<li>Change the extension_dir variable in php.ini to point to the complete path to the extensions directory.</li>
+<li>Add the following line to php.ini -extension=php_mysqli.dll</li>
+<li>In some situations phpMyAdmin also requires the php_mcrypt.dll and php_mbstring.dll extensions enabled. If needed, uncomment their loader lines in php.ini</li>
+<li>Copy libmcrypt.dll to %SYSTEM% folder if you need the php_mcrypt.dll extension to work.</li>
+</ol>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2007-08-10T10:50:35+05:30">August 10, 2007</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/the-amp-tango/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text">Posts navigation</h1>
+		<div class="nav-links">
+
+			
+						<div class="nav-next"><a href="http://localhost:81/wp/category/software-engineering/technique/" >Newer posts <div class="arrow">&rarr;</div></a></div>
+			
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

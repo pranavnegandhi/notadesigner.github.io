@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>Not a Designer</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="https://notadesigner.com/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="https://notadesigner.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="https://notadesigner.com/comments/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://notadesigner.com/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='https://notadesigner.com/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='https://notadesigner.com/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="https://notadesigner.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://notadesigner.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="https://notadesigner.com/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="home blog">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="https://notadesigner.com/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="https://notadesigner.com/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+						
+				
+<article id="post-1597" class="post-1597 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-json-serialization/" rel="bookmark">Valknut &#8211; JSON Serialization</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>Many service responses are returned as JSON objects. For this, the application must implement some basic configuration and error handling in each method. By utilising the cross-cutting facet of attributes, this code is unified into a common location and applied wherever required.</p>
+
+
+
+<h3>Signalling</h3>
+
+
+
+<p>Firstly, the action method that returns JSON has to be marked. The JsonHandlerAttribute class inherits from ActionFilterAttribute. It is applied to the method in question. When the method is invoked, the ASP.NET pipeline executes the <code>OnActionExecuted</code> method on its attribute. The method converts the <code>System.Web.Mvc.JsonResult</code> result into a custom-written class called <code>FitNet.Web.Infrastructure.JsonNetResult</code>. This class inherits from <code>JsonResult</code> and adds some shared functionality.</p>
+
+
+
+<h3>Error Handling and Serialization</h3>
+
+
+
+<p>The conversion from <code>JsonResult</code> to <code>JsonNetResult</code> is performed inside the <code>JsonHandlerAttribute</code> class. The <code>Result</code> property of the current filter context is typed into <code>JsonNetResult</code>. If the conversion is successful, then a new instance of <code>JsonNetResult</code> is created and the copies of the current result copied over.</p>
+
+
+
+<p>Finally, the <code>ExecuteResult</code> method is invoked on the newly created result instance. This step performs the following error checks.</p>
+
+
+
+<ol><li>Deny GET requests by default, unless it is explicitly allowed in the method.</li><li>Set the content type of the response to <code>application/json</code>.</li><li>Configure the underlying serializer to throw an error in case of looping references.</li></ol>
+
+
+
+<p>If all the checks pass, then the response data is serialized and the output is assigned to the <code>Output</code> property of the current response.</p>
+
+
+
+<p>This structure of the code removes the need to have all these checks in each method that has to return a JSON response.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-08T10:42:29+05:30">September 8, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-json-serialization/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1594" class="post-1594 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-view-models/" rel="bookmark">Valknut &#8211; View Models</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The application utilises view models heavily for all kinds of client-side communication. A page view model is an obvious candidate. But even JSON requests and responses are deserialised into a view model for better server-side manipulation.</p>
+
+
+
+<h3>Core Hierarchy</h3>
+
+
+
+<p>The application view model architecture is highly formalised. It follows a strong hierarchy for transmitting the various kinds of data models to the client and back. The base of this entire hierachy is the class <code>FitNet.Web.ViewModels.EntityViewModel</code>. This class exposes the properties <code>Id</code> and <code>Name</code>.</p>
+
+
+
+<p>All entity view models which are used to enumerate records, show editable forms or delete rows inherit from <code>EntityViewModel</code>. This offers the structure required to perform common sets of actions on these entities irrespective of their individual types and properties.</p>
+
+
+
+<h3>Page View Model</h3>
+
+
+
+<p>This is a generic class that is designed for transmitting data for a standard HTML output. It has a single generic type parameter that has to inherit from the <code>EntityViewModel</code>. This class exposes the properties <code>Title</code>, <code>Permalink</code> and <code>Entity</code>. The type of <code>Entity</code> matches the type of the generic parameter.</p>
+
+
+
+<p>All entity controllers can use this class to generate an editor page with a shared set of page properties and layout hosting a form with entity type-specific fields.</p>
+
+
+
+<h3>DataTables View Models</h3>
+
+
+
+<p>DataTables is a popular jQuery plugin for rendering grids on the client-side. It supports dynamic retrieval of data, page-wise splitting, record offsets and many other features required for viewing collections.</p>
+
+
+
+<p>This library is utilised heavily in Valknut, and as a result, the back-end provides built-in view models for data retrieval and submission directly through DataTables.</p>
+
+
+
+<p>The classes required for this feature are listed below.</p>
+
+
+
+<ul><li>FitNet.Web.ViewModels.DataTables.RequestViewModel</li><li>FitNet.Web.ViewModels.DataTables.ColumnViewModel</li><li>FitNet.Web.ViewModels.DataTables.OrderViewModel</li><li>FitNet.Web.ViewModels.DataTables.SearchViewModel</li><li>FitNet.Web.ViewModels.DataTables.ResponseViewModel</li></ul>
+
+
+
+<h4>Request View Models</h4>
+
+
+
+<p>This is a composite class that organises several other view models into a single instance. When the plugin makes an AJAX request, the request is serialised into this type. It&#8217;s native properties are <code>Draw</code>, <code>Start</code>, <code>Length</code> and <code>Error</code>. These properties are required for cache-busting, record navigation and error handling.</p>
+
+
+
+<p>The <code>Search</code> property contains an instance of the <code>SearchViewModel</code>, while <code>Columns</code> and <code>Order</code> are collections of type <code>ColumnViewModel</code> and <code>OrderViewModel</code> respectively.</p>
+
+
+
+<h5>Server-side Processing</h5>
+
+
+
+<p>An AJAX request from a DataTables instance can be processed on the client-side or on the server. In the former scenario, all data is retrieved in a single network operation and stored in memory on the client. This is convenient and quick for small data sets.</p>
+
+
+
+<p>But if your data sets are large or contain an indefinite number of rows, server-side processing is more efficient. For this, the plugin sends some additional information with each request.</p>
+
+
+
+<ol><li>Column Data</li><li>Column Name</li><li>Column Searchable</li><li>Column Orderable</li><li>Column Search Value</li><li>Column Search RegEx</li><li>Column to Order By</li><li>Direction of Ordering</li><li>Record Number to Start At</li><li>Length of Data Set</li><li>Global Search Value</li><li>Global Search RegEx</li></ol>
+
+
+
+<p>Column and ordering parameters are an indexed collection. The entire request is URL encoded. An example of the body sent is shown below (with the request split into multiple lines for legibility).</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+draw=1&amp;amp;
+columns[0][data]=Name&amp;amp;
+columns[0][name]=&amp;amp;
+columns[0][searchable]=true&amp;amp;
+columns[0][orderable]=true&amp;amp;
+columns[0][search][value]=&amp;amp;
+columns[0][search][regex]=false&amp;amp;
+columns[1][data]=Id&amp;amp;
+columns[1][name]=&amp;amp;
+columns[1][searchable]=true&amp;amp;
+columns[1][orderable]=false&amp;amp;
+columns[1][search][value]=&amp;amp;
+columns[1][search][regex]=false&amp;amp;
+order[0][column]=0&amp;amp;
+order[0][dir]=asc&amp;amp;
+start=0&amp;amp;
+length=10&amp;amp;
+search[value]=&amp;amp;
+search[regex]=false
+</pre>
+
+
+<h4><a href="https://github.com/pranavnegandhi/notadesigner.github.io/blob/master/view-models.md#column-view-model"></a>Column View Model</h4>
+
+
+
+<p>The column fields are deserialised into an instance of this class. Each column has its own instance, and each instance has the properties <code>Data</code>, <code>Name</code>, <code>Searchable</code>, <code>Orderable</code>, <code>Start</code>, <code>Length</code>, as well as a nested instance of the search view model.</p>
+
+
+
+<p>The server can utilise these values to perform any additional ordering or filtering on the result data set before dispatching it back to the client.</p>
+
+
+
+<h4>Order View Model</h4>
+
+
+
+<p>This is a very simple class consisting of only two properties – <code>Column</code> and <code>Direction</code>. The first is the index of the primary sorting column, and the second is a string containing the value <code>asc</code> or <code>desc</code>.</p>
+
+
+
+<p>The server can utilise these properties to sort the data on the server.</p>
+
+
+
+<h4>Search View Model</h4>
+
+
+
+<p>This class contains the properties <code>Value</code> and <code>RegEx</code>, which is used to transmit keywords or regular expressions to the server. The data set can be filtered against these parameters before returning it to the client.</p>
+
+
+
+<h4>Response View Model</h4>
+
+
+
+<p>In addition to the collection of records, the DataTables instance also requires some additional information such as the current page number. This view model implements properties for these values.</p>
+
+
+
+<p>The complete list of properties are <code>Draw</code>, <code>Start</code>, <code>RecordsFiltered</code>, <code>RecordsTotal</code>, <code>Search</code>, <code>Error</code> and <code>Data</code>. The last one is an <code>ICollection</code> instance and contains the rows to be rendered.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-05T18:39:46+05:30">September 5, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-view-models/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1590" class="post-1590 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-validation/" rel="bookmark">Valknut &#8211; Validation</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<h3>Introduction</h3>
+
+
+
+<p>ASP.NET MVC has always had a robust request validation model that is easily harnessed. The model in question has to be decorated with validation attributes from a broad collection of possibilities, and the framework takes care of ensuring compliance and distilling it into a single boolean that can be referenced from <code>ModelState.IsValid</code>.</p>
+
+
+
+<p>Nothing could be easier.</p>
+
+
+
+<p>However, this approach requires that the programmer must remember to write the code to perform a validation check in each action method. This is tedious and error-prone, and results in duplicated code.</p>
+
+
+
+<p>It is possible to implement this functionality in a more modular fashion by implementing it as a filter attribute and plugging it into the ASP.NET request pipeline.</p>
+
+
+
+<h3>Passive Attributes</h3>
+
+
+
+<p>Before we go into the implementation of the filter itself, there is a slight design idiosyncracy that has to be understood. Request filtering through a class that derives from <code>ActionFilterAttribute</code> is a common enough pattern. A request is filtered through this attribute if the method implementing its corresponding action is decorated with this attribute. But this approach imposes various technical restrictions and design compromises.</p>
+
+
+
+<p>A more robust approach is to decorate the action method with a non-behavioural attribute that derives from <code>Attribute</code>, and adding the filter directly into the global filter collection.</p>
+
+
+
+<p>Passive attributes are described by Mark Seemann at the link below.</p>
+
+
+
+<p><a href="https://blog.ploeh.dk/2014/06/13/passive-attributes/">Passive Attributes</a></p>
+
+
+
+<h3>Implementation</h3>
+
+
+
+<p>The passive attribute approach results in an attribute class called <code>ValidateModelAttribute</code>. Any method that requires model validation can be decorated with this attribute.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+[HttpPost]
+[ValidateModel]
+public ActionResult Edit(PageViewModel&lt;ExerciseEditViewModel&gt; viewModel)
+</pre>
+
+
+<p>A <code>RequestValidateModelFilter</code> class implements the <code>IActionFilter</code> interface and is added into the global filters collection during the <code>Application_Start</code> event. When an incoming request arrives, it is passed through the <code>RequestValidateModelFilter</code> instance, which checks if the request requires validation, and if so, checks if the <code>IsValid</code> property of the model state is true.</p>
+
+
+
+<p>If the model state is not valid, then the request pipeline is truncated and all validation errors are gathered into a JSON response. The application returns a HTTP status code 400 along with the list of errors in the body of the response.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-04T07:43:48+05:30">September 4, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-validation/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1586" class="post-1586 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-localisation/" rel="bookmark">Valknut &#8211; Localisation</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<h3>Client-specific Regional Settings</h3>
+
+
+
+<h4>Request Structure</h4>
+
+
+
+<p>Valknut implements localisation of temporal data to match the client&#8217;s preferred locale through the use of the <code>Accept-Language</code> header in an incoming request. The value of this header can be an array of one or more language tags, such as en-US, along with a weightage indicator for the language.</p>
+
+
+
+<p>This value is set automatically by the browser based on the regional settings of the operating system, and can be overridden by the user to suit their needs. The language tag may be followed by an optional quality factor parameter that indicates the preferred weightage to the given language tag. The value of the q-factor is a decimal number between 0 to 1.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+en-US;q=1,en-GB;0.5
+</pre>
+
+
+<p>The above example indicates that the client prefers American as well as British English, with a higher preference for American English.</p>
+
+
+
+<p>An example of an entire <code>Accept-Language</code> header is shown below.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+Accept-Language: en, en-GB;q=0.8, hi;q=0.7
+</pre>
+
+
+<p>This is equivalent to having the value <code>en;q=1,en-GB;q=0.8,hi;q=0.7</code>.</p>
+
+
+
+<h4>Server-side Extraction</h4>
+
+
+
+<p>On the server side, the framework parses the header and automatically populates the <code>UserLanguages</code> property of the request object. The type of <code>UserLanguages</code> is <code>string[]</code>, and its entries are sorted in descending order by the quality factor. In the example above, the language tag en is the first entry, and hi is the last entry.</p>
+
+
+
+<p>Once the request language has been determined, the method checks if it is whitelisted in the allowedLanguages parameter. It first checks if the entire language tag and its subtag are present in the whitelist, or failing that, if the language tag alone is found. That way, if the application only supports French language localisation, but the request contains the tag fr-CA, the response is still localised to the French language, even though it does not contain Canadian region-specific date or number formatting.</p>
+
+
+
+<p>In spite of all this, if the method is unable to determine the preferred language from the request, it applies the culture that is currently active on the operating system.</p>
+
+
+
+<h4>Request Handling</h4>
+
+
+
+<p>The server matches the current culture of the thread fulfilling the request to a value from this array in order to process the request in a culture-aware manner. Currently this extends to temporal data, with scope for future support for UI string localisation, formatting of numerical data, units of measurement and iconography.</p>
+
+
+
+<p>The code to configure this for the current thread is written in an extension method on the <code>System.Web.HttpApplication</code> class.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+void SetLocale(this HttpApplication application, 
+    string culture = null, 
+    string uiCulture = null, 
+    bool setUiCulture = true, 
+    string allowedLocales = null)
+</pre>
+
+
+<p>This method is invoked from the <code>Application_BeginRequest</code> event handler, because the locale has to be set separately for each request. The <code>SetLocale</code> method is called directly from this event handler. The method is invoked without any parameters, which indicates that the preferred locale has to be inferred from the request headers.</p>
+
+
+
+<p>If the <code>Accept-Language</code> header is not present in the request, the method falls back upon the regional settings configured on the server to handle the request.</p>
+
+
+
+<p>The <code>Thread</code> class has two properties to set the culture.</p>
+
+
+
+<ol><li>CurrentCulture, which determines the writing system (LTR or RTL), calendar, string sorting and formatting of date and time strings.</li><li>CurrentUICulture, which determines the resource file used by the Resource Manager to localise the strings, icons and other non-code assets for the application.</li></ol>
+
+
+
+<p>This separation allows applications to be able to handle regional settings for data even if it does not support region-specific UI labels. The <code>SetLocale</code> method sets both properties to the same culture unless the value of <code>setUiCulture</code> is false.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-03T14:38:51+05:30">September 3, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-localisation/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1584" class="post-1584 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-domain-model/" rel="bookmark">Valknut &#8211; Domain Model</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The application centres around log entries. Every time you train, you create a log entry. The log entry stores the time when the training session was started and completed. The log entry contains a collection of sets. A set consists of one or more repetitions of a single exercise at a uniform intensity.</p>
+
+
+
+<p>All other entities in the domain model projects out from this central requirement.</p>
+
+
+
+<p>A set consists of an exercise and repetitions. Exercises are categorised by muscle groups. Hence there are exercises and categories.</p>
+
+
+
+<p>Sequences of sets are organised into a routine, which serve as a template for a training log.</p>
+
+
+
+<ol><li>Categories – A list of body muscle groups, which is used to classify exercises.</li><li>Exercises – A list of body activities for improved strength, conditioning, agility or endurance.</li><li>Repetitions – The number of times a complete motion of an exercise has to be executed.</li><li>Sets – A group of continuous, consecutive repetitions of the same exercise.</li><li>Routines – A collection of several sets of one or more exercises, to be performed sequentially.</li><li>Training Logs – A record of the date, time and duration when a particular routine was performed.</li></ol>
+
+
+
+<h3>Categories</h3>
+
+
+
+<p>Categories muscle groups in the body. This list is static and has no user-interface elements to modify its contents. It is created when the database for the application is initially created, and remains unchanged throughout its lifetime. The full list of categories included in Valknut is given below.</p>
+
+
+
+<ol><li>Abdominals</li><li>Abductors</li><li>Adductors</li><li>Biceps</li><li>Body</li><li>Calves</li><li>Chest</li><li>Forearms</li><li>Glutes</li><li>Hamstrings</li><li>Lats</li><li>Lower Back</li><li>Middle Back</li><li>Neck</li><li>Quadriceps</li><li>Shoulders</li><li>Traps</li><li>Triceps</li></ol>
+
+
+
+<p>Some fitness-training literature uses the term category to describe the the primary goal of the exercise. These systems consist of strength, hypertrophy, endurance, flexibility, balance, agility, speed, power and accuracy. This aspect is (partially) fulfilled in Valknut by the exercise property called type.</p>
+
+
+
+<h3>Exercises</h3>
+
+
+
+<p>An exercise has a name, a category and a type. Categories and types have been explained above. New exercises can be created at any time, but to delete an exercise, its entries from the routines and log entries must be remove manually beforehand.</p>
+
+
+
+<h3>Routines</h3>
+
+
+
+<p>A routine is a sequence template. It describes the desired initial structure of a training session as a series of exercises to be performed, the number of sets for each exercise, the intensity of the set, and the number of repetitions to be performed. Weights and repetitions for each set can differ in order to create straight, pyramid or reverse-pyramid patterns.</p>
+
+
+
+<h3>Training Log</h3>
+
+
+
+<p>The training log is a memo of the name of the workout, the sequence, intensity and repetitions of its component exercises, the date and time when it was performed and the duration it took.</p>
+
+
+
+<p>Routines serve as a template for a log entry. When a new entry is added to the training log, the sequence of exercises, the number of sets, the intensity of the exercise and the number of repetitions are copied from a previously created routine. But log entries do not retain any association with the routine. If the routine is modified after a log entry has been created, its modifications do not reflect on the log entry. Conversely, the sequence of exercises and sets in a log entry can be altered without affecting the routine from which it was created.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-03T13:39:00+05:30">September 3, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-domain-model/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1582" class="post-1582 post type-post status-publish format-standard hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/valknut-workout-tracking/" rel="bookmark">Valknut &#8211; Workout Tracking</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>Valknut is a workout tracking application. It is designed to keep logs about any kind of weighlifting activity, such as barbell training, bodyweight training or dumbbell workouts.</p>
+
+
+
+<p>The original motivation for this project was to serve as a personally tailored replacement to commercial offerings.</p>
+
+
+
+<h3>History</h3>
+
+
+
+<p>The initial product idea germinated in the year 2016 as a means to store personal health information safely on an individual desktop computer, away from prying eyes. To that end, the application never considered the possibility of multiple simultaneous users, authentication, or non-local persistence. Each individual user would store their own records in their personal file, which would be protected by the user&#8217;s own encryption key. The project was rather unimaginatively titled Fit Net.</p>
+
+
+
+<p>After remaining shelved for a very long time, I picked it up again in 2020 to breathe some life back into it. Among other things, I changed it into a web application since that was a platform I knew well by then, and renamed it to a much more distinguished Valknut, invoking imagery of Norse mythology, Viking warriors and Valhalla.</p>
+
+
+
+<figure class="wp-block-image size-large is-style-default"><img loading="lazy" width="520" height="200" src="https://notadesigner.com/wp-content/uploads/2021/01/valknut-logos.png" alt="" class="wp-image-1609"/><figcaption>Does a workout even count if you don&#8217;t feel at the threshold of Valhalla by the time it&#8217;s complete?</figcaption></figure>
+
+
+
+<h3>Project Status</h3>
+
+
+
+<p>The product is in what I call functionally usable state. It provides all necessary features to capture, store, retrieve, edit and delete the most essential facets of a weightlifting regimen. A basic summary report has been implemented.</p>
+
+
+
+<figure class="wp-block-image size-large is-style-default"><img loading="lazy" width="520" height="303" src="https://notadesigner.com/wp-content/uploads/2021/01/screenshots-1.png" alt="" class="wp-image-1622"/></figure>
+
+
+
+<p>The architecture of the application still aspires to be amended into a desktop-based product someday.</p>
+
+
+
+<h3>Architecture</h3>
+
+
+
+<p>Valknut follows classical MVC architecture. The application is separated into three projects for the user interface, the querying engine and the entity model classes. The website project contains classes that implement the web controller interfaces and the views. The querying engine provides repositories, data-error abstractions and query and filtering operations. The models project is a class library to implement the entities that make up the domain model.</p>
+
+
+
+<p>The following links expand upon select architectural aspects of the product.</p>
+
+
+
+<p><a href="https://notadesigner.com/valknut-domain-model/" data-type="post" data-id="1584">Domain Model</a></p>
+
+
+
+<p><a href="https://notadesigner.com/valknut-localisation/" data-type="post" data-id="1586">Localisation</a></p>
+
+
+
+<p><a href="https://notadesigner.com/valknut-validation/" data-type="post" data-id="1590">Validation</a></p>
+
+
+
+<p><a href="https://notadesigner.com/valknut-view-models/" data-type="post" data-id="1594">View Models</a></p>
+
+
+
+<p><a href="https://notadesigner.com/valknut-json-serialization/" data-type="post" data-id="1597">JSON Handler</a></p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-09-02T12:35:00+05:30">September 2, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/valknut-workout-tracking/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1566" class="post-1566 post type-post status-publish format-standard hentry category-software-engineering category-technique tag-optimisation tag-performance tag-sql">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/keeping-things-fast-for-large-n/" rel="bookmark">Keeping Things Fast for Large n</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>Some years ago, we had customers reporting poor network response time when fetching content from the server. Our product was not anywhere near being wildly popular, and the number of records in the database were still counted in tens of thousands. Even our puny instance was able to cache the entire database into memory. Not just a single table or the results of a few queries. The entire database could be cached in RAM. So the slowdown probably wasn&#8217;t caused by something in the database. All customers reported more or less similar latency, irrespective of their geographical locations or internet service providers or time of the day. That also ruled out network problems.</p>
+
+
+
+<p>So I rolled up my sleeves and began investigating.</p>
+
+
+
+<p>One of the features of this product was that while it used sequential 128-bit integers for the primary key columns, the data retrieval was done with a shorter 5 character identifier, called a short-code. The short-code was also unique, but made up of fewer characters for legibility when users passed links around. The short-code wasn&#8217;t appropriate for a primary key column though, as its randomness would cause too much index fragmentation.</p>
+
+
+
+<p>The short-code was generated by hashing the primary key value using the MD5 algorithm, and truncating it to the first 5 characters of the result. If there was a collision…well nobody had thought about that back then. It was one of the subtle bugs that would come back to trouble us years later. But that&#8217;s another story.</p>
+
+
+
+<p>Someone had decided to implement this feature in the application code. When a content link was required, it was computed using .NET cryptography libraries and the result embedded into a URL string template for the user to share. The hashed value was not stored in the database, even though it was going to remain the same every time. And we would be paying heavily later for this oversight.</p>
+
+
+
+<p>Now since the application had no way to identify the record directly by its short-code, the developers had to come up with a Rube Goldberg-esque contraption to retrieve it again. For this, they fetched the ID column for all the content records, ran the MD5 function on each row, truncated the result and compared it to the value given in the incoming request, until a match was found. The CS101 guys already know where we are getting at with this approach. Since everything is fast for small n, this technique worked flawlessly on the developers&#8217; own computers. It was only when the application was deployed to production, and stayed there for a few months, that the performance bottlenecks began to show up.</p>
+
+
+
+<p>Locating the bug itself was easy. I set up a network trace using WireShark, inspecting the queries between the application and the database server, and promptly proceeded to fall of the chair in disbelief.</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://www.notadesigner.com/wp-content/uploads/2020/06/unoptimised.png"><img loading="lazy" width="800" height="375" src="https://www.notadesigner.com/wp-content/uploads/2020/06/unoptimised.png" alt="" class="wp-image-1567" srcset="https://notadesigner.com/wp-content/uploads/2020/06/unoptimised.png 800w, https://notadesigner.com/wp-content/uploads/2020/06/unoptimised-768x360.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></a></figure>
+
+
+
+<p>After excluding essential communications such as handshakes and authorisation, the application was still receiving almost half a megabyte of data, split into 400 packets, for a table containing only 31,000 rows. All this activity before it could even begin looking for a match.</p>
+
+
+
+<p>This was going to require some re-engineering to fix.</p>
+
+
+
+<p>Due to unrelated reasons, our goal was only to reduce the amount of data being received from the database server with zero changes in the public API or modifications to the database tables. We could only change the application code and deploy a new build. This code was written to use ADO.NET and inline queries to perform data operations. So changing its behaviour was going to be relatively easy.</p>
+
+
+
+<p>The first thing was to assemble a query that could generate the MD5 of an integer.</p>
+
+
+
+<pre class="wp-block-preformatted">SELECT HASHBYTES('MD5', CAST([Article].[Id] AS CHAR(36))) AS [Hash]
+FROM [Article]
+WHERE [Article].[Id] = '6BA1CE84-FDB1-EA11-8269-C038960D1C7A';</pre>
+
+
+
+<p>Since the HASHBYTES function in T-SQL works only with char, nchar or binary data, the uniqueidentifier had to be cast into a fixed-width char. The output of this function was like so.</p>
+
+
+
+<pre class="wp-block-preformatted">-- 0x704E87BA59EB6F930C020E5D6DA6B444</pre>
+
+
+
+<p>This hash was converted into a string by using the CONVERT function, and finally truncated to the first 5 characters, resulting in the output shown below.</p>
+
+
+
+<pre class="wp-block-preformatted">SELECT LEFT(
+            CONVERT(
+                CHAR(32),
+                HASHBYTES(
+                    'MD5',
+                    CAST([Article].[Id] AS CHAR(36))
+                ), 2), 5) AS [Hash]
+FROM [Article]
+WHERE [Article].[Id] = '6BA1CE84-FDB1-EA11-8269-C038960D1C7A';</pre>
+
+
+
+<pre class="wp-block-preformatted">-- 704E8</pre>
+
+
+
+<p>Cool!</p>
+
+
+
+<p>Now came the retrieval by the short-code. The hash-computation query was nested inside another simple select query.</p>
+
+
+
+<pre class="wp-block-preformatted">SELECT *
+FROM
+(
+    SELECT [Article].[Id],
+           [Article].[Name] AS [ArticleName],
+           LEFT(CONVERT(CHAR(32), HASHBYTES('MD5', CAST([Article].[Id] AS CHAR(36))), 2), 5) AS [Hash]
+    FROM [Article]
+) [Article_]
+WHERE [Article_].[Hash] = '704E8';</pre>
+
+
+
+<p>This was executed against the database and measured again using WireShark.</p>
+
+
+
+<figure class="wp-block-image size-large"><a href="https://www.notadesigner.com/wp-content/uploads/2020/06/optimised.png"><img loading="lazy" width="800" height="375" src="https://www.notadesigner.com/wp-content/uploads/2020/06/optimised.png" alt="" class="wp-image-1568" srcset="https://notadesigner.com/wp-content/uploads/2020/06/optimised.png 800w, https://notadesigner.com/wp-content/uploads/2020/06/optimised-768x360.png 768w" sizes="(max-width: 800px) 100vw, 800px" /></a></figure>
+
+
+
+<p>The results were remarkably different, but not at all unexpected. Only 882 bytes of data were transferred between the database and the application, and of that, 630 bytes were the query string going into the database server. The only record the server now returned was 252 bytes long, and required no further processing in the application.</p>
+
+
+
+<p>There was still had a lot of processing going on in the database itself, which was still ripe for optimisation. Storing the short-code in the table permanently and indexing the column would improve the product&#8217;s performance even further.</p>
+
+
+
+<p>But for that moment, I was king of the world.</p>
+
+
+
+<p><em>This story has been altered slightly to protect the guilty and gloss over irrelevant details. The performance bottleneck was made much worse by nested loops (yay, quadratic growth!) and suboptimal data types.</em></p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2020-06-23T17:15:57+05:30">June 23, 2020</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/keeping-things-fast-for-large-n/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1447" class="post-1447 post type-post status-publish format-standard hentry category-technique tag-asp-net tag-c tag-programming">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark">Runtime Resource Authorisation in ASP.NET MVC</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The Authorize attribute is a feature of the ASP.NET MVC framework that programmers learn early on. While it is a good out of the box solution for general cases, it doesn&#8217;t work well for dynamic authorisation. Take the HTTP request shown below.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+GET /posts/edit/12 HTTP/1.1
+Host: www.example.com
+</pre>
+
+
+<p>In colloquial MVC, this requests the <code>PostsController</code> to retrieve the contents of the post with ID 12 and display them in a form. The <code>Authorize</code> attribute does not determine if the currently logged in user has been granted editing rights for that specific post. At best, operations are allowed based on roles or claims, which still becomes an all or nothing situation. Either an individual user can edit all posts, or none at all.</p>
+
+
+
+<p>Finer-grained control over individual resources for each user in the system requires a custom solution.</p>
+
+
+
+<p>The system described below eschews the <code>Authorize</code> attribute entirely, and chooses to instead use filters in the ASP.NET request pipeline. It imposes the restriction that the name of the resource identifier parameter should always be well-known, such as <code>id</code>. Since the default route already follows this convention, this usually isn&#8217;t a problem.</p>
+
+
+
+<h3>Identifying the What</h3>
+
+
+
+<p>The first piece of the puzzle is a custom action filter called <code>SecuredAttribute</code>. This class inherits from <code>System.Attribute</code> and is applied to methods. Any controller action method that is marked with this attribute identifies as a sensitive access point that requires some kind of screening procedure before being invoked.</p>
+
+
+
+<p>But this attribute only identifies the method. It does not perform any kind of screening on incoming requests. This is also why it doesn&#8217;t inherit from any of the more higher-level attributes from the MVC framework, such as <code>ActionFilterAttribute</code>.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class SecuredAttribute : Attribute
+{
+}
+</pre>
+
+
+<p>The <code>SecuredAttribute</code> is used by applying it to the top of the controller method that needs runtime screening.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class AdminController : Controller
+{
+    [Secured]
+    public IActionResult Edit(int id)
+    {
+        …
+    }
+}
+</pre>
+
+
+<h3>Implementing the How</h3>
+
+
+
+<p>The screening is performed by a class that implements <code>IActionFilter</code>. There can be multiple screening filters, and they are queued up in the <code>GlobalFilterCollection</code> during <code>Application_Start()</code>. The screening process is performed before the action method is executed, by implementing it in the <code>OnActionExecuting</code> method of the filter class.</p>
+
+
+
+<div class="wp-block-group"><div class="wp-block-group__inner-container"><pre class="brush: csharp; title: ; notranslate" title="">
+public class AuthorizationFilter : IActionFilter
+{
+    … 
+    public void OnActionExecuting(ActionExecutingContext context)
+    {
+        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
+        if (null == secured)
+        {
+            return;
+        }
+
+        var user = context.HttpContext.User;
+        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
+        var id = Convert.ToInt32(param.Value);
+
+        // Invoke a service to check if the request should be allowed
+        var isAllowed = securityService.IsAllowed(user, id);
+        if (!isAllowed)
+        {
+             context.Result = new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+        }
+    }
+}
+</pre></div></div>
+
+
+
+<p>The filter looks for the <code>[Secured]</code> attribute. If the method being invoked doesn’t have the attribute, the filter immediately returns and lets the method execution proceed. If the attribute is found, the filter performs a screening procedure to determine if the request should be allowed or not. It may use a injected service class or even a third-party API to perform this action.</p>
+
+
+
+<p>Since the attribute is only identifying the method, it remains simple. Discrete behaviours can be attached to the same action method, that can also be dependent on the request context (e.g. invocation through web vs. API) while maintaining a clean separation of concerns.</p>
+
+
+
+<p>Some of these techniques are shown below.</p>
+
+
+
+<h3>Extending Beyond Simple Authorisation</h3>
+
+
+
+<p>The method attribute can be leveraged for performing other cross-functional requirements, which are tangent to authorisation. The secured method may require an audit trail.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class AuditTrailFilter : IActionFilter
+{
+    public void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+        var secured = filterContext.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
+        if (null == secured)
+        {
+            return;
+        }
+
+        // Invoke a service to log the method access
+        Logger.Info(…);
+    }
+}
+</pre>
+
+
+<p>The authorisation and audit trail filters can coexist and are fired independently. They use the same marker to identify the methods, but perform widely different tasks with different resources at their disposal. <code>AuditTrailFilter</code> can be programmed to log requests to secured location in one store and all other requests into another store, while <code>AuthorizationFilter</code> always allows requests to unsecured locations.</p>
+
+
+
+<p>Another example is to return different responses to the client based on its type. When a request comes from a browser, its Accepts header is set to <code>text/html</code>, while an API client such as a SPA or a mobile app sets it to <code>application/xml</code> or <code>application/json</code>. The <code>WebAuthorizationFilter</code> class returns the access-denied error as a HTML view, which the browser displays as a user-friendly error page.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class WebAuthorizationFilter : IActionFilter
+{
+    … 
+    public void OnActionExecuting(ActionExecutingContext context)
+    {
+        // Return if a non-API request is received
+        var acceptTypes = HttpContext.Current.Request.AcceptTypes;
+        if (!acceptTypes.Contains(&quot;text/html&quot;))
+        {
+            return;
+        }
+
+        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
+        if (null == secured)
+        {
+            return;
+        }
+
+        var user = context.HttpContext.User;
+        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
+        var id = Convert.ToInt32(param.Value);
+
+        // Invoke a service to check if the request should be allowed
+        var isAllowed = securityService.IsAllowed(user, id);
+        if (!isAllowed)
+        {
+            context.Result = new ViewResult()
+            {
+                ViewName = &quot;AccessDenied&quot;,
+            }
+        }
+    }
+}
+</pre>
+
+
+<p>The <code>ApiAuthorizationFilter</code> class, on the other hand, returns a HTTP status code 403 in the response. The API client generates an appropriate error view on the client-side.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class ApiAuthorizationFilter : IActionFilter
+{
+    … 
+    public void OnActionExecuting(ActionExecutingContext context)
+    {
+        // Return if a non-API request is received
+        var acceptTypes = HttpContext.Current.Request.AcceptTypes;
+        if (!acceptTypes.Contains(&quot;application/xml&quot;))
+        {
+            return;
+        }
+
+        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
+        if (null == secured)
+        {
+            return;
+        }
+
+        var user = context.HttpContext.User;
+        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
+        var id = Convert.ToInt32(param.Value);
+
+        // Invoke a service to check if the request should be allowed
+        var isAllowed = securityService.IsAllowed(user, id);
+        if (!isAllowed)
+        {
+             context.Result = new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
+        }
+    }
+}
+</pre>			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2019-12-05T21:51:00+05:30">December 5, 2019</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1371" class="post-1371 post type-post status-publish format-standard hentry category-construction tag-c tag-practical-design-patterns tag-singleton">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/" rel="bookmark">Practical Design Patterns in C# &ndash; Singleton</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The Singleton pattern is one of the simplest and most commonly used in practice. Its purpose is to restrict a class to only one instance throughout the lifetime of the application. This is desirable in cases when there is one or only a few resources available and access has to be controlled.</p>
+
+
+
+<p>A common use case is resource pools to objects which are expensive to acquire. Some examples are a database connection pool or a local cache of the results of a network operation. The object pool itself is a design pattern worthy of its own detailed discussion. In this article, however, I will limit myself to describing its implementation as a singleton.</p>
+
+
+
+<h3>Single-threaded, Lazy Initialisation</h3>
+
+
+
+<p>The first example is the simplest possible implementation of this pattern. This version is not thread-safe, but can use lazy initialisation in a single-threaded scenario. If there are multiple threads attempting to invoke the Instance property of this class, many or all of them will cause an invocation of the constructor. In this case, it has to be eagerly initialised.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public sealed class ConnectionPool
+{
+    private static ConnectionPool _instance;
+
+    private ISet&lt;IDbConnection&gt; _released;
+
+    private ISet&lt;IDbConnection&gt; _acquired;
+
+    private ConnectionPool()
+    {
+        // Initialise the collection objects
+    }
+
+    public IDbConnection Acquire()
+    {
+        // Retrieve a free connection instance
+        // Instantiate a new one if there are no free instances
+        // Move the connection instance into the acquired collection
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        // Remove the connection from the acquired collection
+        // Add it into the released collection
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            if (null == _instance)
+            {
+                _instance = new ConnectionPool();
+            }
+
+            return _instance;
+        }
+    }
+}
+</pre>
+
+
+<p>This could be an acceptable solution for simple situations where multiple threads are not involved. But with multi-threaded applications being more or less the norm in a language like C#, the actual number of situations where this code will be safe to use are very limited. This is truer than ever before with the advent of opaque multi-threading as supported by TPL. In my experience, it is safer to err on the side of caution and not use this implementation in production.</p>
+
+
+
+<p>In multi-threaded situations, the risk of invoking the constructor multiple times can be mitigated by calling the Instance property immediately on startup before launching any additional threads, i.e. by using eager initialisation. But the cost of eager initialisation and high risk of introducing synchronisation bugs in the future makes it an unattractive option.</p>
+
+
+
+<p>If you need thread-safety in your singleton, you need a different solution. The simplest way is to use a lock.</p>
+
+
+
+<h3>Multi-threaded, Lazy Initialisation</h3>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public sealed class ConnectionPool
+{
+    private static ConnectionPool _instance;
+
+    …
+
+    private readonly object padlock = new { };
+
+    private ConnectionPool()
+    {
+        // Initialise the collection objects
+    }
+
+    public IDbConnection Acquire()
+    {
+        …
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        …
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                if (null == _instance)
+                {
+                    _instance = new ConnectionPool();
+                }
+
+                return _instance;
+            }
+        }
+    }
+}
+</pre>
+
+
+<p>The drawback to this technique is that every invocation of Instance has to acquire a lock. This is an unnecessary performance hit after an instance has been created once, because the property does not modify the instance ever afterwards.</p>
+
+
+
+<p>Again, this is not incorrect. The code will perform exactly according to the pattern specification, and can be used if bleeding-edge performance is not an absolute must-have or the instance is not being referenced frequently. In practice, locking impacts performance by a single-digit percentage.</p>
+
+
+
+<h3>Lock-free, Multi-threaded, Lazy Initialisation</h3>
+
+
+
+<p>But faster it can get. The advantages of ease in maintaining and reasoning about lock-free code are a bonus.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class ConnectionPool
+{
+    private static readonly ConnectionPool _instance = new ConnectionPool();
+
+    static ConnectionPool()
+    {
+    }
+
+    private ConnectionPool()
+    {
+    }
+
+    public IDbConnection Acquire()
+    {
+        …
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        …
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+}
+</pre>
+
+
+<p>The above example contains a static constructor along with the regular instance constructor. The static constructor itself does not require any code. But as a side-effect of its presence in the code, the type initialiser method of this class is only executed when a static or instance field is accessed for the first time, or when a static, instance or virtual method of the type is invoked for the first time.</p>
+
+
+
+<p>This is a by-product of the language design and <a href="http://www.csharpindepth.com/articles/BeforeFieldInit">described in detail by Jon Skeet on his website</a>. The runtime runs this check before creating a new type, and guarantees that this executes only once. This implementation leverages this behaviour to constrain the class instantiation to just once, only when the Instance property of the class is invoked for the first time.</p>
+
+
+
+<p></p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1349" class="post-1349 post type-post status-publish format-standard hentry category-construction tag-c tag-practical-design-patterns tag-prototype">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# – Prototype</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The prototype pattern simplifies creating multiple instances of a class by copying the contents of an existing instance to create a new one. This alleviates the cost of any expensive computation or I/O being performed in the constructor, or simply copies over the state of an existing object to the new instance for further modification.</p>
+
+
+
+<p>This article demonstrates a document editor that has the ability to make and display multiple concurrent snap shots of a document. Each can be reviewed and edited individually and compared with each other. The process begins with a single document in memory, which the user can edit before cloning. When a draft is ready, the user duplicates the object by invoking a command from the UI. This copies the contents of the document over into a new instance. The document also contains a date and time field which is modified to match the time when the duplicate is created.</p>
+
+
+
+<p>Both versions now exist in memory simultaneously and the user can cycle between them as needed.</p>
+
+
+
+<p>For this, there must be a way for the document class to be duplicated. The .NET framework already defines an interface called System.ICloneable with a method called Clone() for just this purpose. The caveat of this technique is that the return type of the Clone() method is an object, thus requiring type-casting of the object instance which is returned. It is quite easy to declare a generic version of the ICloneable interface to avoid this problem.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface ICloneable&lt;T&gt;
+{
+    T Clone();
+}
+</pre>
+
+
+<p>The Document class implements this interface as shown below. This snippet also shows the CreatedOn and Text properties that the Document class exposes.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+[Serializable]
+public class Document : ICloneable&lt;Document&gt;
+{
+    private int _version = 0;
+
+    public Document()
+    {
+        CreatedOn = DateTime.UtcNow;
+        Text = string.Empty;
+        _version = 1;
+    }
+
+    public DateTime CreatedOn
+    {
+        get;
+        private set;
+    }
+
+    public string Text
+    {
+        get;
+        set;
+    }
+
+    public Document Clone()
+    {
+        Document clone;
+
+        using (var stream = new MemoryStream())
+        {
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            var self = stream.ToArray();
+
+            stream.Seek(0, SeekOrigin.Begin);
+            clone = (Document)formatter.Deserialize(stream);
+            clone.CreatedOn = DateTime.UtcNow;
+            clone._version++;
+        }
+
+        return clone;
+    }
+}
+</pre>
+
+
+<p>When the document instance has to be duplicated, the client calls the Clone method to create a whole new instance of the object based on the contents of the original.</p>
+
+
+
+<p>The implementation of the Clone method itself is highly specific to the language and platform in use. The example above demonstrates a straightforward binary copy by serializing the class into a byte array, then immediately serializing it back into a new object instance. This mandates that the Document class be decorated with the Serializable attribute.</p>
+
+
+
+<p>This technique works in C# and other .NET languages which implement the BinaryFormatter and MemoryStream APIs.</p>
+
+
+
+<p>Another technique to create a duplicate is calling the constructor and setting each property and field individually. Since the Clone method is a part of the same class, it has access to the private members of the new instance as well.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+private Document Clone()
+{
+    var clone = new Document();
+    clone.CreatedOn = DateTime.UtcNow;
+    clone.Text = Text;
+    clone._version++;
+
+    return clone;
+}
+</pre>
+
+
+<p>Finally, the .NET Framework provides a built-in method called MemberwiseClone, which creates a shallow object copy.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+private Document Clone()
+{
+    var clone = (Document)base.MemberwiseClone();
+    clone.CreatedOn = DateTime.UtcNow;
+    clone._version++;
+
+    return clone;
+}
+</pre>
+
+
+<p>All methods shown above create a shallow copy of the object. In order to create a deep copy, each reference type that the Document class uses must implement a similar Clone method which is invoked when the instance has to be cloned. This can quickly escalate out of hand if these classes further reference other types. For this reason, this pattern is best applied to classes that use value types only.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text">Posts navigation</h1>
+		<div class="nav-links">
+
+						<div class="nav-previous"><a href="https://notadesigner.com/page/2/" ><div class="arrow">&larr;</div>Older posts</a></div>
+			
+			
+		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+		
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['gutter'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

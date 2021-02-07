@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
+<title>objective-c | Not a Designer</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://localhost:81/wp/xmlrpc.php" />
+
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="http://localhost:81/wp/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="http://localhost:81/wp/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; objective-c Tag Feed" href="http://localhost:81/wp/tag/objective-c/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/tags/15" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 5.6.1" />
+
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="http://localhost:81/wp/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+</head>
+
+<body class="archive tag tag-objective-c tag-15">
+<div id="page" class="hfeed site">
+		<header id="masthead" class="site-header" role="banner">
+		<div class="site-branding">
+			<h1 class="site-title"><a href="http://localhost:81/wp/" title="Not a Designer" rel="home">Not a Designer</a></h1>
+			<h2 class="site-description"></h2>
+		</div>
+
+		<nav id="site-navigation" class="navigation-main" role="navigation">
+			<h1 class="menu-toggle">Menu</h1>
+			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+
+			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
+<ul class="sub-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
+<ul class="sub-menu">
+	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<section id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+		
+			<header class="page-header">
+				<h1 class="page-title">
+					objective-c				</h1>
+							</header><!-- .page-header -->
+
+						
+				
+<article id="post-615" class="post-615 post type-post status-publish format-standard hentry category-software-engineering tag-language-primer tag-objective-c tag-programming">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/objective-c-primer-for-c-developers/" rel="bookmark">Objective-C Primer for C# Developers</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<h3>A Different C with Classes</h3>
+<p>Objective-C is a different take at an object oriented implementation of C, and a rather elegant one at that. The language supports all the principles of the paradigm &#8211; inheritance, encapsulation and polymorphism. It is a strict superset of C, which is a fancy way of saying that all C code is already valid Objective-C code, and C code can be freely interspersed within an Objective-C program (and yes, you also have to deal with pointers). Objective-C compilers can compile code from both languages without trouble. While the language is staple among developers using OS X and iOS, it is perfectly suited for general purpose programming as well. However, thinking in Objective-C requires getting used to its unique syntax and an eclectic model of programming that infuses Smalltalk-style messaging, C-style statements and modern OO constructs such as protocols, understanding the role of the language runtime, and getting your head around slightly different terminology.</p>
+<p>And since large Objective-C applications are typically written for Apple&#8217;s ecosystem, being able to converse in Cocoa is not half bad a thought. This primer assumes you already know terminology such as classes, objects and methods. With that in mind, we move on to introducing the Objective-C syntax for writing class-based code.</p>
+<h3>Classes and Instances</h3>
+<p>A class is split into two files &#8211; a header and an implementation. Let&#8217;s begin with a Shape class that we will flesh out and use through the rest of this document.</p>
+<pre>// Shape.h
+@interface Shape
+
+@end</pre>
+<p>This file declares the public interface of the Shape class. The language loves its &#8216;@&#8217; symbols, so get used to them. You&#8217;ll be using them more often than you think (just one of the eccentricities of the language). The implementation is stored in Shape.m and is written as follows.</p>
+<pre>// Shape.m
+#import "Shape.h"
+
+@implementation Shape
+
+@end</pre>
+<div style="float: left; width: 200px; margin: 0 10px 0 0; border: 1px solid; padding: 10px; font-size: 0.8em;">Note: Separating the interface from the implementation might seem like a lot of effort, but it is one of the traits that Objective-C inherits from C. The advantages and disadvantages of this approach have been debated in many texts and discussion forums, which I encourage you to read. They are interesting in their own right and provide a valuable background to getting under the skin of the language.</div>
+<p>This is very similar to how one might structure files in C.</p>
+<p>You need to instantiate an object in order to do anything with it. However, the language does not have traditional constructors like in C#. Instead, the base NSObject class implements two separate methods for object allocation and initialization &#8211; alloc and init.</p>
+<pre>Shape *s = [[Shape alloc] init];</pre>
+<p>This statement allocates memory for an instance of the Shape class and initializes the object. It can also be simplified into a single message.</p>
+<pre>Shape *s = [Shape new];</pre>
+<p>In both the above examples, alloc and new are class methods (also known as static methods). The init method is also implemented by the base class, but it is an instance method. Classes can override or implement their own versions of initializers.</p>
+<h4>A look into the past</h4>
+<p>The history of this two-step construction can be traced back to the days of NeXTSTEP, when the language was still in its infancy. The tight memory constraints of the hardware at that time often necessitated memory pooling. By separating allocation from initialization, programmers were able to reuse preinstantiated objects after reinitializing them. The practice continues today because it leaves programmers free to create custom initializers for their classes while gaining the benefits of a pre-written, generic and performant allocation method.</p>
+<blockquote><p>New allocation methods are seldom created because the existing methods meet almost every need. However, one or more new initializers are created for almost every class. Due to the separation of allocation and initialization stages, initializer implementations only have to deal with the variables of new instances and can completely ignore the issues surrounding allocation.The separation simplifies the process of writing initializers. &#8211; <strong>Erik M. Buck and Donald A. Yacktman, Cocoa Design Patterns</strong></p></blockquote>
+<h3>Messages</h3>
+<blockquote><p><em>Procedural code gets information then makes decisions. Object-oriented code tells objects to do things.</em> &#8211; <strong>Alec Sharp</strong></p></blockquote>
+<p>Sending messages to objects imbibes the philosophy of tell, don&#8217;t ask as championed by Sharp. A message in Objective-C is identified by the enclosing brackets ([ and ]) around the message name and the receiver. Messages are sent by clients to instances or classes. Objects contain methods to handle those messages. Messages have a method type &#8211; either instance or class (denoted by the &#8211; and + symbols, respectively). Message signatures must declare a return type (or void if they return nothing), and the types of all parameters.</p>
+<div id="attachment_658" style="width: 510px" class="wp-caption aligncenter"><img aria-describedby="caption-attachment-658" loading="lazy" class=" wp-image-658  " title="method-declaration-syntax" src="http://www.notadesigner.com/wp-content/uploads/2013/09/method-declaration-syntax.png" alt="" width="500" height="100" /><p id="caption-attachment-658" class="wp-caption-text">The syntax of a method declaration</p></div>
+<p>All messages are declared in the class interface. The definitions are stored in the implementation.</p>
+<pre>// Shape.h
+@interface Shape
+
+- (void)scaleX:(double)x Y:(double)y;
+
+- (void)rotate:(double)radians;
+
+- (void)translateX:(double)x Y:(double)y;
+
+@end</pre>
+<pre>// Shape.m
+#import "Shape.h"
+
+@implementation Shape
+
+- (void)scaleX(double)x Y:(double)y {
+    // Scale this object
+}
+
+- (void)rotate:(double)radians {
+    // Rotate this object
+}
+
+- (double)translateX:(double)x Y:(double)y {
+  // Translate this object
+}
+
+@end</pre>
+<p>Finally, the object is instantiated and called upon by a client class.</p>
+<pre>#import "Shape.h"
+
+...
+Shape *rect = [[Shape alloc] init];
+[rect translateX:20 Y:30];
+...</pre>
+<p>Messages are invoked upon an object instance through the unique double square-bracketed syntax of the language. The first token is the name of the object, the second the name of the message being passed. Each subsequent token is separated by a colon and denotes a parameter to be passed to the message.</p>
+<h4>Dissecting Messages</h4>
+<p>Dynamic messaging is one of the primary enhancements of Objective-C over plain C. Rather than being bound statically at compile time, messages are resolved at runtime by the language runtime. The message itself is identified by a selector, which is a null-terminated string that contains the name of the method. The selector points to a C function pointer that implements the method. An Objective-C call&#8230;</p>
+<pre>[rect translateX:20 Y:30];</pre>
+<p>is compiled into&#8230;</p>
+<pre>objc_msgSend(rect, @selector(translateX:Y:), 20, 30);</pre>
+<p>While the internals of how a message is sent are not essential, some overview is useful when writing and debugging code.</p>
+<p>In the example above, a Shape instance is initialized and its reference stored in the variable &#8216;rect&#8217;. It is then sent a message to move it 20 pixels on the X axis and 30 pixels on the Y axis. The message selector to effect the move is the string &#8220;translateX:Y:&#8221;. When the language runtime attempts to send the message to the object, it uses the entire string as the selector.</p>
+<p>It is understandably easy to misinterpret the selector name to be a method name along with its named parameters. But it becomes clear once you read the objc_msgSend function call that Objective-C does not work this way.</p>
+<p>A programmer can dispatch any message to an object. While the compiler will identify and warn of a potentially unsupported message, the program itself will compile. While this does seem error-prone, there is a method (heh heh) behind the madness.</p>
+<p>Methods can be added or replaced on instances at runtime. The compiler cannot possibly identify which messages are going to be supported by an object when the program executes, due to which it allows sending messages which are not defined in the scope of the class interface.</p>
+<p>When the program is executed, the runtime introspects the object to see if it can handle the message or not. If the object receives a message it cannot handle, the system will generate a runtime exception and your program will stop.</p>
+<h3>Declared Properties</h3>
+<p>Declared properties correspond to auto-implemented properties in C#. Unless explicitly overridden, the public interface to properties is automatically generated by the compiler.</p>
+<pre>// Shape.h
+...
+@interface Shape : NSObject
+@property double width;
+@property double height;
+...
+@end</pre>
+<p>This is the bare minimum that you need to write in order to implement properties in your class instance. The compiler automatically generates accessors and mutators for you. An accessor has the same name as the property name (width and height in this case) and the mutator is the property name capitalized and prefixed with the word &#8216;set&#8217; (setWidth and setHeight).</p>
+<pre>// Shape.m
+@implementation Shape
+@synthesize width;
+@synthesize height;
+...
+@end</pre>
+<p>To access the properties, clients can use the following syntax.</p>
+<pre>// Client.m
+...
+NSLog("width: %d, height: %d", [rect width], [rect height]);
+[rect setWidth:30];
+[rect setHeight: 22];
+...</pre>
+<p>Properties can also be accessed through an alternative dot syntax.</p>
+<pre>// Client.m
+...
+rect.width = 20;
+NSLog("height: %d", rect.height);
+...</pre>
+<h4>Property Attributes</h4>
+<p>Property declarations can be embellished in the interface with attributes in order to control how they work. There is no change required in the implementation.</p>
+<pre>// Shape.h
+...
+@property (readonly) double width;
+...</pre>
+<p>The readonly attribute makes the property only viewable. The compiler flags any attempts to call setWidth as errors and stops the compilation process. While property attributes have many subtleties that must be thoroughly understood in order to master the feature, beginners can go with the most general guidelines.</p>
+<h5>Storage</h5>
+<ul>
+<li>Use assign for scalar properties (native numeric types, structs, enums).</li>
+<li>Use retain for object types (NSString, NSNumber, etc.). Creates a new reference to the object instance and releases the old one.</li>
+<li>Use copy for object types. Creates a new instance based on the properties of the old one. Releases the old instance.</li>
+<li>Use strong for object types that increment reference counts. This is the recommended technique for objects at the top of a hierarchy to reference their child objects. This ensures that the child objects will not be cleared as long as the parent object exists.</li>
+<li>Use the weak attribute for references to parent objects from child objects. If the parent object is destroyed, its reference in the child object is automatically cleared off and prevents memory leaks.</li>
+</ul>
+<h5>Mutability</h5>
+<ul>
+<li>The readonly attribute makes a property immutable. Outside classes cannot modify its value. The class itself also cannot make any changes through the property mutator (since there isn&#8217;t one), but can change the value of the underlying field directly.</li>
+<li>The readwrite attribute makes a property mutable by outside classes by auto-generating the mutator and accessor methods.</li>
+</ul>
+<h5>Concurrency</h5>
+<ul>
+<li>Non-threadsafe code can get away with using nonatomic properties.</li>
+<li>Use atomic for properties that must work in a multithreaded environment.</li>
+</ul>
+<h5>API</h5>
+<ul>
+<li>The getter attribute explicitly declares the name of the accessor method. Use this to override the default name of the accessor.</li>
+<li>The setter attribute works similarly to declare the name of the mutator method.</li>
+</ul>
+<h3>Instance Variables</h3>
+<p>A field in C# corresponds to instance variables (or ivars) in Objective-C. An instance variable exists throughout the lifetime of the object and is accessible within the scope of the objects methods &#8211; public and private. Outside classes cannot access an ivar directly.</p>
+<pre>// Shape.h
+@interface Shape : NSObject {
+    int _width;
+    int _height;
+}
+...
+@end</pre>
+<p>The compiler can automatically synthesize ivars for properties. The auto-generated variable has the same name as the property, prefixed by an underscore (_). This can be overridden in the implementation file using the @synthesize statement to link them to explicitly declared variables.</p>
+<pre>// Shape.m
+#import "Shape.h"
+
+@implementation Shape @synthesize width = myWidth; ... @end</pre>
+<h3>Protocols</h3>
+<p>Protocols correspond to interfaces in C#. They are header files which declare a list of method signatures. Developers can declare that a class implements those methods in the header file. The compiler checks this and flags any classes that do not implement those methods.</p>
+<p>Classes that implement all methods declared in a protocol fully are said to conform to it.</p>
+<pre>// FilledShape.h
+@protocol FilledShape
+
+- (void)setFill(Fill *)fill;
+
+- (void)clearFill;
+
+@end</pre>
+<p>The Shape class can declare that it conforms to the FilledShape protocol by following its class name with the name of the protocol.</p>
+<pre>// Shape.h
+#import "FilledShape.h"
+
+@interface Shape : NSObject &lt;FilledShape&gt; ... @end</pre>
+<p>Classes can implement as many protocols as required. Each protocol name should be separated by a comma within the two angled brackets (&lt;&gt;).</p>
+<pre>// Shape.h
+#import "FilledShape.h"
+#import "OutlinedShape.h"
+
+@interface Shape : NSObject &lt;FilledShape, OutlinedShape&gt;
+...
+@end</pre>
+<p>Objective-C protocols offer the option of declaring required and optional methods. This makes it possible to write classes that implement only some, but not all methods of a certain interface. While this again does seem like a code smell to many programmers, it does come in handy given the dynamic nature of Objective-C.</p>
+<p>All methods declared in a protocol are public. Protocols cannot define private methods.</p>
+<h3>In Closing</h3>
+<p>Like many other languages, the syntax and many features of Objective-C are fairly easy to grasp. Apple&#8217;s excellent implementation of the Foundation Framework, UIKit and Cocoa frameworks make it easy even for novices to write significant applications without much effort. But like everything else, true mastery comes only with practice and an understanding of the underlying runtime that powers the language.</p>
+<p>Additionally, while OOP is great for increasing productivity, developers must also take time out to grasp the C underpinnings that form the foundation of Objective-C. This knowledge not only makes for a well-rounded education of the language, but also opens up the ability to harness the raw power of C when necessary, which is an important benefit of Objective-C.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2013-09-28T14:44:39+05:30">September 28, 2013</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/objective-c-primer-for-c-developers/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+			
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+<div id="secondary" class="widget-area footer-widget-area" role="complementary">
+		<div class="first footer-widgets">
+		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
+</div>
+		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="http://localhost:81/wp/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="http://localhost:81/wp/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="http://localhost:81/wp/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="second footer-widgets">
+		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div></aside>	</div>
+	
+		<div class="third footer-widgets">
+		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+</aside>	</div>
+	</div><!-- #secondary -->
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep">  &#8226; </span>
+			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-40138748-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>

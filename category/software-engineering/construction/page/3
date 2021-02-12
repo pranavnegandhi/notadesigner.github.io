@@ -42,7 +42,7 @@
 	<ul class="sub-menu">
 		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="http://localhost:81/wp/on-reading-for-programmers/">On Reading for Programmers</a></li>
 		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="http://localhost:81/wp/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
-		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="http://localhost:81/wp/whats-in-a-name/">What’s in a Name?</a></li>
 		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
 		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
 	</ul>
@@ -68,11 +68,22 @@
 </li>
 <li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
 <ul class="sub-menu">
-	<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
-	<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
-	<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
-	<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
-	<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+	<li id="menu-item-1649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1649"><a>Creational</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+		<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+		<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+		<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+		<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1650"><a>Structural</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1651" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1651"><a href="http://localhost:81/wp/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+		<li id="menu-item-1699" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1699"><a href="http://localhost:81/wp/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+		<li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1653"><a href="http://localhost:81/wp/practical-design-patterns-in-c-proxy/">Proxy</a></li>
+	</ul>
+</li>
 </ul>
 </li>
 <li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="http://localhost:81/wp/about/">About Pranav Negandhi</a></li>
@@ -92,400 +103,141 @@
 
 						
 				
-<article id="post-836" class="post-836 post type-post status-publish format-standard hentry category-construction">
+<article id="post-1349" class="post-1349 post type-post status-publish format-standard hentry category-construction tag-c tag-practical-design-patterns tag-prototype">
 	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/" rel="bookmark">A Guide to Effective Version Control</a></h1>
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# – Prototype</a></h1>
 	</header><!-- .entry-header -->
 
 		<div class="entry-content">
-		<p>We have come a long way since 2008 when I wrote <a title="A Gentle Introduction to Version Control – Part I" href="http://www.notadesigner.com/a-gentle-introduction-to-version-control-part-i/">this introductory article about version control systems</a>. Their rising popularity in the past few years is a notable sign of maturity in the software development community. Whereas they were once a bastion of only &#8220;serious&#8221; development operations, now even app developers working alone use them regularly.</p>
-<p>In this article, I talk about how a team can use a version control system to its advantage by describing a preferred way to store the files in the repository and some processes to complement the structure.</p>
-<p>There are myriad ways of organizing a version control repository. It is a sophisticated file system, after all. A well-structured repository can be a valuable asset to a software team by creating a clearly defined workspaces for programmers, opening up the opportunity to create a continuous integration pipeline, and standardizing deployment.</p>
-<h3>Repository Layout</h3>
-<p>In my preferred layout, <strong>the trunk is used for the main development line</strong>. In addition, <strong>branches are created for releases</strong> and feature sandboxes. This style of organization is loosely based on trunk-based development.</p>
-<h4>The Trunk</h4>
-<p>All the primary development of the project occurs in this directory. The trunk is further organized into sub-directories for every project that constitutes the final product. For example, a product might consist of separate web and desktop components. Or it might have a dependency on a separate static or dynamic library. The exact arrangement of this is determined by the programmers and release engineers working together. All these projects reside side-by-side in the trunk.</p>
-<p>A feature or bug fix is considered open until the code has not been committed to the trunk. Hence, all developers have access to this directory and must<strong> make it a regular part of their daily work</strong>.</p>
-<p><img loading="lazy" class="aligncenter size-full wp-image-851" src="http://www.notadesigner.com/wp-content/uploads/2015/10/trunk.png" alt="trunk" width="400" height="200" /></p>
-<h4>Maintenance Branches</h4>
-<p>Once the product reaches a milestone and is deemed ready for release, the release engineer is responsible for generating a binary and deploying the product. But the first step is to <strong>make a maintenance branch</strong>. This branch is a snapshot of the trunk that can be used by developers to provide bug-fixes to an already deployed product without accidentally releasing new features.</p>
-<p>It is named according to whatever convention the team decides (I prefer a numeric x.y scheme).</p>
-<p><img loading="lazy" class="aligncenter wp-image-852 size-full" src="http://www.notadesigner.com/wp-content/uploads/2015/10/branch.png" alt="branch" width="400" height="200" /></p>
-<p>If bugs are discovered in the product post release, they are patched in the trunk and merged into the active maintenance branch. Other developers, meanwhile, can safely continue adding new features on the trunk without inadvertently bringing them into the current deployed versions.</p>
-<p>A bug-fix release is made out of the maintenance branch after a bug is patched.</p>
-<p>It is important that <strong>bug fixes should originate in the trunk and later be merged into the branch</strong> rather than the other way around. If the fix is made in the branch and the developer forgets to merge it back into the trunk, it can cause a regression later down the line. By patching in the trunk, the developer uses the process to automatically ensure that patches exist in both places.</p>
-<h4>Tags</h4>
-<p>Release binaries should always be made out of a clean export from the repository. But which revision should one export? If you&#8217;re creating a maintenance branch, you could use its HEAD revision. But you&#8217;re out of luck if you need to generate a previously released build again after subsequent edits have been made to the branch. Unless you tagged the branch before generating a binary.</p>
-<p><strong>A tag is a branch that everyone agrees to never edit</strong>. It is given a unique name from the rest of its siblings. My preference is to go the x.y.z scheme, where the x and y components of the name come from the maintenance branch from which it derives its lineage.</p>
-<p><img loading="lazy" class="aligncenter wp-image-853 size-full" src="http://www.notadesigner.com/wp-content/uploads/2015/10/tag.png" alt="tag" width="400" height="200" /></p>
-<p>The z component of the tag name is set to 0 when the first maintenance branch is made. This number is incremented whenever subsequent tags are made out of the maintenance branch.</p>
-<h3>Using the Repository</h3>
-<p>Once the structure is ready, some processes need to be put in place in order to utilize it. The typical developer role has it easy &#8211; keep committing error-free code into the trunk, and make sure the working directory is updated from the trunk as often as possible.</p>
-<h4>Feature Releases</h4>
-<p>A new feature release begins when one of the managers green-lights it. The repository is locked down temporarily and <strong>a maintenance branch and a tag are created from the head revision of the trunk</strong>. These two copies are named according to the version convention in place for the project.</p>
-<p>This maintenance branch supersedes all previously generated branches, which may even be deleted from the repository. The repository is then unlocked and developers can go back to making commits in the trunk.</p>
-<h4>Maintenance</h4>
-<p>When bugs are discovered in a released product, the developers investigate in the trunk and attempt to fix it there. If found and fixed, they notify the release engineer who then cherry-picks the relevant commits and <strong>merges them into the current maintenance branch</strong>.</p>
-<p><strong>The maintenance branch is tagged</strong> after it is deemed ready for release. The binary generation and deployment process remains the same &#8211; clean export from the newly created tag, followed by compilation and deployment.</p>
-<p>If a bug cannot be located in the trunk, the developer may have to look for it in the maintenance branch and fix it if it is found there. In this case, the bug fix may be merged back into the trunk if deemed necessary.</p>
-<h4>Release Generation</h4>
-<p>The release engineer&#8217;s work is not done yet. The release binaries are yet to be created from the newly created tag. For this, the tag is exported from the repository into an empty directory. This is important so that no unnecessary files are accidentally added into the binaries. This step cannot be emphasized enough.</p>
-<p><em>All binaries must be generated from a clean and complete export from the repository.</em></p>
-<p>Generating binaries from partially exported directories runs a high risk of including incorrect or outdated files into the binary. This inaccuracy can be the source of impossible-to-reproduce bugs or regressions. At the minimum, it is a sign of a poorly managed process.</p>
-<p>Once the binary is generated, it is packaged to its final consumption form &#8211; an archive or installer for distribution &#8211; then deployed to wherever it is needed (such as a file server or web server).</p>
-<p>The binaries and installers may be added into the repository for posterity.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2015-10-30T19:03:27+05:30">October 30, 2015</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/a-guide-to-effective-version-control/" rel="bookmark">&#8734;</a></span>
-			</div>
-
-	
 		
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+<p>The prototype pattern simplifies creating multiple instances of a class by copying the contents of an existing instance to create a new one. This alleviates the cost of any expensive computation or I/O being performed in the constructor, or simply copies over the state of an existing object to the new instance for further modification.</p>
 
-			
-				
-<article id="post-531" class="post-531 post type-post status-publish format-standard hentry category-construction tag-usability tag-user-interface">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/" rel="bookmark">Nothing Is So Simple That it Cannot Be Difficult</a></h1>
-	</header><!-- .entry-header -->
 
-		<div class="entry-content">
-		<p>Long years in the software industry have conditioned me to dread last-minute feature additions. Something as innocuous as a mailer subscription form can turn into a minefield of security and privacy concerns if done incorrectly. In the book Peopleware, writers Tom DeMarco and Timothy Lister have expressed how managing software projects is less of a technical challenge and more of a social interaction maze. Keeping clients happy while still being able to convince them about the intensive behind-the-scenes work behind the simplest of features takes a lot of people-skill.</p>
-<p>Incomplete or inaccurate specifications can complicate the problem even further. This can be a result of the specifications being created by inexperienced people, or people with little or no understanding of UX or software. This becomes particularly insidious because the presence of a specification (even if it is only superficial) lulls stakeholders into thinking that the project is under control. But all sorts of bad things begin to happen once the rubber meets the road. Designers work towards an incomplete layout. Engineers make an incomplete product, which results either in customer dissatisfaction or time and cost overruns.</p>
-<p>A seemingly simple feature such as pagination requires quite a bit of programming just to make it work at all. More code has to be written to consider common cases such as representation of and navigation through large data sets. Usability issues have to be taken into account, such as device specifics to handle different input systems such as touch screens, keyboards and mouse clicks.</p>
-<p>Product requirements often begin with a very vague idea of what is required. &#8220;A blog application needs comments&#8221;, says the product manager. So the engineering team gets to work and churns out a comment form, and a display mechanism. But nobody expected Jeff Atwood to deploy the software on his website, which regularly gets 3000 comments in the first 10 minutes of a post being put up, and nobody can now open his website any more because the database server choked on retrieving so many comments for a million simultaneous visitors (yes, even if they are flat discussions).</p>
-<p>After Jeff posts a rant on his website, the product manager eats his hat and gets back to writing a specification for the comment pagination, as he should have to begin with. This is his design from the first draft of the specification.</p>
-<pre>Previous | <strong>1</strong> | 2 | 3 | 4 | 5 | Next</pre>
-<p>The engineering lead looks at the design and notices that it is still incomplete. The Previous and Next buttons will not do anything useful if the visitor is already on the first or last page. So those links will have to be disabled as necessary. The revised design looks like this.</p>
-<pre><span style="color: #c0c0c0;">Previous</span> | <strong>1</strong> | 2 | 3 | 4 | 5 | Next</pre>
-<pre>Previous | 1 | 2 | 3 | 4 | <strong>5</strong> | <span style="color: #c0c0c0;">Next</span></pre>
-<p>But what happens when there are more than 5 pages of comments on the post? If they keep increasing the page count, eventually it will have to be wrapped to the next line or made to run off the screen, either of which looks very ugly.</p>
-<pre><span style="color: #c0c0c0;">Previous</span> | <strong>1</strong> | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | Next</pre>
-<p>Somebody suggests letting users type in the page number in a text field that also doubles up as the current page indicator.</p>
-<pre>First | <input style="width: 50px;" type="text" /> | Last</pre>
-<p>While this is easy, it is not very user friendly. How many pages of comments do we have in all? What happens if the visitor enters too large a number or a non-numeric value? Visitors on mobile devices probably will not be very pleased to have to type very frequently.</p>
-<p>After yet another round of discussion, the team finally decides that visitors are probably not interested in viewing every comment on the blog. Yet, showing the total number of comments would be desirable for Jeff because it is a measure of his popularity. Fitness models measure bicep circumference. Geeks measure blog comments.</p>
-<p>Somebody suggests the following user interface, which seems to fit the bill.</p>
-<pre><strong>1</strong> | 2 | 3 | 4 | 5 ... 274</pre>
-<pre>1 ... 65 | <strong>66</strong> | 67 | 68 ... 274</pre>
-<pre>1 ... 270 | 271 | 272 | 273 | <strong>274</strong></pre>
-<p>The first and last page links are always displayed. The rest of the links are dedicated to displaying the current page number and a range of values around it. For the end user &#8211; the website visitor &#8211; the control is very simple and easy to learn at a glance.</p>
-<p>Of course, this entire exercise is moot if it is done without proper usability testing with relevant target audiences in mind. Formal testing methods are often inaccessible to small teams, but hallway tests can still provide feedback, and results in a much better product.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2012-12-21T18:19:25+05:30">December 21, 2012</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/nothing-is-so-simple-that-it-cannot-be-difficult/" rel="bookmark">&#8734;</a></span>
-			</div>
 
-	
-		
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
 
-			
-				
-<article id="post-48" class="post-48 post type-post status-publish format-standard hentry category-construction tag-actionscript">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/director-done-right-why-adobe-must-promote-air/" rel="bookmark">Director Done Right &#8211; Why Adobe Must Promote AIR</a></h1>
-	</header><!-- .entry-header -->
 
-		<div class="entry-content">
-		<p>When I leapt headfirst into multimedia development a decade ago, there was just one go-to product for all interactive needs – Macromedia Director. With origins in the vastly successful MacroMind VideoWorks application, Director had a strong pedigree in multimedia production. Regular updates of the product over more than a decade had converted the original VideoWorks into a development environment with an object-oriented programming language of its own called Lingo. It also supported external plug-ins for added features, ran on Windows and Macintosh computers and supported all media formats of the day – plain text, images, sound and video. The greatest plus point of Director was its ability to create a projector out of the Director file, which was an executable file that bundled the player and the binary file along with any plugins that were used. The projector was guaranteed to work on any system without requiring any additional libraries (except maybe audio and video codecs).</p>
-<h3>A new age, a new champion</h3>
-<p>Then the whole web thing happened and Director could not keep pace any more. Macromedia shipped Xtras to support more media formats such as hypertext and Flash, and to make network requests. They also shipped the Shockwave browser plug-in to run a Director file in the browser. But it was no match for the Flash plug-in, which was a fraction of the download. This weighed heavily in the dial-up era back then. Chinks in the development environment began to take their toll. The biggest flaw of Director was that it bundled media and scripts in its working file into a single binary blob and saved it to disk. This meant that version control tools could not diff the scripts against previous revisions. Developers could not collaborate and work upon the same project without leaping through significant loops. The files would sometimes get damaged and become unreadable if there were power failures or other system breakdowns while the file was being saved. There was no easy way to create and reuse libraries. And the eccentric syntax of the Lingo language was a black mark on its developers, who could never gain any repute among people who used ‘real’ programming languages with curly braces.</p>
-<p>When Flash began to gain a foothold in the market because of its reach and ease of use, multimedia developers began to move on to the new platform in a steady trickle over the years, until Director became a niche production environment. The situation gave Macromedia a chance to right the problems of Director on a new platform, blank as a clean slate. And they capitalized upon it in a stellar manner. ActionScript quickly morphed from a simple scripting language with a handful of constructs, to a full-blown development environment that supported complex object hierarchies, most OOP principles, a rich API for various tasks ranging from media control to network access, all packaged inside a runtime that was tiny and already available on most of the internet-enabled computers. And it had curly braces.</p>
-<h3>A web of entanglement</h3>
-<p>Yet, the biggest drawback of Flash was its sandbox that prevented developers from doing anything beyond the boundaries of the browser. Local file system access was out. Native nested windows were out. Drag and drop was not available. Launching native processes was out. Projector files were slightly more forgiving and allowed read-only local file access and limited spawning of new processes. But this was nowhere close to the unrestricted freedom offered by Director projectors. This in itself was not bad most of the time. But when more serious functionality was needed, ActionScript developers had to depend upon another programming language to get the job done. To be fair, Macromedia, and now Adobe have always done their best to make cross-language interop as easy as possible. We have come a long way from the getURL() calls required in ActionScript 1 to today’s ExternalInterface API. But a dependency meant having to support yet another codebase.</p>
-<h3>Breaking free</h3>
-<p>It was heartening then to hear of the Adobe AIR announcement some years ago. Finally, Flash applications could be written to take advantage of local facilities of the system along with the existing media and internet API’s. It was now possible to read and write local files in a meaningful manner. Network utilities could be a lot more proactive and efficient. Applications could update themselves transparently and could support richer desktop paradigms such as taskbar icons and drag-and-drop interactions.</p>
-<p>There still isn’t complete unfettered access to the system, the way Director projectors could. But this limitation will remain due to the different security scenario today. Being able to sell AIR as a secure replacement for web applications is highly desirable for Adobe in the face of HTML 5 and the advancing capabilities of browsers. But combined with all the other benefits that Flash offers, along with the reduced development time over other desktop development environments, and instant cross-platform compatibility, this is an insignificant bump.</p>
-<p>The only drawback that AIR has over Director is that it requires a separate download of the AIR runtime. At 11 MB, it does not add a significant cost in today’s age. But it is a deal breaker for users without administrative rights. There really should be a way to package the runtime and the application package into a single executable.</p>
-<h3>HTML is not the only future</h3>
-<p>There still are naysayers who predict that the Flash platform is dead. All that is needed is wider acceptance and support for HTML 5. But with support for HTML and JavaScript built into AIR (with WebKit, no less), Adobe already has that base covered. And the web is not the do-all and end-all of computing. While having a social networking application online makes sense, personal accounting or mail applications are better kept locally for security and accessibility reasons. And desktop applications have the unique ability to morph into hybrids that work locally as well as with remote services, which is better in some cases than having a web-only application. Most people already use a hybrid application – their mail client. New mails can be downloaded and read when connected online, while still being able to access downloaded emails when working offline.</p>
-<p>Sure the W3C is working on writing specifications for similar functionality with HTML 5. But who said choice is bad? Given the sorry state of browser standardization even today, it is more likely that each browser publisher will implement the spec in some half-assed manner that causes subtle differences between them and require someone to invent a shim to fix those incompatibilities. And HTML 5 does not address all the features that AIR supports, including hardware accelerated 3D and filter effects, native menus, file extension registration, drag and drop, advanced sound and video API’s and windowing support beyond the most rudimentary.</p>
-<p>In spite of all the advantages that it has, AIR has failed to make major inroads into desktop development. Blame lies squarely on Adobe for failing to promote it well enough. Other than ActionScript developer circles, there rarely is any mention or knowledge of the platform. They really ought to pick up some steam on that front and corner the market the way Director and Flash have done in their time.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2010-03-03T11:09:08+05:30">March 3, 2010</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/director-done-right-why-adobe-must-promote-air/" rel="bookmark">&#8734;</a></span>
-			</div>
 
-	
-		
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+<p>This article demonstrates a document editor that has the ability to make and display multiple concurrent snap shots of a document. Each can be reviewed and edited individually and compared with each other. The process begins with a single document in memory, which the user can edit before cloning. When a draft is ready, the user duplicates the object by invoking a command from the UI. This copies the contents of the document over into a new instance. The document also contains a date and time field which is modified to match the time when the duplicate is created.</p>
 
-			
-				
-<article id="post-61" class="post-61 post type-post status-publish format-standard hentry category-construction tag-version-control">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark">A Gentle Introduction to Version Control &#8211; Part II</a></h1>
-	</header><!-- .entry-header -->
 
-		<div class="entry-content">
-		<h3>Using SVN</h3>
-<p>Subversion, or svn, is a very popular version control tool, used by some of the best software teams in the world. The fact that it is free and open source, in addition to being really, really good may have something to do with that. Like most good version control tools, Subversion too is split into two components – a server and a client.</p>
-<p>You don’t need to worry about the server usually because it is set up on a system far out of your reach. If you are located in North America or Europe, it means that your company has outsourced the Subversion hosting somewhere in South America or India. Funnily enough, good companies in Bangalore (or Pune) usually outsource their Subversion hosting to a really, really good outfit in LA (read, Dreamhost). Silly. But that’s how the global economy works, and which is why it is more fun to be a software developer than to be an economist.</p>
-<p>Coming back to our topic&#8230;</p>
-<p>What you will use on a day-to-day basis is the Subversion command-line client (or TortoiseSVN, a GUI replacement).</p>
-<p><strong>Disclaimer:</strong> This article touches briefly upon how to get started with the client, without worrying about details. If you are a svn alpha-geek who dreams about hosting your own repository someday or whatever else you svn alpha-geeks dream about, and find my guide to be incomplete, don’t email me to write about the 10,542 variations in syntax that the svn client allows. I know you adore your svn client. But this article is targeted at people who don’t as much as <em>know</em> about svn, much less adore it.</p>
-<p>Once the client is installed, you can launch a command prompt session by typing cmd into the Run dialog box in Windows and hitting enter. Once on the command prompt, type the following and hit enter.</p>
-<pre lang="dos">C:\svn help</pre>
-<p>Detailed help is also available for some of the more oft-used commands by modifying the help command like so –</p>
-<pre lang="dos">C:\svn help import</pre>
-<h3>Import</h3>
-<p>You can use the import command to <strong>add files from your computer into the repository for the first time</strong>, and hence, begin versioning them.</p>
-<pre lang="dos">C:\svn import trunk/ file:///F:/projects/notadesigner/trunk/web/index.htm -m “Initial import”</pre>
-<h3>Checkout</h3>
-<p>If you are a new developer on a team that has been using Subversion for a while, you can use the checkout command <strong>to retrieve the source code from the repository onto your hard drive</strong>.</p>
-<pre lang="dos">C:\cd projects\notadesigner\trunk
-C:\projects\notadesigner\trunk\web&gt;svn checkout https://notadesigner.com/svn/trunk</pre>
-<p>Note how the active directory is first changed to the path where the files have to be stored, and then the checkout command is called.</p>
-<p>Alternatively, you can also specify the path to the working folder as a parameter to the checkout command.</p>
-<pre lang="dos">C:\svn checkout https://notadesigner.com/svn/trunk C:\projects\notadesigner\trunk</pre>
-<h3>Update</h3>
-<p>This is probably the next most used command in the Subversion client. Millions of developers across the globe run this command every morning to retrieve the latest version of files from the repository into their working folder. Running this command makes sure that you are running abreast of everyone else on your team, by bringing the latest changes they have committed to the repository onto your machine (and likewise, your latest changes get updated on their machines).</p>
-<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn update</pre>
-<p>Like true Zen, it is a deceptively simple command. Just two words that do you a whole lot of good.</p>
-<h3>Add / Delete</h3>
-<p>These commands do just what they say. They make changes to your working copy, and schedule the same change to the repository when you commit your changes later.</p>
-<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn add locations.htm
-C:\projects\notadesigner\trunk\web&gt;svn delete directions.htm
-C:\projects\notadesigner\trunk\web&gt;svn commit –m “Added new locations. Deleted directions because we’re spread all over the city and I didn’t know where to send them.”</pre>
-<h3>Copy / Move</h3>
-<p>Copy and move work exactly as they do on your operating system, except that they are targeted at the repository.</p>
-<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn copy jobs.htm https://notadesigner.com/svn/trunk -m “Adding new jobs page”</pre>
-<p>Move requires a separate commit to implement your changes into the repository.</p>
-<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn move jobs.htm jobs/index.htm
-C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into separate folder”</pre>
-<h3>Revert</h3>
-<p>This command rolls back any changes made to a file in your working folder, and restores it to the version on the repository.</p>
-<pre lang="dos">C:\projects\notadesigner\trunk\web&gt;svn revert contact.htm</pre>
-<h3>Using TortoiseSVN</h3>
-<p>TortoiseSVN lets you perform all actions that the svn command-line client lets you, without messing with the command-line. If you are new to Subversion, it’s a compelling replacement to the regular svn client.</p>
-<h3>Finally, DON’T Do This</h3>
-<p>I have found a shockingly large number of people doing silly things while using a VCS. I am tired of telling them not to do it and so if you abuse a VCS in any of the following ways and I catch you at it, I’ll make you write this list on a blackboard that screeches, for at least a week&#8230;without ear muffs.</p>
-<p>It’s not that difficult to avoid them. So listen up.</p>
-<h4>DON’T make a copy of your working folder to make edits</h4>
-<p>If you are checking out files from the repository in a working folder and then making a copy of that folder to make edits because you don’t want to overwrite your old files, you’re plain crazy and haven’t understood the most basic premise of version control.</p>
-<p>The repository already has a copy of your files which compile correctly. If you make a mistake, revert your files and you’re back where you began from.</p>
-<h4>DON’T make a copy of your folder in the repository before editing your files</h4>
-<p>A more severe case of the previous symptom is when a developer copies the entire trunk in the repository into trunk-2 (effectively creating a branch) and making edits to that.</p>
-<p>If you are still unable to understand how the trunk is managed, branching is definitely out of bounds for you. Get back in line.</p>
-<h4>DON’T delete old files from the repository before adding the edited working copy</h4>
-<p>The whole point of version control is to have a history of your file over time. If you delete the file from your repository, you destroy that history. If you do it every time, somebody who looks at your file six months down the line will have no idea about the pedigree of your file, the bugs that have been fixed or the new code that has been added to it.</p>
-<h4>DON’T forget to add comments when committing changes</h4>
-<p>You’ve got to be really lazy to not add comments at the time of committing your changes. Vague comments such as “updated file” are just as useless.</p>
-<p>It helps to be descriptive in the changelog because that’s the first place people go to find out what’s been cooking in your files. If you don’t tell them up front what you’ve been up to, they’ll just think that you’ve been messing up and saddle you with all the blame.</p>
-<h4>DON’T forget to add new files to the repository</h4>
-<p>This is a common mistake and can happen by even the most seasoned developers. But I’m writing it here to simply reinforce it that this should be avoided.</p>
-<h3>References</h3>
-<p>If you find this article doesn’t quite quench your thirst about version control systems or Subversion, you can learn more stuff by visiting the following websites.</p>
-<p><a href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a><br />
-&#8211; Colloquially referred to as the svn-book, this is the granddaddy of all Subversion books. Contains detailed explanations about the history of svn, repository and server setup and administration, detailed explanations about the acrobatic feats that the client lets you do, and if you’re really interested, a description of the C API’s that let you hook up svn with your own applications.</p>
-<p><a href="http://www.joelonsoftware.com/">http://www.joelonsoftware.com</a><br />
-– A delightful collection of extremely well-written and funny articles about computers, software and management by Joel Spolsky. This should be a must-read for every developer.</p>
-<p><a href="http://www.ericsink.com/scm/source_control.html">http://www.ericsink.com/scm/source_control.html</a><br />
-&#8211; Eric Sink is the founder of SourceGear, a company that specializes in selling version control software. You can’t get anybody better to write about version control.</p>
-<p><a href="http://betterexplained.com/articles/a-visual-guide-to-version-control/">http://betterexplained.com/articles/a-visual-guide-to-version-control/</a><br />
-&#8211; Kalid Azad maintains this brilliant blog about all things mathematical and computer-sciencey. It’s a refreshing view to everyday complexities that you take for granted.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2008-02-23T12:54:31+05:30">February 23, 2008</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark">&#8734;</a></span>
-			</div>
 
-	
-		
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+<p>Both versions now exist in memory simultaneously and the user can cycle between them as needed.</p>
 
-			
-				
-<article id="post-59" class="post-59 post type-post status-publish format-standard hentry category-construction tag-version-control">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/a-gentle-introduction-to-version-control-part-i/" rel="bookmark">A Gentle Introduction to Version Control &#8211; Part I</a></h1>
-	</header><!-- .entry-header -->
 
-		<div class="entry-content">
-		<p>In our rush to Web 2.0 our lives, we seem to have forgotten to imbibe the essentials. Everyone is guilty of that – from fruit farmers using artificial fertilizer, to politicians driving nations to war, to developers not using version control.</p>
-<p>Shocking, really.</p>
-<p>I do not have much pull with the fruit farmers or international diplomats. But as a fellow developer, it’s my duty to bring back the lost software teams of today into the fold. Forget ‘enterprisey architectures’ for a while and look at the basics. In this article I will introduce you to the wholesome goodness of Subversion, a fantastic version control tool.</p>
-<h3>Essentially Missing</h3>
-<p>Version control is an essential tool in any software team’s kit. In spite of that, I regularly run into senior developers with years of experience who have never used it. Which is, to be honest, quite frustrating because then their working directory tends to look like this –</p>
-<p>Product-latest</p>
-<p>Prodcut-new-12-march (yes, it is misspelled)</p>
-<p>Product-new-mar-15</p>
-<p>&#8230;<a title="The Best-est Version Control" href="http://thedailywtf.com/Articles/The_Best-est_Version_Control.aspx">and the disaster repeats till eternity</a>.</p>
-<p>If you notice, this directory structure is already functions as a basic version control repository, in that it separates successive updates to the product, but without all the extra goodies that a true version control tool would let you have such as comments, labels and developer history.</p>
-<h3>Towards the Light</h3>
-<p>Whenever I have had the good fortune of introducing developers to version control – even with rogue tools like Visual SourceSafe – they knew this was the elixir they were missing for so long. It takes some work to actually drive it into their system. But once there, it stays on forever.</p>
-<p>The single biggest advantage all of them cite is how easy it becomes to <strong>synchronize files between team members</strong>. Because everybody is updating their files every morning from the same location, it becomes easier to keep abreast with everyone’s changes.</p>
-<p>The next biggest advantage is <strong>the ability to roll back mistakes</strong>. If a file has not been checked in, simply revert it back and the VCS replaces it with the latest one in the repository. Even after the file has been checked in, a previous version of the file can be retrieved from the repository and used to restore the changes made.</p>
-<p>A side-effect of this feature is the ability to <strong>sandbox major changes</strong>. Rewriting core algorithms of your accounting product using that new design patterns book? (Hah!) Do it in a local working copy, test it and then <s>throw it away when you discover you suck at patterns</s> check it in after it works fine.</p>
-<p>As a project’s requirements evolve, files mutate into completely different beasts from their initial incarnation. By logging a note about each change made to the file in the VCS, developers are able to <strong>track the project history</strong> in the long term.</p>
-<p>Another nice feature of the tracking tools is that they help <strong>assign ownership</strong> by logging the person who has made a change. This proves to be quite helpful when giving credit, or more frequently, blamestorming.</p>
-<p>And the greatest relief that a VCS provides to all stakeholders is the <strong>daily backup that occurs</strong> <strong>automatically </strong>when developers check-out the latest changes every morning. It’s rare for a team using VCS to lose a lot of data due to hard drive failures.</p>
-<h3>The VCS Dictionary</h3>
-<p>Let’s begin with learning the terminology used when dealing with version control.</p>
-<h4>Parts of a VCS</h4>
-<ul>
-<li>Repository: The database storing the files. The repository is usually expected to be on a central location such as a network server, although it can exist on locally stored directories.</li>
-<li>Server: The computer storing the repository. If the repository is stored on a directory on your own computer, then your computer is called the server although there is no network access involved.</li>
-<li>Client: The computer connecting to the repository. Your computer.</li>
-<li>Working Set/Working Copy: Your local directory of files, where you make changes.</li>
-<li>Trunk/Main: The primary location for code in the repository. This is the in-progress version of code, with untested or partially implemented features. Feature-complete snapshots are stored in a branch folder.</li>
-</ul>
-<h4>Common Terms</h4>
-<ul>
-<li>Revision: What version a file is on (v1, v2, v3, etc.).</li>
-<li>Head: The latest revision in the repository.</li>
-<li>Commit Message: A short message entered at the time of committing a file, describing what was changed.</li>
-<li>Changelog/History: A list of changes made to a file since it was created.</li>
-</ul>
-<h4>Basic Actions</h4>
-<ul>
-<li>Add: Put a file into the repository for the first time.</li>
-<li>Check-out: Download a file from the repository.</li>
-<li>Commit/Check-in: Upload a file to the repository. The file gets a new revision number, and people can “check out” the latest one.</li>
-<li>Update/Sync: Synchronize your files with the latest from the repository. This lets you grab the latest revisions of all files. Do this at least once a day.</li>
-<li>Revert: Throw away your local changes and return to the latest version from the repository.</li>
-<li>Diff/Change/Delta: Finding the differences between two files. Useful for seeing what changed between revisions. This only works on text files (e.g. .as, .htm, .cs). Binary files (e.g. .psd, .fla, .doc) cannot be diffed.</li>
-</ul>
-<h4>Advanced Actions</h4>
-<ul>
-<li>Branch: Create a separate copy of a file/folder for private use (bug fixing, testing, etc). Branch is both a verb (”branch the code”) and a noun (”Which branch is it in?”).</li>
-<li>Merge: Apply the changes from one file to another, to bring it up-to-date. For example, you can merge features from one branch into another.</li>
-<li>Conflict: Occurs when two people edit the same file simultaneously. The first person to edit the file does not face any error. However, the file on the server is now out of sync with the file on the second person’s working folder. When he attempts to commit the file to the repository he gets a conflict.
-<p>Conflicts can be resolved for text files by manually selecting which lines of code to keep and which ones to discard.</p>
-<p>There is no way to resolve binary files. If there is a conflict in binary files, then the second person has to begin again by retrieving the latest file, and re-creating the changes made to it before the conflict occurred.</p>
-<p>To avoid conflicts on binary files, a user can lock the file before editing.
-</li>
-</ul>
-<ul>
-<li>Resolve: Fixing the changes that contradict each other and checking in the correct version.</li>
-<li>Locking: Flagging a file for exclusive use until it is committed again.</li>
-<li>Breaking the lock: Forcibly unlocking a file so you can edit it. It may be needed if someone locks a file and goes on vacation (or “calls in sick” the day Halo 3 comes out).</li>
-</ul>
-<h3>An Illustrated Example</h3>
-<p>Pop Candy is a Java developer who has just joined the team at Timeless Software. Her task is to <a title="Zawinski's Law" href="http://www.iwar.org.uk/hackers/resources/faq/jargon.htm#Zawinski's%20Law">add an email client to their product</a>. She <strong>creates a folder on her hard drive</strong> for the project, and proceeds to <strong>check out the files from the repository</strong>.</p>
-<p>Once she has the entire product code check out onto her hard drive, she compiles it and familiarizes herself with its features.</p>
-<p>Once she’s ready, and <a title="Painless Functional Specifications - Why Bother?" href="http://www.joelonsoftware.com/articles/fog0000000036.html">has read the spec</a>, she begins editing the first file. She adds a few more files to the project, compiles and tests. Makes a few changes, goes back and compiles and tests, and in no time at all, she has reached her first milestone. Her email client connects to the server and successfully <a title="Simple Mail Transfer Protocol Sample" href="http://en.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol#Sample_communications">handles the server’s response to HELO</a>.</p>
-<p>She feels she’s achieved quite a bit for the day and proceeds to add her changes to the repository. The first step is to <strong>select the new files</strong> she’s created and <strong>adding them to the repository</strong>. Then, she selects the new files, and the ones she’s modified and <strong>commits them </strong>all in a single operation. She remembers to <strong>enter a log comment</strong> that describes the change clearly. When the other developers come in the next day and <strong>update their working copies</strong>, they’ll see that Candy has begun working on the email client.</p>
-<p>The next day Candy is working on adding a rich text editor into the email client. She uses an off-the-shelf JavaScript library to do the job to save time. Smart!</p>
-<p>But when her team lead reviews it, he points out to her that the terms of license of this library conflict with those of their commercial product. Candy is grumpy because it took an entire day to integrate the editor. It was her fault, though. The spec clearly stated that no off-the-shelf library is to be used. So she has to go back and undo her changes. She <strong>deletes all the unversioned files</strong> in the project folder and proceeds to <strong>revert the edited files</strong> to their head version.</p>
-<p>A few days into development, as the email client begins adding bulk, the testers complain that the product itself seems to be very sluggish. Everybody scrambles to get their hands on <strong>the changelog</strong> on the date since when the testers noticed the slowdown.</p>
-<p>All fingers are pointed at Candy’s code for the moment, but the team lead defers any decision until he’s actually reviewed her commits on that particular day. He retrieves the files of the previous revision and runs them through the tests. On a whim, he decides to replace their in-house SMTP test server with the live email server.</p>
-<p>Luckily, it turns out that it was their testing SMTP server which was misbehaving. Instead of closing the connections on receiving QUIT, it continued to hold them. And the testers were the only ones to notice this because they sent the client through a gruelling 1,000,000 rounds of sending and receiving email.</p>
-<p>You now see how easy it is to manipulate readers into seeing from your viewpoint with a contrived example veiling your actual agenda.</p>
-<p>Oops!</p>
-<p>No, that’s not what I meant. The moral of this story is that it is always a good idea to use version control. Version control is mother’s love and apple pie. It is the cat’s whiskers and the bee’s knees. And you just gotta have it!</p>
-<p><a title="A Gentle Introduction to Version Control – Part II" href="http://www.notadesigner.com/a-gentle-introduction-to-version-control-part-ii/">Move on to part two here</a>.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2008-02-22T12:48:36+05:30">February 22, 2008</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/a-gentle-introduction-to-version-control-part-i/" rel="bookmark">&#8734;</a></span>
-			</div>
 
-	
-		
-	</footer><!-- .entry-meta -->
-</article><!-- #post-## -->
+<p>For this, there must be a way for the document class to be duplicated. The .NET framework already defines an interface called System.ICloneable with a method called Clone() for just this purpose. The caveat of this technique is that the return type of the Clone() method is an object, thus requiring type-casting of the object instance which is returned. It is quite easy to declare a generic version of the ICloneable interface to avoid this problem.</p>
 
-			
-				
-<article id="post-37" class="post-37 post type-post status-publish format-standard hentry category-construction">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark">Keeping Count II &#8211; A Tale of Many Stores</a></h1>
-	</header><!-- .entry-header -->
 
-		<div class="entry-content">
-		<p>In <a title="Keeping Count I – The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described Daryl’s experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about Daryl’s fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application “just like the Betty’s”.</p>
-<p>So he got down to work again. But Daryl now felt that writing inventory control wasn’t as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
-<p>This is what his base Inventory class looks like.</p>
-<pre lang="actionscript">class Inventory
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface ICloneable&lt;T&gt;
 {
-    function AddUnits(Units:Number)
+    T Clone();
+}
+</pre>
+
+
+<p>The Document class implements this interface as shown below. This snippet also shows the CreatedOn and Text properties that the Document class exposes.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+[Serializable]
+public class Document : ICloneable&lt;Document&gt;
+{
+    private int _version = 0;
+
+    public Document()
     {
-        m_units += Units;
+        CreatedOn = DateTime.UtcNow;
+        Text = string.Empty;
+        _version = 1;
     }
 
-    function RemoveUnits(Units:Number)
+    public DateTime CreatedOn
     {
-        m_units -= Units;
+        get;
+        private set;
     }
 
-    function PrintUnits()
+    public string Text
     {
-        print(“Remaining units: ” + m_units);
-    }
-}</pre>
-<p>Daryl adds a member variable called FunctionReference and a method called SetUnitConvertor() to this class, which accepts a function reference as a parameter.</p>
-<pre lang="actionscript">function SetUnitConvertor(ObjectReference:Object, FunctionReference:Function)
-{
-    m_unitConvertor = Delegate.create(ObjectReference, FunctionReference)
-}</pre>
-<p>Then he modifies the PrintUnits() method to use this function reference.</p>
-<pre lang="actionscript">function PrintUnits()
-{
-    print(“Remaining units: ” + m_unitConvertor(m_units));
-}</pre>
-<p>He copies the Inventory class into the project for Mr. Coton’s cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
-<pre lang="actionscript">class ClothStoreInventory extends Inventory
-{
-    function ClothStoreInventory()
-    {
-        super.SetUnitConvertor(this, ConvertUnitsToLength);
+        get;
+        set;
     }
 
-    function ConvertUnitsToLength(Units:Number)
+    public Document Clone()
     {
-        // Find the total length of cloth sold
-        return Units / 1000
+        Document clone;
+
+        using (var stream = new MemoryStream())
+        {
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(stream, this);
+            var self = stream.ToArray();
+
+            stream.Seek(0, SeekOrigin.Begin);
+            clone = (Document)formatter.Deserialize(stream);
+            clone.CreatedOn = DateTime.UtcNow;
+            clone._version++;
+        }
+
+        return clone;
     }
-}</pre>
-<p>And another class is added for Mr. Chiseller’s consultancy firm.</p>
-<pre lang="actionscript">class ConsultancyFirmInventory extends Inventory
+}
+</pre>
+
+
+<p>When the document instance has to be duplicated, the client calls the Clone method to create a whole new instance of the object based on the contents of the original.</p>
+
+
+
+<p>The implementation of the Clone method itself is highly specific to the language and platform in use. The example above demonstrates a straightforward binary copy by serializing the class into a byte array, then immediately serializing it back into a new object instance. This mandates that the Document class be decorated with the Serializable attribute.</p>
+
+
+
+<p>This technique works in C# and other .NET languages which implement the BinaryFormatter and MemoryStream APIs.</p>
+
+
+
+<p>Another technique to create a duplicate is calling the constructor and setting each property and field individually. Since the Clone method is a part of the same class, it has access to the private members of the new instance as well.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+private Document Clone()
 {
-    function ConvertUnitsToTime(Units:Number)
-    {
-        // Show the number of hours worked
-        Seconds = Math.floor(Units / 1000);
-        Minutes = Math.floor(Seconds / 60);
-        Seconds = Seconds % 60;
-        Hours = Math.floor(Minutes / 60);
-        Minutes = Minutes % 60;
-        return Hours + “:” + Minutes + “:” + Seconds;
-    }
-}</pre>
-<p>The result of this hoopla is that the base class will always call the formatting function from its inherited class (which would be quite impossible otherwise without using a messy callback system, or hard-coding the object reference into the base class, or (gasp!) event generation.</p>
-<p>“But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.”</p>
-<p>Well, that’s true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
+    var clone = new Document();
+    clone.CreatedOn = DateTime.UtcNow;
+    clone.Text = Text;
+    clone._version++;
+
+    return clone;
+}
+</pre>
+
+
+<p>Finally, the .NET Framework provides a built-in method called MemberwiseClone, which creates a shallow object copy.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+private Document Clone()
+{
+    var clone = (Document)base.MemberwiseClone();
+    clone.CreatedOn = DateTime.UtcNow;
+    clone._version++;
+
+    return clone;
+}
+</pre>
+
+
+<p>All methods shown above create a shallow copy of the object. In order to create a deep copy, each reference type that the Document class uses must implement a similar Clone method which is invoked when the instance has to be cloned. This can quickly escalate out of hand if these classes further reference other types. For this reason, this pattern is best applied to classes that use value types only.</p>
 			</div><!-- .entry-content -->
 	
 	<footer class="entry-meta">
 			<div class="entry-meta-date-links">
-		<time class="date" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time>
+		<time class="date" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time>
 				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark">&#8734;</a></span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/" rel="bookmark">&#8734;</a></span>
 			</div>
 
 	
@@ -495,27 +247,238 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 
 			
 				
-<article id="post-35" class="post-35 post type-post status-publish format-standard hentry category-construction">
+<article id="post-1287" class="post-1287 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-builder tag-c tag-practical-design-patterns">
 	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/keeping-count-i-the-candy-shop/" rel="bookmark">Keeping Count I &#8211; The Candy Shop</a></h1>
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/" rel="bookmark">Practical Design Patterns in C# &ndash; Builder</a></h1>
 	</header><!-- .entry-header -->
 
 		<div class="entry-content">
-		<p>Its been quite a while since I wrote about a serious programming-specific problem. In this two part series I will show you a popular database normalization method (don’t touch another database until you don’t grok that), and an alternative use for delegates. All code is written in Flash ActionScript and is purely illustrative.</p>
-<p>Betty Green runs a candy shop that is wildly popular with the neighbourhood kids. The sweets she sells are sold by weight or by piece, depending upon the type. For example, peppermints are sold by weight, while chocolate bars are sold by the number of bars purchased. Being a good manager, Betty also keeps a register to track the amount of items of each type that she’s sold. At the end of the day she totals up the register and updates her inventory for the next day.</p>
-<p>The system itself is quite good, but Betty would prefer that she didn’t have to wait till the end of the day to check out on which items she’s running low on, because then it means that her supplier can be notified only the next day. If she could let him know sooner, then she could stock up again on the same day and not lose customers.</p>
-<p>Betty has received a new computer on her birthday from her aunt, which she feels can be used to good effect in her store. Daryl, a friend of hers, is a computer geek of sorts who has offered to write a software application for her billing and inventory management. He offers her many snazzy features such as automatic SMS order placement to her supplier when inventory falls low, a digital gallery of candies that she can display on an LCD ticker outside her store and of course, email. But what really gets her attention is a boring feature called inventory management. That is, the computer keeps track of her inventory and can give her updates after every sale, which allows her to place orders immediately if stock runs low.</p>
-<p>So Daryl gets down to work. One thing that keeps nagging him is that inventory is to be maintained in two different units &#8211; grams and number of items. In her book-register, Betty used to draw two columns &#8211; one for weight and one for pieces. Whenever a sale was made, she’d fill in the appropriate column based upon the type of sweet she sold. Now, why should the database care how she sells her sweets? That is something that only Betty needs to know when she makes inventory. Daryl designs his database with a single UnitsSold column, in which he stores the number of units of each sale. His application interprets the sale units depending upon the type of sweet and displays the value with the appropriate unit symbols.</p>
-<p>This is a simple illustration of an extremely powerful concept in data processing. All data are eventually converted to integers for the processor to work upon. By understanding how those numbers are encoded for abstract data types, you not only understand what’s going on behind the scenes, you can also drop down into the primitive level to perform operations that are not supported on abstract data types. For example, bitwise operators will balk at strings, but will gladly accept integers.</p>
-<p>Programmers at Learnet, where I worked some years back, never quite understood this. So their assessment tracking database for fifty different activities would contain fifty columns, some of which contained numeric values, some floating point, some Boolean and some time. If new activities had to be added, they would add another column to the table and replace the database files. Everything looked okay until someone logged in the next time after the update and found that their previous scores were all gone. Whoops!</p>
-<p>In my next article I’ll explain how multiple data types can be parsed efficiently at runtime, without rewriting too much code. Stay tuned.</p>
+		<p>The builder pattern abstracts multiple steps required to create a complex object into a coherent interface. Objects that need several input parameters are prime candidates for refactoring behind a builder object.</p>
+
+
+<p>This example shows how to create an email message as well as a JSON message object from the same input. The utility of builders can be increased manifold through the use of generic interfaces. This is also demonstrated in this example.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>To understand the benefits of this pattern, we must first analyse some code that does not utilise it.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var message = new MailMessage(&quot;john@example.com&quot;,
+                &quot;jane@example.com&quot;,
+                &quot;101 Ways to Refactor&quot;,
+                &quot;Lorem ipsu…&quot;);
+</pre>
+
+
+<p>Quick, can you identify what is each parameter in this statement? Is John the sender or recipient? How do you add more than one recipient? How does one create HTML-formatted email? These questions are not immediately obvious. And adding more configurability into the MailMessage class would make for ever longer constructor calls.</p>
+
+
+
+<p>A more readable alternative is clearly required, at least to retain the maintenance programmer&#8217;s sanity for the future. And there&#8217;s our hook for the builder pattern.</p>
+
+
+
+<p>The fundamental type in this example is the builder itself, EmailBuilder in this case. This class separates the components of the message into discrete methods.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class EmailBuilder
+{
+    private MailMessage _message;
+
+    public EmailBuilder()
+    {
+        _message = new MailMessage();
+    }
+
+    public EmailBuilder AddressedTo(string recipient)
+    {
+        …
+    }
+
+    public EmailBuilder From(string sender)
+    {
+        …
+    }
+
+    public EmailBuilder WithBody(string body)
+    {
+        …
+    }
+
+    public EmailBuilder WithSubject(string subject)
+    {
+        …
+    }
+
+    public MailMessage GetResults()
+    {
+        return _message;
+    }
+}
+</pre>
+
+
+<p>The client code consumes this interface by invoking each method one after the other. All methods in the builder class return the instance itself (i.e. this) so that multiple methods can be chained together into a single, fluid statement.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var builder = new EmailBuilder();
+var message = builder.From(&quot;john@example.com&quot;)
+    .AddressedTo(&quot;jane@example.com&quot;)
+    .AddressedTo(&quot;jim@example.com&quot;)
+    .WithSubject(&quot;101 Ways to Refactor&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
+    .GetResults();
+</pre>
+
+
+<p>This simple class already makes the code exponentially readable and maintainable. But there&#8217;s more!</p>
+
+
+
+<p>What if the program has to create multiple types of messages, such as an email plus a browser notification encoded into a JSON object? The API from the EmailBuilder can be easily extracted into an IMessageBuilder interface, then applied to different types of builders.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IMessageBuilder&lt;T&gt;
+{
+    IMessageBuilder WithSubject(string subject);
+
+    IMessageBuilder&lt;T&gt; WithBody(string body);
+
+    IMessageBuilder&lt;T&gt; From(string sender);
+
+    IMessageBuilder&lt;T&gt; AddressedTo(string recipient);
+
+    T GetResults();
+ }
+</pre>
+
+
+<p>This is a generic interface as the return type of each builder differs, depending on the type of message it creates. As a result, the EmailBuilder class definition and method signatures change as shown below. Any code that consumes this class is not affected.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
+{
+    private MailMessage _message;
+
+    public EmailBuilder()
+    {
+        _message = new MailMessage();
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; AddressedTo(string recipient)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; From(string sender)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; WithBody(string body)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; WithSubject(string subject)
+    {
+        …
+    }
+
+    public MailMessage GetResults()
+    {
+        return _message;
+    }
+}
+</pre>
+
+
+<p>This done, we can move on to the JSON builder. For this example, we use types defined in the wildly popular Json.NET library from Newtonsoft.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class JsonBuilder : IMessageBuilder
+{
+    private StringBuilder _builder;
+
+    private JsonTextWriter _writer;
+
+    public JsonBuilder()
+    {
+        _builder = new StringBuilder();
+        var sw = new StringWriter(_builder);
+        _writer = new JsonTextWriter(sw);
+        _writer.WriteStartObject();
+    }
+
+    public IMessageBuilder&lt;string&gt; AddressedTo(string recipient)
+    {
+        _writer.WritePropertyName(&quot;AddressedTo&quot;);
+        _writer.WriteValue(recipient);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; From(string sender)
+    {
+        _writer.WritePropertyName(&quot;From&quot;);
+        _writer.WriteValue(sender);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; WithBody(string body)
+    {
+        _writer.WritePropertyName(&quot;Body&quot;);
+        _writer.WriteValue(body);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; WithSubject(string subject)
+    {
+        _writer.WritePropertyName(&quot;Subject&quot;);
+        _writer.WriteValue(subject);
+        return this;
+    }
+
+    public string Build()
+    {
+        _writer.WriteEndObject();
+        return _builder.ToString();
+    }
+}
+</pre>
+
+
+<p>The client code must instantiate the JsonBuilder and invoke the same methods on it as it does on any other builder. Each builder can have its own customisations, such as only storing a single recipient&#8217;s name in the JSON object, which gets overwritten by any subsequent call to AddressedTo().</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var builder = new JsonBuilder();
+var message = builder.From(&quot;john@example.com&quot;)
+    .AddressedTo(&quot;jane@example.com&quot;)
+    .AddressedTo(&quot;jim@example.com&quot;)
+    .WithSubject(&quot;101 Ways to Refactor&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
+    .GetResults();
+</pre>
+
+
+<p></p>
 			</div><!-- .entry-content -->
 	
 	<footer class="entry-meta">
 			<div class="entry-meta-date-links">
-		<time class="date" datetime="2006-09-22T10:59:16+05:30">September 22, 2006</time>
+		<time class="date" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time>
 				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/keeping-count-i-the-candy-shop/" rel="bookmark">&#8734;</a></span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/" rel="bookmark">&#8734;</a></span>
 			</div>
 
 	
@@ -525,30 +488,595 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 
 			
 				
-<article id="post-33" class="post-33 post type-post status-publish format-standard hentry category-construction">
+<article id="post-1149" class="post-1149 post type-post status-publish format-standard hentry category-construction tag-abstract-factory tag-c tag-practical-design-patterns">
 	<header class="entry-header">
-		<h1 class="entry-title"><a href="http://localhost:81/wp/where-things-go-wrong/" rel="bookmark">Where Things Go Wrong</a></h1>
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h1>
 	</header><!-- .entry-header -->
 
 		<div class="entry-content">
-		<p>Daryl is a programmer. He works at a small ISV, writing web based applications and online games. Daryl is also a very good communicator and has a fair amount of graphic design skills in Photoshop. Because of his communication skills Daryl&#8217;s boss entrusts him with writing the specs of any new project. He&#8217;s doing a fairly good job at it too, and is looking forward to a good review at the end of the year.</p>
-<p>But there&#8217;s a glitch.</p>
-<p>Because it&#8217;s a wee little company, Daryl&#8217;s boss has very little leverage before his much larger clients and strategic partners. Often, they have to take up boring maintenance or debugging tasks on a codebase that only the most insane minds would be capable of writing. Life sucks. But they hang on with a brave face. Daryl keeps at it because he knows his boss is really nice at heart and understands that he doesn&#8217;t have much say in the matter. His boss doesn&#8217;t mind because these projects keep the cash inflow coming, without which he&#8217;d never be able to hand out that hefty paycheck to Daryl at the end of the month.</p>
-<p>Now one fine day his boss lands up with a really exciting project to develop a game for a large publisher. Daryl is really excited about the entire affair and dives into it with gusto. Being a sane, level headed developer, he begins with the specifications. Whirrrrrr&#8230;buzzzzz&#8230;clank&#8230;clank&#8230;bling! Dust flies, sparks shoot and the racket is just about to get on everyone&#8217;s nerves when Daryl stops and hands out a pristine 20 page document in Adobe PDF format. It&#8217;s a gem of a specification and everyone&#8217;s really excited about it.</p>
-<p>His boss negotiates the terms, the schedule is fixed (of course Daryl has a say in what will be developed when), and work begins.</p>
-<p>Daryl is a little worried because he&#8217;s using a new technology called Gleam, that&#8217;s supposed to be the hottest thing in online gaming since GUI&#8217;s. But because its a fairly popular technology, he&#8217;s sure to find a lot of help from forums and websites. And he begins coding.</p>
-<p>On day one things are fine. On day two, Daryl&#8217;s boss comes in looking very harried. They&#8217;ve just been arm-twisted into working on a tiny maintenance project by one of their partners, Extravagance Software. Okkkkk&#8230;Daryl says to himself. I think I&#8217;ll put this game that I&#8217;m working on aside for a bit and quickly finish off this maintenance task. It&#8217;ll mean a day lost, but I&#8217;ll catch up with it by putting in a weekend. Or so he thinks.</p>
-<p>The day ends and he somehow manages to patch the code from hell that he&#8217;s had to maintain. Some of the fixes work but there are others where things are not so good. And more bugs come up during further QA. Daryl, blissfully unaware about this, comes in to work the next day and is just about to get back to his game when the manager from Extravagance shows up outside his office. He&#8217;s tearing his hair out, and screaming obscenities at the client, his &#8216;stupid&#8217; coders, and pleads before Daryl on bended knee. Daryl looks at his boss, who shrugs back at him. So Daryl puts his work aside again and spends another day fixing someone else&#8217;s code instead of writing his own.</p>
-<p>&#8230;and the next day, the story repeats.</p>
-<p>Daryl is about to lose his patience, but feels he owes his company enough commitment to do what is required for the moment rather than crib about how boring a maintenance task is. But how far should he go? Does he have to continue slaving over this at the cost of his own project? Does his boss have to continue to let him do that?</p>
-<p>I don&#8217;t know. I&#8217;ve spent enough time at companies, both small and large, to have been on both sides of this very real issue. Larger organisations often have enough financial and strategic muscle to control the smaller service vendors. Smaller outfits have often enough been in dire straits to have to constantly worry about keeping up the cash inflow. A level headed developer will usually end up unscathed through his entire match, and maybe even learn to accept it as a way of life. But if somebody can find a solution, it&#8217;ll mean a breath of fresh air for ISV&#8217;s and encourage more people to start one.</p>
+		
+<p>The abstract factory design pattern provides an interface to create instances of related objects which operate in sync with each other. This pattern is a superset of the factory method design pattern, as it separates the object creation from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+
+
+
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>
+A database operation requires types to make a connection to the 
+database, a command to contain the query and a type to hold a query 
+parameter. All three have to belong to the same family in order to 
+operate correctly. Swapping any type of them for a type from another 
+family is not allowed. E.g. a MySQL connection instance will not be able
+ to operate with a SQL Server command instance. Therefore, if a program 
+has to offer the ability to work with various types of database engines,
+ it has to guarantee that only compatible types are instantiated at a 
+given time.
+
+</p>
+
+
+
+<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+
+
+
+<p>The core API is provided by the IDbFactory interface.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IDbFactory
+{
+    IDbConnection CreateDbConnection();
+
+    IDbCommand CreateDbCommand();
+
+    IDbDataParameter CreateDbDataParameter();
+}
+</pre>
+
+
+<p><strong>IDbFactory</strong> defines methods for the database factory.&nbsp; <strong>IDbConnection</strong>, <strong>IDbCommand</strong> and <strong>IDbDataParameter</strong> are interfaces provided by the framework in the System.Data namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces.
+
+</p>
+
+
+
+<h3> SQL Server Factory </h3>
+
+
+
+<p>
+When the application has to operate against SQL Server, it instantiates the <strong>SqlFactory</strong> class, which implements the IDbFactory interface and returns the SQL Server-specific concrete types for IDbConnection, IDbCommand and IDbDataParameter.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class SqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new System.Data.SqlClient.SqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new System.Data.SqlClient.SqlDbCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParmeter()
+    {
+        return new System.Data.SqlClient.SqlParameter();
+    }
+}
+</pre>
+
+
+<h3>MySQL Factory</h3>
+
+
+
+<p>
+The <strong>MySqlFactory</strong> class operates in the same way and returns objects from the MySql.Data.MySqlClient namespace.
+
+</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class MySqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new MySql.Data.MySqlClient.MySqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new MySql.Data.MySqlClient.MySqlCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParameter()
+    {
+        return new MySql.Data.MySqlClient.MySqlParameter();
+    }
+}
+</pre>
+
+
+<h3>Usage</h3>
+
+
+
+<p>When the application is launched, it determines the active database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate IDbFactory implementation. All objects required to operate on the database are subsequently instantiated from this IDbFactory instance. </p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        IDbFactory factory;
+
+        if (&quot;sql&quot; == args[1])
+        {
+            factory = new SqlFactory();
+        }
+        else
+        {
+            factory = new MySqlFactory();
+        }
+
+        using (var connection = factory.CreateDbConnection())
+        {
+            connection.Open();
+            var command = factory.CreateDbCommand();
+            command.Connection = connection;
+            command.CommandText = &quot;SELECT * FROM [Users] WHERE [UserId] = ?&quot;;
+            var param = factory.CreateDbDataParameter();
+            param.DbType = DbType.Int32;
+            param.Value = 42;
+            command.Parameters.Add(param);
+
+            command.ExecuteReader();
+        }
+    }
+}
+</pre>			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1276" class="post-1276 post type-post status-publish format-standard hentry category-construction tag-c tag-factory-method tag-practical-design-patterns">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p>The factory method is exactly what is says on the label &#8211; a method that produces object instances on demand. Ergo, a factory method. This method separates the creation of object instances from the consumption. It adds very little value to a code-base on its own in most cases. However, the factory method is the foundation to the abstract factory, which offers much more utility.</p>
+
+
+
+<p>In this example, we look at an application that has to write data to one of two different file formats. Separate file writer classes are required for each format, but both must share a common interface for this pattern to work. The correct class is instantiated and the Write method invoked upon it to perform the save operation.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>All writer classes are required to implement the IFileWriter interface.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IFileWriter
+{
+    void Write(byte[] data, string filename);
+}
+</pre>
+
+
+<p>This interface is implemented by each writer class. The example below shows the JpegWriter and PngWriter classes.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class JpegWriter : IFileWriter
+{
+    void Write(byte[] data, string filename) { … }
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class PngWriter : IFileWriter
+{
+    void Write(byte[] data, string filename) { … }
+}
+</pre>
+
+
+<p>Then a factory interface is declared, and a factory class created for each file type.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public interface IFileWriterFactory
+{
+    public IFileWriter Create();
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class JpegWriterFactory : IFileWriterFactory
+{
+    public Create()
+    {
+        return new JpegWriter();
+    }
+}
+</pre>
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+public class PngWriterFactory : IFileWriterFactory
+{
+    public Create()
+    {
+        return new PngWriter();
+    }
+}
+</pre>
+
+
+<h3>Usage</h3>
+
+
+
+<p>The application determines the file type that is required, then invokes the Create method on the appropriate writer factory, which in turn returns a concrete implementation of the IFileWriter class. </p>
+
+
+
+<p>The application then invokes the Write method on the writer instance, which handles format-specific details such as endianness, file headers, encoding and more.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+static class Program
+{
+    private static _jpegWriterFactory = new JpegWriterFactory();
+
+    private static _pngWriterFactory = new PngWriterFactory();
+
+    static void Main()
+    {
+        // Image created and serialized into byte[]
+        …
+
+        IFileWriter writer;
+        if (&quot;jpg&quot; == args[1])
+        {
+            writer = _jpegWriterFactory.Create();
+        }
+        else
+        {
+            writer = _pngWriterFactory.Create();
+        }
+
+        writer.Write(data, &quot;lena&quot;);
+    }
+}
+</pre>
+
+
+<p></p>
 			</div><!-- .entry-content -->
 	
 	<footer class="entry-meta">
 			<div class="entry-meta-date-links">
-		<time class="date" datetime="2005-11-25T10:57:39+05:30">November 25, 2005</time>
+		<time class="date" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time>
 				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="http://localhost:81/wp/where-things-go-wrong/" rel="bookmark">&#8734;</a></span>
+		<span class="permalink"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/" rel="bookmark">&#8734;</a></span>
+			</div>
+
+	
+		
+	</footer><!-- .entry-meta -->
+</article><!-- #post-## -->
+
+			
+				
+<article id="post-1108" class="post-1108 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<header class="entry-header">
+		<h1 class="entry-title"><a href="http://localhost:81/wp/the-content-data-context/" rel="bookmark">The Content Data Context</a></h1>
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator"/>
+
+
+
+<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the application’s Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
+
+
+
+<p>The DbContext primarily fulfils the following roles.</p>
+
+
+
+<h4>Querying</h4>
+
+
+
+<p>Provides an interface to convert statements from LINQ-to-Entities (using queries as well as method syntax) to the SQL syntax specific to the underlying database provider.</p>
+
+
+
+<h4>Object Materialisation</h4>
+
+
+
+<p>Converts database records from ADO.NET types such as DataSet to application-specific types through mapping rules.</p>
+
+
+
+<h4>Change Tracking</h4>
+
+
+
+<p>Tracks the state of newly created, modified or deleted entities for later committing to the database.</p>
+
+
+
+<h4>Persistence</h4>
+
+
+
+<p>Triggering INSERT, UPDATE or DELETE queries on changed entities when the SaveChanges method is called.</p>
+
+
+
+<h4>Caching</h4>
+
+
+
+<p>Provides a local, lightweight embedded store for recently retrieved entities to avoid repeated querying against the primary database.</p>
+
+
+
+<h3>Connecting to the Database</h3>
+
+
+
+<p>The DbContext class automatically creates a database whose name is derived from the fully-qualified name of the context class. However, this behaviour can be overridden by the programmer by passing a custom connection string, database name, or connection string name from the .config file associated with the running application.</p>
+
+
+
+<p>The DbContext class has 7 variants of the constructor to provide different ways of establishing a connection to the database server. The default constructor triggers the behaviour described above.</p>
+
+
+
+<p>The constructor variant that takes a string parameter can be used to specify any one of the following.</p>
+
+
+
+<ol><li>A standard connection string.</li><li>A name of a connection string declared in the configuration file (using the syntax “name=connectionString”).</li><li>An Entity Framework connection string declared in the configuration file.</li><li>A database name (which is sought on the server .\SQLEXPRESS by default).</li></ol>
+
+
+
+<p>Alternative constructors can accept DbConnection or ObjectContext instances instead of a string in order to work with already open connections.</p>
+
+
+
+<h3>Entity Collections</h3>
+
+
+
+<p>Records in the database tables are referenced through a DbSet instance, which is an implementation of the set abstract data type specifically designed for Entity Framework. A collection can be&nbsp;non-generic by using the System.Data.Entity.DbSet type, or generic through the use of System.Data.Entity.DbSet&lt;TEntity&gt; type.</p>
+
+
+
+<p>Collections of root entities are often exposed as DbSet properties of the application’s context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
+
+
+
+<p>The DbSet class exposes methods to perform your standard CRUD operations on the table. The most important methods are Create, Add, Find, Remove and Attach. You will notice that most of these methods are also available on the Set ADT, which the DbSet type is based on.</p>
+
+
+
+<p>Create, Add and Attach sound similar in nature, but are quite different. The Create method instantiates an entity without adding it to the DbSet. The Add method is used to add the entity to the database and mark it for saving later. Finally, Attach adds an entity to the collection without marking it for saving. This is useful for adding temporary entities to read-only collections.</p>
+
+
+
+<p>The revised ContentContext class for this application looks like this.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext(“Notadesigner”)
+        {
+        }
+
+        public virtual DbSet Blogs
+        {
+            get;
+            set;
+        }
+
+        public virtual DbSet Posts
+        {
+            get;
+            set;
+        }
+
+        public virtual DbSet Categories
+        {
+            get;
+            set;
+        }
+    }
+}
+</pre>
+
+
+<p>Based on this structure, the code to retrieve a specific Post by its primary key would be as shown below.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Find(10);
+</pre>
+
+
+<p>Inserting a new record is done in two parts. First, the entity instance is created, then it is added to the collection and the changes saved to the database.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Create();
+post.Title = &quot;Ways to Try and Take Over the World&quot;;
+post.Slug = GenerateSlug(post.Title);
+// Set other properties on the entity
+…
+db.Posts.Add(post);
+db.SaveChanges();
+</pre>
+
+
+<p>Attach is useful when you wish to update only a few properties in a record which contains many columns.</p>
+
+
+<pre class="brush: csharp; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts
+                .AsNoTracking()
+                .Where(p =&gt; p.PostId = 10)
+                .FirstOrDefault();
+// Change the title only
+post.Title = &quot;More Ways to Try and Take Over the World&quot;;
+db.Posts.Attach(post);
+db.SaveChanges();
+</pre>
+
+
+<p>The above code generates an update statement that only affects the Title column, as opposed to updating all the columns in the Posts table.</p>
+
+
+
+<p>Deleting records is as simple as finding an entity and marking it for deletion through the Remove method.</p>
+
+
+<pre class="brush: plain; title: ; notranslate" title="">
+var db = new ContentContext();
+var post = db.Posts.Find(10);
+db.Posts.Remove(post);
+db.SaveChanges();
+</pre>
+
+
+<p>Irrespective of the method used, changes are committed only if the SaveChanges method is called on the context instance.</p>
+
+
+
+<h3>Conventions, Overrides</h3>
+
+
+
+<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called “Posts”. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
+
+
+
+<p>Some of the most essential default conventions are shown below.</p>
+
+
+
+<h4>Schema</h4>
+
+
+
+<p>The dbo schema is used for all database operations by default.</p>
+
+
+
+<h4>Tables</h4>
+
+
+
+<p>Table names are derived from the plural form of the entity they represent.</p>
+
+
+
+<h4>Primary and Foreign Keys</h4>
+
+
+
+<p>The Id property or &lt;Entity&gt;Id property is the default primary key. A property with the same name is required in the dependent table. The foreign key is named by combining the dependent navigation property name with the principal primary key property name, separated by an underscore (i.e. Post_OwnerId).</p>
+
+
+
+<h4>Nullability</h4>
+
+
+
+<p>Columns to store reference type and nullable primitive type properties are nullable, and primitive type properties are stored in non-nullable columns.</p>
+			</div><!-- .entry-content -->
+	
+	<footer class="entry-meta">
+			<div class="entry-meta-date-links">
+		<time class="date" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time>
+				<span class="sep"> &#8226; </span>
+		<span class="permalink"><a href="http://localhost:81/wp/the-content-data-context/" rel="bookmark">&#8734;</a></span>
 			</div>
 
 	
@@ -561,6 +1089,7 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 		<h1 class="screen-reader-text">Posts navigation</h1>
 		<div class="nav-links">
 
+						<div class="nav-previous"><a href="http://localhost:81/wp/category/software-engineering/construction/page/4/" ><div class="arrow">&larr;</div>Older posts</a></div>
 			
 						<div class="nav-next"><a href="http://localhost:81/wp/category/software-engineering/construction/page/2/" >Newer posts <div class="arrow">&rarr;</div></a></div>
 			
@@ -585,6 +1114,7 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 <li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="http://localhost:81/wp/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
 <li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="http://localhost:81/wp/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
 <li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="http://localhost:81/wp/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+<li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1700"><a href="http://localhost:81/wp/a-hash-table-using-c/">A Hash Table using C#</a></li>
 </ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
 <li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="http://localhost:81/wp/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
 <li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="http://localhost:81/wp/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
@@ -594,63 +1124,70 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 	
 		<div class="second footer-widgets">
 		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
-		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
-<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
-<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
-</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
-<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
-<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="http://localhost:81/wp/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="http://localhost:81/wp/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="http://localhost:81/wp/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="http://localhost:81/wp/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="http://localhost:81/wp/domain-entities/">Domain Entities</a></li>
+</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="http://localhost:81/wp/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="http://localhost:81/wp/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div></aside>	</div>
 	
 		<div class="third footer-widgets">
 		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
-		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Practical Design Patterns in C#</h3><div class="menu-practical-design-patterns-creational-container"><ul id="menu-practical-design-patterns-creational" class="menu"><li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
-<li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="http://localhost:81/wp/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
 <li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="http://localhost:81/wp/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="http://localhost:81/wp/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
 <li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="http://localhost:81/wp/practical-design-patterns-in-c-prototype/">Prototype</a></li>
 <li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="http://localhost:81/wp/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></aside><aside id="nav_menu-25" class="widget widget_nav_menu"><h3 class="widget-title">Structural Design Patterns</h3><div class="menu-structural-design-patterns-container"><ul id="menu-structural-design-patterns" class="menu"><li id="menu-item-1661" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1661"><a href="http://localhost:81/wp/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+<li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1698"><a href="http://localhost:81/wp/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+<li id="menu-item-1663" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1663"><a>Decorator</a></li>
+<li id="menu-item-1664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1664"><a>Flyweight</a></li>
+<li id="menu-item-1660" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1660"><a href="http://localhost:81/wp/practical-design-patterns-in-c-proxy/">Proxy</a></li>
 </ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="http://localhost:81/wp/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.878048780488pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="http://localhost:81/wp/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="http://localhost:81/wp/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
-<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-4" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-5" style="font-size: 15.967479674797pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-6" style="font-size: 14.260162601626pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-7" style="font-size: 10.048780487805pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
-<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-8" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-9" style="font-size: 22pt;" aria-label="c# (33 items)">c#</a>
-<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-10" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-11" style="font-size: 10.048780487805pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-12" style="font-size: 14.829268292683pt;" aria-label="entity-framework (7 items)">entity-framework</a>
-<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-13" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-14" style="font-size: 16.422764227642pt;" aria-label="fitnet (10 items)">fitnet</a>
-<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-15" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-16" style="font-size: 10.048780487805pt;" aria-label="learning (2 items)">learning</a>
-<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-17" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-18" style="font-size: 15.967479674797pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
-<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-19" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
-<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-20" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
-<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-21" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
-<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-22" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
-<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-23" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-24" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-25" style="font-size: 11.414634146341pt;" aria-label="php (3 items)">php</a>
-<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-26" style="font-size: 14.260162601626pt;" aria-label="practical-design-patterns (6 items)">practical-design-patterns</a>
-<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-27" style="font-size: 11.414634146341pt;" aria-label="programming (3 items)">programming</a>
-<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-28" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
-<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-29" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
-<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-30" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
-<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-31" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
-<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-32" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-33" style="font-size: 15.967479674797pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-34" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
-<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-35" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-36" style="font-size: 10.048780487805pt;" aria-label="version-control (2 items)">version-control</a>
-<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-37" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-38" style="font-size: 13.463414634146pt;" aria-label="wpf (5 items)">wpf</a></div>
+<a href="http://localhost:81/wp/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
+<a href="http://localhost:81/wp/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="http://localhost:81/wp/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="http://localhost:81/wp/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="http://localhost:81/wp/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="http://localhost:81/wp/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
+<a href="http://localhost:81/wp/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="http://localhost:81/wp/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="http://localhost:81/wp/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="http://localhost:81/wp/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="http://localhost:81/wp/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="http://localhost:81/wp/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="http://localhost:81/wp/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="http://localhost:81/wp/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="http://localhost:81/wp/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="http://localhost:81/wp/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="http://localhost:81/wp/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="http://localhost:81/wp/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="http://localhost:81/wp/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="http://localhost:81/wp/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="http://localhost:81/wp/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="http://localhost:81/wp/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="http://localhost:81/wp/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="http://localhost:81/wp/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
+<a href="http://localhost:81/wp/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="http://localhost:81/wp/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="http://localhost:81/wp/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="http://localhost:81/wp/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="http://localhost:81/wp/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="http://localhost:81/wp/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="http://localhost:81/wp/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="http://localhost:81/wp/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="http://localhost:81/wp/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="http://localhost:81/wp/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="http://localhost:81/wp/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="http://localhost:81/wp/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="http://localhost:81/wp/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></div>
 </aside>	</div>
 	</div><!-- #secondary -->
 
@@ -664,6 +1201,56 @@ C:\projects\notadesigner\trunk\web&gt;svn commit –m “Moved jobs page into se
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript' src='http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "http://localhost:81/wp/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.defaults['quick-code'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
 <script type='text/javascript' src='http://localhost:81/wp/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

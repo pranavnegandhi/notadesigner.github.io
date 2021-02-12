@@ -15,7 +15,7 @@
 <link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; actionscript Tag Feed" href="http://localhost:81/wp/tag/actionscript/feed/" />
 <link rel='stylesheet' id='wp-block-library-css'  href='http://localhost:81/wp/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
 <link rel='stylesheet' id='aldus-style-css'  href='http://localhost:81/wp/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
-<link rel='stylesheet' id='aldus-fonts-css'  href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
+<link rel='stylesheet' id='aldus-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
 <link rel='stylesheet' id='easy_table_style-css'  href='http://localhost:81/wp/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
 <link rel="https://api.w.org/" href="http://localhost:81/wp/wp-json/" /><link rel="alternate" type="application/json" href="http://localhost:81/wp/wp-json/wp/v2/tags/28" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost:81/wp/xmlrpc.php?rsd" />
 <meta name="generator" content="WordPress 5.6.1" />
@@ -301,9 +301,9 @@ there are no more references to the Timer. If the garbage collector cleared it o
         y2 = y1;
     }
 }</pre>
-<p><div id="swfb5df1">This movie requires Flash Player 9</div>
+<p><div id="swfd1171">This movie requires Flash Player 9</div>
 <script type="text/javascript">
-	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/wave.swf", "swfb5df1", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
+	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/wave.swf", "swfd1171", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
 </script>
 </p>
 <p>We use <a title="Breaking Free from Your API" href="http://www.notadesigner.com/breaking-free-from-your-api/">the Bresenham line drawing algorithm</a> instead of setPixel to plot the curve on the bitmap for better fidelity.</p>
@@ -339,9 +339,9 @@ there are no more references to the Timer. If the garbage collector cleared it o
     aa = ab;
     ab += 1 * Math.PI / 180;
 }</pre>
-<p><div id="swfb5df2">This movie requires Flash Player 9</div>
+<p><div id="swfd1172">This movie requires Flash Player 9</div>
 <script type="text/javascript">
-	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/underwater.swf", "swfb5df2", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
+	swfobject.embedSWF("http://www.notadesigner.com/wp-content/uploads/2012/10/underwater.swf", "swfd1172", "320", "240", "9.0.0", "", {}, {wmode: "window", menu: "false", quality: "high", bgcolor: "#FFFFFF", allowScriptAccess: "always"}, {});
 </script>
 </p>
 <p class="allied-info">Underwater in Egypt used under CC <a href="http://www.flickr.com/photos/ehole/" rel="cc:attributionURL">from http://www.flickr.com/photos/ehole/</a> / <a href="http://creativecommons.org/licenses/by/2.0/" rel="license">CC BY 2.0</a></p>

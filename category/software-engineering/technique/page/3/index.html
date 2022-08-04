@@ -1,0 +1,1370 @@
+<!doctype html>
+<!--[if !IE]>
+<html class="no-js non-ie" lang="en-US"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="no-js ie7" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#471211">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<title>Technique &#8211; Page 3 &#8211; Not a Designer</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Technique Category Feed" href="/category/software-engineering/technique/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='/wp-includes/css/dist/block-library/style.min.css?ver=6.0.1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='sparkling-bootstrap-css'  href='/wp-content/themes/sparkling/assets/css/bootstrap.min.css?ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-icons-css'  href='/wp-content/themes/sparkling/assets/css/fontawesome-all.min.css?ver=5.1.1.' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C400%2C600%2C700%7CRoboto+Slab%3A400%2C300%2C700&#038;ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-style-css'  href='/wp-content/themes/sparkling/style.css?ver=2.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/vendor/bootstrap.min.js?ver=6.0.1' id='sparkling-bootstrapjs-js'></script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503' id='sparkling-functions-js'></script>
+<link rel="https://api.w.org/" href="/wp-json/" /><link rel="alternate" type="application/json" href="/wp-json/wp/v2/categories/38" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.0.1" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40138748-1" type="text/javascript"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-40138748-1');</script>
+<!-- WP-SWFObject 2.4 by unijimpe -->
+<script src="/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+<style type="text/css">a, #infinite-handle span, #secondary .widget .post-content a, .entry-meta a {color:#d03532}a:hover, a:focus, a:active, #secondary .widget .post-content a:hover, #secondary .widget .post-content a:focus, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current, #secondary .widget a:hover, #secondary .widget a:focus {color: #471211;}.btn-default, .label-default, .flex-caption h2, .btn.btn-default.read-more,button,
+              .navigation .wp-pagenavi-pagination span.current,.navigation .wp-pagenavi-pagination a:hover,
+              .woocommerce a.button, .woocommerce button.button,
+              .woocommerce input.button, .woocommerce #respond input#submit.alt,
+              .woocommerce a.button, .woocommerce button.button,
+              .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt { background-color: #d03532; border-color: #d03532;}.site-main [class*="navigation"] a, .more-link, .pagination>li>a, .pagination>li>span, .cfa-button { color: #d03532}.cfa-button {border-color: #d03532;}.btn-default:hover, .btn-default:focus,.label-default[href]:hover, .label-default[href]:focus, .tagcloud a:hover, .tagcloud a:focus, button, .main-content [class*="navigation"] a:hover, .main-content [class*="navigation"] a:focus, #infinite-handle span:hover, #infinite-handle span:focus-within, .btn.btn-default.read-more:hover, .btn.btn-default.read-more:focus, .btn-default:hover, .btn-default:focus, .scroll-to-top:hover, .scroll-to-top:focus, .btn-default:active, .btn-default.active, .site-main [class*="navigation"] a:hover, .site-main [class*="navigation"] a:focus, .more-link:hover, .more-link:focus, #image-navigation .nav-previous a:hover, #image-navigation .nav-previous a:focus, #image-navigation .nav-next a:hover, #image-navigation .nav-next a:focus, .cfa-button:hover, .cfa-button:focus, .woocommerce a.button:hover, .woocommerce a.button:focus, .woocommerce button.button:hover, .woocommerce button.button:focus, .woocommerce input.button:hover, .woocommerce input.button:focus, .woocommerce #respond input#submit.alt:hover, .woocommerce #respond input#submit.alt:focus, .woocommerce a.button:hover, .woocommerce a.button:focus, .woocommerce button.button:hover, .woocommerce button.button:focus, .woocommerce input.button:hover, .woocommerce input.button:focus, .woocommerce a.button.alt:hover, .woocommerce a.button.alt:focus, .woocommerce button.button.alt:hover, .woocommerce button.button.alt:focus, .woocommerce input.button.alt:hover, .woocommerce input.button.alt:focus, a:hover .flex-caption h2 { background-color: #471211; border-color: #471211; }.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus-within, .pagination>li>span:hover {color: #471211;}h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .entry-title, .entry-title a {color: #b83532;}.navbar.navbar-default, .navbar-default .navbar-nav .open .dropdown-menu > li > a {background-color: #471211;}.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li:hover > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li:hover > .caret, .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus { color: #dedede;}@media (max-width: 767px){ .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li:hover > .caret{ color: #dedede!important ;} }.navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li:focus-within > a, .navbar-nav > li:hover > .caret, .navbar-nav > li:focus-within > .caret, .navbar-default .navbar-nav.sparkling-mobile-menu > li.open > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li.open > .caret, .navbar-default .navbar-nav > li:hover, .navbar-default .navbar-nav > li:focus-within, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > .caret, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {color: #dedede;}@media (max-width: 767px){ .navbar-default .navbar-nav > li.open > a, .navbar-default .navbar-nav > li.open > .caret { color: #dedede !important; } }.dropdown-menu {background-color: #b82e2c;}.navbar-default .navbar-nav .open .dropdown-menu > li > a, .dropdown-menu > li > a, .dropdown-menu > li > .caret { color: #dedede;}.navbar-default .navbar-nav .dropdown-menu > li:hover, .navbar-default .navbar-nav .dropdown-menu > li:focus-within, .dropdown-menu > .active {background-color: #d03532;}@media (max-width: 767px) {.navbar-default .navbar-nav .dropdown-menu > li:hover, .navbar-default .navbar-nav .dropdown-menu > li:focus, .dropdown-menu > .active {background: transparent;} }#footer-area, .site-info, .site-info caption, #footer-area caption {color: #dedede;}.site-info a, #footer-area a {color: #d03532;}body, .entry-content {color:#6b6b6b}.entry-content {font-family: Georgia;}</style>		<style type="text/css">
+				.navbar > .container .navbar-brand {
+			color: #dedede;
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #f2f2f2; }
+</style>
+	
+</head>
+
+<body class="archive paged category category-technique category-38 custom-background paged-3 category-paged-3">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<nav class="navbar navbar-default
+		" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="site-navigation-inner col-sm-12">
+						<div class="navbar-header">
+
+
+														<div id="logo">
+															<p class="site-name">																		<a class="navbar-brand" href="/" title="Not a Designer" rel="home">Not a Designer</a>
+																</p>																													</div><!-- end of #logo -->
+
+							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+
+
+						<div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="menu-basic-menu" class="nav navbar-nav"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256 dropdown"><a>Favourites</a><span class="caret sparkling-dropdown"></span>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268 dropdown"><a>Foundation</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="/whats-in-a-name/">What’s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263 dropdown"><a>Demonstration</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262 dropdown"><a>Technique</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437 dropdown"><a>Practical Design Patterns</a><span class="caret sparkling-dropdown"></span>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1649 dropdown"><a>Creational</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+		<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="/practical-design-patterns-in-c-builder/">Builder</a></li>
+		<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+		<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+		<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1650 dropdown"><a>Structural</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1651" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1651"><a href="/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+		<li id="menu-item-1699" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1699"><a href="/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+		<li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1653"><a href="/practical-design-patterns-in-c-proxy/">Proxy</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="/about/">About Pranav Negandhi</a></li>
+</ul></div>
+
+
+					</div>
+				</div>
+			</div>
+		</nav><!-- .site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="content" class="site-content">
+
+		<div class="top-section">
+								</div>
+
+		<div class="container main-content-area">
+						<div class="row no-sidebar">
+				<div class="main-content-inner col-sm-12 col-md-8">
+
+	 <div id="primary" class="content-area">
+		 <main id="main" class="site-main" role="main">
+
+			
+				<header class="page-header">
+					<h1 class="page-title">Category: <span>Technique</span></h1>				</header><!-- .page-header -->
+
+				
+<article id="post-748" class="post-748 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<div class="blog-item-wrap">
+				<a href="/sharing-code-static-and-dynamic-libraries-in-actionscript/" title="Sharing Code &#8211; Static and Dynamic Libraries in ActionScript" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark">Sharing Code &#8211; Static and Dynamic Libraries in ActionScript</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2014-09-18T17:27:46+05:30">September 18, 2014</time><time class="updated" datetime="2022-08-03T16:49:22+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>When I was in school, practically nobody had access to the internet. As a result, every student would have two essential items in his toolkit &#8211; an encyclopedia and a membership to a library. Homework, projects and supplementary studies were highly dependent on both of them.</p>
+
+
+
+<p>Encyclopedias ranged from simple one-book units that specialized in a single subject, to multi-volume tomes spanning practically every topic imaginable (or at least deemed allowably imaginable by its publishers) by a school student. In both cases, the research was already done by someone else. When we were assigned a project on the solar system, nobody expected us to discover the planets in it. The planets remained discovered. All we had to do was read about them and share the information when making a presentation to the class.</p>
+
+
+
+<h3>Code Libraries</h3>
+
+
+
+<p>It is heartening to know that somebody creating computer languages took this to heart and invented the concept of code libraries &#8211; units of code written by people who are really good in the domain, then shared with the also rans who just wanted to implement their business applications without knowing the mathematics of relational databases or the bit-juggling that network libraries perform.</p>
+
+
+
+<p>Libraries are compiled separately from the application that ends up eventually using them. They are linked to the application through a process that maps function calls in the application code with function addresses in the library. This process, predictably, is called linking.</p>
+
+
+
+<p>Code stored in statically linked libraries is copied into the application executable at compile time, resulting an individual copy being created for every application that uses the library. Static libraries become an integral part of the application that uses them and cannot be shared with other applications. If the library is modified in any manner, the application must be recompiled and relinked with the new version in order to utilize those changes.</p>
+
+
+
+<p>Dynamic libraries are stored in a shared location, and are linked to the application at runtime by the operating system or other environment controller such as a virtual machine. The metaphor falls apart a bit when it comes to sharing dynamic libraries &#8211; in a physical library, only one member can borrow a book at a time, whereas any number of programs can concurrently use the code stored in a dynamic library.</p>
+
+
+
+<p>With static linking, it is enough to include those parts of the library that are directly and indirectly referenced by the target executable (or target library). With dynamic libraries, the entire library is loaded, as it is not known in advance which functions will be invoked by applications. Whether this advantage is significant in practice depends on the structure of the library.</p>
+
+
+
+<p>Other than the obvious benefit of being able to compile units of code separately, either type of libraries offer their own individual benefits also. Statically linked code guarantees that all required code units are present and compatible with the application. Dynamically linked libraries may be of a different version than what the application requires, or not be present at all. Either case either causes a runtime error, or requires defensive code and reduced functionality in the application. Static linking also simplifies product distribution by reducing the number of files to be shipped and installed.</p>
+
+
+
+<p>All said and done, both types of libraries are popular and well-worn concepts in computer programming. Many modern languages support either method, usually both.</p>
+
+
+
+<h3>Code Libraries in the Flash Ecosystem</h3>
+
+
+
+<p>Adobe&#8217;s MXML compiler offers several parameters for programmers to employ libraries &#8211; both static and dynamic &#8211; in their code.</p>
+
+
+
+<p>Static linking is almost identical to how it is used in conventional languages. Dynamic linking works slightly differently from Windows&#8217; Dynamically Linked Libraries and Unix&#8217;s Shared Objects due to the browser-based operation of the Flash Player. But these differences are at an implementation level only. The concepts remain the same.</p>
+
+
+
+<h4>Static Linking</h4>
+
+
+
+<p>To statically link a library into an application, the compiler offers the library-path and include-libraries directives.</p>
+
+
+
+<h5>library-path</h5>
+
+
+
+<p>When a library is specified using the library-path directive, the compiler includes only those assets and classes that are referenced in the application. For example, if the Math library contains IntegerArithmetic and FloatArithmetic for performing arithmetic operations on two separate numeric data types, but the client application only uses integers, the FloatArithmetic class is excluded from the output. This reduces the file size of the application SWF.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc Main.mxml -output=Main.swf -library-path=math.swc</code></pre>
+
+
+
+<h5>include-libraries</h5>
+
+
+
+<p>The include-libraries directive packages the entire library, irrespective of what the compiler thinks is used in the application. This comes in handy in a dynamic language like ActionScript because all method calls do not necessarily get tested for linkages by the compiler.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+var classRef:Class = getDefinitionByName(&quot;com.notadesigner.math.FloatArithmetic&quot;) as Class;
+var instance:Object = new classRef();
+instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
+</pre></div>
+
+
+<p>The include-libraries directive is used like this.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc Main.mxml -output=Main.swf -include-libraries=math.swc</code></pre>
+
+
+
+<h5>static-link-runtime-shared-libraries</h5>
+
+
+
+<p>This directive is a convenient shortcut to convert runtime shared libraries into static libraries without significant changes to the compiler configuration files. Simply setting its value to true causes the compiler to embed all RSLs into the application. This is a handy way to investigate library-related problems when debugging the application.</p>
+
+
+
+<pre class="wp-block-code"><code>mxml Main.mxml -output=Main.swf -static-link-runtime-shared-libraries=true</code></pre>
+
+
+
+<h4>Dynamic Linking</h4>
+
+
+
+<p>A Runtime Shared Library (commonly abbreviated to RSL) is loaded by the application before it begins execution. Loading a RSL is a complicated task if done in plain ActionScript, but is taken care of automatically if the application builds on the Spark or MX Application class.</p>
+
+
+
+<p>Adobe-provided framework libraries are the most obvious use case for using RSLs. All Flex-based applications depend upon these files. By caching them after the first time they are downloaded, future applications can be started much faster as they do not need to download the same code again. Custom libraries can also take advantage of the same technique.</p>
+
+
+
+<p>Flash libraries are compiled using the compc utility, that ships as part of the Flex SDK. It generates a SWC file which is a compressed archive containing a SWF (named library.swf) and an XML (catalog.xml). To use this library, the developer must manually extract the SWF from the SWC using an archival utility (such as PKZip) and place it where the application can download it at runtime. As a good practice, the SWF is also usually renamed from library.swf to something more meaningful.</p>
+
+
+
+<h5>runtime-shared-library-path</h5>
+
+
+
+<p>This directive is used to specify the location of RSL files for the compiler.&nbsp;The compiler requires the names of both, the SWC as well as the extracted SWF, separated by a comma.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc -o=main.swf -runtime-shared-library-path=libs/math.swc,bin/math.swf Main.mxml</code></pre>
+
+
+
+<h4>Related Directives</h4>
+
+
+
+<p>The Flex compiler provides two other directives to externalize the application&#8217;s assets and code fragments. The compiler tests linkages against these assets at compile-time, but leaves them out of the application binary. Libraries that contain these assets or classes are required at runtime, and the Flash Player throws a runtime error if they are not available.</p>
+
+
+
+<p>These directives are useful when creating modules which are loaded dynamically into an application that they share code with. The application is linked to the requisite RSL, and the module does not need to fetch it again. However, the compiler still needs to test the linkages against the symbols &#8211; either against the original source code or a compiled binary. These directives assist in that task.</p>
+
+
+
+<h5>external-library-path</h5>
+
+
+
+<p>The compiler uses SWC files specified at these paths to test linkages with the application code, but does not compile the binaries into the application itself.</p>
+
+
+
+<h5>externs</h5>
+
+
+
+<p>This directive points to source files containing assets or classes which will be available at runtime. The compiler uses the source files for link testing, but does not compile them into the application binary.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-570" class="post-570 post type-post status-publish format-standard hentry category-technique tag-bit-hacking tag-c tag-programming">
+	<div class="blog-item-wrap">
+				<a href="/storing-values-with-bit-packing-and-unpacking/" title="Storing Values with Bit Packing and Unpacking" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">Storing Values with Bit Packing and Unpacking</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark"><time class="entry-date published" datetime="2013-02-08T16:56:38+05:30">February 8, 2013</time><time class="updated" datetime="2022-08-03T16:24:16+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Bit packing and unpacking is a handy way of consolidating multiple data values into a single variable, thus compressing the amount of data being stored or transmitted. The number of values that can be stored depends upon the width of the data to be stored as well as the type of the value that it is packed into. A simple byte can store up to 8 bits of data. Larger types such as ints can store up to 16, 32 or 64 bits. This is an especially efficient technique for storing several small-width values, often smaller than the smallest width supported by a platform (such as byte or boolean flags) into a single large value such as a 32-bit integer.</p>
+
+
+
+<p>Bit flags are commonly used for implementing low-level features, such as storing file access-permissions or packing values into a single value before transmitting across a bus. However, they can be applied with equal ease to higher level tasks such as storing user preferences or choosing which widgets to display from an enumerated list. We will see here how to use bit flags to store font formatting preferences, and apply them later to a label.</p>
+
+
+
+<h3>Bitwise Operators</h3>
+
+
+
+<p>There are a couple of operators we need to understand before we can move on to the implementation. Bitwise operators, by definition, work on individual bits inside a value. Since they are implemented directly by the processor itself, they are much faster than arithmetic operators such as division and multiplication. We will use bitwise AND (&amp;), bitwise OR (|) and left shifts (&lt;&lt;) in this exercise.</p>
+
+
+
+<p>A bitwise AND operation takes the binary representations of two values and performs a logical AND operation on each bit. The result is 1 in every position where both the bits are 1, and 0 if either or both bits are 0.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010
+AND 011011
+    ------
+    001010</pre>
+
+
+
+<p>Bitwise OR on the other hand, compares two bits in corresponding positions, and sets the result to 1 if either of them is 1, or to 0 if both of them are 0.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010
+OR  011011
+    ------
+    011011</pre>
+
+
+
+<p>Bitwise left shift operator moves individual bits within a single value by the number of places specified in the second operand. The value is padded with 0s on the right, and the left-most bits are dropped off.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010 &lt;&lt; 1 = 010100</pre>
+
+
+
+<h3>Implementation</h3>
+
+
+
+<p>We set up a simple Windows Forms project and draw three checkboxes and one label on the form. The aim is to have the checkboxes control three font properties of the label &#8211; weight, style and underlining. All checkboxes are given appropriate labels and configured to execute the _changeFormatting method of the form every time the CheckStateChanged event is fired. The code for this method is shown below.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+private void ChangeFormatting(object sender, EventArgs e)
+{
+    byte flags = 0;
+
+    flags = (byte)(
+        Convert.ToByte(this.chkUnderline.Checked) &lt;&lt; 2 |
+        Convert.ToByte(this.chkItalic.Checked) &lt;&lt; 1 |
+        Convert.ToByte(this.chkBold.Checked)
+        );
+
+    Font f = new Font(this.label1.Font.FontFamily, this.label1.Font.Size, (FontStyle)(
+        (flags &amp; (byte)FontStyle.Underline) |
+        (flags &amp; (byte)FontStyle.Italic) |
+        (flags &amp; (byte)FontStyle.Bold)
+        ));
+
+    this.label1.Font = f;
+}
+</pre></div>
+
+
+<h4>Packing</h4>
+
+
+
+<p>In the first statement, the flags variable is populated with the values of each checkbox. We want to store the three flags in the last three bits of a single byte.</p>
+
+
+
+<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Position</th><th>Setting</th></tr><tr><td>7</td><td>Unused</td></tr><tr><td>6</td><td>Unused</td></tr><tr><td>5</td><td>Unused</td></tr><tr><td>4</td><td>Unused</td></tr><tr><td>3</td><td>Unused</td></tr><tr><td>2</td><td>Underline</td></tr><tr><td>1</td><td>Italic</td></tr><tr><td>0</td><td>Bold</td></tr></tbody></table></figure>
+
+
+
+<p>In order to do so, we take the value of each boolean (either true or false), convert it into a byte, then shift it by an appropriate number of positions. The value of the underline flag is to be stored in the 2nd bit (starting from 0). So we left-shift its value by 2. Similarly, the italic flag is stored in the 1st position, so its boolean value is shifted by 1. The value of the bold flag does not need to be shifted at all.</p>
+
+
+
+<pre class="wp-block-preformatted">    00000001 &lt;&lt; 2 = 00000100 // Underline
+    00000001 &lt;&lt; 1 = 00000010 // Italic
+    00000001                 // Bold (no shifting required)</pre>
+
+
+
+<p>A consolidated value can be generated by ORing the three values together.</p>
+
+
+
+<pre class="wp-block-preformatted">    00000100
+ OR 00000010
+ OR 00000001
+    --------
+    00000111 // Decimal value 7</pre>
+
+
+
+<pre class="wp-block-preformatted">    00000000
+ OR 00000010
+ OR 00000001
+    --------
+    00000011 // Decimal value 3</pre>
+
+
+
+<pre class="wp-block-preformatted">    00000100
+ OR 00000000
+ OR 00000001
+    --------
+    00000101 // Decimal value 5</pre>
+
+
+
+<p>The decimal value can then be stored in a database or other persistent storage system as an integer or byte. This is better than having to store three boolean fields. This information can transmitted across systems too as a packed unit, to be unpacked later only when the preferences have to be applied to a display element.</p>
+
+
+
+<p>In our example, we are unpacking and applying the values immediately for brevity. But a more practical situation would probably involve serializing the value somewhere, then deserializing and applying the font properties later at another location.</p>
+
+
+
+<h4>Unpacking</h4>
+
+
+
+<p>In order to apply the font styles on a display element, the individual values of each style parameter must be extracted from the packed value and then applied. The .NET framework defines enumerations for each of these style parameters in the System.Drawing.FontStyle enum. The values for each style parameter are listed below.</p>
+
+
+
+<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Setting</th><th>Decimal Value</th><th>Binary Value</th></tr><tr><td>Regular</td><td>0</td><td>00000000</td></tr><tr><td>Bold</td><td>1</td><td>00000001</td></tr><tr><td>Italic</td><td>2</td><td>00000010</td></tr><tr><td>Underline</td><td>4</td><td>00000100</td></tr></tbody></table></figure>
+
+
+
+<p>You will notice that each enumeration is double the value of its predecessor, hence moving the digit 1 by one position leftwards with every increase. This is a key feature of bit flags. Each element differs from the others only in the position of the 1 bit. Thus, the value of a given flag can be extracted from the packed value by ANDing the packed value with the value of the enumeration.</p>
+
+
+
+<pre class="wp-block-preformatted">     00000111 // Packed value decimal 7
+AND  00000100 // Underline enum decimal 4
+     --------
+     00000100 // Result - show underlines</pre>
+
+
+
+<p>This operations shows that the value of the underline flag is true. If the packed value was the decimal 3 instead of 7, then the operation would play out as shown below, resulting in the value 0 for the underline flag.</p>
+
+
+
+<pre class="wp-block-preformatted">     00000011 // Packed value
+AND  00000100 // Underline enum
+     --------
+     00000010 // Result - hide underlines</pre>
+
+
+
+<p>All that is needed then is to convert the result byte into a boolean and apply it wherever required. In our example above, the constructor of the Font class requires the values packed together any way as a FontStyle enum. To do this, each bit is ANDed with its corresponding enum, then all of them are combined together again using an OR operation. The resultant byte is cast into a FontStyle before being passed to the constructor.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-100" class="post-100 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-memory-leaks">
+	<div class="blog-item-wrap">
+				<a href="/the-secret-lives-of-timer-objects/" title="The Secret Lives of Timer Objects" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/the-secret-lives-of-timer-objects/" rel="bookmark">The Secret Lives of Timer Objects</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2022-08-03T15:26:23+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>One of the better side-effects of working in memory-managed languages is that you don’t have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
+
+
+
+<p>What could be simpler?</p>
+
+
+
+<h3>Great Power, Great Responsibility</h3>
+
+
+
+<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). There’s an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
+
+
+
+<p>Take that, Java!</p>
+
+
+
+<p>Several of these features mean that its legacy garbage collection techniques have to be replaced with less aggressive methods to identify unused memory. This in turn requires more developer intervention than before to identify which references are no longer required and which ones must be left untouched. The new AS3 garbage collector uses reference counting and mark sweeping (both techniques are covered by Grant Skinner here). And while things are still better than completely manual memory management, building complex or long-running applications requires that the developer have at least a passing understanding of how memory is allocated, references stored, passed around and cleared, and the potential for memory leaks in the midst of all this.</p>
+
+
+
+<p>This is where the typical ActionScript programmer stumbles, mainly because people programming in AS3 often do not have a formal background in computer science or programming and have usually learned the language on their own through books or online tutorials. It is not uncommon to find ActionScript developers for whom this is their first taste of programming.</p>
+
+
+
+<h3>Our Subject for Today</h3>
+
+
+
+<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward – create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
+
+
+
+<p>A Timer object is different from other types of objects because the garbage collector does not clear it unless it is stopped, even if there are no active references to it.</p>
+
+
+
+<p>Let’s repeat that.</p>
+
+
+
+<p><strong>A Timer object is not cleared by the garbage collector as long as it is running, even when its references are set to null or the variable goes out of scope, and it continues to fire TIMER events as long as it is active</strong>.</p>
+
+
+
+<p>The only way to clear the object from memory and stop events from being fired is to stop it using the stop() or reset() methods.</p>
+
+
+
+<p>The following piece of code illustrates the permanence of Timer objects which haven’t been stopped.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+package 
+{
+    import flash.display.Sprite;
+    import flash.events.Event;
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Main extends Sprite 
+    {
+        public function Main():void 
+        {
+             var t:Timer; // Create timer as a local variable
+
+             t = new Timer(1000);
+             t.addEventListener(TimerEvent.TIMER, this.m_tick);
+             t.start(); // Reference ends here; Timer continues to exist and trigger events
+        }
+
+        private function m_tick(e:TimerEvent):void
+        {
+             trace(&quot;tick&quot;);
+        }
+    }
+}
+</pre></div>
+
+
+<p>This may look like a design flaw in the language to the casual passer-by and elicit a very obvious question.</p>
+
+
+
+<p>“Everything else is cleared automatically. Why leave behind timers?”</p>
+
+
+
+<p>Some thought on the subject will make you realize that the language designers at Adobe weren’t off their rockers after all. This behaviour is by design. In the example code shown above, ‘t’ is a local variable inside the constructor. When the function ends, the variable goes out of scope and<br>there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
+
+
+
+<p>Conversely, a Timer instance which remains active with no way for it to be accessed and stopped is terrible. The object continues to maintain references to listeners and triggers events on them regularly. Listeners can never be garbage collected either because their reference count never goes down to zero. And finally, each active timer occupies a slice of CPU time, bringing the processor down to its knees gradually.</p>
+
+
+
+<p>The Timer object always passes a reference to itself in the target property of the TimerEvents it triggers. The listener can use this reference to stop the Timer. When the listener function ends, the event object goes out of scope and is cleared, taking the reference to the Timer object along with it and in turn, making it available for garbage collection.</p>
+
+
+
+<p>Here is an example that illustrates how this memory leak can inadvertently occur.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+package 
+{
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Slideshow
+    {
+        private var m_timer:Timer;
+
+        private var m_isActive:Boolean;
+
+        /**
+         * Example how not to use a timer
+         */
+        public function Start():void
+        {
+             this.m_timer = new Timer(5000); // Create and start a new timer
+             this.m_timer.addEventListener(TimerEvent.TIMER, this.m_next);
+             this.m_timer.start();
+        }
+
+        private function Pause(e:TimerEvent):void
+        {
+             this.m_isActive = false;
+        }
+
+        private function m_next(e:TimerEvent):void
+        {
+             if (!this.m_isActive) return;
+
+             // Code to move to next slide
+        }
+    }
+}
+</pre></div>
+
+
+<p>In the example above, the programmer using this slideshow component is expected to call removeChild() to remove it from the stage. However, because the component does not stop the Timer when it is removed, it will continue to fire the TIMER event for as long as the application is run, and also prevent the memory used by the component from being garbage collected by holding a reference to its m_next method. If multiple instances of the slideshow object are created and disposed using removeChild(), their timers will continue to fire and none of the components will actually be cleared from memory.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-50" class="post-50 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<div class="blog-item-wrap">
+				<a href="/mathematical-elegance-in-programming/" title="Mathematical Elegance in Programming" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/mathematical-elegance-in-programming/" rel="bookmark">Mathematical Elegance in Programming</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/mathematical-elegance-in-programming/" rel="bookmark"><time class="entry-date published" datetime="2010-04-01T11:10:25+05:30">April 1, 2010</time><time class="updated" datetime="2022-08-03T15:21:35+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Project Euler is a collection of mathematical problems for the programmer who enjoys taxing his brain cells once in a while. The problems are ordered to be successively difficult to solve, which explains why, as of today, 91,510 people have solved problem one, while problem 283 is solved only by 9 people. Not only are they successively more taxing, but going through so many problems itself is a tedious task that requires mental stamina even when taken in installments over several days.</p>
+
+
+
+<h3>Understanding the sum of numbers from 1 to N</h3>
+
+
+<div class="wp-block-image size-full wp-image-163">
+<figure class="alignleft is-resized"><img src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-a.png" alt="" class="wp-image-163" width="150" height="149"/><figcaption>Diagram A</figcaption></figure></div>
+
+
+<p>Diagram A shows a square with each side 10 units long. A green diagonal cuts the square into two equal triangles. The number of squares making up the square equals 10 x 10 = 100.</p>
+
+
+
+<p>Diagram B shows one half of the triangle, whose base and height are 10 units for a total of 55 cells. The number of cells can be calculated by adding the number of cells in each column, i.e. 10 + 9 + 8 + 7 + 6 + 5 + 4 + 3 + 2 + 1 = 55.</p>
+
+
+
+<p>A similar blue triangle is placed above the red triangle in diagram C, in a way that both triangles are touching but do not overlap. Both triangles encompass 55 units and have sides of 10 units each. They combine to make a rectangle that is 10 units wide and 11 units tall. The total number of cells in the rectangle is 55 + 55 = 10 * 11 = 110.</p>
+
+
+<div class="wp-block-image size-full wp-image-164">
+<figure class="alignleft"><img loading="lazy" width="150" height="149" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-b.png" alt="" class="wp-image-164"/><figcaption>Diagram B</figcaption></figure></div>
+
+
+<p>Thus it can be seen how the total number of cells in one triangle (i.e. N + (N &#8211; 1) + (N &#8211; 2)&#8230;+ 1) can be computed by calculating the area encompassed by a rectangle that is N * (N + 1) and dividing the result by 2.</p>
+
+
+
+<p><a href="http://www.reddit.com/r/math/comments/bbezn/help_needed_to_understand_summation_formula/">Thanks Reddit!</a></p>
+
+
+
+<p>The good part is that solving a problem helps an individual build an insight that is useful while solving another one later down the line.</p>
+
+
+
+<p>The first problem in Project Euler asks to add all the natural numbers below 1000 which are multiples of 3 or 5. The straightforward way to resolve this is to use a loop from 1 to 999 that uses a modulus operation to evaluate each integer between 1 and 1000 with 3 and 5, adding the ones that are perfectly divisible and discarding the rest.</p>
+
+
+<div class="wp-block-image size-full wp-image-165">
+<figure class="alignleft"><img loading="lazy" width="150" height="158" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-c.png" alt="" class="wp-image-165"/><figcaption>Diagram C</figcaption></figure></div>
+
+
+<p>Here’s an implementation of this code in ActionScript.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+var sum:uint = 0;
+for (var i:uint = 1; i &lt; 1000; i++)
+    if ((0 == i % 3) || (0 == x % 5)) sum += i;
+trace(sum);
+</pre></div>
+
+
+<p>But the secondary goal of these problems is to have an implementation that can return an answer in less than one minute. Problem one is not all that taxing for a modern computer, making even a naïve implementation run well within the required time frame. But complexity for later problems increases exponentially, making the selection of a fast algorithm very essential.</p>
+
+
+
+<p>Hence, it is required that one should understand the mathematical principle behind each problem in order to write an efficient solution.</p>
+
+
+
+<p>A step-by-step breakdown of the complex, but more efficient solution goes as follows.</p>
+
+
+
+<p>The smallest multiple of 3 greater than 1 is 3 itself.</p>
+
+
+
+<p>The largest multiple of 3 less than 1000 can be computed easily.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+multiples = (1000 - 1) / 3
+multiples = 333.33
+multiples = floor(remainder)
+multiples = 333
+</pre></div>
+
+
+<p>The floor() function is used to discard the decimal part of the result by mapping the real number into the previous smallest integer.</p>
+
+
+
+<p>The result, 333, is the number of multiples of 3 between 1 and 1000. So the sum of these values can be computed by adding the multiples together.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+(1 * 3) + (2 * 3) + (3 * 3)...+ (333 * 3)
+= 3 (1 + 2 + 3...333)
+</pre></div>
+
+
+<p>The sum of numbers between 1 and n is n (n + 1) / 2. So the sum of 1 to 333 is 333 (333 + 1) / 2, which is 55,611. Multiplying that by 3 gives you 166,833, which is the sum of all multiples of 3 between 1 and 1000.</p>
+
+
+
+<p>The same method can be used to compute the sum of multiples of 5 between 1 and 1,000, to get a result of 99,500.</p>
+
+
+
+<p>The problem asks to compute the sum of multiples of 3 or 5. What we have done so far is compute the sum of multiples of 3 and 5. To remove the overlap between the two sets, compute the least common multiple of the two numbers, which is 15, and calculate the sum of multiples of that number between 1 and 1000. Subtracting that set from the first two will result in a set which contains numbers which are either multiples of 3 or 5 but not both.</p>
+
+
+
+<p>The same principle also applies when the sum of multiples of 15 is deducted from the sum of multiples of 3 plus the sum of multiples of 5.</p>
+
+
+
+<p>So your final solution is sumOfMultiples(3) + sumOfMultiples(5) &#8211; sumOfMultiples(15).</p>
+
+
+
+<p>The complete implementation of the program is as follows.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+package 
+{
+    import flash.display.Sprite;
+
+    /**
+     * Project Euler solutions entry point
+     */
+    public class Main extends Sprite 
+    {
+        public function Main():void 
+        {
+            var p:IProblem = new Problem1();
+            trace(p.solve());
+        }
+    }
+}
+
+package  
+{
+    /**
+     * If we list all the natural numbers below 10 that are
+     * multiples of 3 or 5, we get 3, 5, 6 and 9. The sum
+     * of these multiples is 23.
+     * 
+     * Find the sum of all the multiples of 3 or 5 below 1000.
+     */
+    public class Problem1 implements IProblem
+    {
+        public function solve():uint
+        {
+            var limit:uint = 999;
+            trace((sumOfMultiples(3, limit) + sumOfMultiples(5, limit)) - sumOfMultiples(15, limit));
+        }
+
+        private function sumOfMultiples(factor:uint, limit:uint):uint
+        {
+            return factor * sum1toN(limit / factor);
+        }
+
+        private function sum1toN(n:uint):uint
+        {
+            return Math.round((n * (n + 1)) / 2);
+        }
+    }
+}
+</pre></div>
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-46" class="post-46 post type-post status-publish format-standard hentry category-technique tag-coding-horror tag-php">
+	<div class="blog-item-wrap">
+				<a href="/how-to-write-unmaintainable-code-php-redux/" title="How to Write Unmaintainable Code &#8211; PHP Redux" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/how-to-write-unmaintainable-code-php-redux/" rel="bookmark">How to Write Unmaintainable Code &#8211; PHP Redux</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-php-redux/" rel="bookmark"><time class="entry-date published" datetime="2010-02-21T11:06:15+05:30">February 21, 2010</time><time class="updated" datetime="2022-08-03T15:23:50+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>How to Write Unmaintainable Code is a satirical piece of programming advice written by Roedy Green a long time ago. That it remains his most popular essay till date speaks volumes about the programming skills of human society as a whole. Collectively, we are either a massive bunch of shit-chucking apes who take this essay seriously, or a small bunch of highly skilled developers seeking relief from daily disillusionment in our work behind its biting humour.</p>
+
+
+
+<p>I hope to hell that it’s the latter.</p>
+
+
+
+<p>Green’s essay is written with Java and C programmers in mind, but many of the techniques described can be applied to any programming language. Consider this essay as a ‘lite’ version of Green’s to keep us script kiddies from feeling left out.</p>
+
+
+
+<h3>Write code. Or markup. Or both. Together.</h3>
+
+
+
+<p>PHP has a very unique ability of allowing the programmer to intersperse program code with HTML markup in the same file by using special PHP tags to identify code blocks. And as with all things PHP, there is more than one way to skin a cat.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
+&lt;? echo “Hello, World!”; &gt; // What is referred to as the ‘old style’.
+
+&lt;? echo “Hello, World!”; ?&gt; // What is referred to as the ‘first new style’. Note the added question mark in the end tag.
+
+&lt;?php echo “Hello, World!”; ?&gt; // The ‘second new style’ is similar to the first new style and most recommended
+
+&lt;script language=”php”&gt;
+    echo “Hello, World!”; &gt; // What else? The ‘third new style’ of tags
+&lt;/script&gt;
+
+&lt;% echo “Hello, World!”; %&gt; // And finally, a fourth way that uses ASP-style tags
+</pre></div>
+
+
+<p>This in itself opens whole new avenues for abuse for a programmer used to the sharper separation of code and presentation enforced in a more serious language. What’s worse is that the tag rules can be changed on individual systems through the php.ini file. Develop with all style flags enabled. Tell your colleagues that you’re doing it in the interest of maximum compatibility with third-party libraries. For added fun, find (or write your own) library that liberally switches between all five types of tags and make it an indispensible part of your project. Or keep switching coding standards every few weeks until there’s a healthy mix of all types of PHP tags scattered throughout your code. Refuse to replace previously used styles with the current favourite because it’s better to leave well enough alone.</p>
+
+
+
+<p>Do not document this anywhere.</p>
+
+
+
+<p>This is in the interest of avoiding single-step deployments on a stock (or sane) PHP installation. Force system administrators to find the problem in your code and then comb through the php.ini file for the appropriate settings. Always say that you have security in mind, which is encouraged by having the system administrator read each line of the settings file.</p>
+
+
+
+<p>But the ability of the language to intersperse HTML markup even inside if&#8230;else or loop blocks evidences the sheer the heinousness that must have enveloped the language designers when they wrote that bit of the specification.</p>
+
+
+
+<p>There are so many ways to abuse this ‘feature’.</p>
+
+
+
+<p>A tamer way would be –</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
+&lt;?php if (foo == null): ?&gt;
+    &lt;p&gt; Invalid foo&lt;/p&gt;
+&lt;? elseif (foo == 1): ?&gt;
+    &lt;p&gt;Foo is too small.&lt;/p&gt;
+&lt;? else ?&gt;
+    &lt;p&gt;Correct foo entered&lt;/p&gt;
+&lt;?php endif ?&gt;
+</pre></div>
+
+
+<p>A more advanced programmer might use something like this –</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
+&lt;div class=”query_output”&gt;
+    &lt;?
+        $sql=”select * from names”;
+        if (db_connect()): ?&gt;
+            &lt;p&gt;Error!&lt;/p&gt;
+        &lt;?php else: ?&gt;
+            &lt;p&gt;&lt;strong&gt;Names&lt;/strong&gt;&lt;/p&gt;
+        &lt;?
+            $res = db_query($sql);
+            $names = db_result($res);
+            foreach ($names as $names): ?&gt;
+                &lt;!--span&gt;&lt;?php echo $name ?&gt;&lt;/span--&gt;
+                &lt;li class=”name”&gt;&lt;? echo $name ?&gt;&lt;/li&gt;
+        &lt;? endforeach; ?&gt;
+    &lt;? endif; ?&gt;
+&lt;/div&gt;
+</pre></div>
+
+
+<p>By closely coupling the business logic with the presentation layer, your manager will have to assign a qualified programmer to make even innocuous changes to the front-end code rather than assign them to a design trainee. Male lions in the wild mark their territory by pissing on trees. Programmers should mark theirs by pissing all over the front-end markup.</p>
+
+
+
+<h3>Reinvent the wheel. Poorly</h3>
+
+
+
+<p>If there’s one thing that PHP is famous for, it’s the rich selection of extremely useful, but badly named functions in its libraries and standard extensions. Make things worse by ignoring the in-built functions entirely and rolling your own instead. Feign ignorance, which is a pretty valid excuse when talking about PHP because it has extensions for everything you might dream about, and some things you might have never even heard of (can you spell Swish-e?).</p>
+
+
+
+<p>Write your functions in the most naïve and inefficient manner possible. You get bonus points if it is error prone due to subtle variations in the input.</p>
+
+
+
+<p>For example, PHP has an in-built strtotime() function that can convert ‘about any English textual datetime description into a Unix timestamp’. Ignore it. Take a date/time string and split it into its component values by using hardcoded delimiters. Don’t take regional differences into account. Everybody should just be using ISO 8601 anyways.</p>
+
+
+
+<h3>Naming is the key</h3>
+
+
+
+<p>Begin programming before the domain model is fully ready or understood. That way you get to create your own colourful terminology for objects which haven’t been named yet. For example, suppose you’re building a web-based interface for a controller in a bakery. Look up the thesaurus for the term ‘mould’ and use an unrelated synonym such as ‘die’ in place of the mould. Repeated instances of the word ‘die’ will make the maintenance programmer wonder if you wanted to pass a subliminal message on to him through your code.</p>
+
+
+
+<p>Take this to the next level by using different naming conventions for the same element. If your database field stores the machine operator’s name in a ‘username’ field, store the value in a variable called ‘user_machine_op_curr’, ‘machine_operator_curuser’, ‘machop_current’ and ‘machine_operator_current_user’ in different places where you need the value.</p>
+
+
+
+<p>For maximum effect, instead of encapsulating usage of this variable in a single module, apply the RYE principle to litter the code across all the files. Suppose you need a widget to display the active username at the top of the page. Write the query and code to do this on every page with subtle variations in field names and joining random bits of data from unrelated or unneeded tables. The maintenance programmer will have no idea whether the query really needs the other fields, which will dissuade him from refactoring the code into a single module.</p>
+
+
+
+<p>Tell everyone who asks that you are caching data for later use in order to improve performance.</p>
+
+
+
+<h3>Code formatting is hard. Let’s go shopping.</h3>
+
+
+
+<p>Randomize whitespace rules in your project. Use tabs in some places, spaces in another, or you can even mix and match both on the same line. Aggressively prevent any kind of structure from appearing in the code through indentation. Nested if&#8230;else blocks or loops are best for this kind of camouflage. The unwary programmer will not notice a nested loop if it is not indented further than its parent. Compound this complexity with the ability to enter and exit PHP code blocks at random locations within the file.</p>
+
+
+
+<h3>Repeat Yourself Everywhere (RYE)</h3>
+
+
+
+<p>Functions and objects are for weenies. Duplicating large chunks of badly formatted code all over the project puts hair on your chest. Even if you are a girl.</p>
+
+
+
+<p>This is the ultimate abuse of a maintenance programmer in any language. But by effectively combining the previous principles, PHP gives this technique the potential to become a lifelong nightmare of bugs which are hard to find, fix or test.</p>
+
+
+
+<h3>Putting on the Pounds</h3>
+
+
+
+<p>By diligently following all the pointers given above you can be sure to reach file sizes of magnanimous proportions. The ultimate goal is to make a file large enough to timeout the version control server while a network operation is in progress. Make enough of those and the maintenance programmer will be caught between a hard place and a rock. On one hand, there is the fragility of the code which requires frequent commits to keep from making too big a change. On the other there are constant network errors while trying to commit changes to version control.</p>
+
+
+
+<h3>Database Abuse</h3>
+
+
+
+<p>PHP’s ultimate utility is its excellent data-processing pedigree. Numerous extensions have been written to enable connecting PHP with different database servers. And the one common thing that all database publishers extol is to consolidate query operations through the use of joins for fewer disk operations and lower network transfer.</p>
+
+
+
+<p>Ignore them.</p>
+
+
+
+<p>Instead, run multiple queries – one to retrieve the master table and the rest while cycling through the result set to retrieve values from the secondary table, using the current record as the selection criteria. If you have enough values in the master table, this will slow your server down enough to frustrate the end user. Use the techniques mentioned above to obfuscate and entangle your queries with unrelated code to make it resistant to change.</p>
+
+
+
+<p>For added joy, create a new connection at random places in your code to the same database server. This will confuse the casual maintenance programmer into thinking that you’re actually retrieving information from two databases, and hence justify you not using a join.</p>
+
+
+
+<h3>Summary</h3>
+
+
+
+<p>Perform enough of these activities in a single project and you can be assured of months of job security. The best part about working in a language like PHP is that you don’t have to worry about making it not look maintainable. Legions of bad programmers have given the language such a bad rep that people almost expect PHP code to look bad.</p>
+
+
+
+<p>Which kind of makes this whole essay moot, though.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+	<nav class="navigation pagination" aria-label="Posts">
+		<h2 class="screen-reader-text">Posts navigation</h2>
+		<div class="nav-links"><a class="prev page-numbers" href="/category/software-engineering/technique/page/2/"><i class="fa fa-chevron-left"></i> Newer posts</a>
+<a class="page-numbers" href="/category/software-engineering/technique/">1</a>
+<a class="page-numbers" href="/category/software-engineering/technique/page/2/">2</a>
+<span aria-current="page" class="page-numbers current">3</span>
+<a class="page-numbers" href="/category/software-engineering/technique/page/4/">4</a>
+<a class="next page-numbers" href="/category/software-engineering/technique/page/4/">Older posts <i class="fa fa-chevron-right"></i></a></div>
+	</nav>
+		 </main><!-- #main -->
+	 </div><!-- #primary -->
+
+	</div><!-- close .main-content-inner -->
+<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+	<div class="well">
+				
+			<aside id="search" class="widget widget_search">
+				
+<form role="search" method="get" class="form-search" action="/">
+  <div class="input-group">
+	  <label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" class="form-control search-query" placeholder="Search&hellip;" value="" name="s" title="Search for:" />
+	<span class="input-group-btn">
+	  <button type="submit" class="btn btn-default" name="submit" id="searchsubmit" value="Search"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+  </div>
+</form>
+			</aside>
+
+			<aside id="archives" class="widget">
+				<h3 class="widget-title">Archives</h3>
+				<ul>
+						<li><a href='/2020/09/'>September 2020</a></li>
+	<li><a href='/2020/06/'>June 2020</a></li>
+	<li><a href='/2019/12/'>December 2019</a></li>
+	<li><a href='/2019/01/'>January 2019</a></li>
+	<li><a href='/2018/12/'>December 2018</a></li>
+	<li><a href='/2018/09/'>September 2018</a></li>
+	<li><a href='/2018/08/'>August 2018</a></li>
+	<li><a href='/2018/07/'>July 2018</a></li>
+	<li><a href='/2018/06/'>June 2018</a></li>
+	<li><a href='/2018/03/'>March 2018</a></li>
+	<li><a href='/2017/08/'>August 2017</a></li>
+	<li><a href='/2017/07/'>July 2017</a></li>
+	<li><a href='/2016/12/'>December 2016</a></li>
+	<li><a href='/2016/10/'>October 2016</a></li>
+	<li><a href='/2016/09/'>September 2016</a></li>
+	<li><a href='/2016/04/'>April 2016</a></li>
+	<li><a href='/2015/10/'>October 2015</a></li>
+	<li><a href='/2015/02/'>February 2015</a></li>
+	<li><a href='/2014/11/'>November 2014</a></li>
+	<li><a href='/2014/10/'>October 2014</a></li>
+	<li><a href='/2014/09/'>September 2014</a></li>
+	<li><a href='/2014/03/'>March 2014</a></li>
+	<li><a href='/2013/09/'>September 2013</a></li>
+	<li><a href='/2013/04/'>April 2013</a></li>
+	<li><a href='/2013/02/'>February 2013</a></li>
+	<li><a href='/2012/12/'>December 2012</a></li>
+	<li><a href='/2012/11/'>November 2012</a></li>
+	<li><a href='/2012/10/'>October 2012</a></li>
+	<li><a href='/2012/05/'>May 2012</a></li>
+	<li><a href='/2010/12/'>December 2010</a></li>
+	<li><a href='/2010/04/'>April 2010</a></li>
+	<li><a href='/2010/03/'>March 2010</a></li>
+	<li><a href='/2010/02/'>February 2010</a></li>
+	<li><a href='/2009/06/'>June 2009</a></li>
+	<li><a href='/2009/05/'>May 2009</a></li>
+	<li><a href='/2008/11/'>November 2008</a></li>
+	<li><a href='/2008/10/'>October 2008</a></li>
+	<li><a href='/2008/08/'>August 2008</a></li>
+	<li><a href='/2008/07/'>July 2008</a></li>
+	<li><a href='/2008/02/'>February 2008</a></li>
+	<li><a href='/2007/08/'>August 2007</a></li>
+	<li><a href='/2006/09/'>September 2006</a></li>
+	<li><a href='/2006/07/'>July 2006</a></li>
+	<li><a href='/2005/11/'>November 2005</a></li>
+				</ul>
+			</aside>
+
+			<aside id="meta" class="widget">
+				<h3 class="widget-title">Meta</h3>
+				<ul>
+										<li><a href="/wp-login.php">Log in</a></li>
+									</ul>
+			</aside>
+
+			</div>
+</div><!-- #secondary -->
+		</div><!-- close .row -->
+	</div><!-- close .container -->
+</div><!-- close .site-content -->
+
+	<div id="footer-area">
+		<div class="container footer-inner">
+			<div class="row">
+				
+	
+	<div class="footer-widget-area">
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-30" class="widget widget_nav_menu"><h3 class="widgettitle">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></div><div id="nav_menu-31" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+<li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1700"><a href="/a-hash-table-using-c/">A Hash Table using C#</a></li>
+</ul></div></div><div id="nav_menu-32" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></div>		</div><!-- .widget-area .first -->
+		
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
+<a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
+<a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+		
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></div><div id="nav_menu-36" class="widget widget_nav_menu"><h3 class="widgettitle">Structural Design Patterns</h3><div class="menu-structural-design-patterns-container"><ul id="menu-structural-design-patterns" class="menu"><li id="menu-item-1661" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1661"><a href="/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+<li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1698"><a href="/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+<li id="menu-item-1663" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1663"><a>Decorator</a></li>
+<li id="menu-item-1664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1664"><a>Flyweight</a></li>
+<li id="menu-item-1660" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1660"><a href="/practical-design-patterns-in-c-proxy/">Proxy</a></li>
+</ul></div></div>		</div><!-- .widget-area .third -->
+			</div>
+			</div>
+		</div>
+
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info container">
+				<div class="row">
+										<nav role="navigation" class="col-md-6">
+											</nav>
+					<div class="copyright col-md-6">
+						Copyright &copy; Pranav Negandhi						Theme by <a href="http://colorlib.com/" target="_blank" rel="nofollow noopener">Colorlib</a> Powered by <a href="http://wordpress.org/" target="_blank">WordPress</a>					</div>
+				</div>
+			</div><!-- .site-info -->
+			<div class="scroll-to-top"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+		</footer><!-- #colophon -->
+	</div>
+</div><!-- #page -->
+
+		<script type="text/javascript">
+		  jQuery(document).ready(function ($) {
+			if ($(window).width() >= 767) {
+			  $('.navbar-nav > li.menu-item > a').click(function () {
+				if ($(this).attr('target') !== '_blank') {
+				  window.location = $(this).attr('href')
+				}
+			  })
+			}
+		  })
+		</script>
+	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPhp.js?ver=3.0.9b' id='syntaxhighlighter-brush-php-js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.defaults['quick-code'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/skip-link-focus-fix.min.js?ver=20140222' id='sparkling-skip-link-focus-fix-js'></script>
+
+</body>
+</html>

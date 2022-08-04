@@ -1,114 +1,182 @@
-<!DOCTYPE html>
-<html lang="en-US">
+<!doctype html>
+<!--[if !IE]>
+<html class="no-js non-ie" lang="en-US"> <![endif]-->
+<!--[if IE 7 ]>
+<html class="no-js ie7" lang="en-US"> <![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js ie8" lang="en-US"> <![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9" lang="en-US"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en-US"> <!--<![endif]-->
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
-<meta name="description" content="Pranav Negandhi writes about programming in ActionScript and C#." />
-<title>13 | September | 2018 | Not a Designer</title>
-<link rel="profile" href="http://gmpg.org/xfn/11" />
-<link rel="pingback" href="https://notadesigner.com/xmlrpc.php" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#471211">
+<link rel="profile" href="http://gmpg.org/xfn/11">
 
+<title>September 13, 2018 &#8211; Not a Designer</title>
+<meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel='dns-prefetch' href='//s.w.org' />
-<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="https://notadesigner.com/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="https://notadesigner.com/comments/feed/" />
-<link rel='stylesheet' id='wp-block-library-css'  href='https://notadesigner.com/wp-includes/css/dist/block-library/style.min.css?ver=5.6.1' type='text/css' media='all' />
-<link rel='stylesheet' id='aldus-style-css'  href='https://notadesigner.com/wp-content/themes/aldus/style.css?ver=20130728' type='text/css' media='all' />
-<link rel='stylesheet' id='aldus-fonts-css'  href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic&#038;subset=latin' type='text/css' media='all' />
-<link rel='stylesheet' id='easy_table_style-css'  href='https://notadesigner.com/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
-<link rel="https://api.w.org/" href="https://notadesigner.com/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://notadesigner.com/xmlrpc.php?rsd" />
-<meta name="generator" content="WordPress 5.6.1" />
-
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="/comments/feed/" />
+<link rel='stylesheet' id='wp-block-library-css'  href='/wp-includes/css/dist/block-library/style.min.css?ver=6.0.1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='sparkling-bootstrap-css'  href='/wp-content/themes/sparkling/assets/css/bootstrap.min.css?ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-icons-css'  href='/wp-content/themes/sparkling/assets/css/fontawesome-all.min.css?ver=5.1.1.' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C400%2C600%2C700%7CRoboto+Slab%3A400%2C300%2C700&#038;ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='sparkling-style-css'  href='/wp-content/themes/sparkling/style.css?ver=2.4.2' type='text/css' media='all' />
+<link rel='stylesheet' id='easy_table_style-css'  href='/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/vendor/bootstrap.min.js?ver=6.0.1' id='sparkling-bootstrapjs-js'></script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503' id='sparkling-functions-js'></script>
+<link rel="https://api.w.org/" href="/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.0.1" />
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-40138748-1" type="text/javascript"></script><script type="text/javascript">window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-40138748-1');</script>
 <!-- WP-SWFObject 2.4 by unijimpe -->
-<script src="https://notadesigner.com/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+<script src="/wp-content/plugins/wp-swfobject/2.0/swfobject.js" type="text/javascript"></script>
+<style type="text/css">a, #infinite-handle span, #secondary .widget .post-content a, .entry-meta a {color:#d03532}a:hover, a:focus, a:active, #secondary .widget .post-content a:hover, #secondary .widget .post-content a:focus, .woocommerce nav.woocommerce-pagination ul li a:focus, .woocommerce nav.woocommerce-pagination ul li a:hover, .woocommerce nav.woocommerce-pagination ul li span.current, #secondary .widget a:hover, #secondary .widget a:focus {color: #471211;}.btn-default, .label-default, .flex-caption h2, .btn.btn-default.read-more,button,
+              .navigation .wp-pagenavi-pagination span.current,.navigation .wp-pagenavi-pagination a:hover,
+              .woocommerce a.button, .woocommerce button.button,
+              .woocommerce input.button, .woocommerce #respond input#submit.alt,
+              .woocommerce a.button, .woocommerce button.button,
+              .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt { background-color: #d03532; border-color: #d03532;}.site-main [class*="navigation"] a, .more-link, .pagination>li>a, .pagination>li>span, .cfa-button { color: #d03532}.cfa-button {border-color: #d03532;}.btn-default:hover, .btn-default:focus,.label-default[href]:hover, .label-default[href]:focus, .tagcloud a:hover, .tagcloud a:focus, button, .main-content [class*="navigation"] a:hover, .main-content [class*="navigation"] a:focus, #infinite-handle span:hover, #infinite-handle span:focus-within, .btn.btn-default.read-more:hover, .btn.btn-default.read-more:focus, .btn-default:hover, .btn-default:focus, .scroll-to-top:hover, .scroll-to-top:focus, .btn-default:active, .btn-default.active, .site-main [class*="navigation"] a:hover, .site-main [class*="navigation"] a:focus, .more-link:hover, .more-link:focus, #image-navigation .nav-previous a:hover, #image-navigation .nav-previous a:focus, #image-navigation .nav-next a:hover, #image-navigation .nav-next a:focus, .cfa-button:hover, .cfa-button:focus, .woocommerce a.button:hover, .woocommerce a.button:focus, .woocommerce button.button:hover, .woocommerce button.button:focus, .woocommerce input.button:hover, .woocommerce input.button:focus, .woocommerce #respond input#submit.alt:hover, .woocommerce #respond input#submit.alt:focus, .woocommerce a.button:hover, .woocommerce a.button:focus, .woocommerce button.button:hover, .woocommerce button.button:focus, .woocommerce input.button:hover, .woocommerce input.button:focus, .woocommerce a.button.alt:hover, .woocommerce a.button.alt:focus, .woocommerce button.button.alt:hover, .woocommerce button.button.alt:focus, .woocommerce input.button.alt:hover, .woocommerce input.button.alt:focus, a:hover .flex-caption h2 { background-color: #471211; border-color: #471211; }.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus-within, .pagination>li>span:hover {color: #471211;}h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .entry-title, .entry-title a {color: #b83532;}.navbar.navbar-default, .navbar-default .navbar-nav .open .dropdown-menu > li > a {background-color: #471211;}.navbar-default .navbar-nav > li > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li:hover > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li:hover > .caret, .navbar-default .navbar-nav > li, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus { color: #dedede;}@media (max-width: 767px){ .navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li:hover > .caret{ color: #dedede!important ;} }.navbar-default .navbar-nav > li:hover > a, .navbar-default .navbar-nav > li:focus-within > a, .navbar-nav > li:hover > .caret, .navbar-nav > li:focus-within > .caret, .navbar-default .navbar-nav.sparkling-mobile-menu > li.open > a, .navbar-default .navbar-nav.sparkling-mobile-menu > li.open > .caret, .navbar-default .navbar-nav > li:hover, .navbar-default .navbar-nav > li:focus-within, .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > .caret, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {color: #dedede;}@media (max-width: 767px){ .navbar-default .navbar-nav > li.open > a, .navbar-default .navbar-nav > li.open > .caret { color: #dedede !important; } }.dropdown-menu {background-color: #b82e2c;}.navbar-default .navbar-nav .open .dropdown-menu > li > a, .dropdown-menu > li > a, .dropdown-menu > li > .caret { color: #dedede;}.navbar-default .navbar-nav .dropdown-menu > li:hover, .navbar-default .navbar-nav .dropdown-menu > li:focus-within, .dropdown-menu > .active {background-color: #d03532;}@media (max-width: 767px) {.navbar-default .navbar-nav .dropdown-menu > li:hover, .navbar-default .navbar-nav .dropdown-menu > li:focus, .dropdown-menu > .active {background: transparent;} }#footer-area, .site-info, .site-info caption, #footer-area caption {color: #dedede;}.site-info a, #footer-area a {color: #d03532;}body, .entry-content {color:#6b6b6b}.entry-content {font-family: Georgia;}</style>		<style type="text/css">
+				.navbar > .container .navbar-brand {
+			color: #dedede;
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #f2f2f2; }
+</style>
+	
 </head>
 
-<body class="archive date">
+<body class="archive date custom-background">
+	<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 <div id="page" class="hfeed site">
-		<header id="masthead" class="site-header" role="banner">
-		<div class="site-branding">
-			<h1 class="site-title"><a href="https://notadesigner.com/" title="Not a Designer" rel="home">Not a Designer</a></h1>
-			<h2 class="site-description"></h2>
-		</div>
 
-		<nav id="site-navigation" class="navigation-main" role="navigation">
-			<h1 class="menu-toggle">Menu</h1>
-			<div class="screen-reader-text skip-link"><a href="#content" title="Skip to content">Skip to content</a></div>
+	<header id="masthead" class="site-header" role="banner">
+		<nav class="navbar navbar-default
+		" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="site-navigation-inner col-sm-12">
+						<div class="navbar-header">
 
-			<div class="menu-basic-menu-container"><ul id="menu-basic-menu" class="menu"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256"><a>Favourites</a>
-<ul class="sub-menu">
-	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268"><a>Foundation</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
-		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
-		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="https://notadesigner.com/whats-in-a-name/">What’s in a Name?</a></li>
-		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
-		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+
+														<div id="logo">
+															<p class="site-name">																		<a class="navbar-brand" href="/" title="Not a Designer" rel="home">Not a Designer</a>
+																</p>																													</div><!-- end of #logo -->
+
+							<button type="button" class="btn navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div>
+
+
+
+						<div class="collapse navbar-collapse navbar-ex1-collapse"><ul id="menu-basic-menu" class="nav navbar-nav"><li id="menu-item-1256" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1256 dropdown"><a>Favourites</a><span class="caret sparkling-dropdown"></span>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1268" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1268 dropdown"><a>Foundation</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1269" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1269"><a href="/on-reading-for-programmers/">On Reading for Programmers</a></li>
+		<li id="menu-item-1270" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1270"><a href="/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+		<li id="menu-item-1271" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1271"><a href="/whats-in-a-name/">What’s in a Name?</a></li>
+		<li id="menu-item-1272" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1272"><a href="/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+		<li id="menu-item-1273" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1273"><a href="/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
 	</ul>
 </li>
-	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263"><a>Demonstration</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
-		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
-		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
-		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+	<li id="menu-item-1263" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1263 dropdown"><a>Demonstration</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1265" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1265"><a href="/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+		<li id="menu-item-1264" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1264"><a href="/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+		<li id="menu-item-1266" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1266"><a href="/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+		<li id="menu-item-1267" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1267"><a href="/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
 	</ul>
 </li>
-	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262"><a>Technique</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
-		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
-		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
-		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
-		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+	<li id="menu-item-1262" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1262 dropdown"><a>Technique</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1258" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1258"><a href="/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+		<li id="menu-item-1257" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1257"><a href="/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+		<li id="menu-item-1259" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1259"><a href="/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1260" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1260"><a href="/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+		<li id="menu-item-1261" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1261"><a href="/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
 	</ul>
 </li>
 </ul>
 </li>
-<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437"><a>Practical Design Patterns</a>
-<ul class="sub-menu">
-	<li id="menu-item-1649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1649"><a>Creational</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
-		<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
-		<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
-		<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
-		<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+<li id="menu-item-1437" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1437 dropdown"><a>Practical Design Patterns</a><span class="caret sparkling-dropdown"></span>
+<ul role="menu" class=" dropdown-menu">
+	<li id="menu-item-1649" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1649 dropdown"><a>Creational</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1441" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1441"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+		<li id="menu-item-1440" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1440"><a href="/practical-design-patterns-in-c-builder/">Builder</a></li>
+		<li id="menu-item-1442" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1442"><a href="/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+		<li id="menu-item-1439" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1439"><a href="/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+		<li id="menu-item-1438" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1438"><a href="/practical-design-patterns-in-c-singleton/">Singleton</a></li>
 	</ul>
 </li>
-	<li id="menu-item-1650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1650"><a>Structural</a>
-	<ul class="sub-menu">
-		<li id="menu-item-1651" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1651"><a href="https://notadesigner.com/practical-design-patterns-in-c-adapter/">Adapter</a></li>
-		<li id="menu-item-1699" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1699"><a href="https://notadesigner.com/practical-design-patterns-in-c-bridge/">Bridge</a></li>
-		<li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1653"><a href="https://notadesigner.com/practical-design-patterns-in-c-proxy/">Proxy</a></li>
+	<li id="menu-item-1650" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1650 dropdown"><a>Structural</a><span class="caret sparkling-dropdown"></span>
+	<ul role="menu" class=" dropdown-menu">
+		<li id="menu-item-1651" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1651"><a href="/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+		<li id="menu-item-1699" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1699"><a href="/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+		<li id="menu-item-1653" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1653"><a href="/practical-design-patterns-in-c-proxy/">Proxy</a></li>
 	</ul>
 </li>
 </ul>
 </li>
-<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="https://notadesigner.com/about/">About Pranav Negandhi</a></li>
-</ul></div>		</nav><!-- #site-navigation -->
+<li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="/about/">About Pranav Negandhi</a></li>
+</ul></div>
+
+
+					</div>
+				</div>
+			</div>
+		</nav><!-- .site-navigation -->
 	</header><!-- #masthead -->
 
-	<div id="main" class="site-main">
+	<div id="content" class="site-content">
 
-	<section id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
+		<div class="top-section">
+								</div>
 
-		
-			<header class="page-header">
-				<h1 class="page-title">
-					Day: <span>September 13, 2018</span>				</h1>
-							</header><!-- .page-header -->
+		<div class="container main-content-area">
+						<div class="row no-sidebar">
+				<div class="main-content-inner col-sm-12 col-md-8">
 
-						
+	 <div id="primary" class="content-area">
+		 <main id="main" class="site-main" role="main">
+
+			
+				<header class="page-header">
+					<h1 class="page-title">Day: <span>September 13, 2018</span></h1>				</header><!-- .page-header -->
+
 				
-<article id="post-1108" class="post-1108 post type-post status-publish format-standard hentry category-construction tag-asp-net tag-c tag-entity-framework">
-	<header class="entry-header">
-		<h1 class="entry-title"><a href="https://notadesigner.com/the-content-data-context/" rel="bookmark">The Content Data Context</a></h1>
-	</header><!-- .entry-header -->
+<article id="post-1108" class="post-1108 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<div class="blog-item-wrap">
+				<a href="/the-content-data-context/" title="The Content Data Context" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/09/IMG_0441-750x384.jpg" class="single-featured wp-post-image" alt="" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
 
-		<div class="entry-content">
-		
+				<h2 class="entry-title"><a href="/the-content-data-context/" rel="bookmark">The Content Data Context</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2022-08-04T11:09:42+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
 <p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
 
 
@@ -116,11 +184,11 @@
 <h3>Basics of Entity Framework</h3>
 
 
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
-<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
-<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
 </ul></div>
 
 
@@ -128,8 +196,8 @@
 <h3>Code First</h3>
 
 
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div>
@@ -144,7 +212,7 @@
 
 
 
-<hr class="wp-block-separator"/>
+<hr class="wp-block-separator has-css-opacity"/>
 
 
 
@@ -243,7 +311,7 @@
 <p>The revised ContentContext class for this application looks like this.</p>
 
 
-<pre class="brush: csharp; title: ; notranslate" title="">
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 namespace Notadesigner.Blog
 {
     public class ContentContext : DbContext
@@ -271,22 +339,22 @@ namespace Notadesigner.Blog
         }
     }
 }
-</pre>
+</pre></div>
 
 
 <p>Based on this structure, the code to retrieve a specific Post by its primary key would be as shown below.</p>
 
 
-<pre class="brush: csharp; title: ; notranslate" title="">
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 var db = new ContentContext();
 var post = db.Posts.Find(10);
-</pre>
+</pre></div>
 
 
 <p>Inserting a new record is done in two parts. First, the entity instance is created, then it is added to the collection and the changes saved to the database.</p>
 
 
-<pre class="brush: csharp; title: ; notranslate" title="">
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 var db = new ContentContext();
 var post = db.Posts.Create();
 post.Title = &quot;Ways to Try and Take Over the World&quot;;
@@ -295,13 +363,13 @@ post.Slug = GenerateSlug(post.Title);
 …
 db.Posts.Add(post);
 db.SaveChanges();
-</pre>
+</pre></div>
 
 
 <p>Attach is useful when you wish to update only a few properties in a record which contains many columns.</p>
 
 
-<pre class="brush: csharp; title: ; notranslate" title="">
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 var db = new ContentContext();
 var post = db.Posts
                 .AsNoTracking()
@@ -311,7 +379,7 @@ var post = db.Posts
 post.Title = &quot;More Ways to Try and Take Over the World&quot;;
 db.Posts.Attach(post);
 db.SaveChanges();
-</pre>
+</pre></div>
 
 
 <p>The above code generates an update statement that only affects the Title column, as opposed to updating all the columns in the Posts table.</p>
@@ -321,12 +389,12 @@ db.SaveChanges();
 <p>Deleting records is as simple as finding an entity and marking it for deletion through the Remove method.</p>
 
 
-<pre class="brush: plain; title: ; notranslate" title="">
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
 var db = new ContentContext();
 var post = db.Posts.Find(10);
 db.Posts.Remove(post);
 db.SaveChanges();
-</pre>
+</pre></div>
 
 
 <p>Irrespective of the method used, changes are committed only if the SaveChanges method is called on the context instance.</p>
@@ -374,135 +442,219 @@ db.SaveChanges();
 
 
 <p>Columns to store reference type and nullable primitive type properties are nullable, and primitive type properties are stored in non-nullable columns.</p>
-			</div><!-- .entry-content -->
-	
-	<footer class="entry-meta">
-			<div class="entry-meta-date-links">
-		<time class="date" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time>
-				<span class="sep"> &#8226; </span>
-		<span class="permalink"><a href="https://notadesigner.com/the-content-data-context/" rel="bookmark">&#8734;</a></span>
-			</div>
 
-	
-		
-	</footer><!-- .entry-meta -->
+							</div><!-- .entry-content -->
+					</div>
+	</div>
 </article><!-- #post-## -->
 
-			
-			
-		
-		</div><!-- #content -->
-	</section><!-- #primary -->
+		 </main><!-- #main -->
+	 </div><!-- #primary -->
 
+	</div><!-- close .main-content-inner -->
+<div id="secondary" class="widget-area col-sm-12 col-md-4" role="complementary">
+	<div class="well">
+				
+			<aside id="search" class="widget widget_search">
+				
+<form role="search" method="get" class="form-search" action="/">
+  <div class="input-group">
+	  <label class="screen-reader-text" for="s">Search for:</label>
+	<input type="text" class="form-control search-query" placeholder="Search&hellip;" value="" name="s" title="Search for:" />
+	<span class="input-group-btn">
+	  <button type="submit" class="btn btn-default" name="submit" id="searchsubmit" value="Search"><span class="glyphicon glyphicon-search"></span></button>
+	</span>
+  </div>
+</form>
+			</aside>
 
-<div id="secondary" class="widget-area footer-widget-area" role="complementary">
-		<div class="first footer-widgets">
-		<aside id="text-3" class="widget widget_text">			<div class="textwidget"><p><strong><em>Previously on this Channel</em></strong></p>
-</div>
-		</aside><aside id="nav_menu-3" class="widget widget_nav_menu"><h3 class="widget-title">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="https://notadesigner.com/on-reading-for-programmers/">On Reading for Programmers</a></li>
-<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="https://notadesigner.com/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
-<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="https://notadesigner.com/whats-in-a-name/">What&#8217;s in a Name?</a></li>
-<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
-<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="https://notadesigner.com/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
-</ul></div></aside><aside id="nav_menu-5" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="https://notadesigner.com/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
-<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="https://notadesigner.com/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
-<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
-<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="https://notadesigner.com/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
-<li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1700"><a href="https://notadesigner.com/a-hash-table-using-c/">A Hash Table using C#</a></li>
-</ul></div></aside><aside id="nav_menu-7" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
-<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="https://notadesigner.com/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
-<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="https://notadesigner.com/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
-<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="https://notadesigner.com/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
-<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
-</ul></div></aside>	</div>
+			<aside id="archives" class="widget">
+				<h3 class="widget-title">Archives</h3>
+				<ul>
+						<li><a href='/2020/09/'>September 2020</a></li>
+	<li><a href='/2020/06/'>June 2020</a></li>
+	<li><a href='/2019/12/'>December 2019</a></li>
+	<li><a href='/2019/01/'>January 2019</a></li>
+	<li><a href='/2018/12/'>December 2018</a></li>
+	<li><a href='/2018/09/' aria-current="page">September 2018</a></li>
+	<li><a href='/2018/08/'>August 2018</a></li>
+	<li><a href='/2018/07/'>July 2018</a></li>
+	<li><a href='/2018/06/'>June 2018</a></li>
+	<li><a href='/2018/03/'>March 2018</a></li>
+	<li><a href='/2017/08/'>August 2017</a></li>
+	<li><a href='/2017/07/'>July 2017</a></li>
+	<li><a href='/2016/12/'>December 2016</a></li>
+	<li><a href='/2016/10/'>October 2016</a></li>
+	<li><a href='/2016/09/'>September 2016</a></li>
+	<li><a href='/2016/04/'>April 2016</a></li>
+	<li><a href='/2015/10/'>October 2015</a></li>
+	<li><a href='/2015/02/'>February 2015</a></li>
+	<li><a href='/2014/11/'>November 2014</a></li>
+	<li><a href='/2014/10/'>October 2014</a></li>
+	<li><a href='/2014/09/'>September 2014</a></li>
+	<li><a href='/2014/03/'>March 2014</a></li>
+	<li><a href='/2013/09/'>September 2013</a></li>
+	<li><a href='/2013/04/'>April 2013</a></li>
+	<li><a href='/2013/02/'>February 2013</a></li>
+	<li><a href='/2012/12/'>December 2012</a></li>
+	<li><a href='/2012/11/'>November 2012</a></li>
+	<li><a href='/2012/10/'>October 2012</a></li>
+	<li><a href='/2012/05/'>May 2012</a></li>
+	<li><a href='/2010/12/'>December 2010</a></li>
+	<li><a href='/2010/04/'>April 2010</a></li>
+	<li><a href='/2010/03/'>March 2010</a></li>
+	<li><a href='/2010/02/'>February 2010</a></li>
+	<li><a href='/2009/06/'>June 2009</a></li>
+	<li><a href='/2009/05/'>May 2009</a></li>
+	<li><a href='/2008/11/'>November 2008</a></li>
+	<li><a href='/2008/10/'>October 2008</a></li>
+	<li><a href='/2008/08/'>August 2008</a></li>
+	<li><a href='/2008/07/'>July 2008</a></li>
+	<li><a href='/2008/02/'>February 2008</a></li>
+	<li><a href='/2007/08/'>August 2007</a></li>
+	<li><a href='/2006/09/'>September 2006</a></li>
+	<li><a href='/2006/07/'>July 2006</a></li>
+	<li><a href='/2005/11/'>November 2005</a></li>
+				</ul>
+			</aside>
+
+			<aside id="meta" class="widget">
+				<h3 class="widget-title">Meta</h3>
+				<ul>
+										<li><a href="/wp-login.php">Log in</a></li>
+									</ul>
+			</aside>
+
+			</div>
+</div><!-- #secondary -->
+		</div><!-- close .row -->
+	</div><!-- close .container -->
+</div><!-- close .site-content -->
+
+	<div id="footer-area">
+		<div class="container footer-inner">
+			<div class="row">
+				
 	
-		<div class="second footer-widgets">
-		<aside id="text-9" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
-		</aside><aside id="nav_menu-19" class="widget widget_nav_menu"><h3 class="widget-title">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
-</ul></div></aside><aside id="nav_menu-20" class="widget widget_nav_menu"><h3 class="widget-title">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
+	<div class="footer-widget-area">
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-30" class="widget widget_nav_menu"><h3 class="widgettitle">Favourites</h3><div class="menu-favourites-foundation-container"><ul id="menu-favourites-foundation" class="menu"><li id="menu-item-1221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1221"><a href="/on-reading-for-programmers/">On Reading for Programmers</a></li>
+<li id="menu-item-1222" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1222"><a href="/programming-beyond-9-to-5/">Programming Beyond 9 to 5</a></li>
+<li id="menu-item-1223" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1223"><a href="/whats-in-a-name/">What&#8217;s in a Name?</a></li>
+<li id="menu-item-1220" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1220"><a href="/nothing-is-so-simple-that-it-cannot-be-difficult/">Nothing Is So Simple That it Cannot Be Difficult</a></li>
+<li id="menu-item-1216" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1216"><a href="/a-guide-to-effective-version-control/">A Guide to Effective Version Control</a></li>
+</ul></div></div><div id="nav_menu-31" class="widget widget_nav_menu"><div class="menu-favourites-demonstration-container"><ul id="menu-favourites-demonstration" class="menu"><li id="menu-item-1225" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1225"><a href="/reading-time-on-a-binary-clock/">Reading Time on a Binary Clock</a></li>
+<li id="menu-item-1224" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1224"><a href="/a-binary-clock-using-c/">A Binary Clock using C#</a></li>
+<li id="menu-item-1226" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1226"><a href="/creating-an-underwater-effect-in-actionscript/">Creating an Underwater Effect in ActionScript</a></li>
+<li id="menu-item-1227" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1227"><a href="/breaking-free-from-your-api/">Breaking Free from Your API</a></li>
+<li id="menu-item-1700" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1700"><a href="/a-hash-table-using-c/">A Hash Table using C#</a></li>
+</ul></div></div><div id="nav_menu-32" class="widget widget_nav_menu"><div class="menu-favourites-technique-container"><ul id="menu-favourites-technique" class="menu"><li id="menu-item-1230" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1230"><a href="/how-to-write-unmaintainable-code-php-redux/">How to Write Unmaintainable Code – PHP Redux</a></li>
+<li id="menu-item-1229" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1229"><a href="/how-to-write-unmaintainable-code-asp-net-redux/">How to Write Unmaintainable Code – ASP.NET Redux</a></li>
+<li id="menu-item-1231" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1231"><a href="/a-message-in-a-socket-interprocess-communications-by-example/">A Message in a Socket – Interprocess Communications by Example</a></li>
+<li id="menu-item-1232" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1232"><a href="/socket-talk-interprocess-communications-by-example/">Socket Talk – Interprocess Communications by Example</a></li>
+<li id="menu-item-1233" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1233"><a href="/reifying-your-commands-interprocess-communications-by-example/">Reifying Your Commands – Interprocess Communications by Example</a></li>
+</ul></div></div>		</div><!-- .widget-area .first -->
+		
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div></aside><aside id="nav_menu-21" class="widget widget_nav_menu"><h3 class="widget-title">Database First</h3><div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
-</ul></div></aside>	</div>
-	
-		<div class="third footer-widgets">
-		<aside id="text-11" class="widget widget_text"><h3 class="widget-title">&nbsp;</h3>			<div class="textwidget"></div>
-		</aside><aside id="nav_menu-23" class="widget widget_nav_menu"><h3 class="widget-title">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
-<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="https://notadesigner.com/practical-design-patterns-in-c-builder/">Builder</a></li>
-<li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
-<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="https://notadesigner.com/practical-design-patterns-in-c-prototype/">Prototype</a></li>
-<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="https://notadesigner.com/practical-design-patterns-in-c-singleton/">Singleton</a></li>
-</ul></div></aside><aside id="nav_menu-25" class="widget widget_nav_menu"><h3 class="widget-title">Structural Design Patterns</h3><div class="menu-structural-design-patterns-container"><ul id="menu-structural-design-patterns" class="menu"><li id="menu-item-1661" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1661"><a href="https://notadesigner.com/practical-design-patterns-in-c-adapter/">Adapter</a></li>
-<li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1698"><a href="https://notadesigner.com/practical-design-patterns-in-c-bridge/">Bridge</a></li>
+</ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
+<a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
+<a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+		
+				<div class="col-sm-4 footer-widget" role="complementary">
+			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
+<li id="menu-item-1332" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1332"><a href="/practical-design-patterns-in-c-builder/">Builder</a></li>
+<li id="menu-item-1334" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1334"><a href="/practical-design-patterns-in-c-factory-method/">Factory Method</a></li>
+<li id="menu-item-1370" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1370"><a href="/practical-design-patterns-in-c-prototype/">Prototype</a></li>
+<li id="menu-item-1436" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1436"><a href="/practical-design-patterns-in-c-singleton/">Singleton</a></li>
+</ul></div></div><div id="nav_menu-36" class="widget widget_nav_menu"><h3 class="widgettitle">Structural Design Patterns</h3><div class="menu-structural-design-patterns-container"><ul id="menu-structural-design-patterns" class="menu"><li id="menu-item-1661" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1661"><a href="/practical-design-patterns-in-c-adapter/">Adapter</a></li>
+<li id="menu-item-1698" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1698"><a href="/practical-design-patterns-in-c-bridge/">Bridge</a></li>
 <li id="menu-item-1663" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1663"><a>Decorator</a></li>
 <li id="menu-item-1664" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1664"><a>Flyweight</a></li>
-<li id="menu-item-1660" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1660"><a href="https://notadesigner.com/practical-design-patterns-in-c-proxy/">Proxy</a></li>
-</ul></div></aside><aside id="tag_cloud-14" class="widget widget_tag_cloud"><h3 class="widget-title">Tags</h3><div class="tagcloud"><a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
-<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
-<a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
-<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
-<a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
-<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
-<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
-<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
-<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
-<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
-<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
-<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
-<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
-<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
-<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
-<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
-<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
-<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
-<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
-<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
-<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
-<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></div>
-</aside>	</div>
-	</div><!-- #secondary -->
+<li id="menu-item-1660" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1660"><a href="/practical-design-patterns-in-c-proxy/">Proxy</a></li>
+</ul></div></div>		</div><!-- .widget-area .third -->
+			</div>
+			</div>
+		</div>
 
-	</div><!-- #main -->
-
-	<footer id="colophon" class="site-footer" role="contentinfo">
-		<div class="site-info">
-						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
-			<span class="sep">  &#8226; </span>
-			Theme: Aldus by <a href="http://fklein.info/" rel="designer">Fr&#228;nk Klein</a>.		</div><!-- .site-info -->
-	</footer><!-- #colophon -->
+		<footer id="colophon" class="site-footer" role="contentinfo">
+			<div class="site-info container">
+				<div class="row">
+										<nav role="navigation" class="col-md-6">
+											</nav>
+					<div class="copyright col-md-6">
+						Copyright &copy; Pranav Negandhi						Theme by <a href="http://colorlib.com/" target="_blank" rel="nofollow noopener">Colorlib</a> Powered by <a href="http://wordpress.org/" target="_blank">WordPress</a>					</div>
+				</div>
+			</div><!-- .site-info -->
+			<div class="scroll-to-top"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+		</footer><!-- #colophon -->
+	</div>
 </div><!-- #page -->
 
-<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
-<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
-<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
+		<script type="text/javascript">
+		  jQuery(document).ready(function ($) {
+			if ($(window).width() >= 767) {
+			  $('.navbar-nav > li.menu-item > a').click(function () {
+				if ($(this).attr('target') !== '_blank') {
+				  window.location = $(this).attr('href')
+				}
+			  })
+			}
+		  })
+		</script>
+	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');
 		var themecss = document.createElement('link');
-		var corecssurl = "https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
 		if ( corecss.setAttribute ) {
 				corecss.setAttribute( "rel", "stylesheet" );
 				corecss.setAttribute( "type", "text/css" );
@@ -512,7 +664,7 @@ db.SaveChanges();
 				corecss.href = corecssurl;
 		}
 		document.head.appendChild( corecss );
-		var themecssurl = "https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
 		if ( themecss.setAttribute ) {
 				themecss.setAttribute( "rel", "stylesheet" );
 				themecss.setAttribute( "type", "text/css" );
@@ -545,16 +697,7 @@ db.SaveChanges();
 		} );
 	}
 </script>
-<script type='text/javascript' src='https://notadesigner.com/wp-content/themes/aldus/js/navigation.js?ver=20130728' id='aldus-navigation-js'></script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/skip-link-focus-fix.min.js?ver=20140222' id='sparkling-skip-link-focus-fix-js'></script>
 
-  ga('create', 'UA-40138748-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 </body>
 </html>

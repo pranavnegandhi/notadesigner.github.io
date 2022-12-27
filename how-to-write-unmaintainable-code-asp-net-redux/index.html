@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">How to Write Unmaintainable Code &ndash; ASP.NET Redux</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark"><time class="entry-date published" datetime="2018-03-19T06:36:00+05:30">March 19, 2018</time><time class="updated" datetime="2022-08-04T11:14:03+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark"><time class="entry-date published" datetime="2018-03-19T06:36:00+05:30">March 19, 2018</time><time class="updated" datetime="2022-12-26T19:45:01+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/technique/" rel="category tag">Technique</a>				</span>
 								
@@ -191,7 +191,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Maintainable code adheres to standards ΓÇô industry, platform, semantics, or just simply internal to the company. Standard practices make it easy to build, maintain and extend software. As such, theyΓÇÖre anathema to anybody who aims to exclude newcomers from modifying his program.</p>
+<p>Maintainable code adheres to standards – industry, platform, semantics, or just simply internal to the company. Standard practices make it easy to build, maintain and extend software. As such, they’re anathema to anybody who aims to exclude newcomers from modifying his program.</p>
 
 
 
@@ -203,15 +203,15 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Be merciless in thrashing their expectations. Tailor your product to work exclusively with the regional settings used on your development computer. If you are using the American date format, say youΓÇÖre paying homage to the original home of the PC. If youΓÇÖre using British settings, extol upon the semantic benefits of the dd-mm-yy structure over the unintelligible American format.</p>
+<p>Be merciless in thrashing their expectations. Tailor your product to work exclusively with the regional settings used on your development computer. If you are using the American date format, say you’re paying homage to the original home of the PC. If you’re using British settings, extol upon the semantic benefits of the dd-mm-yy structure over the unintelligible American format.</p>
 
 
 
-<p>Modern programming platforms have a dedicated date and time data type precisely to avoid this problem. Sidestep it by transmitting and storing dates as strings in your preferred formats (there doesnΓÇÖt have to be just one). That way, you also get to scatter a 200-line snippet of code to parse and extract individual fields from the string.</p>
+<p>Modern programming platforms have a dedicated date and time data type precisely to avoid this problem. Sidestep it by transmitting and storing dates as strings in your preferred formats (there doesn’t have to be just one). That way, you also get to scatter a 200-line snippet of code to parse and extract individual fields from the string.</p>
 
 
 
-<p>For extra points, close all bug reports about the issue from the test engineers with a ΓÇ£Works for meΓÇ¥ comment. Your development computer is the ultimate benchmark for your software. Everybody who wishes to run your program should aspire to replicate the immaculate state of existence of your computer. They have no business running or modifying your program otherwise.</p>
+<p>For extra points, close all bug reports about the issue from the test engineers with a “Works for me” comment. Your development computer is the ultimate benchmark for your software. Everybody who wishes to run your program should aspire to replicate the immaculate state of existence of your computer. They have no business running or modifying your program otherwise.</p>
 
 
 
@@ -237,11 +237,11 @@ body.custom-background { background-color: #f2f2f2; }
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class FooController
 {
-┬á┬á┬á ΓÇª
-┬á┬á┬á public new void OnActionExecuting(ActionExecutingContext filterContext)
-┬á┬á┬á {
-┬á┬á┬á }
-┬á┬á┬á ΓÇª
+    …
+    public new void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+    }
+    …
 }
 </pre></div>
 
@@ -258,15 +258,15 @@ public class FooController
 
 
 
-<p>Mask these shortcomings by only writing client-side validation. That way, the bugs remain hidden until the day some script kiddie uses the contact form on the site to send ΓÇ£; DELETE TABLE UsersΓÇ¥ to your server.</p>
+<p>Mask these shortcomings by only writing client-side validation. That way, the bugs remain hidden until the day some script kiddie uses the contact form on the site to send “; DELETE TABLE Users” to your server.</p>
 
 
 
-<h3>TryΓÇªcatchΓÇªswallow</h3>
+<h3>Try…catch…swallow</h3>
 
 
 
-<p>Nobody wants to see those ugly-ass ΓÇ£Server ErrorΓÇ¥ pages in the browser. So do the most obvious thing and wrap your code in a try-catch block. But write only one catch handler for the most general exception possible. Then leave it empty.</p>
+<p>Nobody wants to see those ugly-ass “Server Error” pages in the browser. So do the most obvious thing and wrap your code in a try-catch block. But write only one catch handler for the most general exception possible. Then leave it empty.</p>
 
 
 
@@ -286,7 +286,7 @@ public class FooController
 
 
 
-<p>This strategy has even more potential when working with complex data types containing multiple data fields. Eschew standard schemes such as CSV. Instead come up with your own custom scheme using uncommonly used text characters. The Unicode standard is very vast. I personally recommend using pips from playing cards. The ΓÇ£ΓÖÑΓÇ¥ character is appropriately labelled ΓÇ£Black Heart SuitΓÇ¥, because it lets the maintenance programmer perceive the hatred you bear towards him for attempting to tarnish the pristine beauty of the code you have so lovingly written.</p>
+<p>This strategy has even more potential when working with complex data types containing multiple data fields. Eschew standard schemes such as CSV. Instead come up with your own custom scheme using uncommonly used text characters. The Unicode standard is very vast. I personally recommend using pips from playing cards. The “♥” character is appropriately labelled “Black Heart Suit”, because it lets the maintenance programmer perceive the hatred you bear towards him for attempting to tarnish the pristine beauty of the code you have so lovingly written.</p>
 
 
 
@@ -306,41 +306,41 @@ public class FooController
 
 
 
-<p>JavaScript ΓÇô</p>
+<p>JavaScript –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate" title="">
 var a = 0; // Variable a declared in global scope
-
+ 
 function doFoo() {
-┬á┬á┬á a++; // Modifies the variable in global scope
+    a++; // Modifies the variable in global scope
 }
-
+ 
 function doBar() {
-┬á┬á┬á var a = 1;
-┬á┬á┬á a++; // Modifies the variable in local scope
+    var a = 1;
+    a++; // Modifies the variable in local scope
 }
 </pre></div>
 
 
-<p>C# ΓÇô</p>
+<p>C# –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class AppGlobals
 {
-┬á┬á┬á public int A = 0;
+    public int A = 0;
 }
-
+ 
 public class Foo
 {
-┬á┬á┬á public void DoSomething()
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á // Scope of A is abundantly clear
-┬á┬á┬á┬á┬á┬á┬á AppGlobals.A++;
-┬á┬á┬á┬á┬á┬á┬á var A = 0;
-┬á┬á┬á┬á┬á┬á┬á A++;
-┬á┬á┬á }
+    public void DoSomething()
+    {
+        // Scope of A is abundantly clear
+        AppGlobals.A++;
+        var A = 0;
+        A++;
+    }
 }
 </pre></div>
 
@@ -369,7 +369,7 @@ public class Foo
 
 
 
-<p>Combine this with the practice of creating and leaving several unwanted tables with similar names to give rise to a special kind of monstrosity that nobody has the courage to deal with. For still extra marks, perform updates in all the tables, including the dead ones. Fetch it from different tables in different parts of the application. They cannot be called unwanted tables if even one part of your application depends on them. Call it ΓÇ£shardingΓÇ¥ if anybody questions your design.</p>
+<p>Combine this with the practice of creating and leaving several unwanted tables with similar names to give rise to a special kind of monstrosity that nobody has the courage to deal with. For still extra marks, perform updates in all the tables, including the dead ones. Fetch it from different tables in different parts of the application. They cannot be called unwanted tables if even one part of your application depends on them. Call it “sharding” if anybody questions your design.</p>
 
 
 
@@ -385,7 +385,7 @@ public class Foo
 
 
 
-<p>That people still write badly structured code in spite of all these advances cements my original point ΓÇô bad programmers write bad code irrespective of the language thrown at them.</p>
+<p>That people still write badly structured code in spite of all these advances cements my original point – bad programmers write bad code irrespective of the language thrown at them.</p>
 					</div><!-- .entry-content -->
 
 		<footer class="entry-meta">

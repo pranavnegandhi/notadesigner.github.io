@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">The Secret Lives of Timer Objects</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2022-08-03T15:26:23+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2022-12-26T18:56:00+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/technique/" rel="category tag">Technique</a>				</span>
 								
@@ -175,7 +175,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 		<div class="entry-content">
 			
-<p>One of the better side-effects of working in memory-managed languages is that you donΓÇÖt have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
+<p>One of the better side-effects of working in memory-managed languages is that you don’t have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
 
 
 
@@ -187,7 +187,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). ThereΓÇÖs an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
+<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). There’s an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
 
 
 
@@ -207,7 +207,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward ΓÇô create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
+<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward – create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
 
 
 
@@ -215,7 +215,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>LetΓÇÖs repeat that.</p>
+<p>Let’s repeat that.</p>
 
 
 
@@ -227,7 +227,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>The following piece of code illustrates the permanence of Timer objects which havenΓÇÖt been stopped.</p>
+<p>The following piece of code illustrates the permanence of Timer objects which haven’t been stopped.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -262,11 +262,11 @@ package
 
 
 
-<p>ΓÇ£Everything else is cleared automatically. Why leave behind timers?ΓÇ¥</p>
+<p>“Everything else is cleared automatically. Why leave behind timers?”</p>
 
 
 
-<p>Some thought on the subject will make you realize that the language designers at Adobe werenΓÇÖt off their rockers after all. This behaviour is by design. In the example code shown above, ΓÇÿtΓÇÖ is a local variable inside the constructor. When the function ends, the variable goes out of scope and<br>there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
+<p>Some thought on the subject will make you realize that the language designers at Adobe weren’t off their rockers after all. This behaviour is by design. In the example code shown above, ‘t’ is a local variable inside the constructor. When the function ends, the variable goes out of scope and there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
 
 
 

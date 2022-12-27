@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">Reading Time on a Binary Clock</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reading-time-on-a-binary-clock/" rel="bookmark"><time class="entry-date published" datetime="2012-11-16T22:44:42+05:30">November 16, 2012</time><time class="updated" datetime="2022-08-03T16:13:04+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reading-time-on-a-binary-clock/" rel="bookmark"><time class="entry-date published" datetime="2012-11-16T22:44:42+05:30">November 16, 2012</time><time class="updated" datetime="2022-12-27T07:01:16+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/foundation/" rel="category tag">Foundation</a>				</span>
 								
@@ -211,8 +211,8 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<pre class="wp-block-preformatted">256 = 2 ├ù 10┬▓ + 5 ├ù 10┬╣ + 6 ├ù 10Γü░
-    = 2 ├ù 100 + 5 ├ù 10 + 6 ├ù 1
+<pre class="wp-block-preformatted">256 = 2 × 10² + 5 × 10¹ + 6 × 10⁰
+    = 2 × 100 + 5 × 10 + 6 × 1
     = 200 + 50 + 6
     = 256</pre>
 
@@ -222,8 +222,8 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<pre class="wp-block-preformatted">11001 = 1 ├ù 2Γü┤ + 1 ├ù 2┬│ + 0 ├ù 2┬▓ + 0 ├ù 2┬╣ + 1 ├ù 2Γü░
-      = 1 ├ù 16 + 1 ├ù 8 + 0 ├ù 4 + 0 ├ù 2 + 1 ├ù 1
+<pre class="wp-block-preformatted">11001 = 1 × 2⁴ + 1 × 2³ + 0 × 2² + 0 × 2¹ + 1 × 2⁰
+      = 1 × 16 + 1 × 8 + 0 × 4 + 0 × 2 + 1 × 1
       = 16 + 8 + 0 + 0 + 1
       = 25</pre>
 
@@ -245,17 +245,17 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 <div class="wp-block-image size-full wp-image-498">
-<figure class="aligncenter"><img decoding="async" width="350" height="230" src="http://www.notadesigner.com/wp-content/uploads/2012/11/binary-coded-decimal-clock.png" alt="" class="wp-image-498"/><figcaption>A clock face that uses binary-coded decimal notation</figcaption></figure></div>
+<figure class="aligncenter"><img decoding="async" width="350" height="230" src="/wp-content/uploads/2012/11/binary-coded-decimal-clock.png" alt="" class="wp-image-498"/><figcaption class="wp-element-caption">A clock face that uses binary-coded decimal notation</figcaption></figure></div>
 
 
 <p>A BCD clock face&nbsp;is divided into six columns &#8211; two for each component of the time. Each column contains up to four rows, one for each power of two. The leftmost two columns represent the hour, the middle two are minute columns and the last two represent seconds. Each column represents a single base 10 digit of time. For example, if the value of column one is 1 and that of column 2 is 0, then the clock is representing the 10th hour of the day, or after 10 am. Similarly, if the value in column three and four is 3 and 2 respectively, the clock is in the 32nd minute of the current hour.</p>
 
 
 <div class="wp-block-image size-full wp-image-499">
-<figure class="aligncenter"><img decoding="async" loading="lazy" width="350" height="335" src="http://www.notadesigner.com/wp-content/uploads/2012/11/true-binary-clock.png" alt="" class="wp-image-499"/><figcaption>A clock face that represents time components in pure binary notation</figcaption></figure></div>
+<figure class="aligncenter"><img decoding="async" loading="lazy" width="350" height="335" src="/wp-content/uploads/2012/11/true-binary-clock.png" alt="" class="wp-image-499"/><figcaption class="wp-element-caption">A clock face that represents time components in pure binary notation</figcaption></figure></div>
 
 
-<p>True binary clocks represent each time component in a single column. Such clocks require only three columns, and up to six rows in each column to adequately cover all required values. Each column represents the absolute value of the component in binary encoding. For example, 0b001010 in the hour column represents 10 (1 ├ù 2┬│ + 1 ├ù 2┬╣). 0b100000 in the minutes column represents the 32nd minute of the hour. Together, the two values indicate the time as 10:32 am.</p>
+<p>True binary clocks represent each time component in a single column. Such clocks require only three columns, and up to six rows in each column to adequately cover all required values. Each column represents the absolute value of the component in binary encoding. For example, 0b001010 in the hour column represents 10 (1 × 2³ + 1 × 2¹). 0b100000 in the minutes column represents the 32nd minute of the hour. Together, the two values indicate the time as 10:32 am.</p>
 
 
 

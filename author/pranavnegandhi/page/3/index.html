@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-proxy/" rel="bookmark">Practical Design Patterns in C# &#8211; Proxy</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-proxy/" rel="bookmark"><time class="entry-date published" datetime="2019-01-13T07:01:00+05:30">January 13, 2019</time><time class="updated" datetime="2022-08-04T11:05:36+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-proxy/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-proxy/" rel="bookmark"><time class="entry-date published" datetime="2019-01-13T07:01:00+05:30">January 13, 2019</time><time class="updated" datetime="2022-12-27T06:39:30+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-proxy/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -221,7 +221,7 @@ catch (Exception)
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class NumberConversionSoapTypeClient
 {
-  ΓÇª
+  …
   public Task&lt;NumberToWordsResponse&gt; NumberToWordsAsync(ulong ubiNum)
   {
     NumberToWordsRequest inValue = new NumberToWordsRequest();
@@ -229,7 +229,7 @@ public class NumberConversionSoapTypeClient
     inValue.Body.ubiNum = ubiNum;
     return ((NumberConversionSoapType(this)).NumberToWordsAsync(inValue);
   }
-  ΓÇª
+  …
 }
 </pre></div>
 
@@ -255,7 +255,7 @@ public class NumberConversionSoapTypeClient
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-08-04T11:06:06+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-12-27T06:39:53+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -297,7 +297,7 @@ public class WmiClient
   private void WatcherCompletedHandler(object sender, CompletedEventArgs e)
   {
     // Consume the results of the operation.
-    ΓÇª
+    …
   }
 }
 </pre></div>
@@ -388,7 +388,7 @@ public class WmiClient
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-singleton/" rel="bookmark">Practical Design Patterns in C# &ndash; Singleton</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2022-08-04T11:06:43+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-singleton/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2022-12-27T06:40:44+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-singleton/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -479,7 +479,7 @@ public sealed class ConnectionPool
 {
     private static ConnectionPool _instance;
 
-    ΓÇª
+    …
 
     private readonly object padlock = new { };
 
@@ -490,12 +490,12 @@ public sealed class ConnectionPool
 
     public IDbConnection Acquire()
     {
-        ΓÇª
+        …
     }
 
     public void Release(IDbConnection connection)
     {
-        ΓÇª
+        …
     }
 
     public static ConnectionPool Instance
@@ -547,12 +547,12 @@ public class ConnectionPool
 
     public IDbConnection Acquire()
     {
-        ΓÇª
+        …
     }
 
     public void Release(IDbConnection connection)
     {
-        ΓÇª
+        …
     }
 
     public static ConnectionPool Instance
@@ -583,15 +583,15 @@ public class ConnectionPool
 
 <article id="post-1349" class="post-1349 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-prototype">
 	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-prototype/" title="Practical Design Patterns in C# ΓÇô Prototype" >
+				<a href="/practical-design-patterns-in-c-prototype/" title="Practical Design Patterns in C# – Prototype" >
 				<img width="750" height="384" src="/wp-content/uploads/2018/12/DSC_4901-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# ΓÇô Prototype</a></h2>
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# – Prototype</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2022-08-04T11:07:42+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-prototype/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2022-12-27T06:41:04+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-prototype/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -737,7 +737,7 @@ private Document Clone()
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-builder/" rel="bookmark">Practical Design Patterns in C# &ndash; Builder</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2021-02-12T14:13:25+05:30">February 12, 2021</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2022-12-27T06:43:07+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -763,7 +763,7 @@ private Document Clone()
 var message = new MailMessage(&quot;john@example.com&quot;,
                 &quot;jane@example.com&quot;,
                 &quot;101 Ways to Refactor&quot;,
-                &quot;Lorem ipsuΓÇª&quot;);
+                &quot;Lorem ipsu…&quot;);
 </pre></div>
 
 
@@ -790,22 +790,22 @@ public class EmailBuilder
 
     public EmailBuilder AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -825,7 +825,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 
@@ -868,22 +868,22 @@ public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
 
     public IMessageBuilder&lt;MailMessage&gt; AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -958,7 +958,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 

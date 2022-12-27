@@ -354,7 +354,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 				<h2 class="entry-title"><a href="/the-secret-lives-of-timer-objects/" rel="bookmark">The Secret Lives of Timer Objects</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2022-08-03T15:26:23+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-secret-lives-of-timer-objects/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2022-12-26T18:56:00+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-secret-lives-of-timer-objects/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -363,7 +363,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 						<div class="entry-content">
 
 				
-<p>One of the better side-effects of working in memory-managed languages is that you donΓÇÖt have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
+<p>One of the better side-effects of working in memory-managed languages is that you don’t have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
 
 
 
@@ -375,7 +375,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 
 
 
-<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). ThereΓÇÖs an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
+<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). There’s an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
 
 
 
@@ -395,7 +395,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 
 
 
-<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward ΓÇô create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
+<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward – create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
 
 
 
@@ -403,7 +403,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 
 
 
-<p>LetΓÇÖs repeat that.</p>
+<p>Let’s repeat that.</p>
 
 
 
@@ -415,7 +415,7 @@ instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
 
 
 
-<p>The following piece of code illustrates the permanence of Timer objects which havenΓÇÖt been stopped.</p>
+<p>The following piece of code illustrates the permanence of Timer objects which haven’t been stopped.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -450,11 +450,11 @@ package
 
 
 
-<p>ΓÇ£Everything else is cleared automatically. Why leave behind timers?ΓÇ¥</p>
+<p>“Everything else is cleared automatically. Why leave behind timers?”</p>
 
 
 
-<p>Some thought on the subject will make you realize that the language designers at Adobe werenΓÇÖt off their rockers after all. This behaviour is by design. In the example code shown above, ΓÇÿtΓÇÖ is a local variable inside the constructor. When the function ends, the variable goes out of scope and<br>there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
+<p>Some thought on the subject will make you realize that the language designers at Adobe weren’t off their rockers after all. This behaviour is by design. In the example code shown above, ‘t’ is a local variable inside the constructor. When the function ends, the variable goes out of scope and there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
 
 
 
@@ -524,7 +524,7 @@ package
 				<h2 class="entry-title"><a href="/creating-an-underwater-effect-in-actionscript/" rel="bookmark">Creating an Underwater Effect in ActionScript</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/creating-an-underwater-effect-in-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2010-04-27T12:46:51+05:30">April 27, 2010</time><time class="updated" datetime="2022-12-25T10:44:44+05:30">December 25, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/creating-an-underwater-effect-in-actionscript/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/creating-an-underwater-effect-in-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2010-04-27T12:46:51+05:30">April 27, 2010</time><time class="updated" datetime="2022-12-26T18:58:15+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/creating-an-underwater-effect-in-actionscript/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -533,7 +533,7 @@ package
 						<div class="entry-content">
 
 				
-<p>ActionScript is very well suited to creating old-school demo effects due to its rich drawing API and absence of memory management. Speed would have been a concern a few years ago, but as long as youΓÇÖre not replicating Heaven7, current releases of Flash player should still be able to handle complex animations with minimal performance problems.</p>
+<p>ActionScript is very well suited to creating old-school demo effects due to its rich drawing API and absence of memory management. Speed would have been a concern a few years ago, but as long as you’re not replicating Heaven7, current releases of Flash player should still be able to handle complex animations with minimal performance problems.</p>
 
 
 
@@ -557,7 +557,7 @@ package
 
 
 
-<p>A sine wave is mathematical function that plots a smooth, repetitive oscillation and is represented in its simplest form as y(t) = A ┬╖ sin(╧ët + ╬ª) where A is the amplitude or peak deviation of the function from its centre position, ╧ë is the frequency and specifies how many oscillations occur in a unit time interval in radians per second and ╬ª is the phase, which specifies where the oscillation cycle begins when t = 0.</p>
+<p>A sine wave is mathematical function that plots a smooth, repetitive oscillation and is represented in its simplest form as y(t) = A · sin(ωt + Φ) where A is the amplitude or peak deviation of the function from its centre position, ω is the frequency and specifies how many oscillations occur in a unit time interval in radians per second and Φ is the phase, which specifies where the oscillation cycle begins when t = 0.</p>
 
 
 
@@ -684,7 +684,7 @@ public function Draw(e:Event):void
 				<h2 class="entry-title"><a href="/mathematical-elegance-in-programming/" rel="bookmark">Mathematical Elegance in Programming</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/mathematical-elegance-in-programming/" rel="bookmark"><time class="entry-date published" datetime="2010-04-01T11:10:25+05:30">April 1, 2010</time><time class="updated" datetime="2022-08-03T15:21:35+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/mathematical-elegance-in-programming/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/mathematical-elegance-in-programming/" rel="bookmark"><time class="entry-date published" datetime="2010-04-01T11:10:25+05:30">April 1, 2010</time><time class="updated" datetime="2022-12-26T18:59:16+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/mathematical-elegance-in-programming/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -701,7 +701,7 @@ public function Draw(e:Event):void
 
 
 <div class="wp-block-image size-full wp-image-163">
-<figure class="alignleft is-resized"><img decoding="async" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-a.png" alt="" class="wp-image-163" width="150" height="149"/><figcaption>Diagram A</figcaption></figure></div>
+<figure class="alignleft is-resized"><img decoding="async" loading="lazy" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-a.png" alt="" class="wp-image-163" width="150" height="149"/><figcaption class="wp-element-caption">Diagram A</figcaption></figure></div>
 
 
 <p>Diagram A shows a square with each side 10 units long. A green diagonal cuts the square into two equal triangles. The number of squares making up the square equals 10 x 10 = 100.</p>
@@ -716,7 +716,7 @@ public function Draw(e:Event):void
 
 
 <div class="wp-block-image size-full wp-image-164">
-<figure class="alignleft"><img decoding="async" loading="lazy" width="150" height="149" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-b.png" alt="" class="wp-image-164"/><figcaption>Diagram B</figcaption></figure></div>
+<figure class="alignleft"><img decoding="async" loading="lazy" width="150" height="149" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-b.png" alt="" class="wp-image-164"/><figcaption class="wp-element-caption">Diagram B</figcaption></figure></div>
 
 
 <p>Thus it can be seen how the total number of cells in one triangle (i.e. N + (N &#8211; 1) + (N &#8211; 2)&#8230;+ 1) can be computed by calculating the area encompassed by a rectangle that is N * (N + 1) and dividing the result by 2.</p>
@@ -735,10 +735,10 @@ public function Draw(e:Event):void
 
 
 <div class="wp-block-image size-full wp-image-165">
-<figure class="alignleft"><img decoding="async" loading="lazy" width="150" height="158" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-c.png" alt="" class="wp-image-165"/><figcaption>Diagram C</figcaption></figure></div>
+<figure class="alignleft"><img decoding="async" loading="lazy" width="150" height="158" src="http://www.notadesigner.com/wp-content/uploads/2010/04/sum-of-numbers-c.png" alt="" class="wp-image-165"/><figcaption class="wp-element-caption">Diagram C</figcaption></figure></div>
 
 
-<p>HereΓÇÖs an implementation of this code in ActionScript.</p>
+<p>Here’s an implementation of this code in ActionScript.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -874,7 +874,7 @@ package
 				<h2 class="entry-title"><a href="/director-done-right-why-adobe-must-promote-air/" rel="bookmark">Director Done Right &#8211; Why Adobe Must Promote AIR</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/director-done-right-why-adobe-must-promote-air/" rel="bookmark"><time class="entry-date published" datetime="2010-03-03T11:09:08+05:30">March 3, 2010</time><time class="updated" datetime="2022-08-03T15:22:25+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/director-done-right-why-adobe-must-promote-air/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/director-done-right-why-adobe-must-promote-air/" rel="bookmark"><time class="entry-date published" datetime="2010-03-03T11:09:08+05:30">March 3, 2010</time><time class="updated" datetime="2022-12-26T19:02:14+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/director-done-right-why-adobe-must-promote-air/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -883,7 +883,7 @@ package
 						<div class="entry-content">
 
 				
-<p>When I leapt headfirst into multimedia development a decade&nbsp;ago, there was just one go-to product for all interactive needs ΓÇô Macromedia&nbsp;Director. With origins in the vastly successful MacroMind VideoWorks application,&nbsp;Director had a strong pedigree in multimedia production. Regular updates of the&nbsp;product over more than a decade had converted the original VideoWorks into a&nbsp;development environment with an object-oriented programming language of its own&nbsp;called Lingo. It also supported external plug-ins for added features, ran on&nbsp;Windows and Macintosh computers and supported all media formats of the day ΓÇô&nbsp;plain text, images, sound and video. The greatest plus point of Director was&nbsp;its ability to create a projector out of the Director file, which was an&nbsp;executable file that bundled the player and the binary file along with any&nbsp;plugins that were used. The projector was guaranteed to work on any system&nbsp;without requiring any additional libraries (except maybe audio and video codecs).</p>
+<p>When I leapt headfirst into multimedia development a decade ago, there was just one go-to product for all interactive needs – Macromedia Director. With origins in the vastly successful MacroMind VideoWorks application, Director had a strong pedigree in multimedia production. Regular updates of the product over more than a decade had converted the original VideoWorks into a development environment with an object-oriented programming language of its own called Lingo. It also supported external plug-ins for added features, ran on Windows and Macintosh computers and supported all media formats of the day – plain text, images, sound and video. The greatest plus point of Director was its ability to create a projector out of the Director file, which was an executable file that bundled the player and the binary file along with any plugins that were used. The projector was guaranteed to work on any system without requiring any additional libraries (except maybe audio and video codecs).</p>
 
 
 
@@ -891,7 +891,7 @@ package
 
 
 
-<p>Then the whole web thing happened and Director could not&nbsp;keep pace any more. Macromedia shipped Xtras to support more media formats such&nbsp;as hypertext and Flash, and to make network requests. They also shipped the Shockwave&nbsp;browser plug-in to run a Director file in the browser. But it was no match for&nbsp;the Flash plug-in, which was a fraction of the download. This weighed heavily&nbsp;in the dial-up era back then. Chinks in the development environment began to&nbsp;take their toll. The biggest flaw of Director was that it bundled media and&nbsp;scripts in its working file into a single binary blob and saved it to disk.&nbsp;This meant that version control tools could not diff the scripts against&nbsp;previous revisions. Developers could not collaborate and work upon the same&nbsp;project without leaping through significant loops. The files would sometimes&nbsp;get damaged and become unreadable if there were power failures or other system&nbsp;breakdowns while the file was being saved. There was no easy way to create and&nbsp;reuse libraries. And the eccentric syntax of the Lingo language was a black&nbsp;mark on its developers, who could never gain any repute among people who used&nbsp;ΓÇÿrealΓÇÖ programming languages with curly braces.</p>
+<p>Then the whole web thing happened and Director could not keep pace any more. Macromedia shipped Xtras to support more media formats such as hypertext and Flash, and to make network requests. They also shipped the Shockwave browser plug-in to run a Director file in the browser. But it was no match for the Flash plug-in, which was a fraction of the download. This weighed heavily in the dial-up era back then. Chinks in the development environment began to take their toll. The biggest flaw of Director was that it bundled media and scripts in its working file into a single binary blob and saved it to disk. This meant that version control tools could not diff the scripts against previous revisions. Developers could not collaborate and work upon the same project without leaping through significant loops. The files would sometimes get damaged and become unreadable if there were power failures or other system breakdowns while the file was being saved. There was no easy way to create and reuse libraries. And the eccentric syntax of the Lingo language was a black mark on its developers, who could never gain any repute among people who used “real” programming languages with curly braces.</p>
 
 
 
@@ -903,7 +903,7 @@ package
 
 
 
-<p>Yet, the biggest drawback of Flash was its sandbox that&nbsp;prevented developers from doing anything beyond the boundaries of the browser. Local&nbsp;file system access was out. Native nested windows were out. Drag and drop was&nbsp;not available. Launching native processes was out. Projector files were&nbsp;slightly more forgiving and allowed read-only local file access and limited&nbsp;spawning of new processes. But this was nowhere close to the unrestricted&nbsp;freedom offered by Director projectors. This in itself was not bad most of the&nbsp;time. But when more serious functionality was needed, ActionScript developers&nbsp;had to depend upon another programming language to get the job done. To be&nbsp;fair, Macromedia, and now Adobe have always done their best to make cross-language&nbsp;interop as easy as possible. We have come a long way from the getURL() calls&nbsp;required in ActionScript 1 to todayΓÇÖs ExternalInterface API. But a dependency&nbsp;meant having to support yet another codebase.</p>
+<p>Yet, the biggest drawback of Flash was its sandbox that prevented developers from doing anything beyond the boundaries of the browser. Local file system access was out. Native nested windows were out. Drag and drop was not available. Launching native processes was out. Projector files were slightly more forgiving and allowed read-only local file access and limited spawning of new processes. But this was nowhere close to the unrestricted freedom offered by Director projectors. This in itself was not bad most of the time. But when more serious functionality was needed, ActionScript developers had to depend upon another programming language to get the job done. To be fair, Macromedia, and now Adobe have always done their best to make cross-language interop as easy as possible. We have come a long way from the getURL() calls required in ActionScript 1 to today’s ExternalInterface API. But a dependency meant having to support yet another codebase.</p>
 
 
 
@@ -911,15 +911,15 @@ package
 
 
 
-<p>It was heartening then to hear of the Adobe AIR announcement&nbsp;some years ago. Finally, Flash applications could be written to take advantage&nbsp;of local facilities of the system along with the existing media and internet&nbsp;APIΓÇÖs. It was now possible to read and write local files in a meaningful&nbsp;manner. Network utilities could be a lot more proactive and efficient.&nbsp;Applications could update themselves transparently and could support richer&nbsp;desktop paradigms such as taskbar icons and drag-and-drop interactions.</p>
+<p>It was heartening then to hear of the Adobe AIR announcement some years ago. Finally, Flash applications could be written to take advantage of local facilities of the system along with the existing media and internet APIs. It was now possible to read and write local files in a meaningful manner. Network utilities could be a lot more proactive and efficient. Applications could update themselves transparently and could support richer desktop paradigms such as taskbar icons and drag-and-drop interactions.</p>
 
 
 
-<p>There still isnΓÇÖt complete unfettered access to the system,&nbsp;the way Director projectors could. But this limitation will remain due to the&nbsp;different security scenario today. Being able to sell AIR as a secure&nbsp;replacement for web applications is highly desirable for Adobe in the face of&nbsp;HTML 5 and the advancing capabilities of browsers. But combined with all the other&nbsp;benefits that Flash offers, along with the reduced development time over other&nbsp;desktop development environments, and instant cross-platform compatibility,&nbsp;this is an insignificant bump.</p>
+<p>There still isn’t complete unfettered access to the system, the way Director projectors could. But this limitation will remain due to the different security scenario today. Being able to sell AIR as a secure replacement for web applications is highly desirable for Adobe in the face of HTML 5 and the advancing capabilities of browsers. But combined with all the other benefits that Flash offers, along with the reduced development time over other desktop development environments, and instant cross-platform compatibility, this is an insignificant bump.</p>
 
 
 
-<p>The only drawback that AIR has over Director is that it&nbsp;requires a separate download of the AIR runtime. At 11 MB, it does not add a&nbsp;significant cost in todayΓÇÖs age. But it is a deal breaker for users without&nbsp;administrative rights. There really should be a way to package the runtime and&nbsp;the application package into a single executable.</p>
+<p>The only drawback that AIR has over Director is that it requires a separate download of the AIR runtime. At 11 MB, it does not add a significant cost in today’s age. But it is a deal breaker for users without administrative rights. There really should be a way to package the runtime and the application package into a single executable.</p>
 
 
 
@@ -927,11 +927,11 @@ package
 
 
 
-<p>There still are naysayers who predict that the Flash&nbsp;platform is dead. All that is needed is wider acceptance and support for HTML&nbsp;5. But with support for HTML and JavaScript built into AIR (with WebKit, no&nbsp;less), Adobe already has that base covered. And the web is not the do-all and&nbsp;end-all of computing. While having a social networking application online makes&nbsp;sense, personal accounting or mail applications are better kept locally for&nbsp;security and accessibility reasons. And desktop applications have the unique&nbsp;ability to morph into hybrids that work locally as well as with remote&nbsp;services, which is better in some cases than having a web-only application.&nbsp;Most people already use a hybrid application ΓÇô their mail client. New&nbsp;mails can be downloaded and read when connected online, while still being able&nbsp;to access downloaded emails when working offline.</p>
+<p>There still are naysayers who predict that the Flash platform is dead. All that is needed is wider acceptance and support for HTML 5. But with support for HTML and JavaScript built into AIR (with WebKit, no less), Adobe already has that base covered. And the web is not the do-all and end-all of computing. While having a social networking application online makes sense, personal accounting or mail applications are better kept locally for security and accessibility reasons. And desktop applications have the unique ability to morph into hybrids that work locally as well as with remote services, which is better in some cases than having a web-only application. Most people already use a hybrid application – their mail client. New mails can be downloaded and read when connected online, while still being able to access downloaded emails when working offline.</p>
 
 
 
-<p>Sure the W3C is working on writing specifications for similar&nbsp;functionality with HTML 5. But who said choice is bad? Given the sorry state of&nbsp;browser standardization even today, it is more likely that each browser&nbsp;publisher will implement the spec in some half-assed manner that causes subtle&nbsp;differences between them and require someone to invent a shim to fix those&nbsp;incompatibilities. And HTML 5 does not address all the features that AIR&nbsp;supports, including hardware accelerated 3D and filter effects, native menus,&nbsp;file extension registration, drag and drop, advanced sound and video APIΓÇÖs and&nbsp;windowing support beyond the most rudimentary.</p>
+<p>Sure the W3C is working on writing specifications for similar functionality with HTML 5. But who said choice is bad? Given the sorry state of browser standardization even today, it is more likely that each browser publisher will implement the spec in some half-assed manner that causes subtle differences between them and require someone to invent a shim to fix those incompatibilities. And HTML 5 does not address all the features that AIR supports, including hardware accelerated 3D and filter effects, native menus, file extension registration, drag and drop, advanced sound and video APIs and windowing support beyond the most rudimentary.</p>
 
 
 

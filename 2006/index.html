@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark">Keeping Count II &#8211; A Tale of Many Stores</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-08-03T15:00:16+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-ii-a-tale-of-many-stores/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-12-27T07:05:14+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-ii-a-tale-of-many-stores/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -178,11 +178,11 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
-<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described DarylΓÇÖs experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about DarylΓÇÖs fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application ΓÇ£just like the BettyΓÇÖsΓÇ¥.</p>
+<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described Daryl’s experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about Daryl’s fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application “just like the Betty’s”.</p>
 
 
 
-<p>So he got down to work again. But Daryl now felt that writing inventory control wasnΓÇÖt as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
+<p>So he got down to work again. But Daryl now felt that writing inventory control wasn’t as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
 
 
 
@@ -204,7 +204,7 @@ class Inventory
 
     function PrintUnits()
     {
-        print(ΓÇ£Remaining units: ΓÇ¥ + m_units);
+        print(&quot;Remaining units: &quot; + m_units);
     }
 }
 </pre></div>
@@ -227,12 +227,12 @@ function SetUnitConvertor(ObjectReference:Object, FunctionReference:Function)
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
 function PrintUnits()
 {
-    print(ΓÇ£Remaining units: ΓÇ¥ + m_unitConvertor(m_units));
+    print(&quot;Remaining units: &quot; + m_unitConvertor(m_units));
 }
 </pre></div>
 
 
-<p>He copies the Inventory class into the project for Mr. CotonΓÇÖs cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
+<p>He copies the Inventory class into the project for Mr. Coton’s cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -252,7 +252,7 @@ class ClothStoreInventory extends Inventory
 </pre></div>
 
 
-<p>And another class is added for Mr. ChisellerΓÇÖs consultancy firm.</p>
+<p>And another class is added for Mr. Chiseller’s consultancy firm.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -266,7 +266,7 @@ class ConsultancyFirmInventory extends Inventory
         Seconds = Seconds % 60;
         Hours = Math.floor(Minutes / 60);
         Minutes = Minutes % 60;
-        return Hours + ΓÇ£:ΓÇ¥ + Minutes + ΓÇ£:ΓÇ¥ + Seconds;
+        return Hours + &quot;:&quot; + Minutes + &quot;:&quot; + Seconds;
     }
 }
 </pre></div>
@@ -276,11 +276,11 @@ class ConsultancyFirmInventory extends Inventory
 
 
 
-<p>ΓÇ£But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.ΓÇ¥</p>
+<p>“But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.”</p>
 
 
 
-<p>Well, thatΓÇÖs true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
+<p>Well, that’s true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
 
 							</div><!-- .entry-content -->
 					</div>
@@ -297,7 +297,7 @@ class ConsultancyFirmInventory extends Inventory
 				<h2 class="entry-title"><a href="/keeping-count-i-the-candy-shop/" rel="bookmark">Keeping Count I &#8211; The Candy Shop</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-i-the-candy-shop/" rel="bookmark"><time class="entry-date published" datetime="2006-09-22T10:59:16+05:30">September 22, 2006</time><time class="updated" datetime="2022-08-03T14:56:05+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-i-the-candy-shop/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-i-the-candy-shop/" rel="bookmark"><time class="entry-date published" datetime="2006-09-22T10:59:16+05:30">September 22, 2006</time><time class="updated" datetime="2022-12-26T18:04:53+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-i-the-candy-shop/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -306,15 +306,15 @@ class ConsultancyFirmInventory extends Inventory
 						<div class="entry-content">
 
 				
-<p>Its been quite a while since I wrote about a serious programming-specific problem. In this two part series I will show you a popular database normalization method (donΓÇÖt touch another database until you donΓÇÖt grok that), and an alternative use for delegates. All code is written in Flash ActionScript and is purely illustrative.</p>
+<p>Its been quite a while since I wrote about a serious programming-specific problem. In this two part series I will show you a popular database normalization method, and an alternative use for delegates. All code is written in Flash ActionScript and is purely illustrative.</p>
 
 
 
-<p>Betty Green runs a candy shop that is wildly popular with the neighbourhood kids. The sweets she sells are sold by weight or by piece, depending upon the type. For example, peppermints are sold by weight, while chocolate bars are sold by the number of bars purchased. Being a good manager, Betty also keeps a register to track the amount of items of each type that sheΓÇÖs sold. At the end of the day she totals up the register and updates her inventory for the next day.</p>
+<p>Betty Green runs a candy shop that is wildly popular with the neighbourhood kids. The sweets she sells are sold by weight or by piece, depending upon the type. For example, peppermints are sold by weight, while chocolate bars are sold by the number of bars purchased. Being a good manager, Betty also keeps a register to track the amount of items of each type that she’s sold. At the end of the day she totals up the register and updates her inventory for the next day.</p>
 
 
 
-<p>The system itself is quite good, but Betty would prefer that she didnΓÇÖt have to wait till the end of the day to check out on which items sheΓÇÖs running low on, because then it means that her supplier can be notified only the next day. If she could let him know sooner, then she could stock up again on the same day and not lose customers.</p>
+<p>The system itself is quite good, but Betty would prefer that she didn’t have to wait till the end of the day to check out on which items she’s running low on, because then it means that her supplier can be notified only the next day. If she could let him know sooner, then she could stock up again on the same day and not lose customers.</p>
 
 
 
@@ -322,19 +322,19 @@ class ConsultancyFirmInventory extends Inventory
 
 
 
-<p>So Daryl gets down to work. One thing that keeps nagging him is that inventory is to be maintained in two different units &#8211; grams and number of items. In her book-register, Betty used to draw two columns &#8211; one for weight and one for pieces. Whenever a sale was made, sheΓÇÖd fill in the appropriate column based upon the type of sweet she sold. Now, why should the database care how she sells her sweets? That is something that only Betty needs to know when she makes inventory. Daryl designs his database with a single UnitsSold column, in which he stores the number of units of each sale. His application interprets the sale units depending upon the type of sweet and displays the value with the appropriate unit symbols.</p>
+<p>So Daryl gets down to work. One thing that keeps nagging him is that inventory is to be maintained in two different units &#8211; grams and number of items. In her book-register, Betty used to draw two columns &#8211; one for weight and one for pieces. Whenever a sale was made, she’d fill in the appropriate column based upon the type of sweet she sold. Now, why should the database care how she sells her sweets? That is something that only Betty needs to know when she makes inventory. Daryl designs his database with a single UnitsSold column, in which he stores the number of units of each sale. His application interprets the sale units depending upon the type of sweet and displays the value with the appropriate unit symbols.</p>
 
 
 
-<p>This is a simple illustration of an extremely powerful concept in data processing. All data are eventually converted to integers for the processor to work upon. By understanding how those numbers are encoded for abstract data types, you not only understand whatΓÇÖs going on behind the scenes, you can also drop down into the primitive level to perform operations that are not supported on abstract data types. For example, bitwise operators will balk at strings, but will gladly accept integers.</p>
+<p>This is a simple illustration of an extremely powerful concept in data processing. All data are eventually converted to integers for the processor to work upon. By understanding how those numbers are encoded for abstract data types, you not only understand what’s going on behind the scenes, you can also drop down into the primitive level to perform operations that are not supported on abstract data types. For example, bitwise operators will balk at strings, but will gladly accept integers.</p>
 
 
 
-<p>Programmers at Learnet, where I worked some years back, never quite understood this. So their assessment tracking database for fifty different activities would contain fifty columns, some of which contained numeric values, some floating point, some Boolean and some time. If new activities had to be added, they would add another column to the table and replace the database files. Everything looked okay until someone logged in the next time after the update and found that their previous scores were all gone. Whoops!</p>
+<p>You can easily tell when a person doesn&#8217;t understand this, because their tracking database for fifty different activities will contain fifty columns, some of which contain numeric values, some floating point, some boolean and some time. If new activities have to be added, they will add another column to the table and replace the database files. Everything looks okay until someone logs in the next time after the update and finds that their previous scores are all gone. Whoops!</p>
 
 
 
-<p>In my next article IΓÇÖll explain how multiple data types can be parsed efficiently at runtime, without rewriting too much code. Stay tuned.</p>
+<p>In my next article I’ll explain how multiple data types can be parsed efficiently at runtime, without rewriting too much code. Stay tuned.</p>
 
 							</div><!-- .entry-content -->
 					</div>
@@ -387,56 +387,6 @@ class ConsultancyFirmInventory extends Inventory
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-199" class="post-199 post type-post status-publish format-standard hentry category-miscellaneous">
-	<div class="blog-item-wrap">
-				<a href="/a-search-for-the-truth/" title="A Search for the Truth" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/a-search-for-the-truth/" rel="bookmark">A Search for the Truth</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-search-for-the-truth/" rel="bookmark"><time class="entry-date published" datetime="2006-07-12T15:19:40+05:30">July 12, 2006</time><time class="updated" datetime="2022-08-03T14:54:40+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/a-search-for-the-truth/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>I&#8217;ve spoken to several people since July 11 and canΓÇÖt help notice the anguish that creeps through their voice when they speak about our governmentΓÇÖs inability to stop terror strikes on our soil. Why is it that the largest democracy, heralded as a world power by many,&nbsp;isn&#8217;t&nbsp;able to protect its citizens? When the United States was attacked in 2001, President Bush came down hard upon the terrorist organisations and the nations which were <em>suspected</em> to harbour them &#8211; to the point of launching a full scale war in coalition with some of the strongest armies in the world. Why then canΓÇÖt India perform such a feat against a country that it knows is responsible for several terror attacks in the past?</p>
-
-
-
-<p>Our search for the answer begins on the premise that that the minority community feels insecure in India which political parties look to exploit.</p>
-
-
-
-<p>Over the years I have seen the BJP and Shiv Sena combine champion the Hindutva cause. L. K. Advani has openly incited Hindus to bring down the Babri Masjid. Bal Thackarey used Saamna to encourage his party workers to launch offensives on Muslims during the riots of 1992-93. And in spite of the findings of the Sri Krishna Commission, the perpetrators of this violence are going scot-free. In such a situation, the insecurity that the community feels is not unfounded.</p>
-
-
-
-<p>The problem is further aggravated by more politicians, who portray themselves as benefactors of the downtrodden. Parallels are drawn between the Hindus in Pakistan with the Muslims in India. The message that Muslim youth receive is that India is not their home and any act of violence that they help perpetrate upon its citizens will show their loyalty to their own motherland. Enter the LeT or Hizb-ul-Mujahideen, and their steady supply of weapons, explosives and training camps. These organisations fuel their terror operations on this sentiment.</p>
-
-
-
-<p>In this vitriolic political scenario we bring in a government composed of a rickety coalition of parties with conflicting ideology. The Opposition is looking for every opportunity to criticize the ruling coalition and bring its government to a grinding halt &#8211; the country be damned, we want our seats back. And we expect this government to lead the country into an offensive war? Against a country which a&nbsp;sizable&nbsp;segment of the population considers their true homeland? That is wishful thinking at best and ridiculous misunderstanding of the political situation of India at worst.</p>
-
-
-
-<p>All I can say to conclude is that India will never launch a war on terrorism unless its citizens unite in their opinion of what they call their homeland. And the power to do that lies with the citizens themselves.</p>
-
-
-
-<ol type="1"><li>Always treat your communal neighbours the way you would want to be treated.</li><li>Boycott media mouthpieces which carry a communal twist to their reporting.</li><li>Speak up against wrongdoings by politicians, whether they are against the majority or minority community.</li><li>Teach your children about the equality of religions and communities at an early age.</li><li>Never violate human rights in an attempt to seek justice for wrongdoings.</li></ol>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 <article id="post-202" class="post-202 post type-post status-publish format-standard hentry category-miscellaneous">
 	<div class="blog-item-wrap">
 				<a href="/birds-banned-in-mumbai/" title="Birds Banned in Mumbai" >
@@ -447,7 +397,7 @@ class ConsultancyFirmInventory extends Inventory
 				<h2 class="entry-title"><a href="/birds-banned-in-mumbai/" rel="bookmark">Birds Banned in Mumbai</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/birds-banned-in-mumbai/" rel="bookmark"><time class="entry-date published" datetime="2006-07-09T15:25:40+05:30">July 9, 2006</time><time class="updated" datetime="2022-08-03T14:54:21+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/birds-banned-in-mumbai/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/birds-banned-in-mumbai/" rel="bookmark"><time class="entry-date published" datetime="2006-07-09T15:25:40+05:30">July 9, 2006</time><time class="updated" datetime="2022-12-26T17:49:17+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/birds-banned-in-mumbai/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -456,7 +406,7 @@ class ConsultancyFirmInventory extends Inventory
 						<div class="entry-content">
 
 				
-<p>In an unprecedented move, that could have far reaching consequences on the countryΓÇÖs ornithological populace, the Balasaheb Thackarey led Shiv Sena has officially banned birds from entering the countryΓÇÖs financial capital, Mumbai. Shiv Sena spokespersons say it is an unfortunate step, but is required in order to maintain the dignity of statues and busts scattered throughout the city. Earlier, birds would use these statues as resting points, and defecate upon them. Post this ban, statues will finally be able to heave a sigh of relief for not being mistreated in such a manner. Shiv Sena leader Udhav Thackarey says, ΓÇ£Imagine how you would feel if a bird came and <span style="text-decoration: underline;"><em><strong>shat</strong></em></span> upon your brand new outfit? Such is the condition of statues in the city many of which are being subjected to such rude treatment within hours of dedication.ΓÇ¥</p>
+<p>In an unprecedented move, that could have far reaching consequences on the country’s ornithological populace, the Balasaheb Thackarey led Shiv Sena has officially banned birds from entering the country’s financial capital, Mumbai. Shiv Sena spokespersons say it is an unfortunate step, but is required in order to maintain the dignity of statues and busts scattered throughout the city. Earlier, birds would use these statues as resting points, and defecate upon them. Post this ban, statues will finally be able to heave a sigh of relief for not being mistreated in such a manner. Shiv Sena leader Udhav Thackarey says, “Imagine how you would feel if a bird came and <span style="text-decoration: underline;"><em><strong>shat</strong></em></span> upon your brand new outfit? Such is the condition of statues in the city many of which are being subjected to such rude treatment within hours of dedication.”</p>
 
 
 
@@ -464,7 +414,17 @@ class ConsultancyFirmInventory extends Inventory
 
 
 
-<ol><li>Installation of a fine wire net over the entire city with entrance/exit points for non-feathered creatures</li><li>Satellite monitoring of the cityΓÇÖs precincts, along with James Bond-style satellite mounted laserΓÇÖs to pinpoint and annihilate offending birds</li><li>Worldwide extermination of birds (a bit difficult to implement given that Shiv SenaΓÇÖs jurisdiction extends only within Dadar)</li></ol>
+<ol>
+<li>Installation of a fine wire net over the entire city with entrance/exit points for non-feathered creatures</li>
+
+
+
+<li>Satellite monitoring of the city’s precincts, along with James Bond-style satellite mounted laser’s to pinpoint and annihilate offending birds</li>
+
+
+
+<li>Worldwide extermination of birds (a bit difficult to implement given that Shiv Sena’s jurisdiction extends only within Dadar)</li>
+</ol>
 
 
 
@@ -472,7 +432,7 @@ class ConsultancyFirmInventory extends Inventory
 
 
 
-<p>In related news, noted animal activist Maneka Gandhi has raised her voice firmly against the Sena stand. Joining hands with her are hard line animal rights organisations AHIMSA and PETA. Although details of their plan of action havenΓÇÖt been revealed yet, spokespersons for both organisations say their plans will take flight soon.</p>
+<p>In related news, noted animal activist Maneka Gandhi has raised her voice firmly against the Sena stand. Joining hands with her are hard line animal rights organisations AHIMSA and PETA. Although details of their plan of action haven’t been revealed yet, spokespersons for both organisations say their plans will take flight soon.</p>
 
 							</div><!-- .entry-content -->
 					</div>

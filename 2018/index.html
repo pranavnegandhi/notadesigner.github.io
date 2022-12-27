@@ -161,15 +161,15 @@ body.custom-background { background-color: #f2f2f2; }
 				
 <article id="post-1349" class="post-1349 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-prototype">
 	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-prototype/" title="Practical Design Patterns in C# ΓÇô Prototype" >
+				<a href="/practical-design-patterns-in-c-prototype/" title="Practical Design Patterns in C# – Prototype" >
 				<img width="750" height="384" src="/wp-content/uploads/2018/12/DSC_4901-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# ΓÇô Prototype</a></h2>
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# – Prototype</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2022-08-04T11:07:42+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-prototype/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2022-12-27T06:41:04+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-prototype/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -315,7 +315,7 @@ private Document Clone()
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-builder/" rel="bookmark">Practical Design Patterns in C# &ndash; Builder</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2021-02-12T14:13:25+05:30">February 12, 2021</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2022-12-27T06:43:07+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -341,7 +341,7 @@ private Document Clone()
 var message = new MailMessage(&quot;john@example.com&quot;,
                 &quot;jane@example.com&quot;,
                 &quot;101 Ways to Refactor&quot;,
-                &quot;Lorem ipsuΓÇª&quot;);
+                &quot;Lorem ipsu…&quot;);
 </pre></div>
 
 
@@ -368,22 +368,22 @@ public class EmailBuilder
 
     public EmailBuilder AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -403,7 +403,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 
@@ -446,22 +446,22 @@ public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
 
     public IMessageBuilder&lt;MailMessage&gt; AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -536,7 +536,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 
@@ -558,7 +558,7 @@ var message = builder.From(&quot;john@example.com&quot;)
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-08-04T11:08:44+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-12-27T06:27:10+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -571,7 +571,7 @@ var message = builder.From(&quot;john@example.com&quot;)
 
 
 
-<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone ΓÇô all traits to avoid in good code.</p>
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code.</p>
 
 
 
@@ -594,7 +594,7 @@ given time.
 
 
 
-<p>This pattern consists of at least 2 types ΓÇô one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
 
 
 
@@ -735,7 +735,7 @@ public class Program
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-08-04T11:09:15+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-factory-method/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-12-27T06:28:15+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-factory-method/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -773,14 +773,14 @@ public interface IFileWriter
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class JpegWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class PngWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
@@ -837,7 +837,7 @@ static class Program
     static void Main()
     {
         // Image created and serialized into byte&#91;]
-        ΓÇª
+        …
 
         IFileWriter writer;
         if (&quot;jpg&quot; == args&#91;1])
@@ -872,7 +872,7 @@ static class Program
 				<h2 class="entry-title"><a href="/the-content-data-context/" rel="bookmark">The Content Data Context</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2022-08-04T11:09:42+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-content-data-context/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2022-12-27T06:30:40+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-content-data-context/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -920,7 +920,7 @@ static class Program
 
 
 
-<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the applicationΓÇÖs Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
+<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the application’s Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
 
 
 
@@ -984,7 +984,21 @@ static class Program
 
 
 
-<ol><li>A standard connection string.</li><li>A name of a connection string declared in the configuration file (using the syntax ΓÇ£name=connectionStringΓÇ¥).</li><li>An Entity Framework connection string declared in the configuration file.</li><li>A database name (which is sought on the server .\SQLEXPRESS by default).</li></ol>
+<ol>
+<li>A standard connection string.</li>
+
+
+
+<li>A name of a connection string declared in the configuration file (using the syntax &#8220;name=connectionString&#8221;).</li>
+
+
+
+<li>An Entity Framework connection string declared in the configuration file.</li>
+
+
+
+<li>A database name (which is sought on the server .\SQLEXPRESS by default).</li>
+</ol>
 
 
 
@@ -1000,7 +1014,7 @@ static class Program
 
 
 
-<p>Collections of root entities are often exposed as DbSet properties of the applicationΓÇÖs context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
+<p>Collections of root entities are often exposed as DbSet properties of the application’s context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
 
 
 
@@ -1020,7 +1034,7 @@ namespace Notadesigner.Blog
 {
     public class ContentContext : DbContext
     {
-        public ContentContext(ΓÇ£NotadesignerΓÇ¥)
+        public ContentContext(&quot;Notadesigner&quot;)
         {
         }
 
@@ -1064,7 +1078,7 @@ var post = db.Posts.Create();
 post.Title = &quot;Ways to Try and Take Over the World&quot;;
 post.Slug = GenerateSlug(post.Title);
 // Set other properties on the entity
-ΓÇª
+…
 db.Posts.Add(post);
 db.SaveChanges();
 </pre></div>
@@ -1109,7 +1123,7 @@ db.SaveChanges();
 
 
 
-<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called ΓÇ£PostsΓÇ¥. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
+<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called “Posts”. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
 
 
 

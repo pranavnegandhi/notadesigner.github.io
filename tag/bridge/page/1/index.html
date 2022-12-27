@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-bridge/" rel="bookmark">Practical Design Patterns in C# &#8211; Bridge</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-bridge/" rel="bookmark"><time class="entry-date published" datetime="2019-01-20T18:12:00+05:30">January 20, 2019</time><time class="updated" datetime="2022-08-04T11:05:08+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-bridge/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-bridge/" rel="bookmark"><time class="entry-date published" datetime="2019-01-20T18:12:00+05:30">January 20, 2019</time><time class="updated" datetime="2022-12-27T06:49:13+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-bridge/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -197,12 +197,12 @@ public class Playlist
 
     public async Task PlayAsync()
     {
-        ΓÇª
+        …
         var item = _playlistImpl.Next();
         while (item != null)
         {
             // Perform an operation on the item.
-            ΓÇª
+            …
 
             // Pick the next item.
             item = _playlistImpl.Next();
@@ -323,7 +323,7 @@ public class RandomizedPlaylistImpl : IPlaylistImpl
 </pre></div>
 
 
-<p>Emergent Behaviour</p>
+<h3>Emergent Behaviour</h3>
 
 
 
@@ -333,13 +333,13 @@ public class RandomizedPlaylistImpl : IPlaylistImpl
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class Playlist
 {
-    ΓÇª
+    …
     public bool IsLooping()
     {
         get;
         set;
     }
-    ΓÇª
+    …
 }
 </pre></div>
 

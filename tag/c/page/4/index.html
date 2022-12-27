@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/laying-the-groundwork/" rel="bookmark">Laying the Groundwork</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/laying-the-groundwork/" rel="bookmark"><time class="entry-date published" datetime="2018-08-04T14:28:17+05:30">August 4, 2018</time><time class="updated" datetime="2022-08-04T11:10:07+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/laying-the-groundwork/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/laying-the-groundwork/" rel="bookmark"><time class="entry-date published" datetime="2018-08-04T14:28:17+05:30">August 4, 2018</time><time class="updated" datetime="2022-12-27T06:38:06+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/laying-the-groundwork/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -275,7 +275,7 @@ namespace Notadesigner.Blog.Models
         public string BaseUrl { get; set; }
 
         &#091;Required]
-        &#091;ForeignKey(ΓÇ£OwnerΓÇ¥)]
+        &#091;ForeignKey(&quot;Owner&quot;)]
         public int OwnerId { get; set; }
 
         public User Owner { get; set; }
@@ -326,7 +326,7 @@ namespace Notadesigner.Blog.Models
 
 
 
-<p>This attribute requires the name of the property which contains the referenced entity record. In this case, the parameter is ΓÇ£OwnerΓÇ¥, which is of type User. The User class is described further below.</p>
+<p>This attribute requires the name of the property which contains the referenced entity record. In this case, the parameter is “Owner”, which is of type User. The User class is described further below.</p>
 
 
 
@@ -383,7 +383,7 @@ namespace Notadesigner.Blog.Models
         public DateTime ModifiedOn { get; set; }
 
         &#091;Required]
-        &#091;ForeignKey(ΓÇ£OwnerΓÇ¥)]
+        &#091;ForeignKey(&quot;Owner&quot;)]
         public OwnerId { get; set; }
 
         public User Owner { get; set; }
@@ -396,7 +396,7 @@ namespace Notadesigner.Blog.Models
 </pre></div>
 
 
-<p>The class is fairly vanilla, and has all the data annotations which were described previously. It also introduces the Index attribute on the Slug property. A slug is a human-friendly identifier for a post. Words and phrases add more context to the human mind than plain integers. So it is easier to remember and parse what the phrase ΓÇ£a-field-guide-to-entity-frameworkΓÇ¥ points to, than it is to remember the post ID.</p>
+<p>The class is fairly vanilla, and has all the data annotations which were described previously. It also introduces the Index attribute on the Slug property. A slug is a human-friendly identifier for a post. Words and phrases add more context to the human mind than plain integers. So it is easier to remember and parse what the phrase “a-field-guide-to-entity-framework” points to, than it is to remember the post ID.</p>
 
 
 
@@ -434,7 +434,7 @@ namespace Notadesigner.Blog.Models
         public string Slug { get; set; }
 
         &#091;Required]
-        &#091;ForeignKey(ΓÇ£OwnerΓÇ¥)]
+        &#091;ForeignKey(&quot;Owner&quot;)]
         public OwnerId { get; set; }
 
         public User Owner { get; set; }
@@ -462,7 +462,7 @@ namespace Notadesigner.Blog.Models
 				<h2 class="entry-title"><a href="/domain-entities/" rel="bookmark">Domain Entities</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/domain-entities/" rel="bookmark"><time class="entry-date published" datetime="2018-07-29T03:59:46+05:30">July 29, 2018</time><time class="updated" datetime="2022-08-04T11:10:35+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/domain-entities/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/domain-entities/" rel="bookmark"><time class="entry-date published" datetime="2018-07-29T03:59:46+05:30">July 29, 2018</time><time class="updated" datetime="2022-12-27T06:38:42+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/domain-entities/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -562,7 +562,7 @@ namespace Notadesigner.Blog
     public class Post
     {
         public int PostId { get; set; }
-        ΓÇª
+        …
         // Multiplicity of one or zero-or-one
         public Author CreatedBy { get; set; }
 
@@ -585,7 +585,25 @@ namespace Notadesigner.Blog
 
 
 
-<ul><li>Added</li><li>Modified</li><li>Deleted</li><li>Unchanged</li><li>Detached</li></ul>
+<ul>
+<li>Added</li>
+
+
+
+<li>Modified</li>
+
+
+
+<li>Deleted</li>
+
+
+
+<li>Unchanged</li>
+
+
+
+<li>Detached</li>
+</ul>
 
 
 
@@ -610,7 +628,7 @@ namespace Notadesigner.Blog
 				<h2 class="entry-title"><a href="/the-database-context/" rel="bookmark">The Database Context</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2022-08-04T11:11:20+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-database-context/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2022-12-27T06:22:59+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-database-context/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -678,7 +696,7 @@ namespace Notadesigner.Blog
 </pre></div>
 
 
-<p>In the above example, Entity Framework automatically tries to connect to a database called ΓÇ£Notadesigner.Blog.ContentContextΓÇ¥. This can be overridden by setting the configuration in various ways.</p>
+<p>In the above example, Entity Framework automatically tries to connect to a database called Notadesigner.Blog.ContentContext. This can be overridden by setting the configuration in various ways.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -686,7 +704,7 @@ namespace Notadesigner.Blog
 {
     public class ContentContext : DbContext
     {
-        public ContentContext(ΓÇ£NotadesignerΓÇ¥)
+        public ContentContext(&quot;Notadesigner&quot;)
         {
         }
     }
@@ -792,7 +810,7 @@ namespace Notadesigner.Blog
 				<h2 class="entry-title"><a href="/components-of-entity-framework/" rel="bookmark">Components of Entity Framework</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/components-of-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-08T17:53:00+05:30">July 8, 2018</time><time class="updated" datetime="2022-08-04T11:12:24+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/components-of-entity-framework/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/components-of-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-08T17:53:00+05:30">July 8, 2018</time><time class="updated" datetime="2022-12-27T06:24:20+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/components-of-entity-framework/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -840,7 +858,7 @@ namespace Notadesigner.Blog
 
 
 
-<p>Like most well-designed APIs, Entity Framework is composed of several discrete components which complement each other. There are three high-level components ΓÇô the Entity Data Model, the Querying API and the Persistence API.</p>
+<p>Like most well-designed APIs, Entity Framework is composed of several discrete components which complement each other. There are three high-level components – the Entity Data Model, the Querying API and the Persistence API.</p>
 
 
 
@@ -864,7 +882,7 @@ namespace Notadesigner.Blog
 
 
 
-<p>The database and its various elements ΓÇô the tables, views, stored procedures, indexes and keys ΓÇô make up this layer. This is a relational database such as SQL Server or PostgreSQL, although future versions of the Entity Framework are said to support NoSQL databases.</p>
+<p>The database and its various elements – the tables, views, stored procedures, indexes and keys – make up this layer. This is a relational database such as SQL Server or PostgreSQL, although future versions of the Entity Framework are said to support NoSQL databases.</p>
 
 
 

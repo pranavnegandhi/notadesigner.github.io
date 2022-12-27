@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">Keeping Count II &#8211; A Tale of Many Stores</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-08-03T15:00:16+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-12-27T07:05:14+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/construction/" rel="category tag">Construction</a>				</span>
 								
@@ -175,11 +175,11 @@ body.custom-background { background-color: #f2f2f2; }
 
 		<div class="entry-content">
 			
-<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described DarylΓÇÖs experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about DarylΓÇÖs fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application ΓÇ£just like the BettyΓÇÖsΓÇ¥.</p>
+<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described Daryl’s experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about Daryl’s fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application “just like the Betty’s”.</p>
 
 
 
-<p>So he got down to work again. But Daryl now felt that writing inventory control wasnΓÇÖt as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
+<p>So he got down to work again. But Daryl now felt that writing inventory control wasn’t as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
 
 
 
@@ -201,7 +201,7 @@ class Inventory
 
     function PrintUnits()
     {
-        print(ΓÇ£Remaining units: ΓÇ¥ + m_units);
+        print(&quot;Remaining units: &quot; + m_units);
     }
 }
 </pre></div>
@@ -224,12 +224,12 @@ function SetUnitConvertor(ObjectReference:Object, FunctionReference:Function)
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
 function PrintUnits()
 {
-    print(ΓÇ£Remaining units: ΓÇ¥ + m_unitConvertor(m_units));
+    print(&quot;Remaining units: &quot; + m_unitConvertor(m_units));
 }
 </pre></div>
 
 
-<p>He copies the Inventory class into the project for Mr. CotonΓÇÖs cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
+<p>He copies the Inventory class into the project for Mr. Coton’s cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -249,7 +249,7 @@ class ClothStoreInventory extends Inventory
 </pre></div>
 
 
-<p>And another class is added for Mr. ChisellerΓÇÖs consultancy firm.</p>
+<p>And another class is added for Mr. Chiseller’s consultancy firm.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
@@ -263,7 +263,7 @@ class ConsultancyFirmInventory extends Inventory
         Seconds = Seconds % 60;
         Hours = Math.floor(Minutes / 60);
         Minutes = Minutes % 60;
-        return Hours + ΓÇ£:ΓÇ¥ + Minutes + ΓÇ£:ΓÇ¥ + Seconds;
+        return Hours + &quot;:&quot; + Minutes + &quot;:&quot; + Seconds;
     }
 }
 </pre></div>
@@ -273,11 +273,11 @@ class ConsultancyFirmInventory extends Inventory
 
 
 
-<p>ΓÇ£But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.ΓÇ¥</p>
+<p>“But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.”</p>
 
 
 
-<p>Well, thatΓÇÖs true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
+<p>Well, that’s true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
 					</div><!-- .entry-content -->
 
 		<footer class="entry-meta">

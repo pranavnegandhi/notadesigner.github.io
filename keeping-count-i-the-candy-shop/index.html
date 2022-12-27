@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">Keeping Count I &#8211; The Candy Shop</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-i-the-candy-shop/" rel="bookmark"><time class="entry-date published" datetime="2006-09-22T10:59:16+05:30">September 22, 2006</time><time class="updated" datetime="2022-08-03T14:56:05+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-i-the-candy-shop/" rel="bookmark"><time class="entry-date published" datetime="2006-09-22T10:59:16+05:30">September 22, 2006</time><time class="updated" datetime="2022-12-26T18:04:53+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/construction/" rel="category tag">Construction</a>				</span>
 								
@@ -175,15 +175,15 @@ body.custom-background { background-color: #f2f2f2; }
 
 		<div class="entry-content">
 			
-<p>Its been quite a while since I wrote about a serious programming-specific problem. In this two part series I will show you a popular database normalization method (donΓÇÖt touch another database until you donΓÇÖt grok that), and an alternative use for delegates. All code is written in Flash ActionScript and is purely illustrative.</p>
+<p>Its been quite a while since I wrote about a serious programming-specific problem. In this two part series I will show you a popular database normalization method, and an alternative use for delegates. All code is written in Flash ActionScript and is purely illustrative.</p>
 
 
 
-<p>Betty Green runs a candy shop that is wildly popular with the neighbourhood kids. The sweets she sells are sold by weight or by piece, depending upon the type. For example, peppermints are sold by weight, while chocolate bars are sold by the number of bars purchased. Being a good manager, Betty also keeps a register to track the amount of items of each type that sheΓÇÖs sold. At the end of the day she totals up the register and updates her inventory for the next day.</p>
+<p>Betty Green runs a candy shop that is wildly popular with the neighbourhood kids. The sweets she sells are sold by weight or by piece, depending upon the type. For example, peppermints are sold by weight, while chocolate bars are sold by the number of bars purchased. Being a good manager, Betty also keeps a register to track the amount of items of each type that she’s sold. At the end of the day she totals up the register and updates her inventory for the next day.</p>
 
 
 
-<p>The system itself is quite good, but Betty would prefer that she didnΓÇÖt have to wait till the end of the day to check out on which items sheΓÇÖs running low on, because then it means that her supplier can be notified only the next day. If she could let him know sooner, then she could stock up again on the same day and not lose customers.</p>
+<p>The system itself is quite good, but Betty would prefer that she didn’t have to wait till the end of the day to check out on which items she’s running low on, because then it means that her supplier can be notified only the next day. If she could let him know sooner, then she could stock up again on the same day and not lose customers.</p>
 
 
 
@@ -191,19 +191,19 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>So Daryl gets down to work. One thing that keeps nagging him is that inventory is to be maintained in two different units &#8211; grams and number of items. In her book-register, Betty used to draw two columns &#8211; one for weight and one for pieces. Whenever a sale was made, sheΓÇÖd fill in the appropriate column based upon the type of sweet she sold. Now, why should the database care how she sells her sweets? That is something that only Betty needs to know when she makes inventory. Daryl designs his database with a single UnitsSold column, in which he stores the number of units of each sale. His application interprets the sale units depending upon the type of sweet and displays the value with the appropriate unit symbols.</p>
+<p>So Daryl gets down to work. One thing that keeps nagging him is that inventory is to be maintained in two different units &#8211; grams and number of items. In her book-register, Betty used to draw two columns &#8211; one for weight and one for pieces. Whenever a sale was made, she’d fill in the appropriate column based upon the type of sweet she sold. Now, why should the database care how she sells her sweets? That is something that only Betty needs to know when she makes inventory. Daryl designs his database with a single UnitsSold column, in which he stores the number of units of each sale. His application interprets the sale units depending upon the type of sweet and displays the value with the appropriate unit symbols.</p>
 
 
 
-<p>This is a simple illustration of an extremely powerful concept in data processing. All data are eventually converted to integers for the processor to work upon. By understanding how those numbers are encoded for abstract data types, you not only understand whatΓÇÖs going on behind the scenes, you can also drop down into the primitive level to perform operations that are not supported on abstract data types. For example, bitwise operators will balk at strings, but will gladly accept integers.</p>
+<p>This is a simple illustration of an extremely powerful concept in data processing. All data are eventually converted to integers for the processor to work upon. By understanding how those numbers are encoded for abstract data types, you not only understand what’s going on behind the scenes, you can also drop down into the primitive level to perform operations that are not supported on abstract data types. For example, bitwise operators will balk at strings, but will gladly accept integers.</p>
 
 
 
-<p>Programmers at Learnet, where I worked some years back, never quite understood this. So their assessment tracking database for fifty different activities would contain fifty columns, some of which contained numeric values, some floating point, some Boolean and some time. If new activities had to be added, they would add another column to the table and replace the database files. Everything looked okay until someone logged in the next time after the update and found that their previous scores were all gone. Whoops!</p>
+<p>You can easily tell when a person doesn&#8217;t understand this, because their tracking database for fifty different activities will contain fifty columns, some of which contain numeric values, some floating point, some boolean and some time. If new activities have to be added, they will add another column to the table and replace the database files. Everything looks okay until someone logs in the next time after the update and finds that their previous scores are all gone. Whoops!</p>
 
 
 
-<p>In my next article IΓÇÖll explain how multiple data types can be parsed efficiently at runtime, without rewriting too much code. Stay tuned.</p>
+<p>In my next article I’ll explain how multiple data types can be parsed efficiently at runtime, without rewriting too much code. Stay tuned.</p>
 					</div><!-- .entry-content -->
 
 		<footer class="entry-meta">

@@ -15,12 +15,12 @@
 <meta name="theme-color" content="#471211">
 <link rel="profile" href="http://gmpg.org/xfn/11">
 
-<title>Socket Talk ΓÇô Interprocess Communications by Example &#8211; Not a Designer</title>
+<title>Socket Talk – Interprocess Communications by Example &#8211; Not a Designer</title>
 <meta name='robots' content='max-image-preview:large' />
 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
 <link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Feed" href="/feed/" />
 <link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Comments Feed" href="/comments/feed/" />
-<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Socket Talk ΓÇô Interprocess Communications by Example Comments Feed" href="/socket-talk-interprocess-communications-by-example/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Not a Designer &raquo; Socket Talk – Interprocess Communications by Example Comments Feed" href="/socket-talk-interprocess-communications-by-example/feed/" />
 <link rel='stylesheet' id='wp-block-library-css' href='/wp-includes/css/dist/block-library/style.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='classic-theme-styles-css' href='/wp-includes/css/classic-themes.min.css?ver=1' type='text/css' media='all' />
 <style id='global-styles-inline-css' type='text/css'>
@@ -163,10 +163,10 @@ body.custom-background { background-color: #f2f2f2; }
 		<div class="post-inner-content">
 		<header class="entry-header page-header">
 
-			<h1 class="entry-title ">Socket Talk ΓÇô Interprocess Communications by Example</h1>
+			<h1 class="entry-title ">Socket Talk – Interprocess Communications by Example</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-03T18:58:22+05:30">October 3, 2016</time><time class="updated" datetime="2022-08-03T16:58:59+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-03T18:58:22+05:30">October 3, 2016</time><time class="updated" datetime="2022-12-26T19:25:19+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/technique/" rel="category tag">Technique</a>				</span>
 								
@@ -179,7 +179,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<h3>IntroducingΓÇªPuppeteer!</h3>
+<h3>Introducing…Puppeteer!</h3>
 
 
 
@@ -203,7 +203,9 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<blockquote class="wp-block-quote"><p>One of these features is the ability to create TCP sockets in order to exchange data with servers. From a network administrator&#8217;s point of view, the idea that content from the Internet could make socket connections to internal hosts is scary. This is why Flash Player requires permission from the target host before it will allow content to make the network connection.</p></blockquote>
+<blockquote class="wp-block-quote">
+<p>One of these features is the ability to create TCP sockets in order to exchange data with servers. From a network administrator&#8217;s point of view, the idea that content from the Internet could make socket connections to internal hosts is scary. This is why Flash Player requires permission from the target host before it will allow content to make the network connection.</p>
+</blockquote>
 
 
 
@@ -211,7 +213,29 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<ol><li>The content (.swf file playing the the Flash Player) requests a connection to the server through the Socket API.</li><li>The Flash Player checks its whitelist if the server has already allowed access to the content.</li><li>If it does not already have a policy file for the server in memory, it pauses the connection request from the content and instead tries to connect on port number 843. If a connection is established on this port number, it sends a message containing the string &#8220;&#8221;.</li><li>If the server does not respond on port number 843 unti timeout, the Flash Player attempts to connect again on the same port number that is requested by the content.</li><li>The server must respond by sending back the contents of the policy file as soon as the connection is accepted. Any other response from the server will be considered invalid and the Flash Player will disconnect from the server.</li><li>Once the policy file is served, the Flash Player parses it for correctness and checks if it authorises the content to connect to the server. If the policy file allows the connection, the content is notified about it and is now able to communicate freely with the server.</li></ol>
+<ol>
+<li>The content (.swf file playing the the Flash Player) requests a connection to the server through the Socket API.</li>
+
+
+
+<li>The Flash Player checks its whitelist if the server has already allowed access to the content.</li>
+
+
+
+<li>If it does not already have a policy file for the server in memory, it pauses the connection request from the content and instead tries to connect on port number 843. If a connection is established on this port number, it sends a message containing the string &#8220;&#8221;.</li>
+
+
+
+<li>If the server does not respond on port number 843 unti timeout, the Flash Player attempts to connect again on the same port number that is requested by the content.</li>
+
+
+
+<li>The server must respond by sending back the contents of the policy file as soon as the connection is accepted. Any other response from the server will be considered invalid and the Flash Player will disconnect from the server.</li>
+
+
+
+<li>Once the policy file is served, the Flash Player parses it for correctness and checks if it authorises the content to connect to the server. If the policy file allows the connection, the content is notified about it and is now able to communicate freely with the server.</li>
+</ol>
 
 
 
@@ -247,7 +271,7 @@ public interface ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public abstract class CommandBase : ICommand
 {
-    ΓÇª
+    …
 }
 </pre></div>
 
@@ -258,7 +282,7 @@ public abstract class CommandBase : ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class Trace : CommandBase
 {
-    ΓÇª
+    …
 }
 </pre></div>
 
@@ -446,7 +470,7 @@ private void ReceiveData(IAsyncResult result)
 
 	<nav class="navigation post-navigation" aria-label="Posts">
 		<h2 class="screen-reader-text">Post navigation</h2>
-		<div class="nav-links"><div class="nav-previous"><a href="/a-message-in-a-socket-interprocess-communications-by-example/" rel="prev"><i class="fa fa-chevron-left"></i> <span class="post-title">A Message in a Socket &ndash; Interprocess Communications by Example</span></a></div><div class="nav-next"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="next"><span class="post-title">Reifying Your Commands ΓÇô Interprocess Communications by Example <i class="fa fa-chevron-right"></i></span></a></div></div>
+		<div class="nav-links"><div class="nav-previous"><a href="/a-message-in-a-socket-interprocess-communications-by-example/" rel="prev"><i class="fa fa-chevron-left"></i> <span class="post-title">A Message in a Socket &ndash; Interprocess Communications by Example</span></a></div><div class="nav-next"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="next"><span class="post-title">Reifying Your Commands – Interprocess Communications by Example <i class="fa fa-chevron-right"></i></span></a></div></div>
 	</nav>
 		</main><!-- #main -->
 	</div><!-- #primary -->

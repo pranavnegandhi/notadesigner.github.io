@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/a-model-for-sequential-workflow-execution/" rel="bookmark">A Model for Sequential Workflow Execution</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2022-12-25T11:01:06+05:30">December 25, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2022-12-26T19:48:27+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -181,7 +181,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>In spite of this, a smart programmer can notice that the application of rules to a process is easily separated from the rules themselves. They can be applied in linear sequence or driven by outcomes of its component steps (such as offering the customer a choice between cash discounts or adding complimentary products instead). Linear processing is straightforward to implement ΓÇô execute each step in a queue one at a time until they are all done. Conditional processing depends on the outcome of the previous step, making the workflow a gigantic mishmash of if-else statements if not handled carefully from the start.</p>
+<p>In spite of this, a smart programmer can notice that the application of rules to a process is easily separated from the rules themselves. They can be applied in linear sequence or driven by outcomes of its component steps (such as offering the customer a choice between cash discounts or adding complimentary products instead). Linear processing is straightforward to implement – execute each step in a queue one at a time until they are all done. Conditional processing depends on the outcome of the previous step, making the workflow a gigantic mishmash of if-else statements if not handled carefully from the start.</p>
 
 
 
@@ -281,14 +281,14 @@ public class HyperlinkTransformation : Activity&lt;string&gt;
     }
 }
 
-ΓÇª
+…
 var activity = new HyperlinkTransformation();
 activity.ExecuteCompleted += (sender, e)
 {
     Console.WriteLine{&quot;Result {0}&quot;, e.Result);
 };
 activity.Execute(&quot;Visit http://www.notadesigner.com for best deals in programming snippets.&quot;);
-ΓÇª
+…
 </pre></div>
 
 
@@ -312,7 +312,7 @@ public class DeDupFilter : Activity&lt;string&gt;
     }
 }
 
-ΓÇª
+…
 try
 {
     var activity = new DeDupFilter();
@@ -322,7 +322,7 @@ catch (SequenceException)
 {
     Trace.TraceError(&quot;Entry already exists&quot;);
 }
-ΓÇª
+…
 </pre></div>
 
 

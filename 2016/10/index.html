@@ -161,15 +161,15 @@ body.custom-background { background-color: #f2f2f2; }
 				
 <article id="post-915" class="post-915 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-c">
 	<div class="blog-item-wrap">
-				<a href="/reifying-your-commands-interprocess-communications-by-example/" title="Reifying Your Commands ΓÇô Interprocess Communications by Example" >
+				<a href="/reifying-your-commands-interprocess-communications-by-example/" title="Reifying Your Commands – Interprocess Communications by Example" >
 							</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark">Reifying Your Commands ΓÇô Interprocess Communications by Example</a></h2>
+				<h2 class="entry-title"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark">Reifying Your Commands – Interprocess Communications by Example</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-17T22:05:19+05:30">October 17, 2016</time><time class="updated" datetime="2022-08-03T16:58:00+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/reifying-your-commands-interprocess-communications-by-example/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-17T22:05:19+05:30">October 17, 2016</time><time class="updated" datetime="2022-12-26T19:23:14+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/reifying-your-commands-interprocess-communications-by-example/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -277,15 +277,15 @@ public Trace(byte&#91;] message)
 
 <article id="post-908" class="post-908 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-c">
 	<div class="blog-item-wrap">
-				<a href="/socket-talk-interprocess-communications-by-example/" title="Socket Talk ΓÇô Interprocess Communications by Example" >
+				<a href="/socket-talk-interprocess-communications-by-example/" title="Socket Talk – Interprocess Communications by Example" >
 							</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark">Socket Talk ΓÇô Interprocess Communications by Example</a></h2>
+				<h2 class="entry-title"><a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark">Socket Talk – Interprocess Communications by Example</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-03T18:58:22+05:30">October 3, 2016</time><time class="updated" datetime="2022-08-03T16:58:59+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/socket-talk-interprocess-communications-by-example/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/socket-talk-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-03T18:58:22+05:30">October 3, 2016</time><time class="updated" datetime="2022-12-26T19:25:19+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/socket-talk-interprocess-communications-by-example/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -298,7 +298,7 @@ public Trace(byte&#91;] message)
 
 
 
-<h3>IntroducingΓÇªPuppeteer!</h3>
+<h3>Introducing…Puppeteer!</h3>
 
 
 
@@ -322,7 +322,9 @@ public Trace(byte&#91;] message)
 
 
 
-<blockquote class="wp-block-quote"><p>One of these features is the ability to create TCP sockets in order to exchange data with servers. From a network administrator&#8217;s point of view, the idea that content from the Internet could make socket connections to internal hosts is scary. This is why Flash Player requires permission from the target host before it will allow content to make the network connection.</p></blockquote>
+<blockquote class="wp-block-quote">
+<p>One of these features is the ability to create TCP sockets in order to exchange data with servers. From a network administrator&#8217;s point of view, the idea that content from the Internet could make socket connections to internal hosts is scary. This is why Flash Player requires permission from the target host before it will allow content to make the network connection.</p>
+</blockquote>
 
 
 
@@ -330,7 +332,29 @@ public Trace(byte&#91;] message)
 
 
 
-<ol><li>The content (.swf file playing the the Flash Player) requests a connection to the server through the Socket API.</li><li>The Flash Player checks its whitelist if the server has already allowed access to the content.</li><li>If it does not already have a policy file for the server in memory, it pauses the connection request from the content and instead tries to connect on port number 843. If a connection is established on this port number, it sends a message containing the string &#8220;&#8221;.</li><li>If the server does not respond on port number 843 unti timeout, the Flash Player attempts to connect again on the same port number that is requested by the content.</li><li>The server must respond by sending back the contents of the policy file as soon as the connection is accepted. Any other response from the server will be considered invalid and the Flash Player will disconnect from the server.</li><li>Once the policy file is served, the Flash Player parses it for correctness and checks if it authorises the content to connect to the server. If the policy file allows the connection, the content is notified about it and is now able to communicate freely with the server.</li></ol>
+<ol>
+<li>The content (.swf file playing the the Flash Player) requests a connection to the server through the Socket API.</li>
+
+
+
+<li>The Flash Player checks its whitelist if the server has already allowed access to the content.</li>
+
+
+
+<li>If it does not already have a policy file for the server in memory, it pauses the connection request from the content and instead tries to connect on port number 843. If a connection is established on this port number, it sends a message containing the string &#8220;&#8221;.</li>
+
+
+
+<li>If the server does not respond on port number 843 unti timeout, the Flash Player attempts to connect again on the same port number that is requested by the content.</li>
+
+
+
+<li>The server must respond by sending back the contents of the policy file as soon as the connection is accepted. Any other response from the server will be considered invalid and the Flash Player will disconnect from the server.</li>
+
+
+
+<li>Once the policy file is served, the Flash Player parses it for correctness and checks if it authorises the content to connect to the server. If the policy file allows the connection, the content is notified about it and is now able to communicate freely with the server.</li>
+</ol>
 
 
 
@@ -366,7 +390,7 @@ public interface ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public abstract class CommandBase : ICommand
 {
-    ΓÇª
+    …
 }
 </pre></div>
 
@@ -377,7 +401,7 @@ public abstract class CommandBase : ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class Trace : CommandBase
 {
-    ΓÇª
+    …
 }
 </pre></div>
 

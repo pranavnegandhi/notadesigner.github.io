@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/adding-some-life/" rel="bookmark">Adding Some Life</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/adding-some-life/" rel="bookmark"><time class="entry-date published" datetime="2016-12-22T06:41:00+05:30">December 22, 2016</time><time class="updated" datetime="2022-08-03T17:24:37+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/adding-some-life/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/adding-some-life/" rel="bookmark"><time class="entry-date published" datetime="2016-12-22T06:41:00+05:30">December 22, 2016</time><time class="updated" datetime="2022-12-26T19:49:50+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/adding-some-life/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -204,33 +204,33 @@ body.custom-background { background-color: #f2f2f2; }
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class RelayCommand : ICommand
 {
-┬á┬á┬á public RelayCommand(Action execute, Func&lt;bool&gt; canExecute)
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á ΓÇª
-┬á┬á┬á┬á┬á┬á┬á _execute = execute;
-┬á┬á┬á┬á┬á┬á┬á _canExecute = canExecute;
-┬á┬á┬á }
-
-┬á┬á┬á event EventHandler ICommand.CanExecuteChanged
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á // Event dispatched event when the state of the CanExecute property changes
-┬á┬á┬á┬á┬á┬á┬á ΓÇª
-┬á┬á┬á }
-
-┬á┬á┬á bool ICommand.CanExecute(object parameter)
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á return null == _canExecute ? true : _canExecute();
-┬á┬á┬á┬á }
-
-┬á┬á┬á void ICommand.Execute(object parameter)
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á _execute();
-┬á┬á┬á┬á }
+    public RelayCommand(Action execute, Func&lt;bool&gt; canExecute)
+    {
+        …
+        _execute = execute;
+        _canExecute = canExecute;
+    }
+ 
+    event EventHandler ICommand.CanExecuteChanged
+    {
+        // Event dispatched event when the state of the CanExecute property changes
+        …
+    }
+ 
+    bool ICommand.CanExecute(object parameter)
+     {
+         return null == _canExecute ? true : _canExecute();
+     }
+ 
+    void ICommand.Execute(object parameter)
+     {
+         _execute();
+     }
 }
 </pre></div>
 
 
-<p>The Command property of the button is assigned an instance of RelayCommand. This class constructor takes two parameters ΓÇô an Action delegate called execute and a Func&lt;bool&gt; delegate called canExecute. The Action is called when the command is to be executed, whereas the Func&lt;bool&gt; determines if the command can be executed at all or not.</p>
+<p>The Command property of the button is assigned an instance of RelayCommand. This class constructor takes two parameters – an Action delegate called execute and a Func&lt;bool> delegate called canExecute. The Action is called when the command is to be executed, whereas the Func&lt;bool> determines if the command can be executed at all or not.</p>
 
 
 
@@ -244,30 +244,30 @@ public class RelayCommand : ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class CalculatorViewModel
 {
-┬á┬á┬á public CalculatorViewModel()
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á TryCalculateCommand = new RelayCommand(TryCalcuate, CanTryCalculate);
-┬á┬á┬á }
-
-┬á┬á┬á public ICommand TryCalculateCommand
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á get;
-┬á┬á┬á┬á┬á┬á┬á┬á private set;
-┬á┬á┬á┬á }
-
-┬á┬á┬á private void TryCalcuate()
-┬á┬á┬á {
-┬á┬á┬á }
-
-┬á┬á┬á private bool CanTryCalculate()
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á // Validate the input fields and return a boolean
-┬á┬á┬á┬á }
+    public CalculatorViewModel()
+    {
+        TryCalculateCommand = new RelayCommand(TryCalcuate, CanTryCalculate);
+    }
+ 
+    public ICommand TryCalculateCommand
+     {
+         get;
+         private set;
+     }
+ 
+    private void TryCalcuate()
+    {
+    }
+ 
+    private bool CanTryCalculate()
+     {
+         // Validate the input fields and return a boolean
+     }
 }
 </pre></div>
 
 
-<p>ThatΓÇÖs it! All thatΓÇÖs left is to bind the Command property of the Button instance to the TryCalculateCommand property in the view-model.</p>
+<p>That’s it! All that’s left is to bind the Command property of the Button instance to the TryCalculateCommand property in the view-model.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">

@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">Practical Design Patterns in C# &ndash; Factory Method</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-08-04T11:09:15+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-12-27T06:28:15+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/construction/" rel="category tag">Construction</a>				</span>
 								
@@ -204,14 +204,14 @@ public interface IFileWriter
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class JpegWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class PngWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
@@ -268,7 +268,7 @@ static class Program
     static void Main()
     {
         // Image created and serialized into byte&#91;]
-        ΓÇª
+        …
 
         IFileWriter writer;
         if (&quot;jpg&quot; == args&#91;1])

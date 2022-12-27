@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/in-with-the-new/" rel="bookmark">In With the New</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/in-with-the-new/" rel="bookmark"><time class="entry-date published" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time><time class="updated" datetime="2022-12-25T12:05:05+05:30">December 25, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/in-with-the-new/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/in-with-the-new/" rel="bookmark"><time class="entry-date published" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time><time class="updated" datetime="2022-12-26T19:54:08+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/in-with-the-new/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -210,7 +210,7 @@ override public void OnStartup(StartupEventArgs e)
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class ShellViewModel
 {
-  ΓÇª
+  …
   public string Title
   {
    get
@@ -221,7 +221,7 @@ public class ShellViewModel
    set
    {
       _title = value;
-     var e = new PropertyChangedEventArgs(ΓÇ£TitleΓÇ¥);
+     var e = new PropertyChangedEventArgs(&quot;Title&quot;);
      PropertyChanged(this, e);
     }
   }
@@ -233,8 +233,8 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;Window ΓÇª Title=ΓÇ¥{Binding Path=Title}&gt;
-  ΓÇª
+&lt;Window … Title=&quot;{Binding Path=Title}&quot;&gt;
+  …
 &lt;/Window&gt;
 </pre></div>
 
@@ -282,13 +282,13 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;WindowΓÇª&gt;
+&lt;Window…&gt;
   &lt;Window.Resources&gt;
-    &lt;DataTemplate DataType=ΓÇ¥{Type system:String}ΓÇ¥&gt;
-      &lt;TextBlock Text=ΓÇ¥{Binding StringFormat={}The application name is &amp;#x2014; {0}}ΓÇ¥/&gt;
+    &lt;DataTemplate DataType=&quot;{Type system:String}&quot;&gt;
+      &lt;TextBlock Text=&quot;{Binding StringFormat={}The application name is &amp;#x2014; {0}}&quot;/&gt;
     &lt;DataTemplate&gt;
   &lt;/Window.Resources&gt;
-  ΓÇª
+  …
 &lt;/Window&gt;
 </pre></div>
 
@@ -304,11 +304,11 @@ public class ShellViewModel
 
 
 
-<p>Essentially, the outcome of what appears on the screen is now split into three classes ΓÇô a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
+<p>Essentially, the outcome of what appears on the screen is now split into three classes – a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
 
 
 
-<p>ItΓÇÖs a small step from here to building complete user interfaces using this style of programming.</p>
+<p>It’s a small step from here to building complete user interfaces using this style of programming.</p>
 
 
 
@@ -318,7 +318,7 @@ public class ShellViewModel
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class ShellViewModel
 {
-  ΓÇª
+  …
   private Object _selectedView;
 
   public Object SelectedView
@@ -355,7 +355,7 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;UserControl ΓÇª&gt;
+&lt;UserControl …&gt;
   &lt;Grid&gt;
     &lt;Grid.ColumnDefinitions&gt;
       &lt;ColumnDefinition Width=&quot;150&quot;/&gt;

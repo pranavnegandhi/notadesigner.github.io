@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-08-04T11:08:44+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-12-27T06:27:10+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -183,7 +183,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone ΓÇô all traits to avoid in good code.</p>
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code.</p>
 
 
 
@@ -206,7 +206,7 @@ given time.
 
 
 
-<p>This pattern consists of at least 2 types ΓÇô one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
 
 
 
@@ -347,7 +347,7 @@ public class Program
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-08-04T11:09:15+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-factory-method/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-12-27T06:28:15+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-factory-method/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -385,14 +385,14 @@ public interface IFileWriter
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class JpegWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class PngWriter : IFileWriter
 {
-    void Write(byte&#91;] data, string filename) { ΓÇª }
+    void Write(byte&#91;] data, string filename) { … }
 }
 </pre></div>
 
@@ -449,7 +449,7 @@ static class Program
     static void Main()
     {
         // Image created and serialized into byte&#91;]
-        ΓÇª
+        …
 
         IFileWriter writer;
         if (&quot;jpg&quot; == args&#91;1])
@@ -484,7 +484,7 @@ static class Program
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-state/" rel="bookmark">Practical Design Patterns in C# &ndash; State</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-state/" rel="bookmark"><time class="entry-date published" datetime="2018-06-11T10:13:00+05:30">June 11, 2018</time><time class="updated" datetime="2022-08-04T11:13:22+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-state/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-state/" rel="bookmark"><time class="entry-date published" datetime="2018-06-11T10:13:00+05:30">June 11, 2018</time><time class="updated" datetime="2022-12-27T06:26:06+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-state/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -505,7 +505,21 @@ static class Program
 
 
 
-<ol><li>Write the log entry to the end of a text file by default.</li><li>The file size is unlimited by default, denoted by setting the value of the maximum file size to 0.</li><li>If the value of the maximum file size is greater than 0 then the log file is archived when it reaches this size, and the entry is written to a new empty log file.</li><li>If the recycle attribute is enabled and the maximum file size is set to a value greater than 0, then the oldest entry in the log file is erased to make space for the new entry instead of archiving the entire log file.</li></ol>
+<ol>
+<li>Write the log entry to the end of a text file by default.</li>
+
+
+
+<li>The file size is unlimited by default, denoted by setting the value of the maximum file size to 0.</li>
+
+
+
+<li>If the value of the maximum file size is greater than 0 then the log file is archived when it reaches this size, and the entry is written to a new empty log file.</li>
+
+
+
+<li>If the recycle attribute is enabled and the maximum file size is set to a value greater than 0, then the oldest entry in the log file is erased to make space for the new entry instead of archiving the entire log file.</li>
+</ol>
 
 
 
@@ -551,7 +565,7 @@ public void Log(string message)
 
 
 
-<p>There are multiple conditions being evaluated before the log entry is made. The programmer has to simulate the computerΓÇÖs own execution path for each statement before even arriving at the important lines related to writing to disk. A couple of blocks are duplicated code. It would be nice if the execution path could be streamlined and duplicate code removed.</p>
+<p>There are multiple conditions being evaluated before the log entry is made. The programmer has to simulate the computer’s own execution path for each statement before even arriving at the important lines related to writing to disk. A couple of blocks are duplicated code. It would be nice if the execution path could be streamlined and duplicate code removed.</p>
 
 
 
@@ -624,10 +638,7 @@ public bool Recycle
 </pre></div>
 
 
-<p>
-The comments indicate that youΓÇÖre still missing some code that actually performs the operation. This is the spot where the behaviour is selected and applied based on the state of the object. We use C# delegates to alter the behaviour of the object at runtime.
-
-</p>
+<p> The comments indicate that you’re still missing some code that actually performs the operation. This is the spot where the behaviour is selected and applied based on the state of the object. We use C# delegates to alter the behaviour of the object at runtime. </p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">

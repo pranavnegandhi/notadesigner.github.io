@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">The Content Data Context</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2022-08-04T11:09:42+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2022-12-27T06:30:40+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/construction/" rel="category tag">Construction</a>				</span>
 								
@@ -214,7 +214,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the applicationΓÇÖs Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
+<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the application’s Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
 
 
 
@@ -278,7 +278,21 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<ol><li>A standard connection string.</li><li>A name of a connection string declared in the configuration file (using the syntax ΓÇ£name=connectionStringΓÇ¥).</li><li>An Entity Framework connection string declared in the configuration file.</li><li>A database name (which is sought on the server .\SQLEXPRESS by default).</li></ol>
+<ol>
+<li>A standard connection string.</li>
+
+
+
+<li>A name of a connection string declared in the configuration file (using the syntax &#8220;name=connectionString&#8221;).</li>
+
+
+
+<li>An Entity Framework connection string declared in the configuration file.</li>
+
+
+
+<li>A database name (which is sought on the server .\SQLEXPRESS by default).</li>
+</ol>
 
 
 
@@ -294,7 +308,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Collections of root entities are often exposed as DbSet properties of the applicationΓÇÖs context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
+<p>Collections of root entities are often exposed as DbSet properties of the application’s context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
 
 
 
@@ -314,7 +328,7 @@ namespace Notadesigner.Blog
 {
     public class ContentContext : DbContext
     {
-        public ContentContext(ΓÇ£NotadesignerΓÇ¥)
+        public ContentContext(&quot;Notadesigner&quot;)
         {
         }
 
@@ -358,7 +372,7 @@ var post = db.Posts.Create();
 post.Title = &quot;Ways to Try and Take Over the World&quot;;
 post.Slug = GenerateSlug(post.Title);
 // Set other properties on the entity
-ΓÇª
+…
 db.Posts.Add(post);
 db.SaveChanges();
 </pre></div>
@@ -403,7 +417,7 @@ db.SaveChanges();
 
 
 
-<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called ΓÇ£PostsΓÇ¥. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
+<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called “Posts”. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
 
 
 

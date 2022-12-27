@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/the-amp-tango/" rel="bookmark">The AMP Tango</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-amp-tango/" rel="bookmark"><time class="entry-date published" datetime="2007-08-10T10:50:35+05:30">August 10, 2007</time><time class="updated" datetime="2022-08-03T15:05:23+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-amp-tango/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-amp-tango/" rel="bookmark"><time class="entry-date published" datetime="2007-08-10T10:50:35+05:30">August 10, 2007</time><time class="updated" datetime="2022-12-26T17:54:16+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-amp-tango/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -178,15 +178,15 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
-<p>I have recently moved to a smaller city that canΓÇÖt quite boast of the public transport system that Mumbai provides to its citizens. It does exist on paper, and when you go out you do have the option of trying to locate a public utility bus or train. But that task is so difficult that most people cave in to the temptation of flagging an auto rickshaw. Even if it costs up to ten times the price of a bus.</p>
+<p>I have recently moved to a smaller city that can’t quite boast of the public transport system that Mumbai provides to its citizens. It does exist on paper, and when you go out you do have the option of trying to locate a public utility bus or train. But that task is so difficult that most people cave in to the temptation of flagging an auto rickshaw. Even if it costs up to ten times the price of a bus.</p>
 
 
 
-<p>Which brings us to another problem that the people of Mumbai never have to face &#8211; auto rickshaw drivers often quote a fixed price to take you to your destination. That figure doesnΓÇÖt always correspond to what the meter might have indicated had it been used. So you can either yield to their demands while feeling frustrated at being robbed in broad daylight, or haggle with them to bring them down to what you might consider a fair price. And if you donΓÇÖt like haggling too much, the experience isnΓÇÖt going to be very pleasant.</p>
+<p>Which brings us to another problem that the people of Mumbai never have to face &#8211; auto rickshaw drivers often quote a fixed price to take you to your destination. That figure doesn’t always correspond to what the meter might have indicated had it been used. So you can either yield to their demands while feeling frustrated at being robbed in broad daylight, or haggle with them to bring them down to what you might consider a fair price. And if you don’t like haggling too much, the experience isn’t going to be very pleasant.</p>
 
 
 
-<p>I spent the afternoon haggling with some rather brilliant code, trying to coax it to work as it was advertised it would. IΓÇÖm documenting the efforts I went through out here so that I can reduce some of the agony the next time I have to do this.</p>
+<p>I spent the afternoon haggling with some rather brilliant code, trying to coax it to work as it was advertised it would. I’m documenting the efforts I went through out here so that I can reduce some of the agony the next time I have to do this.</p>
 
 
 
@@ -198,11 +198,11 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Installing Apache is a cinch. The developers have packaged it into a very nice installer that sets it up on your system within minutes. The default settings are fine enough for almost anybody who does not want to play system administrator. And you donΓÇÖt even need to restart your system in most cases.</p>
+<p>Installing Apache is a cinch. The developers have packaged it into a very nice installer that sets it up on your system within minutes. The default settings are fine enough for almost anybody who does not want to play system administrator. And you don’t even need to restart your system in most cases.</p>
 
 
 
-<p>Integrating PHP on top of Apache used to be a bit of a task, but lately itΓÇÖs been becoming easier. I had to add 3 lines to the Apache httpd.conf file to get it to work. There is a huge dependency on the PHP initialization file, php.ini, but the risk is reduced because the default settings in that file too are sufficient for a typical developer machine.</p>
+<p>Integrating PHP on top of Apache used to be a bit of a task, but lately it’s been becoming easier. I had to add 3 lines to the Apache httpd.conf file to get it to work. There is a huge dependency on the PHP initialization file, php.ini, but the risk is reduced because the default settings in that file too are sufficient for a typical developer machine.</p>
 
 
 
@@ -214,7 +214,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>But this is where the ease of use disappears. Making MySQL work with the Apache and PHP stack always seems to be a pain. Since I donΓÇÖt do this very often, I canΓÇÖt remember the integration recipe very well. IΓÇÖm usually not even sure if I faced the same problems the last time around &#8211; much less the resolution.</p>
+<p>But this is where the ease of use disappears. Making MySQL work with the Apache and PHP stack always seems to be a pain. Since I don’t do this very often, I can’t remember the integration recipe very well. I’m usually not even sure if I faced the same problems the last time around &#8211; much less the resolution.</p>
 
 
 
@@ -222,7 +222,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>It all started when I attempted to load the php_mysqli.dll extension to integrate MySQL into the stack. For extensions to load, PHP needs to be given the path to the folder where the .dll files are stored. The default location is the ΓÇ£extΓÇ¥ folder under the PHP root folder. This path is defined in the variable ΓÇ£extensions_dirΓÇ¥ in php.ini.</p>
+<p>It all started when I attempted to load the php_mysqli.dll extension to integrate MySQL into the stack. For extensions to load, PHP needs to be given the path to the folder where the .dll files are stored. The default location is the “ext” folder under the PHP root folder. This path is defined in the variable “extensions_dir” in php.ini.</p>
 
 
 
@@ -250,11 +250,11 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>The obvious other solution was to add the extensions folder to my system path, which I duly did. But to my surprise the extension still didnΓÇÖt load. I checked and rechecked that the folder was included in the system path.</p>
+<p>The obvious other solution was to add the extensions folder to my system path, which I duly did. But to my surprise the extension still didn’t load. I checked and rechecked that the folder was included in the system path.</p>
 
 
 
-<p>By chance I happened to run a script in my browser that called the phpinfo() function. Browsing through the values, I came upon the Apache Environment section that described how Apache interacted within the OS. And thatΓÇÖs where I found the problem. For some reason, even after a restarting the service, Apache continued to maintain the old system variables in its memory. Because of this, PHP didnΓÇÖt know where to search for extensions and kept returning the same error.</p>
+<p>By chance I happened to run a script in my browser that called the phpinfo() function. Browsing through the values, I came upon the Apache Environment section that described how Apache interacted within the OS. And that’s where I found the problem. For some reason, even after a restarting the service, Apache continued to maintain the old system variables in its memory. Because of this, PHP didn’t know where to search for extensions and kept returning the same error.</p>
 
 
 
@@ -262,7 +262,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>I still havenΓÇÖt figured out why the ΓÇ£extensions_dirΓÇ¥ variable doesnΓÇÖt work as expected. I have tried various combinations of front- and backslashes, besides experimenting with several relative and absolute path names without any luck. Backslashes are always escaped in the error log, although front slashes are left as-is.</p>
+<p>I still haven’t figured out why the “extensions_dir” variable doesn’t work as expected. I have tried various combinations of front- and backslashes, besides experimenting with several relative and absolute path names without any luck. Backslashes are always escaped in the error log, although front slashes are left as-is.</p>
 
 
 
@@ -274,11 +274,57 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>For the benefit of those struggling with the kind of problems I faced, hereΓÇÖs the complete checklist to follow when installing the AMP stack on Windows.</p>
+<p>For the benefit of those struggling with the kind of problems I faced, here’s the complete checklist to follow when installing the AMP stack on Windows.</p>
 
 
 
-<ol><li>Download and install Apache</li><li>Download the PHP archive and unzip into a folder of your choice</li><li>Add the following line to httpd.conf depending upon the version of Apache installed -LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2.dll&#8221;<br>or<br>LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2_2.dll&#8221;</li><li>Add the following line to httpd.conf -AddType application/x-httpd-php .php</li><li>Add the following line to httpd.conf -PHPIniDir &#8220;E:/apps/php-5.2.3&#8221;</li><li>Add the PHP folder to the Windows PATH variable.</li><li>Restart your system after completing the last step to make sure that Apache refreshes the environment values. For some reason this does not happen simply by restarting Apache.</li><li>Download and install MySQL.</li><li>Change the extension_dir variable in php.ini to point to the complete path to the extensions directory.</li><li>Add the following line to php.ini -extension=php_mysqli.dll</li><li>In some situations phpMyAdmin also requires the php_mcrypt.dll and php_mbstring.dll extensions enabled. If needed, uncomment their loader lines in php.ini</li><li>Copy libmcrypt.dll to %SYSTEM% folder if you need the php_mcrypt.dll extension to work.</li></ol>
+<ol>
+<li>Download and install Apache</li>
+
+
+
+<li>Download the PHP archive and unzip into a folder of your choice</li>
+
+
+
+<li>Add the following line to httpd.conf depending upon the version of Apache installed -LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2.dll&#8221;<br>or<br>LoadModule php5_module &#8220;E:/apps/php-5.2.3/php5apache2_2.dll&#8221;</li>
+
+
+
+<li>Add the following line to httpd.conf -AddType application/x-httpd-php .php</li>
+
+
+
+<li>Add the following line to httpd.conf -PHPIniDir &#8220;E:/apps/php-5.2.3&#8221;</li>
+
+
+
+<li>Add the PHP folder to the Windows PATH variable.</li>
+
+
+
+<li>Restart your system after completing the last step to make sure that Apache refreshes the environment values. For some reason this does not happen simply by restarting Apache.</li>
+
+
+
+<li>Download and install MySQL.</li>
+
+
+
+<li>Change the extension_dir variable in php.ini to point to the complete path to the extensions directory.</li>
+
+
+
+<li>Add the following line to php.ini -extension=php_mysqli.dll</li>
+
+
+
+<li>In some situations phpMyAdmin also requires the php_mcrypt.dll and php_mbstring.dll extensions enabled. If needed, uncomment their loader lines in php.ini</li>
+
+
+
+<li>Copy libmcrypt.dll to %SYSTEM% folder if you need the php_mcrypt.dll extension to work.</li>
+</ol>
 
 							</div><!-- .entry-content -->
 					</div>

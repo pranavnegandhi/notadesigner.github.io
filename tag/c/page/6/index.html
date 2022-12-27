@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/adding-some-life/" rel="bookmark">Adding Some Life</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/adding-some-life/" rel="bookmark"><time class="entry-date published" datetime="2016-12-22T06:41:00+05:30">December 22, 2016</time><time class="updated" datetime="2022-08-03T17:24:37+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/adding-some-life/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/adding-some-life/" rel="bookmark"><time class="entry-date published" datetime="2016-12-22T06:41:00+05:30">December 22, 2016</time><time class="updated" datetime="2022-12-26T19:49:50+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/adding-some-life/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -205,33 +205,33 @@ body.custom-background { background-color: #f2f2f2; }
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class RelayCommand : ICommand
 {
-┬á┬á┬á public RelayCommand(Action execute, Func&lt;bool&gt; canExecute)
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á ΓÇª
-┬á┬á┬á┬á┬á┬á┬á _execute = execute;
-┬á┬á┬á┬á┬á┬á┬á _canExecute = canExecute;
-┬á┬á┬á }
-
-┬á┬á┬á event EventHandler ICommand.CanExecuteChanged
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á // Event dispatched event when the state of the CanExecute property changes
-┬á┬á┬á┬á┬á┬á┬á ΓÇª
-┬á┬á┬á }
-
-┬á┬á┬á bool ICommand.CanExecute(object parameter)
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á return null == _canExecute ? true : _canExecute();
-┬á┬á┬á┬á }
-
-┬á┬á┬á void ICommand.Execute(object parameter)
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á _execute();
-┬á┬á┬á┬á }
+    public RelayCommand(Action execute, Func&lt;bool&gt; canExecute)
+    {
+        …
+        _execute = execute;
+        _canExecute = canExecute;
+    }
+ 
+    event EventHandler ICommand.CanExecuteChanged
+    {
+        // Event dispatched event when the state of the CanExecute property changes
+        …
+    }
+ 
+    bool ICommand.CanExecute(object parameter)
+     {
+         return null == _canExecute ? true : _canExecute();
+     }
+ 
+    void ICommand.Execute(object parameter)
+     {
+         _execute();
+     }
 }
 </pre></div>
 
 
-<p>The Command property of the button is assigned an instance of RelayCommand. This class constructor takes two parameters ΓÇô an Action delegate called execute and a Func&lt;bool&gt; delegate called canExecute. The Action is called when the command is to be executed, whereas the Func&lt;bool&gt; determines if the command can be executed at all or not.</p>
+<p>The Command property of the button is assigned an instance of RelayCommand. This class constructor takes two parameters – an Action delegate called execute and a Func&lt;bool> delegate called canExecute. The Action is called when the command is to be executed, whereas the Func&lt;bool> determines if the command can be executed at all or not.</p>
 
 
 
@@ -245,30 +245,30 @@ public class RelayCommand : ICommand
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class CalculatorViewModel
 {
-┬á┬á┬á public CalculatorViewModel()
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á TryCalculateCommand = new RelayCommand(TryCalcuate, CanTryCalculate);
-┬á┬á┬á }
-
-┬á┬á┬á public ICommand TryCalculateCommand
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á get;
-┬á┬á┬á┬á┬á┬á┬á┬á private set;
-┬á┬á┬á┬á }
-
-┬á┬á┬á private void TryCalcuate()
-┬á┬á┬á {
-┬á┬á┬á }
-
-┬á┬á┬á private bool CanTryCalculate()
-┬á┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á┬á // Validate the input fields and return a boolean
-┬á┬á┬á┬á }
+    public CalculatorViewModel()
+    {
+        TryCalculateCommand = new RelayCommand(TryCalcuate, CanTryCalculate);
+    }
+ 
+    public ICommand TryCalculateCommand
+     {
+         get;
+         private set;
+     }
+ 
+    private void TryCalcuate()
+    {
+    }
+ 
+    private bool CanTryCalculate()
+     {
+         // Validate the input fields and return a boolean
+     }
 }
 </pre></div>
 
 
-<p>ThatΓÇÖs it! All thatΓÇÖs left is to bind the Command property of the Button instance to the TryCalculateCommand property in the view-model.</p>
+<p>That’s it! All that’s left is to bind the Command property of the Button instance to the TryCalculateCommand property in the view-model.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
@@ -293,7 +293,7 @@ public class CalculatorViewModel
 				<h2 class="entry-title"><a href="/in-with-the-new/" rel="bookmark">In With the New</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/in-with-the-new/" rel="bookmark"><time class="entry-date published" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time><time class="updated" datetime="2022-12-25T12:05:05+05:30">December 25, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/in-with-the-new/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/in-with-the-new/" rel="bookmark"><time class="entry-date published" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time><time class="updated" datetime="2022-12-26T19:54:08+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/in-with-the-new/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -334,7 +334,7 @@ override public void OnStartup(StartupEventArgs e)
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class ShellViewModel
 {
-  ΓÇª
+  …
   public string Title
   {
    get
@@ -345,7 +345,7 @@ public class ShellViewModel
    set
    {
       _title = value;
-     var e = new PropertyChangedEventArgs(ΓÇ£TitleΓÇ¥);
+     var e = new PropertyChangedEventArgs(&quot;Title&quot;);
      PropertyChanged(this, e);
     }
   }
@@ -357,8 +357,8 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;Window ΓÇª Title=ΓÇ¥{Binding Path=Title}&gt;
-  ΓÇª
+&lt;Window … Title=&quot;{Binding Path=Title}&quot;&gt;
+  …
 &lt;/Window&gt;
 </pre></div>
 
@@ -406,13 +406,13 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;WindowΓÇª&gt;
+&lt;Window…&gt;
   &lt;Window.Resources&gt;
-    &lt;DataTemplate DataType=ΓÇ¥{Type system:String}ΓÇ¥&gt;
-      &lt;TextBlock Text=ΓÇ¥{Binding StringFormat={}The application name is &amp;#x2014; {0}}ΓÇ¥/&gt;
+    &lt;DataTemplate DataType=&quot;{Type system:String}&quot;&gt;
+      &lt;TextBlock Text=&quot;{Binding StringFormat={}The application name is &amp;#x2014; {0}}&quot;/&gt;
     &lt;DataTemplate&gt;
   &lt;/Window.Resources&gt;
-  ΓÇª
+  …
 &lt;/Window&gt;
 </pre></div>
 
@@ -428,11 +428,11 @@ public class ShellViewModel
 
 
 
-<p>Essentially, the outcome of what appears on the screen is now split into three classes ΓÇô a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
+<p>Essentially, the outcome of what appears on the screen is now split into three classes – a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
 
 
 
-<p>ItΓÇÖs a small step from here to building complete user interfaces using this style of programming.</p>
+<p>It’s a small step from here to building complete user interfaces using this style of programming.</p>
 
 
 
@@ -442,7 +442,7 @@ public class ShellViewModel
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class ShellViewModel
 {
-  ΓÇª
+  …
   private Object _selectedView;
 
   public Object SelectedView
@@ -479,7 +479,7 @@ public class ShellViewModel
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;UserControl ΓÇª&gt;
+&lt;UserControl …&gt;
   &lt;Grid&gt;
     &lt;Grid.ColumnDefinitions&gt;
       &lt;ColumnDefinition Width=&quot;150&quot;/&gt;
@@ -606,7 +606,7 @@ public class ShellViewModel
 				<h2 class="entry-title"><a href="/introducing-fitnet/" rel="bookmark">Introducing FitNet</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/introducing-fitnet/" rel="bookmark"><time class="entry-date published" datetime="2016-12-01T19:56:42+05:30">December 1, 2016</time><time class="updated" datetime="2022-08-03T16:52:59+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/introducing-fitnet/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/introducing-fitnet/" rel="bookmark"><time class="entry-date published" datetime="2016-12-01T19:56:42+05:30">December 1, 2016</time><time class="updated" datetime="2022-12-26T19:22:50+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/introducing-fitnet/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -687,7 +687,7 @@ public class ShellViewModel
 
 
 
-<p>This means that the following 50 lines of codeΓÇª</p>
+<p>This means that the following 50 lines of code –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: cpp; title: ; notranslate" title="">
@@ -746,7 +746,7 @@ return Msg.wParam;
 </pre></div>
 
 
-<p>ΓÇªcan be distilled down toΓÇª</p>
+<p>– can be distilled down to –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
@@ -770,15 +770,15 @@ Title=&quot;FitNet Desktop&quot; Height=&quot;400&quot; Width=&quot;300&quot; /&
 
 <article id="post-915" class="post-915 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-c">
 	<div class="blog-item-wrap">
-				<a href="/reifying-your-commands-interprocess-communications-by-example/" title="Reifying Your Commands ΓÇô Interprocess Communications by Example" >
+				<a href="/reifying-your-commands-interprocess-communications-by-example/" title="Reifying Your Commands – Interprocess Communications by Example" >
 							</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark">Reifying Your Commands ΓÇô Interprocess Communications by Example</a></h2>
+				<h2 class="entry-title"><a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark">Reifying Your Commands – Interprocess Communications by Example</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-17T22:05:19+05:30">October 17, 2016</time><time class="updated" datetime="2022-08-03T16:58:00+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/reifying-your-commands-interprocess-communications-by-example/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-17T22:05:19+05:30">October 17, 2016</time><time class="updated" datetime="2022-12-26T19:23:14+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/reifying-your-commands-interprocess-communications-by-example/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->

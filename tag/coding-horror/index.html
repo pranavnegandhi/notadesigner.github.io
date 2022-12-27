@@ -170,7 +170,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark">How to Write Unmaintainable Code &ndash; ASP.NET Redux</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark"><time class="entry-date published" datetime="2018-03-19T06:36:00+05:30">March 19, 2018</time><time class="updated" datetime="2022-08-04T11:14:03+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/how-to-write-unmaintainable-code-asp-net-redux/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark"><time class="entry-date published" datetime="2018-03-19T06:36:00+05:30">March 19, 2018</time><time class="updated" datetime="2022-12-26T19:45:01+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/how-to-write-unmaintainable-code-asp-net-redux/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -195,7 +195,7 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Maintainable code adheres to standards ΓÇô industry, platform, semantics, or just simply internal to the company. Standard practices make it easy to build, maintain and extend software. As such, theyΓÇÖre anathema to anybody who aims to exclude newcomers from modifying his program.</p>
+<p>Maintainable code adheres to standards – industry, platform, semantics, or just simply internal to the company. Standard practices make it easy to build, maintain and extend software. As such, they’re anathema to anybody who aims to exclude newcomers from modifying his program.</p>
 
 
 
@@ -207,15 +207,15 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>Be merciless in thrashing their expectations. Tailor your product to work exclusively with the regional settings used on your development computer. If you are using the American date format, say youΓÇÖre paying homage to the original home of the PC. If youΓÇÖre using British settings, extol upon the semantic benefits of the dd-mm-yy structure over the unintelligible American format.</p>
+<p>Be merciless in thrashing their expectations. Tailor your product to work exclusively with the regional settings used on your development computer. If you are using the American date format, say you’re paying homage to the original home of the PC. If you’re using British settings, extol upon the semantic benefits of the dd-mm-yy structure over the unintelligible American format.</p>
 
 
 
-<p>Modern programming platforms have a dedicated date and time data type precisely to avoid this problem. Sidestep it by transmitting and storing dates as strings in your preferred formats (there doesnΓÇÖt have to be just one). That way, you also get to scatter a 200-line snippet of code to parse and extract individual fields from the string.</p>
+<p>Modern programming platforms have a dedicated date and time data type precisely to avoid this problem. Sidestep it by transmitting and storing dates as strings in your preferred formats (there doesn’t have to be just one). That way, you also get to scatter a 200-line snippet of code to parse and extract individual fields from the string.</p>
 
 
 
-<p>For extra points, close all bug reports about the issue from the test engineers with a ΓÇ£Works for meΓÇ¥ comment. Your development computer is the ultimate benchmark for your software. Everybody who wishes to run your program should aspire to replicate the immaculate state of existence of your computer. They have no business running or modifying your program otherwise.</p>
+<p>For extra points, close all bug reports about the issue from the test engineers with a “Works for me” comment. Your development computer is the ultimate benchmark for your software. Everybody who wishes to run your program should aspire to replicate the immaculate state of existence of your computer. They have no business running or modifying your program otherwise.</p>
 
 
 
@@ -241,11 +241,11 @@ body.custom-background { background-color: #f2f2f2; }
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class FooController
 {
-┬á┬á┬á ΓÇª
-┬á┬á┬á public new void OnActionExecuting(ActionExecutingContext filterContext)
-┬á┬á┬á {
-┬á┬á┬á }
-┬á┬á┬á ΓÇª
+    …
+    public new void OnActionExecuting(ActionExecutingContext filterContext)
+    {
+    }
+    …
 }
 </pre></div>
 
@@ -262,15 +262,15 @@ public class FooController
 
 
 
-<p>Mask these shortcomings by only writing client-side validation. That way, the bugs remain hidden until the day some script kiddie uses the contact form on the site to send ΓÇ£; DELETE TABLE UsersΓÇ¥ to your server.</p>
+<p>Mask these shortcomings by only writing client-side validation. That way, the bugs remain hidden until the day some script kiddie uses the contact form on the site to send “; DELETE TABLE Users” to your server.</p>
 
 
 
-<h3>TryΓÇªcatchΓÇªswallow</h3>
+<h3>Try…catch…swallow</h3>
 
 
 
-<p>Nobody wants to see those ugly-ass ΓÇ£Server ErrorΓÇ¥ pages in the browser. So do the most obvious thing and wrap your code in a try-catch block. But write only one catch handler for the most general exception possible. Then leave it empty.</p>
+<p>Nobody wants to see those ugly-ass “Server Error” pages in the browser. So do the most obvious thing and wrap your code in a try-catch block. But write only one catch handler for the most general exception possible. Then leave it empty.</p>
 
 
 
@@ -290,7 +290,7 @@ public class FooController
 
 
 
-<p>This strategy has even more potential when working with complex data types containing multiple data fields. Eschew standard schemes such as CSV. Instead come up with your own custom scheme using uncommonly used text characters. The Unicode standard is very vast. I personally recommend using pips from playing cards. The ΓÇ£ΓÖÑΓÇ¥ character is appropriately labelled ΓÇ£Black Heart SuitΓÇ¥, because it lets the maintenance programmer perceive the hatred you bear towards him for attempting to tarnish the pristine beauty of the code you have so lovingly written.</p>
+<p>This strategy has even more potential when working with complex data types containing multiple data fields. Eschew standard schemes such as CSV. Instead come up with your own custom scheme using uncommonly used text characters. The Unicode standard is very vast. I personally recommend using pips from playing cards. The “♥” character is appropriately labelled “Black Heart Suit”, because it lets the maintenance programmer perceive the hatred you bear towards him for attempting to tarnish the pristine beauty of the code you have so lovingly written.</p>
 
 
 
@@ -310,41 +310,41 @@ public class FooController
 
 
 
-<p>JavaScript ΓÇô</p>
+<p>JavaScript –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate" title="">
 var a = 0; // Variable a declared in global scope
-
+ 
 function doFoo() {
-┬á┬á┬á a++; // Modifies the variable in global scope
+    a++; // Modifies the variable in global scope
 }
-
+ 
 function doBar() {
-┬á┬á┬á var a = 1;
-┬á┬á┬á a++; // Modifies the variable in local scope
+    var a = 1;
+    a++; // Modifies the variable in local scope
 }
 </pre></div>
 
 
-<p>C# ΓÇô</p>
+<p>C# –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class AppGlobals
 {
-┬á┬á┬á public int A = 0;
+    public int A = 0;
 }
-
+ 
 public class Foo
 {
-┬á┬á┬á public void DoSomething()
-┬á┬á┬á {
-┬á┬á┬á┬á┬á┬á┬á // Scope of A is abundantly clear
-┬á┬á┬á┬á┬á┬á┬á AppGlobals.A++;
-┬á┬á┬á┬á┬á┬á┬á var A = 0;
-┬á┬á┬á┬á┬á┬á┬á A++;
-┬á┬á┬á }
+    public void DoSomething()
+    {
+        // Scope of A is abundantly clear
+        AppGlobals.A++;
+        var A = 0;
+        A++;
+    }
 }
 </pre></div>
 
@@ -373,7 +373,7 @@ public class Foo
 
 
 
-<p>Combine this with the practice of creating and leaving several unwanted tables with similar names to give rise to a special kind of monstrosity that nobody has the courage to deal with. For still extra marks, perform updates in all the tables, including the dead ones. Fetch it from different tables in different parts of the application. They cannot be called unwanted tables if even one part of your application depends on them. Call it ΓÇ£shardingΓÇ¥ if anybody questions your design.</p>
+<p>Combine this with the practice of creating and leaving several unwanted tables with similar names to give rise to a special kind of monstrosity that nobody has the courage to deal with. For still extra marks, perform updates in all the tables, including the dead ones. Fetch it from different tables in different parts of the application. They cannot be called unwanted tables if even one part of your application depends on them. Call it “sharding” if anybody questions your design.</p>
 
 
 
@@ -389,7 +389,7 @@ public class Foo
 
 
 
-<p>That people still write badly structured code in spite of all these advances cements my original point ΓÇô bad programmers write bad code irrespective of the language thrown at them.</p>
+<p>That people still write badly structured code in spite of all these advances cements my original point – bad programmers write bad code irrespective of the language thrown at them.</p>
 
 							</div><!-- .entry-content -->
 					</div>
@@ -406,7 +406,7 @@ public class Foo
 				<h2 class="entry-title"><a href="/how-to-write-unmaintainable-code-php-redux/" rel="bookmark">How to Write Unmaintainable Code &#8211; PHP Redux</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-php-redux/" rel="bookmark"><time class="entry-date published" datetime="2010-02-21T11:06:15+05:30">February 21, 2010</time><time class="updated" datetime="2022-08-03T15:23:50+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/how-to-write-unmaintainable-code-php-redux/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-php-redux/" rel="bookmark"><time class="entry-date published" datetime="2010-02-21T11:06:15+05:30">February 21, 2010</time><time class="updated" datetime="2022-12-26T19:11:23+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/how-to-write-unmaintainable-code-php-redux/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -419,11 +419,11 @@ public class Foo
 
 
 
-<p>I hope to hell that itΓÇÖs the latter.</p>
+<p>I hope to hell that it’s the latter.</p>
 
 
 
-<p>GreenΓÇÖs essay is written with Java and C programmers in mind, but many of the techniques described can be applied to any programming language. Consider this essay as a ΓÇÿliteΓÇÖ version of GreenΓÇÖs to keep us script kiddies from feeling left out.</p>
+<p>Green’s essay is written with Java and C programmers in mind, but many of the techniques described can be applied to any programming language. Consider this essay as a “lite” version of Green’s to keep us script kiddies from feeling left out.</p>
 
 
 
@@ -435,21 +435,21 @@ public class Foo
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
-&lt;? echo ΓÇ£Hello, World!ΓÇ¥; &gt; // What is referred to as the ΓÇÿold styleΓÇÖ.
+&lt;? echo &quot;Hello, World!&quot;; &gt; // What is referred to as the &quot;old style&quot;.
 
-&lt;? echo ΓÇ£Hello, World!ΓÇ¥; ?&gt; // What is referred to as the ΓÇÿfirst new styleΓÇÖ. Note the added question mark in the end tag.
+&lt;? echo &quot;Hello, World!&quot;; ?&gt; // What is referred to as the &quot;first new style&quot;. Note the added question mark in the end tag.
 
-&lt;?php echo ΓÇ£Hello, World!ΓÇ¥; ?&gt; // The ΓÇÿsecond new styleΓÇÖ is similar to the first new style and most recommended
+&lt;?php echo &quot;Hello, World!&quot;; ?&gt; // The &quot;second new style&quot; is similar to the first new style and most recommended
 
-&lt;script language=ΓÇ¥phpΓÇ¥&gt;
-    echo ΓÇ£Hello, World!ΓÇ¥; &gt; // What else? The ΓÇÿthird new styleΓÇÖ of tags
+&lt;script language=&quot;php&quot;&gt;
+    echo &quot;Hello, World!&quot;; &gt; // What else? The &quot;third new style&quot; of tags
 &lt;/script&gt;
 
-&lt;% echo ΓÇ£Hello, World!ΓÇ¥; %&gt; // And finally, a fourth way that uses ASP-style tags
+&lt;% echo &quot;Hello, World!&quot;; %&gt; // And finally, a fourth way that uses ASP-style tags
 </pre></div>
 
 
-<p>This in itself opens whole new avenues for abuse for a programmer used to the sharper separation of code and presentation enforced in a more serious language. WhatΓÇÖs worse is that the tag rules can be changed on individual systems through the php.ini file. Develop with all style flags enabled. Tell your colleagues that youΓÇÖre doing it in the interest of maximum compatibility with third-party libraries. For added fun, find (or write your own) library that liberally switches between all five types of tags and make it an indispensible part of your project. Or keep switching coding standards every few weeks until thereΓÇÖs a healthy mix of all types of PHP tags scattered throughout your code. Refuse to replace previously used styles with the current favourite because itΓÇÖs better to leave well enough alone.</p>
+<p>This in itself opens whole new avenues for abuse for a programmer used to the sharper separation of code and presentation enforced in a more serious language. What’s worse is that the tag rules can be changed on individual systems through the php.ini file. Develop with all style flags enabled. Tell your colleagues that you’re doing it in the interest of maximum compatibility with third-party libraries. For added fun, find (or write your own) library that liberally switches between all five types of tags and make it an indispensable part of your project. Or keep switching coding standards every few weeks until there’s a healthy mix of all types of PHP tags scattered throughout your code. Refuse to replace previously used styles with the current favourite because it’s better to leave well enough alone.</p>
 
 
 
@@ -465,11 +465,11 @@ public class Foo
 
 
 
-<p>There are so many ways to abuse this ΓÇÿfeatureΓÇÖ.</p>
+<p>There are so many ways to abuse this “feature”.</p>
 
 
 
-<p>A tamer way would be ΓÇô</p>
+<p>A tamer way would be –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
@@ -483,13 +483,13 @@ public class Foo
 </pre></div>
 
 
-<p>A more advanced programmer might use something like this ΓÇô</p>
+<p>A more advanced programmer might use something like this –</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: php; title: ; notranslate" title="">
-&lt;div class=ΓÇ¥query_outputΓÇ¥&gt;
+&lt;div class=&quot;query_output&quot;&gt;
     &lt;?
-        $sql=ΓÇ¥select * from namesΓÇ¥;
+        $sql=&quot;select * from names&quot;;
         if (db_connect()): ?&gt;
             &lt;p&gt;Error!&lt;/p&gt;
         &lt;?php else: ?&gt;
@@ -499,7 +499,7 @@ public class Foo
             $names = db_result($res);
             foreach ($names as $names): ?&gt;
                 &lt;!--span&gt;&lt;?php echo $name ?&gt;&lt;/span--&gt;
-                &lt;li class=ΓÇ¥nameΓÇ¥&gt;&lt;? echo $name ?&gt;&lt;/li&gt;
+                &lt;li class=&quot;name&quot;&gt;&lt;? echo $name ?&gt;&lt;/li&gt;
         &lt;? endforeach; ?&gt;
     &lt;? endif; ?&gt;
 &lt;/div&gt;
@@ -514,15 +514,15 @@ public class Foo
 
 
 
-<p>If thereΓÇÖs one thing that PHP is famous for, itΓÇÖs the rich selection of extremely useful, but badly named functions in its libraries and standard extensions. Make things worse by ignoring the in-built functions entirely and rolling your own instead. Feign ignorance, which is a pretty valid excuse when talking about PHP because it has extensions for everything you might dream about, and some things you might have never even heard of (can you spell Swish-e?).</p>
+<p>If there’s one thing that PHP is famous for, it’s the rich selection of extremely useful, but badly named functions in its libraries and standard extensions. Make things worse by ignoring the in-built functions entirely and rolling your own instead. Feign ignorance, which is a pretty valid excuse when talking about PHP because it has extensions for everything you might dream about, and some things you might have never even heard of (can you spell Swish-e?).</p>
 
 
 
-<p>Write your functions in the most na├»ve and inefficient manner possible. You get bonus points if it is error prone due to subtle variations in the input.</p>
+<p>Write your functions in the most naïve and inefficient manner possible. You get bonus points if it is error prone due to subtle variations in the input.</p>
 
 
 
-<p>For example, PHP has an in-built strtotime() function that can convert ΓÇÿabout any English textual datetime description into a Unix timestampΓÇÖ. Ignore it. Take a date/time string and split it into its component values by using hardcoded delimiters. DonΓÇÖt take regional differences into account. Everybody should just be using ISO 8601 anyways.</p>
+<p>For example, PHP has an in-built strtotime() function that can convert “about any English textual datetime description into a Unix timestamp”. Ignore it. Take a date/time string and split it into its component values by using hard-coded delimiters. Don’t take regional differences into account. Everybody should just be using ISO 8601 anyways.</p>
 
 
 
@@ -530,11 +530,11 @@ public class Foo
 
 
 
-<p>Begin programming before the domain model is fully ready or understood. That way you get to create your own colourful terminology for objects which havenΓÇÖt been named yet. For example, suppose youΓÇÖre building a web-based interface for a controller in a bakery. Look up the thesaurus for the term ΓÇÿmouldΓÇÖ and use an unrelated synonym such as ΓÇÿdieΓÇÖ in place of the mould. Repeated instances of the word ΓÇÿdieΓÇÖ will make the maintenance programmer wonder if you wanted to pass a subliminal message on to him through your code.</p>
+<p>Begin programming before the domain model is fully ready or understood. That way you get to create your own colourful terminology for objects which haven’t been named yet. For example, suppose you’re building a web-based interface for a controller in a bakery. Look up the thesaurus for the term “mould” and use an unrelated synonym such as “die” in place of the mould. Repeated instances of the word “die” will make the maintenance programmer wonder if you wanted to pass a subliminal message on to him through your code.</p>
 
 
 
-<p>Take this to the next level by using different naming conventions for the same element. If your database field stores the machine operatorΓÇÖs name in a ΓÇÿusernameΓÇÖ field, store the value in a variable called ΓÇÿuser_machine_op_currΓÇÖ, ΓÇÿmachine_operator_curuserΓÇÖ, ΓÇÿmachop_currentΓÇÖ and ΓÇÿmachine_operator_current_userΓÇÖ in different places where you need the value.</p>
+<p>Take this to the next level by using different naming conventions for the same element. If your database field stores the machine operator’s name in a “username” field, store the value in a variable called “user_machine_op_curr”, “machine_operator_curuser”, “machop_current” and “machine_operator_current_user” in different places where you need the value.</p>
 
 
 
@@ -546,7 +546,7 @@ public class Foo
 
 
 
-<h3>Code formatting is hard. LetΓÇÖs go shopping.</h3>
+<h3>Code formatting is hard. Let’s go shopping.</h3>
 
 
 
@@ -578,7 +578,7 @@ public class Foo
 
 
 
-<p>PHPΓÇÖs ultimate utility is its excellent data-processing pedigree. Numerous extensions have been written to enable connecting PHP with different database servers. And the one common thing that all database publishers extol is to consolidate query operations through the use of joins for fewer disk operations and lower network transfer.</p>
+<p>PHP’s ultimate utility is its excellent data-processing pedigree. Numerous extensions have been written to enable connecting PHP with different database servers. And the one common thing that all database publishers extol is to consolidate query operations through the use of joins for fewer disk operations and lower network transfer.</p>
 
 
 
@@ -586,11 +586,11 @@ public class Foo
 
 
 
-<p>Instead, run multiple queries ΓÇô one to retrieve the master table and the rest while cycling through the result set to retrieve values from the secondary table, using the current record as the selection criteria. If you have enough values in the master table, this will slow your server down enough to frustrate the end user. Use the techniques mentioned above to obfuscate and entangle your queries with unrelated code to make it resistant to change.</p>
+<p>Instead, run multiple queries – one to retrieve the master table and the rest while cycling through the result set to retrieve values from the secondary table, using the current record as the selection criteria. If you have enough values in the master table, this will slow your server down enough to frustrate the end user. Use the techniques mentioned above to obfuscate and entangle your queries with unrelated code to make it resistant to change.</p>
 
 
 
-<p>For added joy, create a new connection at random places in your code to the same database server. This will confuse the casual maintenance programmer into thinking that youΓÇÖre actually retrieving information from two databases, and hence justify you not using a join.</p>
+<p>For added joy, create a new connection at random places in your code to the same database server. This will confuse the casual maintenance programmer into thinking that you’re actually retrieving information from two databases, and hence justify you not using a join.</p>
 
 
 
@@ -598,7 +598,7 @@ public class Foo
 
 
 
-<p>Perform enough of these activities in a single project and you can be assured of months of job security. The best part about working in a language like PHP is that you donΓÇÖt have to worry about making it not look maintainable. Legions of bad programmers have given the language such a bad rep that people almost expect PHP code to look bad.</p>
+<p>Perform enough of these activities in a single project and you can be assured of months of job security. The best part about working in a language like PHP is that you don’t have to worry about making it not look maintainable. Legions of bad programmers have given the language such a bad rep that people almost expect PHP code to look bad.</p>
 
 
 

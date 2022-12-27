@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/a-hash-table-using-c/" rel="bookmark">A Hash Table using C#</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-hash-table-using-c/" rel="bookmark"><time class="entry-date published" datetime="2017-08-27T12:11:00+05:30">August 27, 2017</time><time class="updated" datetime="2022-08-03T17:14:35+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/a-hash-table-using-c/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-hash-table-using-c/" rel="bookmark"><time class="entry-date published" datetime="2017-08-27T12:11:00+05:30">August 27, 2017</time><time class="updated" datetime="2022-12-26T19:46:51+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/a-hash-table-using-c/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -178,7 +178,7 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
-<p><a href="https://medium.com/@bartobri/hash-crash-the-basics-of-hash-tables-bef82a8ea550">Brian Barto recently put up a post</a> where he described how hash tables are implemented. Many modern programming languages have this data structure as a built-in feature, making it a commonly used item in a developerΓÇÖs toolkit. Due to its ready availability, few programmers ever have the need to roll their implementation. So it comes as no surprise when people who do not have a formal education in software engineering do not understand how it works. Brian&#8217;s post explains the most essential parts of this magical data structure very well.</p>
+<p><a href="https://medium.com/@bartobri/hash-crash-the-basics-of-hash-tables-bef82a8ea550">Brian Barto recently put up a post</a> where he described how hash tables are implemented. Many modern programming languages have this data structure as a built-in feature, making it a commonly used item in a developer’s toolkit. Due to its ready availability, few programmers ever have the need to roll their implementation. So it comes as no surprise when people who do not have a formal education in software engineering do not understand how it works. Brian&#8217;s post explains the most essential parts of this magical data structure very well.</p>
 
 
 
@@ -198,15 +198,14 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate" title="">
-var o = { ΓÇ£nameΓÇ¥: ΓÇ£John DoeΓÇ¥ };
-o&#91;ΓÇ£occupationΓÇ¥] = ΓÇ£WizardΓÇ¥; // Key created
-o&#91;ΓÇ£nameΓÇ¥] = ΓÇ£Jane DoeΓÇ¥; // Key updated
-console.log(o&#91;ΓÇ£nameΓÇ¥]); // Value retrieval
-delete o&#91;ΓÇ£occupationΓÇ¥]; // Jane just retired
+o&#91;“occupation”] = “Wizard”; // Key created
+o&#91;“name”] = “Jane Doe”; // Key updated
+console.log(o&#91;“name”]); // Value retrieval
+delete o&#91;“occupation”]; // Jane just retired
 </pre></div>
 
 
-<p>A hash table uses a linear array internally to store values. The key is converted into an integer by running it through a hash function, which is then used as the index into the backing array where the value is stored. A good hash function has two characteristics ΓÇô <strong>minimal conflicts</strong> and <strong>uniform distribution</strong>.</p>
+<p>A hash table uses a linear array internally to store values. The key is converted into an integer by running it through a hash function, which is then used as the index into the backing array where the value is stored. A good hash function has two characteristics – <strong>minimal conflicts</strong> and <strong>uniform distribution</strong>.</p>
 
 
 
@@ -234,7 +233,7 @@ delete o&#91;ΓÇ£occupationΓÇ¥]; // Jane just retired
 
 
 
-<p>Discrete uniform distribution is a statistical term for a condition where all values in a finite set all have an equal probability of being observed. A uniform distribution of hash values over the indexes into an array reduces the possibilities of key conflict, and reduces the cost of frequent conflict resolution. Uniform distribution over an arbitrary set of keys is a difficult mathematical challenge, and I wonΓÇÖt even pretend to understand what IΓÇÖm talking about. Let it just suffice that a lot of really smart folks have already worked on that and we get to build upon their achievements.</p>
+<p>Discrete uniform distribution is a statistical term for a condition where all values in a finite set all have an equal probability of being observed. A uniform distribution of hash values over the indexes into an array reduces the possibilities of key conflict, and reduces the cost of frequent conflict resolution. Uniform distribution over an arbitrary set of keys is a difficult mathematical challenge, and I won’t even pretend to understand what I’m talking about. Let it just suffice that a lot of really smart folks have already worked on that and we get to build upon their achievements.</p>
 
 
 

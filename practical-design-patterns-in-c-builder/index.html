@@ -166,7 +166,7 @@ body.custom-background { background-color: #f2f2f2; }
 			<h1 class="entry-title ">Practical Design Patterns in C# &ndash; Builder</h1>
 
 			<div class="entry-meta">
-				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2021-02-12T14:13:25+05:30">February 12, 2021</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2022-12-27T06:43:07+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 								<span class="cat-links"><i class="fa fa-folder-open"></i>
 				 <a href="/category/software-engineering/construction/" rel="category tag">Construction</a>				</span>
 								
@@ -192,7 +192,7 @@ body.custom-background { background-color: #f2f2f2; }
 var message = new MailMessage(&quot;john@example.com&quot;,
                 &quot;jane@example.com&quot;,
                 &quot;101 Ways to Refactor&quot;,
-                &quot;Lorem ipsuΓÇª&quot;);
+                &quot;Lorem ipsu…&quot;);
 </pre></div>
 
 
@@ -219,22 +219,22 @@ public class EmailBuilder
 
     public EmailBuilder AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public EmailBuilder WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -254,7 +254,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 
@@ -297,22 +297,22 @@ public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
 
     public IMessageBuilder&lt;MailMessage&gt; AddressedTo(string recipient)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; From(string sender)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithBody(string body)
     {
-        ΓÇª
+        …
     }
 
     public IMessageBuilder&lt;MailMessage&gt; WithSubject(string subject)
     {
-        ΓÇª
+        …
     }
 
     public MailMessage GetResults()
@@ -387,7 +387,7 @@ var message = builder.From(&quot;john@example.com&quot;)
     .AddressedTo(&quot;jane@example.com&quot;)
     .AddressedTo(&quot;jim@example.com&quot;)
     .WithSubject(&quot;101 Ways to Refactor&quot;)
-    .WithBody(&quot;Lorem ipsuΓÇª&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
     .GetResults();
 </pre></div>
 
@@ -424,7 +424,7 @@ var message = builder.From(&quot;john@example.com&quot;)
 
 	<nav class="navigation post-navigation" aria-label="Posts">
 		<h2 class="screen-reader-text">Post navigation</h2>
-		<div class="nav-links"><div class="nav-previous"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="prev"><i class="fa fa-chevron-left"></i> <span class="post-title">Practical Design Patterns in C# &#8211; Abstract Factory</span></a></div><div class="nav-next"><a href="/practical-design-patterns-in-c-prototype/" rel="next"><span class="post-title">Practical Design Patterns in C# ΓÇô Prototype <i class="fa fa-chevron-right"></i></span></a></div></div>
+		<div class="nav-links"><div class="nav-previous"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="prev"><i class="fa fa-chevron-left"></i> <span class="post-title">Practical Design Patterns in C# &#8211; Abstract Factory</span></a></div><div class="nav-next"><a href="/practical-design-patterns-in-c-prototype/" rel="next"><span class="post-title">Practical Design Patterns in C# – Prototype <i class="fa fa-chevron-right"></i></span></a></div></div>
 	</nav>
 		</main><!-- #main -->
 	</div><!-- #primary -->

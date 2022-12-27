@@ -169,7 +169,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark">Runtime Resource Authorisation in ASP.NET MVC</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark"><time class="entry-date published" datetime="2019-12-05T21:51:00+05:30">December 5, 2019</time><time class="updated" datetime="2022-08-04T11:04:29+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/runtime-resource-authorisation-in-asp-net-mvc/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark"><time class="entry-date published" datetime="2019-12-05T21:51:00+05:30">December 5, 2019</time><time class="updated" datetime="2022-12-27T06:47:57+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/runtime-resource-authorisation-in-asp-net-mvc/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -226,7 +226,7 @@ public class AdminController : Controller
     &#91;Secured]
     public IActionResult Edit(int id)
     {
-        ΓÇª
+        …
     }
 }
 </pre></div>
@@ -243,7 +243,7 @@ public class AdminController : Controller
 <div class="is-layout-flow wp-block-group"><div class="wp-block-group__inner-container"><div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class AuthorizationFilter : IActionFilter
 {
-    ΓÇª 
+    … 
     public void OnActionExecuting(ActionExecutingContext context)
     {
         var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
@@ -268,7 +268,7 @@ public class AuthorizationFilter : IActionFilter
 
 
 
-<p>The filter looks for the <code>[Secured]</code> attribute. If the method being invoked doesnΓÇÖt have the attribute, the filter immediately returns and lets the method execution proceed. If the attribute is found, the filter performs a screening procedure to determine if the request should be allowed or not. It may use a injected service class or even a third-party API to perform this action.</p>
+<p>The filter looks for the <code>[Secured]</code> attribute. If the method being invoked doesn’t have the attribute, the filter immediately returns and lets the method execution proceed. If the attribute is found, the filter performs a screening procedure to determine if the request should be allowed or not. It may use a injected service class or even a third-party API to perform this action.</p>
 
 
 
@@ -299,7 +299,7 @@ public class AuditTrailFilter : IActionFilter
         }
 
         // Invoke a service to log the method access
-        Logger.Info(ΓÇª);
+        Logger.Info(…);
     }
 }
 </pre></div>
@@ -315,7 +315,7 @@ public class AuditTrailFilter : IActionFilter
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class WebAuthorizationFilter : IActionFilter
 {
-    ΓÇª 
+    … 
     public void OnActionExecuting(ActionExecutingContext context)
     {
         // Return if a non-API request is received
@@ -355,7 +355,7 @@ public class WebAuthorizationFilter : IActionFilter
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class ApiAuthorizationFilter : IActionFilter
 {
-    ΓÇª 
+    … 
     public void OnActionExecuting(ActionExecutingContext context)
     {
         // Return if a non-API request is received

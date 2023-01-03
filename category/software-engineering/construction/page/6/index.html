@@ -160,6 +160,169 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-836" class="post-836 post type-post status-publish format-standard hentry category-construction">
+	<div class="blog-item-wrap">
+				<a href="/a-guide-to-effective-version-control/" title="A Guide to Effective Version Control" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/a-guide-to-effective-version-control/" rel="bookmark">A Guide to Effective Version Control</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-guide-to-effective-version-control/" rel="bookmark"><time class="entry-date published" datetime="2015-10-30T19:03:27+05:30">October 30, 2015</time><time class="updated" datetime="2022-12-25T10:41:42+05:30">December 25, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/a-guide-to-effective-version-control/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>We have come a long way since 2008 when I wrote <a title="A Gentle Introduction to Version Control ΓÇô Part I" href="http://www.notadesigner.com/a-gentle-introduction-to-version-control-part-i/">this introductory article about version control systems</a>. Their rising popularity in the past few years is a notable sign of maturity in the software development community. Whereas they were once a bastion of only &#8220;serious&#8221; development operations, now even app developers working alone use them regularly.</p>
+
+
+
+<p>In this article, I talk about how a team can use a version control system to its advantage by describing a preferred way to store the files in the repository and some processes to complement the structure.</p>
+
+
+
+<p>There are myriad ways of organizing a version control repository. It is a sophisticated file system, after all. A well-structured repository can be a valuable asset to a software team by creating a clearly defined workspaces for programmers, opening up the opportunity to create a continuous integration pipeline, and standardizing deployment.</p>
+
+
+
+<h3>Repository Layout</h3>
+
+
+
+<p>In my preferred layout, <strong>the trunk is used for the main development line</strong>. In addition, <strong>branches are created for releases</strong> and feature sandboxes. This style of organization is loosely based on trunk-based development.</p>
+
+
+
+<h4>The Trunk</h4>
+
+
+
+<p>All the primary development of the project occurs in this directory. The trunk is further organized into sub-directories for every project that constitutes the final product. For example, a product might consist of separate web and desktop components. Or it might have a dependency on a separate static or dynamic library. The exact arrangement of this is determined by the programmers and release engineers working together. All these projects reside side-by-side in the trunk.</p>
+
+
+
+<p>A feature or bug fix is considered open until the code has not been committed to the trunk. Hence, all developers have access to this directory and must<strong> make it a regular part of their daily work</strong>.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" width="400" height="200" src="/wp-content/uploads/2015/10/trunk.png" alt="trunk" class="wp-image-851"/></figure></div>
+
+
+<h4>Maintenance Branches</h4>
+
+
+
+<p>Once the product reaches a milestone and is deemed ready for release, the release engineer is responsible for generating a binary and deploying the product. But the first step is to <strong>make a maintenance branch</strong>. This branch is a snapshot of the trunk that can be used by developers to provide bug-fixes to an already deployed product without accidentally releasing new features.</p>
+
+
+
+<p>It is named according to whatever convention the team decides (I prefer a numeric x.y scheme).</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="400" height="200" src="/wp-content/uploads/2015/10/branch.png" alt="branch" class="wp-image-852"/></figure></div>
+
+
+<p>If bugs are discovered in the product post release, they are patched in the trunk and merged into the active maintenance branch. Other developers, meanwhile, can safely continue adding new features on the trunk without inadvertently bringing them into the current deployed versions.</p>
+
+
+
+<p>A bug-fix release is made out of the maintenance branch after a bug is patched.</p>
+
+
+
+<p>It is important that <strong>bug fixes should originate in the trunk and later be merged into the branch</strong> rather than the other way around. If the fix is made in the branch and the developer forgets to merge it back into the trunk, it can cause a regression later down the line. By patching in the trunk, the developer uses the process to automatically ensure that patches exist in both places.</p>
+
+
+
+<h4>Tags</h4>
+
+
+
+<p>Release binaries should always be made out of a clean export from the repository. But which revision should one export? If you&#8217;re creating a maintenance branch, you could use its HEAD revision. But you&#8217;re out of luck if you need to generate a previously released build again after subsequent edits have been made to the branch. Unless you tagged the branch before generating a binary.</p>
+
+
+
+<p><strong>A tag is a branch that everyone agrees to never edit</strong>. It is given a unique name from the rest of its siblings. My preference is to go the x.y.z scheme, where the x and y components of the name come from the maintenance branch from which it derives its lineage.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="400" height="200" src="/wp-content/uploads/2015/10/tag.png" alt="tag" class="wp-image-853"/></figure></div>
+
+
+<p>The z component of the tag name is set to 0 when the first maintenance branch is made. This number is incremented whenever subsequent tags are made out of the maintenance branch.</p>
+
+
+
+<h3>Using the Repository</h3>
+
+
+
+<p>Once the structure is ready, some processes need to be put in place in order to utilize it. The typical developer role has it easy &#8211; keep committing error-free code into the trunk, and make sure the working directory is updated from the trunk as often as possible.</p>
+
+
+
+<h4>Feature Releases</h4>
+
+
+
+<p>A new feature release begins when one of the managers green-lights it. The repository is locked down temporarily and <strong>a maintenance branch and a tag are created from the head revision of the trunk</strong>. These two copies are named according to the version convention in place for the project.</p>
+
+
+
+<p>This maintenance branch supersedes all previously generated branches, which may even be deleted from the repository. The repository is then unlocked and developers can go back to making commits in the trunk.</p>
+
+
+
+<h4>Maintenance</h4>
+
+
+
+<p>When bugs are discovered in a released product, the developers investigate in the trunk and attempt to fix it there. If found and fixed, they notify the release engineer who then cherry-picks the relevant commits and <strong>merges them into the current maintenance branch</strong>.</p>
+
+
+
+<p><strong>The maintenance branch is tagged</strong> after it is deemed ready for release. The binary generation and deployment process remains the same &#8211; clean export from the newly created tag, followed by compilation and deployment.</p>
+
+
+
+<p>If a bug cannot be located in the trunk, the developer may have to look for it in the maintenance branch and fix it if it is found there. In this case, the bug fix may be merged back into the trunk if deemed necessary.</p>
+
+
+
+<h4>Release Generation</h4>
+
+
+
+<p>The release engineer&#8217;s work is not done yet. The release binaries are yet to be created from the newly created tag. For this, the tag is exported from the repository into an empty directory. This is important so that no unnecessary files are accidentally added into the binaries. This step cannot be emphasized enough.</p>
+
+
+
+<p><em>All binaries must be generated from a clean and complete export from the repository.</em></p>
+
+
+
+<p>Generating binaries from partially exported directories runs a high risk of including incorrect or outdated files into the binary. This inaccuracy can be the source of impossible-to-reproduce bugs or regressions. At the minimum, it is a sign of a poorly managed process.</p>
+
+
+
+<p>Once the binary is generated, it is packaged to its final consumption form &#8211; an archive or installer for distribution &#8211; then deployed to wherever it is needed (such as a file server or web server).</p>
+
+
+
+<p>The binaries and installers may be added into the repository for posterity.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-531" class="post-531 post type-post status-publish format-standard hentry category-construction tag-usability tag-user-interface">
 	<div class="blog-item-wrap">
 				<a href="/nothing-is-so-simple-that-it-cannot-be-difficult/" title="Nothing Is So Simple That it Cannot Be Difficult" >
@@ -872,134 +1035,6 @@ C:\projects\notadesigner\trunk\web&gt;svn revert contact.htm
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-37" class="post-37 post type-post status-publish format-standard hentry category-construction">
-	<div class="blog-item-wrap">
-				<a href="/keeping-count-ii-a-tale-of-many-stores/" title="Keeping Count II &#8211; A Tale of Many Stores" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark">Keeping Count II &#8211; A Tale of Many Stores</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-12-27T07:05:14+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-ii-a-tale-of-many-stores/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described Daryl’s experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about Daryl’s fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application “just like the Betty’s”.</p>
-
-
-
-<p>So he got down to work again. But Daryl now felt that writing inventory control wasn’t as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
-
-
-
-<p>This is what his base Inventory class looks like.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-class Inventory
-{
-    function AddUnits(Units:Number)
-    {
-        m_units += Units;
-    }
-
-    function RemoveUnits(Units:Number)
-    {
-        m_units -= Units;
-    }
-
-    function PrintUnits()
-    {
-        print(&quot;Remaining units: &quot; + m_units);
-    }
-}
-</pre></div>
-
-
-<p>Daryl adds a member variable called FunctionReference and a method called SetUnitConvertor() to this class, which accepts a function reference as a parameter.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-function SetUnitConvertor(ObjectReference:Object, FunctionReference:Function)
-{
-    m_unitConvertor = Delegate.create(ObjectReference, FunctionReference)
-}
-</pre></div>
-
-
-<p>Then he modifies the PrintUnits() method to use this function reference.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-function PrintUnits()
-{
-    print(&quot;Remaining units: &quot; + m_unitConvertor(m_units));
-}
-</pre></div>
-
-
-<p>He copies the Inventory class into the project for Mr. Coton’s cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-class ClothStoreInventory extends Inventory
-{
-    function ClothStoreInventory()
-    {
-        super.SetUnitConvertor(this, ConvertUnitsToLength);
-    }
-
-    function ConvertUnitsToLength(Units:Number)
-    {
-        // Find the total length of cloth sold
-        return Units / 1000
-    }
-}
-</pre></div>
-
-
-<p>And another class is added for Mr. Chiseller’s consultancy firm.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-class ConsultancyFirmInventory extends Inventory
-{
-    function ConvertUnitsToTime(Units:Number)
-    {
-        // Show the number of hours worked
-        Seconds = Math.floor(Units / 1000);
-        Minutes = Math.floor(Seconds / 60);
-        Seconds = Seconds % 60;
-        Hours = Math.floor(Minutes / 60);
-        Minutes = Minutes % 60;
-        return Hours + &quot;:&quot; + Minutes + &quot;:&quot; + Seconds;
-    }
-}
-</pre></div>
-
-
-<p>The result of this hoopla is that the base class will always call the formatting function from its inherited class (which would be quite impossible otherwise without using a messy callback system, or hard-coding the object reference into the base class, or (gasp!) event generation.</p>
-
-
-
-<p>“But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.”</p>
-
-
-
-<p>Well, that’s true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/category/software-engineering/construction/page/5/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1212,7 +1247,6 @@ class ConsultancyFirmInventory extends Inventory
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0.9b' id='syntaxhighlighter-brush-powershell-js'></script>
-<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');

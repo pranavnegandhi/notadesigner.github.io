@@ -155,17 +155,17 @@ body.custom-background { background-color: #f2f2f2; }
 		<main id="main" class="site-main" role="main">
 
 		
-<article id="post-1044" class="post-1044 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+<article id="post-1046" class="post-1046 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
 	<div class="blog-item-wrap">
-				<a href="/the-database-context/" title="The Database Context" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/07/DSC_4507-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<a href="/domain-entities/" title="Domain Entities" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/IMG_0036-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/the-database-context/" rel="bookmark">The Database Context</a></h2>
+				<h2 class="entry-title"><a href="/domain-entities/" rel="bookmark">Domain Entities</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2022-12-27T06:22:59+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-database-context/#respond">Leave a comment</a></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/domain-entities/" rel="bookmark"><time class="entry-date published" datetime="2018-07-29T03:59:46+05:30">July 29, 2018</time><time class="updated" datetime="2022-12-27T06:38:42+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/domain-entities/#respond">Leave a comment</a></span>
 				
 				
 				</div><!-- .entry-meta -->
@@ -205,6 +205,172 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 <div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<p>An entity class is written in your application programming language using standard language constructs such as the qualifier, class name and public properties. All properties must have an accessor and a mutator.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class Post
+    {
+        public int PostId { get; set; }
+        public string Title { get; set; }
+        public string Body { get; set; }
+        public DateTime CreatedOn { get; set; }
+    }
+}
+</pre></div>
+
+
+<p>The class is utilised into the Entity Framework by creating a DbSet instance property for it in the DbContext.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public DbSet Posts { get; set; }
+    }
+}
+</pre></div>
+
+
+<h3>Scalar Properties</h3>
+
+
+
+<p>Entity classes have scalar properties to represent values which are stored in the database column directly. For example, the values for PostId, Title, Body and CreatedOn fields are stored in columns in the Posts table in the database.</p>
+
+
+
+<h3>Navigation Properties</h3>
+
+
+
+<p>Navigation properties are used to represent relationships between database tables. Entity Framework supports relationship multiplicities of zero-or-one, one, zero-or-many, or one-or-many. Object references are used to represent relationships. Properties whose type is of another entity are used for zero-or-one, or one multiplicity. Properties whose type is a generic collection instance represent zero-or-many, or one-or-many relationships.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class Post
+    {
+        public int PostId { get; set; }
+        …
+        // Multiplicity of one or zero-or-one
+        public Author CreatedBy { get; set; }
+
+        // Multiplicity of zero-or-many, or many
+        public ICollection { get; set; }
+    }
+}
+</pre></div>
+
+
+<h3>Entity States</h3>
+
+
+
+<p>Each entity class instance has an associated state which is maintained by the Entity Framework internally. The value of the state property changes automatically based on the operations that the developer performs on the entity instance or the database context instance.</p>
+
+
+
+<p>This property can transition between the following enumerations.</p>
+
+
+
+<ul>
+<li>Added</li>
+
+
+
+<li>Modified</li>
+
+
+
+<li>Deleted</li>
+
+
+
+<li>Unchanged</li>
+
+
+
+<li>Detached</li>
+</ul>
+
+
+
+<p>The context instance in the object service layer is responsible for maintaining the current state and changing it in response to API calls. When the SaveChanges method is called, the context instance determines what database operation has to be performed on each entity instance in the DbSet collection based on the value of its State property.</p>
+
+
+
+<p>An insert operation is performed for entities whose state is set to Added, update for entities whose state property is set to Modified and delete for entities whose state property is set to Deleted.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1044" class="post-1044 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<div class="blog-item-wrap">
+				<a href="/the-database-context/" title="The Database Context" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/DSC_4507-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/the-database-context/" rel="bookmark">The Database Context</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2022-12-27T06:22:59+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/the-database-context/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div>
 
 
@@ -282,7 +448,7 @@ namespace Notadesigner.Blog
 <h3>Basics of Entity Framework</h3>
 
 
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
@@ -294,7 +460,7 @@ namespace Notadesigner.Blog
 <h3>Code First</h3>
 
 
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
@@ -305,7 +471,7 @@ namespace Notadesigner.Blog
 <h3>Database First</h3>
 
 
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-2" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div>
 
 
@@ -363,7 +529,7 @@ namespace Notadesigner.Blog
 <h3>Basics of Entity Framework</h3>
 
 
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
@@ -375,7 +541,7 @@ namespace Notadesigner.Blog
 <h3>Code First</h3>
 
 
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
@@ -386,7 +552,7 @@ namespace Notadesigner.Blog
 <h3>Database First</h3>
 
 
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-2" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div>
 
 
@@ -520,7 +686,7 @@ namespace Notadesigner.Blog
 <h3>Basics of Entity Framework</h3>
 
 
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
@@ -532,7 +698,7 @@ namespace Notadesigner.Blog
 <h3>Code First</h3>
 
 
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
@@ -543,7 +709,7 @@ namespace Notadesigner.Blog
 <h3>Database First</h3>
 
 
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-4" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div>
 
 
@@ -577,233 +743,6 @@ namespace Notadesigner.Blog
 
 
 <p>Entity Framework frees up the programmer from having to translate information between .NET instances and DataSet objects which are used by ADO.NET to retrieve, insert and update records in the data store.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1030" class="post-1030 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-state">
-	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-state/" title="Practical Design Patterns in C# &ndash; State" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/06/DSC_4129-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-state/" rel="bookmark">Practical Design Patterns in C# &ndash; State</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-state/" rel="bookmark"><time class="entry-date published" datetime="2018-06-11T10:13:00+05:30">June 11, 2018</time><time class="updated" datetime="2022-12-27T06:26:06+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-state/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The purpose of the state design pattern is to allow an object to alter its behaviour when its internal state changes.</p>
-
-
-
-<p>The example of a logging function below is a model candidate for conversion into a state implementation.</p>
-
-
-
-<p>The requirements of this function are as follows.</p>
-
-
-
-<ol>
-<li>Write the log entry to the end of a text file by default.</li>
-
-
-
-<li>The file size is unlimited by default, denoted by setting the value of the maximum file size to 0.</li>
-
-
-
-<li>If the value of the maximum file size is greater than 0 then the log file is archived when it reaches this size, and the entry is written to a new empty log file.</li>
-
-
-
-<li>If the recycle attribute is enabled and the maximum file size is set to a value greater than 0, then the oldest entry in the log file is erased to make space for the new entry instead of archiving the entire log file.</li>
-</ol>
-
-
-
-<p>The implementation of the actual mechanism for writing to disk is not relevant in this example. Rather, the focus is on creating a framework that enables selecting the correct mechanism based on the preferences set.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public void Log(string message)
-{
-    if (LimitSize)
-    {
-        if (file.Length &lt; MAX_SIZE)
-        {
-            // Write to the end of the log file
-        }
-        else
-        {
-            if (Recycle)
-            {
-                // Clear room at the top of the log file
-            }
-            else
-            {
-                // Create a new log file with current time stamp
-            }
-
-            // Write to the end of the log file
-        }
-    }
-    else
-    {
-        // Write to the end of the log file
-    }
-}
-</pre></div>
-
-
-<p>The implementation shown above is very na├»ve, tightly coupled, rigid and brittle. However, it is also a fairly common occurrence in most code bases due to its straightforward approach to addressing the problem.</p>
-
-
-
-<p>The complicated logical structure is difficult to decipher, debug and extend. The tasks of determining file size limits, recovering disk space, creating a new file and writing to the file are all discrete from each other and should have no dependency between themselves. But they are all interwoven in this approach and add a huge cognitive overhead in order to understand the execution path.</p>
-
-
-
-<p>There are multiple conditions being evaluated before the log entry is made. The programmer has to simulate the computer’s own execution path for each statement before even arriving at the important lines related to writing to disk. A couple of blocks are duplicated code. It would be nice if the execution path could be streamlined and duplicate code removed.</p>
-
-
-
-<h3>Restructured Code </h3>
-
-
-
-<p>
-An eager approach to selecting the preferred mechanism breaks up the conditional statements into manageable chunks. It is logically no different from having the same code in the Log method. But moving it into the mutator makes it easier to understand by adding context into the logic rather than handing it all in a single giant function.
-
-</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public int MaxFileSize
-{
-    get
-    {
-        return _maxFileSize;
-    }
-
-    set
-    {
-        _maxFileSize = value;
-
-        if (0 == MaxFileSize)
-        {
-            // Activate the unlimited logger
-            return;
-        }
-
-        if (Recycle)
-        {
-            // Activate the recycling logger
-        }
-        else
-        {
-            // Activate the rotating logger
-        }
-    }
-}
-
-public bool Recycle
-{
-    get
-    {
-        return _recycle;
-    }
-
-    set
-    {
-        _recycle = value;
-
-        if (0 == MaxFileSize)
-        {
-            // Recycling is not applicable when file sizes are unlimited
-            return;
-        }
-
-        if (Recycle)
-        {
-            // Activate the recycling logger
-        }
-        else
-        {
-            // Activate the rotating logger
-        }
-    }
-}
-</pre></div>
-
-
-<p> The comments indicate that you’re still missing some code that actually performs the operation. This is the spot where the behaviour is selected and applied based on the state of the object. We use C# delegates to alter the behaviour of the object at runtime. </p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public delegate void LogDelegate(Level level, string statement)
-
-public LogDelegate Log
-{
-    get;
-    private set;
-}
-</pre></div>
-
-
-<p>
-The Logger class contains private methods that implement the same signature as the Log delegate.
-
-</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-private void AppendAndLog(Level level, string message)
-{
-}
-
-private void RotateAndLog(Level level, string message)
-{
-}
-
-private void RecycleAndLog(Level level, string message)
-{
-}
-</pre></div>
-
-
-<p>
-When the condition evaluation is completed and the logging method has to be selected, a new instance of the Log delegate is created which points to the correct logging method.
-
-</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-if (Recycle)
-{
-    Log = new LogDelegate(RecycleAndLog);
-}
-else
-{
-    Log = new LogDelegate(RotateAndLog);
-}
-</pre></div>
-
-
-<p>
-This separates the selection of the correct logging technique to use from the implementation of the technique itself. The logging method implementations can be changed at will to fix bugs or extend their features without adding risk to breaking the rest of the code.
-
-</p>
 
 							</div><!-- .entry-content -->
 					</div>
@@ -931,12 +870,12 @@ This separates the selection of the correct logging technique to use from the im
 </ul></div></div>		</div><!-- .widget-area .first -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
-			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-5" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-5" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>

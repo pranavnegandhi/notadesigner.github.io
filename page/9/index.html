@@ -155,6 +155,159 @@ body.custom-background { background-color: #f2f2f2; }
 		<main id="main" class="site-main" role="main">
 
 		
+<article id="post-784" class="post-784 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<div class="blog-item-wrap">
+				<a href="/runtime-shared-libraries-with-plain-actionscript/" title="Runtime Shared Libraries with Plain ActionScript" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/runtime-shared-libraries-with-plain-actionscript/" rel="bookmark">Runtime Shared Libraries with Plain ActionScript</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/runtime-shared-libraries-with-plain-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2014-10-05T19:52:23+05:30">October 5, 2014</time><time class="updated" datetime="2022-08-03T16:48:15+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/runtime-shared-libraries-with-plain-actionscript/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Using RSLs is still a bit of a black art in ActionScript. This is partly due to the fact that documentation on it is sparse, partly because of the complex ActionScript code that mxmlc generates when compiling MXML files, and partly because the process itself is a bit unintuitive. These notes are the result of a few days of research on the topic.</p>
+
+
+
+<p>A runtime shared library is simply a SWF file that is loaded into the application at launch. The code and assets in the library are then available for the application to use. This makes it handy when using third-party code libraries, or even your own libraries which are built to a published specification and are not going to change frequently. By making them external to the application, you can also share them between several different applications.</p>
+
+
+
+<h3>The Flex Way</h3>
+
+
+
+<p>ActionScript developers working with mxmlc directly outside the Flash Builder IDE may be familiar with the following warning.</p>
+
+
+
+<pre class="wp-block-preformatted">/Projects/rsl-demo/Main.as: Warning: This compilation unit did not have a factoryClass specified in Frame metadata to load the configured runtime shared libraries. To compile without runtime shared libraries either set the -static-link-runtime-shared-libraries option to true or remove the -runtime-shared-libraries option.</pre>
+
+
+
+<p>This warning indicates that the programmer may have overlooked the task of loading external libraries at runtime. The Flash Player will throw a runtime exception and halt further execution of the application if attempts are made to execute code which is not yet loaded.</p>
+
+
+
+<p>The solution is to add a Frame metatag at the top of the application class and set its factoryClass attribute to point to a class that will be responsible to load external libraries.</p>
+
+
+
+<p>If you were to inspect the output of the mxmlc compiler on a Flex application, you will see hard-coded references to all the RSLs that the application is using in the factoryClass designate. These references come from the configuration options passed on to the compiler through either its command-line parameters or the compiler configuration file.</p>
+
+
+
+<p>The class that contains these references is usually a child of the mx.managers.SystemManager class and generated automatically by mxmlc. The SystemManager class provides the infrastructure to load these files along with error handling and progress feedback to the user.</p>
+
+
+
+<p>This generated class also contains a reference to the entry point class &#8211; the one that extends from the Application class. When all the library files are loaded, the framework instantiates this class and adds it to the display list of the factoryClass designate. This makes the factoryClass the root document class, while the Application-derived class is actually a child of the loader in the display graph.</p>
+
+
+
+<p>The programmer still provides the Application-inheriting class as the compiler target. But when the compiler encounters the Frame metatag, it automatically associates the Preloader class with the document root and makes the Application a child of the Preloader.</p>
+
+
+
+<h3>An ActionScript Implementation</h3>
+
+
+
+<p>When using ActionScript directly instead of the Flex framework, the developer must manually add the Frame metatag to the top of the application entry point class.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+&#91;Frame(factoryClass=&quot;Preloader&quot;)]
+public class Main extends Sprite
+{
+
+}
+</pre></div>
+
+
+<h4>The Preloader Class</h4>
+
+
+
+<p>The preloading is a straightforward consumption of the flash.display.Loader API. It is implemented here using the Preloader class. This class must fetch every external library file needed by the application. The paths to the libraries are supplied to the Preloader class. When using the Flex framework, the mxmlc compiler bakes in the references to the library files into the code that it generates. The example below also uses the same technique. However, the URLs of library files can also be supplied from any other source such as a web service or external text file. All standard Flash Player APIs are already available to the Preloader class.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public function Preloader()
+{
+	var loader:Loader = new Loader();
+	loader.contentLoaderInfo.addEventListener(Event.COMPLETE, this.loader_completeHandler);
+	loader.contentLoaderInfo.addEventListener(IOErrorEvent.IO_ERROR, this.loader_ioErrorHandler);
+	var request:URLRequest = new URLRequest(&quot;math.swf&quot;);
+	var context:LoaderContext = new LoaderContext(false, ApplicationDomain.currentDomain);
+	loader.load(request, context);
+}
+</pre></div>
+
+
+<p>It is important to note that the library has to be loaded into the same application domain as the main application. Otherwise, it will not have access to the classes in the library and any attempt to instantiate them will trigger a VerifyError at runtime.</p>
+
+
+
+<pre class="wp-block-code"><code>VerifyError: Error #1014: Class com.notadesigner.math::IntegerArithmetic could not be found.</code></pre>
+
+
+
+<h4>Using the Runtime Shared Library API</h4>
+
+
+
+<p>After the library has been downloaded, the Preloader class instantiates the application class and adds it to the display list. The developer must use the flash.system.getDefinitionByName API to get a reference to the application class. This is necessary because application class contains a reference to the IntegerArithmetic class. If the Preloader references Main directly, the compiler will pick up the complete chain of references and statically link the IntegerArithmetic class into the application SWF. By deferring to reference the application class until runtime, the compiler is prevented from scanning the dependency chain and statically linking the library classes into the application SWF.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+private function loader_completeHandler(event:Event):void
+{
+	var mainClass:Class = getDefinitionByName(&quot;Main&quot;) as Class;
+	var mainInstance:Main = new mainClass();
+	this.addChild(mainInstance);
+}
+</pre></div>
+
+
+<p>The Main class then continues with its business as normal. In this case, it is instantiating a type declared in the library and calling its method.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public function Main()
+{
+	var integer:IntegerArithmetic = new IntegerArithmetic(); // Type declared in math.swf
+	var operand1:int = 10;
+	var operand2:int = 10;
+	var result:int = integer.add(operand1, operand2);
+}
+</pre></div>
+
+
+<h4>Deploying Runtime Shared Libraries</h4>
+
+
+
+<p>The confusing bit about using a runtime shared library is realizing that the SWF has to be extracted from the SWC at the time of deploying the application. This was not immediately obvious and I ended up spending days placing a compiled SWC file in various locations and wondering why the application was unable to load it at runtime. An obscure article on the Adobe website made explicit this particular step and set things straight.</p>
+
+
+
+<p>Again, when placing the files, standard path rules apply. The Preloader can refer to relative or absolute paths. If the files are on external domains, the Flash Player attempts to fetch a crossdomain policy file before attempting to download the SWF. The policy file is to be specified as an additional value to the -runtime-shared-library-path parameter to mxmlc.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-748" class="post-748 post type-post status-publish format-standard hentry category-technique tag-actionscript">
 	<div class="blog-item-wrap">
 				<a href="/sharing-code-static-and-dynamic-libraries-in-actionscript/" title="Sharing Code &#8211; Static and Dynamic Libraries in ActionScript" >
@@ -1081,199 +1234,6 @@ protected override Size MeasureOverride(Size availableSize)
 
 
 <p>The Visual Studio solution for this project can be┬á<a href="http://www.notadesigner.com/wp-content/uploads/2013/04/conwayslife.zip">downloaded from here as a ZIP archive</a>.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-570" class="post-570 post type-post status-publish format-standard hentry category-technique tag-bit-hacking tag-c tag-programming">
-	<div class="blog-item-wrap">
-				<a href="/storing-values-with-bit-packing-and-unpacking/" title="Storing Values with Bit Packing and Unpacking" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">Storing Values with Bit Packing and Unpacking</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark"><time class="entry-date published" datetime="2013-02-08T16:56:38+05:30">February 8, 2013</time><time class="updated" datetime="2022-08-03T16:24:16+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/storing-values-with-bit-packing-and-unpacking/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>Bit packing and unpacking is a handy way of consolidating multiple data values into a single variable, thus compressing the amount of data being stored or transmitted. The number of values that can be stored depends upon the width of the data to be stored as well as the type of the value that it is packed into. A simple byte can store up to 8 bits of data. Larger types such as ints can store up to 16, 32 or 64 bits. This is an especially efficient technique for storing several small-width values, often smaller than the smallest width supported by a platform (such as byte or boolean flags) into a single large value such as a 32-bit integer.</p>
-
-
-
-<p>Bit flags are commonly used for implementing low-level features, such as storing file access-permissions or packing values into a single value before transmitting across a bus. However, they can be applied with equal ease to higher level tasks such as storing user preferences or choosing which widgets to display from an enumerated list. We will see here how to use bit flags to store font formatting preferences, and apply them later to a label.</p>
-
-
-
-<h3>Bitwise Operators</h3>
-
-
-
-<p>There are a couple of operators we need to understand before we can move on to the implementation. Bitwise operators, by definition, work on individual bits inside a value. Since they are implemented directly by the processor itself, they are much faster than arithmetic operators such as division and multiplication. We will use bitwise AND (&amp;), bitwise OR (|) and left shifts (&lt;&lt;) in this exercise.</p>
-
-
-
-<p>A bitwise AND operation takes the binary representations of two values and performs a logical AND operation on each bit. The result is 1 in every position where both the bits are 1, and 0 if either or both bits are 0.</p>
-
-
-
-<pre class="wp-block-preformatted">    001010
-AND 011011
-    ------
-    001010</pre>
-
-
-
-<p>Bitwise OR on the other hand, compares two bits in corresponding positions, and sets the result to 1 if either of them is 1, or to 0 if both of them are 0.</p>
-
-
-
-<pre class="wp-block-preformatted">    001010
-OR  011011
-    ------
-    011011</pre>
-
-
-
-<p>Bitwise left shift operator moves individual bits within a single value by the number of places specified in the second operand. The value is padded with 0s on the right, and the left-most bits are dropped off.</p>
-
-
-
-<pre class="wp-block-preformatted">    001010 &lt;&lt; 1 = 010100</pre>
-
-
-
-<h3>Implementation</h3>
-
-
-
-<p>We set up a simple Windows Forms project and draw three checkboxes and one label on the form. The aim is to have the checkboxes control three font properties of the label &#8211; weight, style and underlining. All checkboxes are given appropriate labels and configured to execute the _changeFormatting method of the form every time the CheckStateChanged event is fired. The code for this method is shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-private void ChangeFormatting(object sender, EventArgs e)
-{
-    byte flags = 0;
-
-    flags = (byte)(
-        Convert.ToByte(this.chkUnderline.Checked) &lt;&lt; 2 |
-        Convert.ToByte(this.chkItalic.Checked) &lt;&lt; 1 |
-        Convert.ToByte(this.chkBold.Checked)
-        );
-
-    Font f = new Font(this.label1.Font.FontFamily, this.label1.Font.Size, (FontStyle)(
-        (flags &amp; (byte)FontStyle.Underline) |
-        (flags &amp; (byte)FontStyle.Italic) |
-        (flags &amp; (byte)FontStyle.Bold)
-        ));
-
-    this.label1.Font = f;
-}
-</pre></div>
-
-
-<h4>Packing</h4>
-
-
-
-<p>In the first statement, the flags variable is populated with the values of each checkbox. We want to store the three flags in the last three bits of a single byte.</p>
-
-
-
-<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Position</th><th>Setting</th></tr><tr><td>7</td><td>Unused</td></tr><tr><td>6</td><td>Unused</td></tr><tr><td>5</td><td>Unused</td></tr><tr><td>4</td><td>Unused</td></tr><tr><td>3</td><td>Unused</td></tr><tr><td>2</td><td>Underline</td></tr><tr><td>1</td><td>Italic</td></tr><tr><td>0</td><td>Bold</td></tr></tbody></table></figure>
-
-
-
-<p>In order to do so, we take the value of each boolean (either true or false), convert it into a byte, then shift it by an appropriate number of positions. The value of the underline flag is to be stored in the 2nd bit (starting from 0). So we left-shift its value by 2. Similarly, the italic flag is stored in the 1st position, so its boolean value is shifted by 1. The value of the bold flag does not need to be shifted at all.</p>
-
-
-
-<pre class="wp-block-preformatted">    00000001 &lt;&lt; 2 = 00000100 // Underline
-    00000001 &lt;&lt; 1 = 00000010 // Italic
-    00000001                 // Bold (no shifting required)</pre>
-
-
-
-<p>A consolidated value can be generated by ORing the three values together.</p>
-
-
-
-<pre class="wp-block-preformatted">    00000100
- OR 00000010
- OR 00000001
-    --------
-    00000111 // Decimal value 7</pre>
-
-
-
-<pre class="wp-block-preformatted">    00000000
- OR 00000010
- OR 00000001
-    --------
-    00000011 // Decimal value 3</pre>
-
-
-
-<pre class="wp-block-preformatted">    00000100
- OR 00000000
- OR 00000001
-    --------
-    00000101 // Decimal value 5</pre>
-
-
-
-<p>The decimal value can then be stored in a database or other persistent storage system as an integer or byte. This is better than having to store three boolean fields. This information can transmitted across systems too as a packed unit, to be unpacked later only when the preferences have to be applied to a display element.</p>
-
-
-
-<p>In our example, we are unpacking and applying the values immediately for brevity. But a more practical situation would probably involve serializing the value somewhere, then deserializing and applying the font properties later at another location.</p>
-
-
-
-<h4>Unpacking</h4>
-
-
-
-<p>In order to apply the font styles on a display element, the individual values of each style parameter must be extracted from the packed value and then applied. The .NET framework defines enumerations for each of these style parameters in the System.Drawing.FontStyle enum. The values for each style parameter are listed below.</p>
-
-
-
-<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Setting</th><th>Decimal Value</th><th>Binary Value</th></tr><tr><td>Regular</td><td>0</td><td>00000000</td></tr><tr><td>Bold</td><td>1</td><td>00000001</td></tr><tr><td>Italic</td><td>2</td><td>00000010</td></tr><tr><td>Underline</td><td>4</td><td>00000100</td></tr></tbody></table></figure>
-
-
-
-<p>You will notice that each enumeration is double the value of its predecessor, hence moving the digit 1 by one position leftwards with every increase. This is a key feature of bit flags. Each element differs from the others only in the position of the 1 bit. Thus, the value of a given flag can be extracted from the packed value by ANDing the packed value with the value of the enumeration.</p>
-
-
-
-<pre class="wp-block-preformatted">     00000111 // Packed value decimal 7
-AND  00000100 // Underline enum decimal 4
-     --------
-     00000100 // Result - show underlines</pre>
-
-
-
-<p>This operations shows that the value of the underline flag is true. If the packed value was the decimal 3 instead of 7, then the operation would play out as shown below, resulting in the value 0 for the underline flag.</p>
-
-
-
-<pre class="wp-block-preformatted">     00000011 // Packed value
-AND  00000100 // Underline enum
-     --------
-     00000010 // Result - hide underlines</pre>
-
-
-
-<p>All that is needed then is to convert the result byte into a boolean and apply it wherever required. In our example above, the constructor of the Font class requires the values packed together any way as a FontStyle enum. To do this, each bit is ANDed with its corresponding enum, then all of them are combined together again using an OR operation. The resultant byte is cast into a FontStyle before being passed to the constructor.</p>
 
 							</div><!-- .entry-content -->
 					</div>

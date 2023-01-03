@@ -160,6 +160,134 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-37" class="post-37 post type-post status-publish format-standard hentry category-construction">
+	<div class="blog-item-wrap">
+				<a href="/keeping-count-ii-a-tale-of-many-stores/" title="Keeping Count II &#8211; A Tale of Many Stores" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark">Keeping Count II &#8211; A Tale of Many Stores</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/keeping-count-ii-a-tale-of-many-stores/" rel="bookmark"><time class="entry-date published" datetime="2006-09-23T11:00:27+05:30">September 23, 2006</time><time class="updated" datetime="2022-12-27T07:05:14+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/keeping-count-ii-a-tale-of-many-stores/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>In <a title="Keeping Count I ΓÇô The Candy Shop" href="http://www.notadesigner.com/keeping-count-i-the-candy-shop/">my previous post</a> I described Daryl’s experience as a programmer writing an inventory control system for a candy store. Over the next few weeks Betty, the store owner, spread the word about Daryl’s fantastic inventory and billing management software amongst her friends. Daryl was flooded with requests for a computer application “just like the Betty’s”.</p>
+
+
+
+<p>So he got down to work again. But Daryl now felt that writing inventory control wasn’t as much fun any more. So he wanted to get away with as little code, in the shortest amount of time as possible. He looked at what he had written for Betty and realised that most of the core inventory code was supposed to work exactly the same. All that was needed was to detail out some business specific stuff such as sale-units. This code could go into a thin layer on top of the code inventory module.</p>
+
+
+
+<p>This is what his base Inventory class looks like.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+class Inventory
+{
+    function AddUnits(Units:Number)
+    {
+        m_units += Units;
+    }
+
+    function RemoveUnits(Units:Number)
+    {
+        m_units -= Units;
+    }
+
+    function PrintUnits()
+    {
+        print(&quot;Remaining units: &quot; + m_units);
+    }
+}
+</pre></div>
+
+
+<p>Daryl adds a member variable called FunctionReference and a method called SetUnitConvertor() to this class, which accepts a function reference as a parameter.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+function SetUnitConvertor(ObjectReference:Object, FunctionReference:Function)
+{
+    m_unitConvertor = Delegate.create(ObjectReference, FunctionReference)
+}
+</pre></div>
+
+
+<p>Then he modifies the PrintUnits() method to use this function reference.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+function PrintUnits()
+{
+    print(&quot;Remaining units: &quot; + m_unitConvertor(m_units));
+}
+</pre></div>
+
+
+<p>He copies the Inventory class into the project for Mr. Coton’s cloth store and adds a class specific to that store inheriting from the Inventory class.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+class ClothStoreInventory extends Inventory
+{
+    function ClothStoreInventory()
+    {
+        super.SetUnitConvertor(this, ConvertUnitsToLength);
+    }
+
+    function ConvertUnitsToLength(Units:Number)
+    {
+        // Find the total length of cloth sold
+        return Units / 1000
+    }
+}
+</pre></div>
+
+
+<p>And another class is added for Mr. Chiseller’s consultancy firm.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+class ConsultancyFirmInventory extends Inventory
+{
+    function ConvertUnitsToTime(Units:Number)
+    {
+        // Show the number of hours worked
+        Seconds = Math.floor(Units / 1000);
+        Minutes = Math.floor(Seconds / 60);
+        Seconds = Seconds % 60;
+        Hours = Math.floor(Minutes / 60);
+        Minutes = Minutes % 60;
+        return Hours + &quot;:&quot; + Minutes + &quot;:&quot; + Seconds;
+    }
+}
+</pre></div>
+
+
+<p>The result of this hoopla is that the base class will always call the formatting function from its inherited class (which would be quite impossible otherwise without using a messy callback system, or hard-coding the object reference into the base class, or (gasp!) event generation.</p>
+
+
+
+<p>“But why use a delegate, you silly goose! The base class can override the PrintUnits() method with whatever it wants to use in its place.”</p>
+
+
+
+<p>Well, that’s true. But when you start overriding methods from the base class, it means that the base class has not been designed to anticipate future use. This is a very basic example. But if your PrintUnits() method becomes more elaborate, such as drawing a dialog box with icons and buttons, or maybe even handling multiple output devices such as printers and LCD tickers, replicating all that code in an inherited class is really bad design. By using a delegate, you also allow yourself room to use static utility classes for mundane functions such as this.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-35" class="post-35 post type-post status-publish format-standard hentry category-construction">
 	<div class="blog-item-wrap">
 				<a href="/keeping-count-i-the-candy-shop/" title="Keeping Count I &#8211; The Candy Shop" >
@@ -488,7 +616,56 @@ body.custom-background { background-color: #f2f2f2; }
 			}
 		  })
 		</script>
-	<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/skip-link-focus-fix.min.js?ver=20140222' id='sparkling-skip-link-focus-fix-js'></script>
+	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
+<script type='text/javascript'>
+	(function(){
+		var corecss = document.createElement('link');
+		var themecss = document.createElement('link');
+		var corecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shCore.css?ver=3.0.9b";
+		if ( corecss.setAttribute ) {
+				corecss.setAttribute( "rel", "stylesheet" );
+				corecss.setAttribute( "type", "text/css" );
+				corecss.setAttribute( "href", corecssurl );
+		} else {
+				corecss.rel = "stylesheet";
+				corecss.href = corecssurl;
+		}
+		document.head.appendChild( corecss );
+		var themecssurl = "/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/styles/shThemeDefault.css?ver=3.0.9b";
+		if ( themecss.setAttribute ) {
+				themecss.setAttribute( "rel", "stylesheet" );
+				themecss.setAttribute( "type", "text/css" );
+				themecss.setAttribute( "href", themecssurl );
+		} else {
+				themecss.rel = "stylesheet";
+				themecss.href = themecssurl;
+		}
+		document.head.appendChild( themecss );
+	})();
+	SyntaxHighlighter.config.strings.expandSource = '+ expand source';
+	SyntaxHighlighter.config.strings.help = '?';
+	SyntaxHighlighter.config.strings.alert = 'SyntaxHighlighter\n\n';
+	SyntaxHighlighter.config.strings.noBrush = 'Can\'t find brush for: ';
+	SyntaxHighlighter.config.strings.brushNotHtmlScript = 'Brush wasn\'t configured for html-script option: ';
+	SyntaxHighlighter.defaults['auto-links'] = false;
+	SyntaxHighlighter.defaults['pad-line-numbers'] = false;
+	SyntaxHighlighter.defaults['smart-tabs'] = false;
+	SyntaxHighlighter.defaults['toolbar'] = false;
+	SyntaxHighlighter.defaults['wrap-lines'] = false;
+	SyntaxHighlighter.defaults['quick-code'] = false;
+	SyntaxHighlighter.all();
+
+	// Infinite scroll support
+	if ( typeof( jQuery ) !== 'undefined' ) {
+		jQuery( function( $ ) {
+			$( document.body ).on( 'post-load', function() {
+				SyntaxHighlighter.highlight();
+			} );
+		} );
+	}
+</script>
+<script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/skip-link-focus-fix.min.js?ver=20140222' id='sparkling-skip-link-focus-fix-js'></script>
 
 </body>
 </html>

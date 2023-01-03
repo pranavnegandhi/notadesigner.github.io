@@ -159,10 +159,110 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Year: <span>2022</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-2042" class="post-2042 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering">
+	<div class="blog-item-wrap">
+				<a href="/porting-a-windows-forms-application-to-net-6-part-2/" title="Porting a Windows Forms Application to .NET – Part 2" >
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/DSC_0142-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark">Porting a Windows Forms Application to .NET – Part 2</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark"><time class="entry-date published" datetime="2022-12-28T22:41:02+05:30">December 28, 2022</time><time class="updated" datetime="2023-01-03T14:35:08+05:30">January 3, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/porting-a-windows-forms-application-to-net-6-part-2/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><a href="/porting-a-windows-forms-application-to-net-6-part-1/" data-type="post" data-id="1992">Previously</a>, I described the legacy of the Vertika Player, the bottlenecks in its initial development, some elementary efforts to refactor the code, and a major roadblock that came from the deprecation of the Flash Player.</p>
+
+
+
+<p>Once we decided to move to .NET, work began in full earnest. Enthusiasm was running high, and nothing seemed impossible. Don&#8217;t mind the old code. It was trash. We&#8217;d rewrite everything from scratch! Heck, we were so smart, we could do it twice over. But this fervour lasted all of 15 minutes before we folded up and rolled back all our changes.</p>
+
+
+
+<p>I&#8217;m exaggerating, of course. We did write a new application shell from scratch, using newer APIs like the <code>Microsoft.Extensions.Hosting.IHost</code> interface and its dependency injection framework for some of the most fundamental classes that were needed. But there was immense pressure to get the product out of the door. Remember that the Flash Player uninstaller was well and truly active now, and support staff were working overtime to keep up with restoring it every time it got nuked. After a couple of weeks of this effort, the enormity of the exercise hit us and we fell back to copying files wholesale from the old code-base. On the brighter side, in spite of rewriting only a small portion of the code, the groundwork had been laid for more significant breakthroughs in the near future.</p>
+
+
+
+<p>The singular monolith had been deconstructed into separate projects based on functionality, such as the primary executable, model classes, and the web API host. Over the following months, we added more projects to isolate critical portions of data synchronisation, the network download library (eventually replaced by <a href="https://github.com/bezzad/Downloader">the Downloader library, written by Behzad Khosravifar</a>) and background services.</p>
+
+
+
+<h3>A SOAP-y Muddle</h3>
+
+
+
+<p>There&#8217;s a significant chunk of the application functionality that depends on communicating with a remote SOAP service (stop sniggering; this stuff is from 15 years ago). Visual Studio continues to provide tools to automatically generate a SOAP client from a service. But the output does not maintain API compatibility with the client generated with earlier versions of the tool. Among the methods missing from the new client are the synchronous variants of the service calls, which, unfortunately, were a mainstay in the earlier application code.</p>
+
+
+
+<p>That&#8217;s right. Microsoft used to ship tools that allowed developers to make synchronous network calls.</p>
+
+
+
+<p>But this is all gone now. And I had a problem on my hands.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = serviceClient.GetUsers();
+}
+</pre></div>
+
+
+<pre class="wp-block-code"><code>CS1061	'ServiceClient' does not contain a definition for 'GetUsers' and no accessible extension method 'GetUsers' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)</code></pre>
+
+
+
+<p>Welp!</p>
+
+
+
+<p>Calling asynchronous code from previously written synchronous methods was not going to be easy. Web service calls were tightly integrated in many classes that were still oversized even after aggressive refactoring. Stephen Cleary&#8217;s AsyncEx library came to our rescue. Asynchronous method invocations were wrapped inside calls to <code>AsyncContext.Run()</code>, which we liberally abused to build a synchronous abstraction over the TAP interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = AsyncContext.Run(serviceClient.GetUsersAsync());
+}
+</pre></div>
+
+
+<p>This was much better than the alternative of calling <code>Wait()</code> or <code>Result</code> directly on the task. In addition to blocking what could potentially be the UI thread, it would also wrap any exceptions thrown during the invocation into an additional <code>AggregateException</code>. And anybody who&#8217;s dealt with <code>InnerException</code> hell knows how bad that can be.</p>
+
+
+
+<p>The second API incompatibility was in the collection types returned from the service. The earlier service client returned a <code>System.Data.DataSet</code> type for collections. This was changed to a new type called <code>ArrayOfXElement</code>. Fortunately, this was an easy fix with a simple extension method to convert the <code>ArrayOfXElement</code> into a <code>DataSet</code>.</p>
+
+
+
+<h3>Wrapping Up and Rolling Out</h3>
+
+
+
+<p>The hour of reckoning arrived about 5 months later, when we finally removed references to the Flash Player ActiveX control from the project, replacing them with the WebView2 control. The minuscule amount of effort required of this step belies the enormity of its significance. Flash had been our rendering mainstay for over a decade. All those thousands of man-hours invested into the application were gone in a blink of an eye, replaced with a still-wet-behind-the-ears port to Blazor. This was the first time in the history of the company that legacy code was discarded entirely, and rewritten from scratch on an empty slate.</p>
+
+
+
+<p>The new product was deployed to several test sites for a month to ensure that everything worked as expected. And other than a few basic layout errors, there were no problems that we encountered. The porting exercise was a success, and offered a major lifeline to the business.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1992" class="post-1992 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering">
 	<div class="blog-item-wrap">
 				<a href="/porting-a-windows-forms-application-to-net-6-part-1/" title="Porting a Windows Forms Application to .NET – Part 1" >
-				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_20190924_125400-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_20190924_125400-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 

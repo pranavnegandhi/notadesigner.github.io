@@ -160,10 +160,143 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1632" class="post-1632 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-adapter tag-c tag-practical-design-patterns">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-adapter/" title="Practical Design Patterns in C# &#8211; Adapter" >
+				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4763-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-12-27T06:39:53+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>The intent of this pattern is to convert the API to an existing library, usually to encapsulate legacy code, simplify its use or provide an alternative output format, into a different interface that a client expects.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>There are many examples of this interface in the real world. Cross-platform GUI toolkits are adapters around the underlying API for each supported platform. Clients can continue to use the API provided by GTK+, Windows Forms or Qt, for their applications that run on Windows, macOS or GNOME. The library takes care of translating the API invocations into native equivalents.</p>
+
+
+
+<p>There are many simpler examples of the adapter pattern. A data-driven website is an adapter. It lets web browsers retrieve contents from a database over HTTP instead of running SQL queries on the database engine. It converts the API from SQL to HTTP.</p>
+
+
+
+<p>Modern-day C# applications are often built around the task-based asynchronous pattern, but may need to utilise legacy frameworks or libraries that do not have task-based APIs. The Windows Management Instrumentation (WMI) API is a good example. The <code>ManagementClass</code> and <code>ManagementOperationObserver</code> types work collectively to query the WMI database and raise an event when the results are retrieved.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class WmiClient
+{
+  public void GetDiskData()
+  {
+    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
+    var watcher = new ManagementOperationObserver();
+    watcher.Completed += WatcherCompletedHandler;
+    management.GetInstances(watcher);
+  }
+
+  private void WatcherCompletedHandler(object sender, CompletedEventArgs e)
+  {
+    // Consume the results of the operation.
+    …
+  }
+}
+</pre></div>
+
+
+<p>The code below illustrates how an adapter can convert this into a task-based asynchronous interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class DiskInfoProvider
+{
+  public async Task&lt;PropertyDataCollection&gt; CollectAsync()
+  {
+    var tcs = new TaskCompletionSource&lt;PropertyDataCollection&gt;();
+    var watcher = new ManagementOperationObserver();
+
+    // The event handler that gets invoked by the watcher.
+    var completedHandler = default(CompletedEventHandler);
+    completedHandler = new CompletedEventHandler((sender, e) =&gt;
+    {
+      var tcsLocal = tcs;
+      try
+      {
+        if (e.Status == ManagementStatus.NoError)
+        {
+          // The operation was completed without any errors.
+          tcsLocal.SetResult(e.StatusObject.Properties);
+          return;
+        }
+
+        if (e.Status == ManagementStatus.CallCanceled || e.Status == ManagementStatus.OperationCanceled)
+        {
+          // The task was cancelled before it could be completed.
+          tcsLocal.SetCanceled();
+          return;
+        }
+
+        // An exception occurred during the operation.
+        tcsLocal.SetException(new Exception($&quot;Runtime error {e.Status}&quot;));
+        return;
+      }
+      finally
+      {
+        // Clean up the event handlers.
+        watcher.Completed -= completedHandler;
+      }
+    });
+
+    // Wire up the event handler and begin the operation.
+    watcher.Completed += completedHandler;
+    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
+    management.GetInstances(watcher);
+    return tcs.Task;
+  }
+}
+</pre></div>
+
+
+<p><code>DiskInfoProvider</code> encapsulates <code>ManagementOperationObserver</code> and <code>ManagementClass</code>. The client instantiates <code>DiskInfoProvider</code> and awaits the results from <code>CollectAsync()</code>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class WmiClient
+{
+  public void GetDiskData()
+  {
+    var provider = new DiskInfoProvider();
+    var diskProperties = await provider.CollectAsync();
+  }
+}
+</pre></div>
+
+
+<p>Many structural patterns serve similar roles, but have a singular differentiator between themselves. Adapters and proxies are at parallel purpose to each other. A proxy provides a matching replacement to all or most of its underlying API. An adapter changes the API to meet the client&#8217;s requirement.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1371" class="post-1371 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-singleton">
 	<div class="blog-item-wrap">
 				<a href="/practical-design-patterns-in-c-singleton/" title="Practical Design Patterns in C# &ndash; Singleton" >
-				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4695-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4695-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -924,143 +1057,6 @@ public class Program
     }
 }
 </pre></div>
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1276" class="post-1276 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-factory-method tag-practical-design-patterns">
-	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-factory-method/" title="Practical Design Patterns in C# &ndash; Factory Method" >
-				<img width="750" height="270" src="/wp-content/uploads/2018/12/IMG_0311-750x270.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2022-12-27T06:28:15+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-factory-method/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The factory method is exactly what is says on the label &#8211; a method that produces object instances on demand. Ergo, a factory method. This method separates the creation of object instances from the consumption. It adds very little value to a code-base on its own in most cases. However, the factory method is the foundation to the abstract factory, which offers much more utility.</p>
-
-
-
-<p>In this example, we look at an application that has to write data to one of two different file formats. Separate file writer classes are required for each format, but both must share a common interface for this pattern to work. The correct class is instantiated and the Write method invoked upon it to perform the save operation.</p>
-
-
-
-<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
-
-
-
-<p>All writer classes are required to implement the IFileWriter interface.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public interface IFileWriter
-{
-    void Write(byte&#91;] data, string filename);
-}
-</pre></div>
-
-
-<p>This interface is implemented by each writer class. The example below shows the JpegWriter and PngWriter classes.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class JpegWriter : IFileWriter
-{
-    void Write(byte&#91;] data, string filename) { … }
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class PngWriter : IFileWriter
-{
-    void Write(byte&#91;] data, string filename) { … }
-}
-</pre></div>
-
-
-<p>Then a factory interface is declared, and a factory class created for each file type.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public interface IFileWriterFactory
-{
-    public IFileWriter Create();
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class JpegWriterFactory : IFileWriterFactory
-{
-    public Create()
-    {
-        return new JpegWriter();
-    }
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class PngWriterFactory : IFileWriterFactory
-{
-    public Create()
-    {
-        return new PngWriter();
-    }
-}
-</pre></div>
-
-
-<h3>Usage</h3>
-
-
-
-<p>The application determines the file type that is required, then invokes the Create method on the appropriate writer factory, which in turn returns a concrete implementation of the IFileWriter class. </p>
-
-
-
-<p>The application then invokes the Write method on the writer instance, which handles format-specific details such as endianness, file headers, encoding and more.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-static class Program
-{
-    private static _jpegWriterFactory = new JpegWriterFactory();
-
-    private static _pngWriterFactory = new PngWriterFactory();
-
-    static void Main()
-    {
-        // Image created and serialized into byte&#91;]
-        …
-
-        IFileWriter writer;
-        if (&quot;jpg&quot; == args&#91;1])
-        {
-            writer = _jpegWriterFactory.Create();
-        }
-        else
-        {
-            writer = _pngWriterFactory.Create();
-        }
-
-        writer.Write(data, &quot;lena&quot;);
-    }
-}
-</pre></div>
-
-
-<p></p>
-
 							</div><!-- .entry-content -->
 					</div>
 	</div>

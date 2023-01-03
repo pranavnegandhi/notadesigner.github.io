@@ -160,10 +160,124 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1586" class="post-1586 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<div class="blog-item-wrap">
+				<a href="/valknut-localisation/" title="Valknut &#8211; Localisation" >
+				<img width="750" height="178" src="/wp-content/uploads/2020/09/IMG_3806-750x178.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/valknut-localisation/" rel="bookmark">Valknut &#8211; Localisation</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-localisation/" rel="bookmark"><time class="entry-date published" datetime="2020-09-03T14:38:51+05:30">September 3, 2020</time><time class="updated" datetime="2022-08-04T11:01:55+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/valknut-localisation/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Client-specific Regional Settings</h3>
+
+
+
+<h4>Request Structure</h4>
+
+
+
+<p>Valknut implements localisation of temporal data to match the client&#8217;s preferred locale through the use of the <code>Accept-Language</code> header in an incoming request. The value of this header can be an array of one or more language tags, such as en-US, along with a weightage indicator for the language.</p>
+
+
+
+<p>This value is set automatically by the browser based on the regional settings of the operating system, and can be overridden by the user to suit their needs. The language tag may be followed by an optional quality factor parameter that indicates the preferred weightage to the given language tag. The value of the q-factor is a decimal number between 0 to 1.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+en-US;q=1,en-GB;0.5
+</pre></div>
+
+
+<p>The above example indicates that the client prefers American as well as British English, with a higher preference for American English.</p>
+
+
+
+<p>An example of an entire <code>Accept-Language</code> header is shown below.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+Accept-Language: en, en-GB;q=0.8, hi;q=0.7
+</pre></div>
+
+
+<p>This is equivalent to having the value <code>en;q=1,en-GB;q=0.8,hi;q=0.7</code>.</p>
+
+
+
+<h4>Server-side Extraction</h4>
+
+
+
+<p>On the server side, the framework parses the header and automatically populates the <code>UserLanguages</code> property of the request object. The type of <code>UserLanguages</code> is <code>string[]</code>, and its entries are sorted in descending order by the quality factor. In the example above, the language tag en is the first entry, and hi is the last entry.</p>
+
+
+
+<p>Once the request language has been determined, the method checks if it is whitelisted in the allowedLanguages parameter. It first checks if the entire language tag and its subtag are present in the whitelist, or failing that, if the language tag alone is found. That way, if the application only supports French language localisation, but the request contains the tag fr-CA, the response is still localised to the French language, even though it does not contain Canadian region-specific date or number formatting.</p>
+
+
+
+<p>In spite of all this, if the method is unable to determine the preferred language from the request, it applies the culture that is currently active on the operating system.</p>
+
+
+
+<h4>Request Handling</h4>
+
+
+
+<p>The server matches the current culture of the thread fulfilling the request to a value from this array in order to process the request in a culture-aware manner. Currently this extends to temporal data, with scope for future support for UI string localisation, formatting of numerical data, units of measurement and iconography.</p>
+
+
+
+<p>The code to configure this for the current thread is written in an extension method on the <code>System.Web.HttpApplication</code> class.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+void SetLocale(this HttpApplication application, 
+    string culture = null, 
+    string uiCulture = null, 
+    bool setUiCulture = true, 
+    string allowedLocales = null)
+</pre></div>
+
+
+<p>This method is invoked from the <code>Application_BeginRequest</code> event handler, because the locale has to be set separately for each request. The <code>SetLocale</code> method is called directly from this event handler. The method is invoked without any parameters, which indicates that the preferred locale has to be inferred from the request headers.</p>
+
+
+
+<p>If the <code>Accept-Language</code> header is not present in the request, the method falls back upon the regional settings configured on the server to handle the request.</p>
+
+
+
+<p>The <code>Thread</code> class has two properties to set the culture.</p>
+
+
+
+<ol><li>CurrentCulture, which determines the writing system (LTR or RTL), calendar, string sorting and formatting of date and time strings.</li><li>CurrentUICulture, which determines the resource file used by the Resource Manager to localise the strings, icons and other non-code assets for the application.</li></ol>
+
+
+
+<p>This separation allows applications to be able to handle regional settings for data even if it does not support region-specific UI labels. The <code>SetLocale</code> method sets both properties to the same culture unless the value of <code>setUiCulture</code> is false.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1584" class="post-1584 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
 	<div class="blog-item-wrap">
 				<a href="/valknut-domain-model/" title="Valknut &#8211; Domain Model" >
-				<img width="750" height="384" src="/wp-content/uploads/2020/09/vlcsnap-2021-01-11-12h42m33s116-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2020/09/vlcsnap-2021-01-11-12h42m33s116-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -710,139 +824,6 @@ public class NumberConversionSoapTypeClient
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1632" class="post-1632 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-adapter tag-c tag-practical-design-patterns">
-	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-adapter/" title="Practical Design Patterns in C# &#8211; Adapter" >
-				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4763-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-12-27T06:39:53+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The intent of this pattern is to convert the API to an existing library, usually to encapsulate legacy code, simplify its use or provide an alternative output format, into a different interface that a client expects.</p>
-
-
-
-<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
-
-
-
-<p>There are many examples of this interface in the real world. Cross-platform GUI toolkits are adapters around the underlying API for each supported platform. Clients can continue to use the API provided by GTK+, Windows Forms or Qt, for their applications that run on Windows, macOS or GNOME. The library takes care of translating the API invocations into native equivalents.</p>
-
-
-
-<p>There are many simpler examples of the adapter pattern. A data-driven website is an adapter. It lets web browsers retrieve contents from a database over HTTP instead of running SQL queries on the database engine. It converts the API from SQL to HTTP.</p>
-
-
-
-<p>Modern-day C# applications are often built around the task-based asynchronous pattern, but may need to utilise legacy frameworks or libraries that do not have task-based APIs. The Windows Management Instrumentation (WMI) API is a good example. The <code>ManagementClass</code> and <code>ManagementOperationObserver</code> types work collectively to query the WMI database and raise an event when the results are retrieved.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class WmiClient
-{
-  public void GetDiskData()
-  {
-    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
-    var watcher = new ManagementOperationObserver();
-    watcher.Completed += WatcherCompletedHandler;
-    management.GetInstances(watcher);
-  }
-
-  private void WatcherCompletedHandler(object sender, CompletedEventArgs e)
-  {
-    // Consume the results of the operation.
-    …
-  }
-}
-</pre></div>
-
-
-<p>The code below illustrates how an adapter can convert this into a task-based asynchronous interface.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class DiskInfoProvider
-{
-  public async Task&lt;PropertyDataCollection&gt; CollectAsync()
-  {
-    var tcs = new TaskCompletionSource&lt;PropertyDataCollection&gt;();
-    var watcher = new ManagementOperationObserver();
-
-    // The event handler that gets invoked by the watcher.
-    var completedHandler = default(CompletedEventHandler);
-    completedHandler = new CompletedEventHandler((sender, e) =&gt;
-    {
-      var tcsLocal = tcs;
-      try
-      {
-        if (e.Status == ManagementStatus.NoError)
-        {
-          // The operation was completed without any errors.
-          tcsLocal.SetResult(e.StatusObject.Properties);
-          return;
-        }
-
-        if (e.Status == ManagementStatus.CallCanceled || e.Status == ManagementStatus.OperationCanceled)
-        {
-          // The task was cancelled before it could be completed.
-          tcsLocal.SetCanceled();
-          return;
-        }
-
-        // An exception occurred during the operation.
-        tcsLocal.SetException(new Exception($&quot;Runtime error {e.Status}&quot;));
-        return;
-      }
-      finally
-      {
-        // Clean up the event handlers.
-        watcher.Completed -= completedHandler;
-      }
-    });
-
-    // Wire up the event handler and begin the operation.
-    watcher.Completed += completedHandler;
-    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
-    management.GetInstances(watcher);
-    return tcs.Task;
-  }
-}
-</pre></div>
-
-
-<p><code>DiskInfoProvider</code> encapsulates <code>ManagementOperationObserver</code> and <code>ManagementClass</code>. The client instantiates <code>DiskInfoProvider</code> and awaits the results from <code>CollectAsync()</code>.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class WmiClient
-{
-  public void GetDiskData()
-  {
-    var provider = new DiskInfoProvider();
-    var diskProperties = await provider.CollectAsync();
-  }
-}
-</pre></div>
-
-
-<p>Many structural patterns serve similar roles, but have a singular differentiator between themselves. Adapters and proxies are at parallel purpose to each other. A proxy provides a matching replacement to all or most of its underlying API. An adapter changes the API to meet the client&#8217;s requirement.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/category/software-engineering/construction/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1054,6 +1035,7 @@ public class WmiClient
 		  })
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
 <script type='text/javascript'>
 	(function(){

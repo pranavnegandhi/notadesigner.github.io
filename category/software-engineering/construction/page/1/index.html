@@ -160,10 +160,110 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-2042" class="post-2042 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering">
+	<div class="blog-item-wrap">
+				<a href="/porting-a-windows-forms-application-to-net-6-part-2/" title="Porting a Windows Forms Application to .NET – Part 2" >
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/DSC_0142-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark">Porting a Windows Forms Application to .NET – Part 2</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark"><time class="entry-date published" datetime="2022-12-28T22:41:02+05:30">December 28, 2022</time><time class="updated" datetime="2023-01-03T14:35:08+05:30">January 3, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/porting-a-windows-forms-application-to-net-6-part-2/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><a href="/porting-a-windows-forms-application-to-net-6-part-1/" data-type="post" data-id="1992">Previously</a>, I described the legacy of the Vertika Player, the bottlenecks in its initial development, some elementary efforts to refactor the code, and a major roadblock that came from the deprecation of the Flash Player.</p>
+
+
+
+<p>Once we decided to move to .NET, work began in full earnest. Enthusiasm was running high, and nothing seemed impossible. Don&#8217;t mind the old code. It was trash. We&#8217;d rewrite everything from scratch! Heck, we were so smart, we could do it twice over. But this fervour lasted all of 15 minutes before we folded up and rolled back all our changes.</p>
+
+
+
+<p>I&#8217;m exaggerating, of course. We did write a new application shell from scratch, using newer APIs like the <code>Microsoft.Extensions.Hosting.IHost</code> interface and its dependency injection framework for some of the most fundamental classes that were needed. But there was immense pressure to get the product out of the door. Remember that the Flash Player uninstaller was well and truly active now, and support staff were working overtime to keep up with restoring it every time it got nuked. After a couple of weeks of this effort, the enormity of the exercise hit us and we fell back to copying files wholesale from the old code-base. On the brighter side, in spite of rewriting only a small portion of the code, the groundwork had been laid for more significant breakthroughs in the near future.</p>
+
+
+
+<p>The singular monolith had been deconstructed into separate projects based on functionality, such as the primary executable, model classes, and the web API host. Over the following months, we added more projects to isolate critical portions of data synchronisation, the network download library (eventually replaced by <a href="https://github.com/bezzad/Downloader">the Downloader library, written by Behzad Khosravifar</a>) and background services.</p>
+
+
+
+<h3>A SOAP-y Muddle</h3>
+
+
+
+<p>There&#8217;s a significant chunk of the application functionality that depends on communicating with a remote SOAP service (stop sniggering; this stuff is from 15 years ago). Visual Studio continues to provide tools to automatically generate a SOAP client from a service. But the output does not maintain API compatibility with the client generated with earlier versions of the tool. Among the methods missing from the new client are the synchronous variants of the service calls, which, unfortunately, were a mainstay in the earlier application code.</p>
+
+
+
+<p>That&#8217;s right. Microsoft used to ship tools that allowed developers to make synchronous network calls.</p>
+
+
+
+<p>But this is all gone now. And I had a problem on my hands.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = serviceClient.GetUsers();
+}
+</pre></div>
+
+
+<pre class="wp-block-code"><code>CS1061	'ServiceClient' does not contain a definition for 'GetUsers' and no accessible extension method 'GetUsers' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)</code></pre>
+
+
+
+<p>Welp!</p>
+
+
+
+<p>Calling asynchronous code from previously written synchronous methods was not going to be easy. Web service calls were tightly integrated in many classes that were still oversized even after aggressive refactoring. Stephen Cleary&#8217;s AsyncEx library came to our rescue. Asynchronous method invocations were wrapped inside calls to <code>AsyncContext.Run()</code>, which we liberally abused to build a synchronous abstraction over the TAP interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = AsyncContext.Run(serviceClient.GetUsersAsync());
+}
+</pre></div>
+
+
+<p>This was much better than the alternative of calling <code>Wait()</code> or <code>Result</code> directly on the task. In addition to blocking what could potentially be the UI thread, it would also wrap any exceptions thrown during the invocation into an additional <code>AggregateException</code>. And anybody who&#8217;s dealt with <code>InnerException</code> hell knows how bad that can be.</p>
+
+
+
+<p>The second API incompatibility was in the collection types returned from the service. The earlier service client returned a <code>System.Data.DataSet</code> type for collections. This was changed to a new type called <code>ArrayOfXElement</code>. Fortunately, this was an easy fix with a simple extension method to convert the <code>ArrayOfXElement</code> into a <code>DataSet</code>.</p>
+
+
+
+<h3>Wrapping Up and Rolling Out</h3>
+
+
+
+<p>The hour of reckoning arrived about 5 months later, when we finally removed references to the Flash Player ActiveX control from the project, replacing them with the WebView2 control. The minuscule amount of effort required of this step belies the enormity of its significance. Flash had been our rendering mainstay for over a decade. All those thousands of man-hours invested into the application were gone in a blink of an eye, replaced with a still-wet-behind-the-ears port to Blazor. This was the first time in the history of the company that legacy code was discarded entirely, and rewritten from scratch on an empty slate.</p>
+
+
+
+<p>The new product was deployed to several test sites for a month to ensure that everything worked as expected. And other than a few basic layout errors, there were no problems that we encountered. The porting exercise was a success, and offered a major lifeline to the business.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1992" class="post-1992 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering">
 	<div class="blog-item-wrap">
 				<a href="/porting-a-windows-forms-application-to-net-6-part-1/" title="Porting a Windows Forms Application to .NET – Part 1" >
-				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_20190924_125400-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_20190924_125400-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -683,120 +783,6 @@ public ActionResult Edit(PageViewModel&lt;ExerciseEditViewModel&gt; viewModel)
 
 
 <p>If the model state is not valid, then the request pipeline is truncated and all validation errors are gathered into a JSON response. The application returns a HTTP status code 400 along with the list of errors in the body of the response.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1586" class="post-1586 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
-	<div class="blog-item-wrap">
-				<a href="/valknut-localisation/" title="Valknut &#8211; Localisation" >
-				<img width="750" height="178" src="/wp-content/uploads/2020/09/IMG_3806-750x178.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/valknut-localisation/" rel="bookmark">Valknut &#8211; Localisation</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-localisation/" rel="bookmark"><time class="entry-date published" datetime="2020-09-03T14:38:51+05:30">September 3, 2020</time><time class="updated" datetime="2022-08-04T11:01:55+05:30">August 4, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/valknut-localisation/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<h3>Client-specific Regional Settings</h3>
-
-
-
-<h4>Request Structure</h4>
-
-
-
-<p>Valknut implements localisation of temporal data to match the client&#8217;s preferred locale through the use of the <code>Accept-Language</code> header in an incoming request. The value of this header can be an array of one or more language tags, such as en-US, along with a weightage indicator for the language.</p>
-
-
-
-<p>This value is set automatically by the browser based on the regional settings of the operating system, and can be overridden by the user to suit their needs. The language tag may be followed by an optional quality factor parameter that indicates the preferred weightage to the given language tag. The value of the q-factor is a decimal number between 0 to 1.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-en-US;q=1,en-GB;0.5
-</pre></div>
-
-
-<p>The above example indicates that the client prefers American as well as British English, with a higher preference for American English.</p>
-
-
-
-<p>An example of an entire <code>Accept-Language</code> header is shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-Accept-Language: en, en-GB;q=0.8, hi;q=0.7
-</pre></div>
-
-
-<p>This is equivalent to having the value <code>en;q=1,en-GB;q=0.8,hi;q=0.7</code>.</p>
-
-
-
-<h4>Server-side Extraction</h4>
-
-
-
-<p>On the server side, the framework parses the header and automatically populates the <code>UserLanguages</code> property of the request object. The type of <code>UserLanguages</code> is <code>string[]</code>, and its entries are sorted in descending order by the quality factor. In the example above, the language tag en is the first entry, and hi is the last entry.</p>
-
-
-
-<p>Once the request language has been determined, the method checks if it is whitelisted in the allowedLanguages parameter. It first checks if the entire language tag and its subtag are present in the whitelist, or failing that, if the language tag alone is found. That way, if the application only supports French language localisation, but the request contains the tag fr-CA, the response is still localised to the French language, even though it does not contain Canadian region-specific date or number formatting.</p>
-
-
-
-<p>In spite of all this, if the method is unable to determine the preferred language from the request, it applies the culture that is currently active on the operating system.</p>
-
-
-
-<h4>Request Handling</h4>
-
-
-
-<p>The server matches the current culture of the thread fulfilling the request to a value from this array in order to process the request in a culture-aware manner. Currently this extends to temporal data, with scope for future support for UI string localisation, formatting of numerical data, units of measurement and iconography.</p>
-
-
-
-<p>The code to configure this for the current thread is written in an extension method on the <code>System.Web.HttpApplication</code> class.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-void SetLocale(this HttpApplication application, 
-    string culture = null, 
-    string uiCulture = null, 
-    bool setUiCulture = true, 
-    string allowedLocales = null)
-</pre></div>
-
-
-<p>This method is invoked from the <code>Application_BeginRequest</code> event handler, because the locale has to be set separately for each request. The <code>SetLocale</code> method is called directly from this event handler. The method is invoked without any parameters, which indicates that the preferred locale has to be inferred from the request headers.</p>
-
-
-
-<p>If the <code>Accept-Language</code> header is not present in the request, the method falls back upon the regional settings configured on the server to handle the request.</p>
-
-
-
-<p>The <code>Thread</code> class has two properties to set the culture.</p>
-
-
-
-<ol><li>CurrentCulture, which determines the writing system (LTR or RTL), calendar, string sorting and formatting of date and time strings.</li><li>CurrentUICulture, which determines the resource file used by the Resource Manager to localise the strings, icons and other non-code assets for the application.</li></ol>
-
-
-
-<p>This separation allows applications to be able to handle regional settings for data even if it does not support region-specific UI labels. The <code>SetLocale</code> method sets both properties to the same culture unless the value of <code>setUiCulture</code> is false.</p>
 
 							</div><!-- .entry-content -->
 					</div>

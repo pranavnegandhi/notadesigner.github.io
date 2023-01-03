@@ -160,6 +160,199 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-570" class="post-570 post type-post status-publish format-standard hentry category-technique tag-bit-hacking tag-c tag-programming">
+	<div class="blog-item-wrap">
+				<a href="/storing-values-with-bit-packing-and-unpacking/" title="Storing Values with Bit Packing and Unpacking" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark">Storing Values with Bit Packing and Unpacking</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/storing-values-with-bit-packing-and-unpacking/" rel="bookmark"><time class="entry-date published" datetime="2013-02-08T16:56:38+05:30">February 8, 2013</time><time class="updated" datetime="2022-08-03T16:24:16+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/storing-values-with-bit-packing-and-unpacking/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Bit packing and unpacking is a handy way of consolidating multiple data values into a single variable, thus compressing the amount of data being stored or transmitted. The number of values that can be stored depends upon the width of the data to be stored as well as the type of the value that it is packed into. A simple byte can store up to 8 bits of data. Larger types such as ints can store up to 16, 32 or 64 bits. This is an especially efficient technique for storing several small-width values, often smaller than the smallest width supported by a platform (such as byte or boolean flags) into a single large value such as a 32-bit integer.</p>
+
+
+
+<p>Bit flags are commonly used for implementing low-level features, such as storing file access-permissions or packing values into a single value before transmitting across a bus. However, they can be applied with equal ease to higher level tasks such as storing user preferences or choosing which widgets to display from an enumerated list. We will see here how to use bit flags to store font formatting preferences, and apply them later to a label.</p>
+
+
+
+<h3>Bitwise Operators</h3>
+
+
+
+<p>There are a couple of operators we need to understand before we can move on to the implementation. Bitwise operators, by definition, work on individual bits inside a value. Since they are implemented directly by the processor itself, they are much faster than arithmetic operators such as division and multiplication. We will use bitwise AND (&amp;), bitwise OR (|) and left shifts (&lt;&lt;) in this exercise.</p>
+
+
+
+<p>A bitwise AND operation takes the binary representations of two values and performs a logical AND operation on each bit. The result is 1 in every position where both the bits are 1, and 0 if either or both bits are 0.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010
+AND 011011
+    ------
+    001010</pre>
+
+
+
+<p>Bitwise OR on the other hand, compares two bits in corresponding positions, and sets the result to 1 if either of them is 1, or to 0 if both of them are 0.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010
+OR  011011
+    ------
+    011011</pre>
+
+
+
+<p>Bitwise left shift operator moves individual bits within a single value by the number of places specified in the second operand. The value is padded with 0s on the right, and the left-most bits are dropped off.</p>
+
+
+
+<pre class="wp-block-preformatted">    001010 &lt;&lt; 1 = 010100</pre>
+
+
+
+<h3>Implementation</h3>
+
+
+
+<p>We set up a simple Windows Forms project and draw three checkboxes and one label on the form. The aim is to have the checkboxes control three font properties of the label &#8211; weight, style and underlining. All checkboxes are given appropriate labels and configured to execute the _changeFormatting method of the form every time the CheckStateChanged event is fired. The code for this method is shown below.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+private void ChangeFormatting(object sender, EventArgs e)
+{
+    byte flags = 0;
+
+    flags = (byte)(
+        Convert.ToByte(this.chkUnderline.Checked) &lt;&lt; 2 |
+        Convert.ToByte(this.chkItalic.Checked) &lt;&lt; 1 |
+        Convert.ToByte(this.chkBold.Checked)
+        );
+
+    Font f = new Font(this.label1.Font.FontFamily, this.label1.Font.Size, (FontStyle)(
+        (flags &amp; (byte)FontStyle.Underline) |
+        (flags &amp; (byte)FontStyle.Italic) |
+        (flags &amp; (byte)FontStyle.Bold)
+        ));
+
+    this.label1.Font = f;
+}
+</pre></div>
+
+
+<h4>Packing</h4>
+
+
+
+<p>In the first statement, the flags variable is populated with the values of each checkbox. We want to store the three flags in the last three bits of a single byte.</p>
+
+
+
+<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Position</th><th>Setting</th></tr><tr><td>7</td><td>Unused</td></tr><tr><td>6</td><td>Unused</td></tr><tr><td>5</td><td>Unused</td></tr><tr><td>4</td><td>Unused</td></tr><tr><td>3</td><td>Unused</td></tr><tr><td>2</td><td>Underline</td></tr><tr><td>1</td><td>Italic</td></tr><tr><td>0</td><td>Bold</td></tr></tbody></table></figure>
+
+
+
+<p>In order to do so, we take the value of each boolean (either true or false), convert it into a byte, then shift it by an appropriate number of positions. The value of the underline flag is to be stored in the 2nd bit (starting from 0). So we left-shift its value by 2. Similarly, the italic flag is stored in the 1st position, so its boolean value is shifted by 1. The value of the bold flag does not need to be shifted at all.</p>
+
+
+
+<pre class="wp-block-preformatted">    00000001 &lt;&lt; 2 = 00000100 // Underline
+    00000001 &lt;&lt; 1 = 00000010 // Italic
+    00000001                 // Bold (no shifting required)</pre>
+
+
+
+<p>A consolidated value can be generated by ORing the three values together.</p>
+
+
+
+<pre class="wp-block-preformatted">    00000100
+ OR 00000010
+ OR 00000001
+    --------
+    00000111 // Decimal value 7</pre>
+
+
+
+<pre class="wp-block-preformatted">    00000000
+ OR 00000010
+ OR 00000001
+    --------
+    00000011 // Decimal value 3</pre>
+
+
+
+<pre class="wp-block-preformatted">    00000100
+ OR 00000000
+ OR 00000001
+    --------
+    00000101 // Decimal value 5</pre>
+
+
+
+<p>The decimal value can then be stored in a database or other persistent storage system as an integer or byte. This is better than having to store three boolean fields. This information can transmitted across systems too as a packed unit, to be unpacked later only when the preferences have to be applied to a display element.</p>
+
+
+
+<p>In our example, we are unpacking and applying the values immediately for brevity. But a more practical situation would probably involve serializing the value somewhere, then deserializing and applying the font properties later at another location.</p>
+
+
+
+<h4>Unpacking</h4>
+
+
+
+<p>In order to apply the font styles on a display element, the individual values of each style parameter must be extracted from the packed value and then applied. The .NET framework defines enumerations for each of these style parameters in the System.Drawing.FontStyle enum. The values for each style parameter are listed below.</p>
+
+
+
+<figure class="wp-block-table"><table  class=" table table-hover" ><tbody><tr><th>Setting</th><th>Decimal Value</th><th>Binary Value</th></tr><tr><td>Regular</td><td>0</td><td>00000000</td></tr><tr><td>Bold</td><td>1</td><td>00000001</td></tr><tr><td>Italic</td><td>2</td><td>00000010</td></tr><tr><td>Underline</td><td>4</td><td>00000100</td></tr></tbody></table></figure>
+
+
+
+<p>You will notice that each enumeration is double the value of its predecessor, hence moving the digit 1 by one position leftwards with every increase. This is a key feature of bit flags. Each element differs from the others only in the position of the 1 bit. Thus, the value of a given flag can be extracted from the packed value by ANDing the packed value with the value of the enumeration.</p>
+
+
+
+<pre class="wp-block-preformatted">     00000111 // Packed value decimal 7
+AND  00000100 // Underline enum decimal 4
+     --------
+     00000100 // Result - show underlines</pre>
+
+
+
+<p>This operations shows that the value of the underline flag is true. If the packed value was the decimal 3 instead of 7, then the operation would play out as shown below, resulting in the value 0 for the underline flag.</p>
+
+
+
+<pre class="wp-block-preformatted">     00000011 // Packed value
+AND  00000100 // Underline enum
+     --------
+     00000010 // Result - hide underlines</pre>
+
+
+
+<p>All that is needed then is to convert the result byte into a boolean and apply it wherever required. In our example above, the constructor of the Font class requires the values packed together any way as a FontStyle enum. To do this, each bit is ANDed with its corresponding enum, then all of them are combined together again using an OR operation. The resultant byte is cast into a FontStyle before being passed to the constructor.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-531" class="post-531 post type-post status-publish format-standard hentry category-construction tag-usability tag-user-interface">
 	<div class="blog-item-wrap">
 				<a href="/nothing-is-so-simple-that-it-cannot-be-difficult/" title="Nothing Is So Simple That it Cannot Be Difficult" >
@@ -556,48 +749,6 @@ bit = value &amp; (1 &lt;&lt; i);
 
 
 <p>Say hello, fellow riders, to Amaretto.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-19" class="post-19 post type-post status-publish format-standard hentry category-foundation tag-learning">
-	<div class="blog-item-wrap">
-				<a href="/programming-beyond-9-to-5/" title="Programming Beyond 9 to 5" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/programming-beyond-9-to-5/" rel="bookmark">Programming Beyond 9 to 5</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/programming-beyond-9-to-5/" rel="bookmark"><time class="entry-date published" datetime="2012-10-02T11:56:22+05:30">October 2, 2012</time><time class="updated" datetime="2022-08-03T15:27:43+05:30">August 3, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/programming-beyond-9-to-5/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>In <a title="On Reading for Programmers" href="http://www.notadesigner.com/on-reading-for-programmers/">my previous post</a>, I elaborated on the importance of reading for software developers. Keeping up with new advances in technology demands that its users have a healthy appetite for the written word. However, reading is just part of the equation for engineers. Knowledge gleaned through books offers no benefit unless it can be applied efficiently in their daily work. And quality programming, like every other art form, requires continuous practice.</p>
-
-
-
-<p>A person who is uninterested in programming beyond its ability to help bring in a monthly paycheck, would typically not want to spend any more time than absolutely necessary in performing this activity. I don&#8217;t always hold side projects very high up in the evaluation matrix, but it is a pretty good indicator about the candidate&#8217;s interest in programming beyond the mundane stuff. After all, most programmers only get paid to write business software. If they want to write their own stack implementation that already ships as part of their framework, their employers will not be pleased to have them attempting to roll their own.&nbsp;Not only will it be a very inefficient use of time, but hand-rolled implementations are going to be nowhere as performant and bug-free as the libraries that ship with mass-consumed frameworks.</p>
-
-
-
-<p>However, side projects do not come under strong timeline or performance pressures, nor are there constraints about the runtime environment or language choices. Who is to object if an individual feels inspired enough to write a stack in Brainfuck?</p>
-
-
-
-<p>Educators have long since accepted the importance of learning by doing, especially for scientific topics. There is only so much one can absorb about the stack data structure by reading about it. At some point, one must put down the book and let the rubber meet the road, so to speak. Side projects in languages or frameworks other than what is used at work is a great way to learn new stuff. And it is a natural progression to reading about something new.&nbsp;Writing one&#8217;s own implementation of the Towers of Hanoi game cements whatever knowledge the book provides about the data structure.&nbsp;And depending upon the type of project we are talking about, individuals can easily play their best card. Those who are visually-gifted or otherwise have access to a collection of high quality graphics, a finely polished interactive utility or game can make a great impression. Those with a less-than-perfect eye for graphic design, a programming API with accompanying documentation can make an equally compelling case for their skills.</p>
-
-
-
-<p>Again, there are many avenues for programmers who want ideas on programming projects. All that is required is the will and tenacity (not to mention the skill itself to begin with) to come up with a project idea and take it through to completion.</p>
 
 							</div><!-- .entry-content -->
 					</div>

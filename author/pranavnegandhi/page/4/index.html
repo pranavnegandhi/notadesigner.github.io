@@ -160,10 +160,253 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1287" class="post-1287 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-builder tag-c tag-practical-design-patterns">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-builder/" title="Practical Design Patterns in C# &ndash; Builder" >
+				<img width="750" height="375" src="/wp-content/uploads/2018/12/DSC_6026.jpg" class="single-featured wp-post-image" alt="" decoding="async" srcset="/wp-content/uploads/2018/12/DSC_6026.jpg 840w, /wp-content/uploads/2018/12/DSC_6026-800x400.jpg 800w, /wp-content/uploads/2018/12/DSC_6026-768x384.jpg 768w" sizes="(max-width: 750px) 100vw, 750px" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-builder/" rel="bookmark">Practical Design Patterns in C# &ndash; Builder</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2022-12-27T06:43:07+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				<p>The builder pattern abstracts multiple steps required to create a complex object into a coherent interface. Objects that need several input parameters are prime candidates for refactoring behind a builder object.</p>
+
+
+<p>This example shows how to create an email message as well as a JSON message object from the same input. The utility of builders can be increased manifold through the use of generic interfaces. This is also demonstrated in this example.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>To understand the benefits of this pattern, we must first analyse some code that does not utilise it.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+var message = new MailMessage(&quot;john@example.com&quot;,
+                &quot;jane@example.com&quot;,
+                &quot;101 Ways to Refactor&quot;,
+                &quot;Lorem ipsu…&quot;);
+</pre></div>
+
+
+<p>Quick, can you identify what is each parameter in this statement? Is John the sender or recipient? How do you add more than one recipient? How does one create HTML-formatted email? These questions are not immediately obvious. And adding more configurability into the MailMessage class would make for ever longer constructor calls.</p>
+
+
+
+<p>A more readable alternative is clearly required, at least to retain the maintenance programmer&#8217;s sanity for the future. And there&#8217;s our hook for the builder pattern.</p>
+
+
+
+<p>The fundamental type in this example is the builder itself, EmailBuilder in this case. This class separates the components of the message into discrete methods.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class EmailBuilder
+{
+    private MailMessage _message;
+
+    public EmailBuilder()
+    {
+        _message = new MailMessage();
+    }
+
+    public EmailBuilder AddressedTo(string recipient)
+    {
+        …
+    }
+
+    public EmailBuilder From(string sender)
+    {
+        …
+    }
+
+    public EmailBuilder WithBody(string body)
+    {
+        …
+    }
+
+    public EmailBuilder WithSubject(string subject)
+    {
+        …
+    }
+
+    public MailMessage GetResults()
+    {
+        return _message;
+    }
+}
+</pre></div>
+
+
+<p>The client code consumes this interface by invoking each method one after the other. All methods in the builder class return the instance itself (i.e. this) so that multiple methods can be chained together into a single, fluid statement.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+var builder = new EmailBuilder();
+var message = builder.From(&quot;john@example.com&quot;)
+    .AddressedTo(&quot;jane@example.com&quot;)
+    .AddressedTo(&quot;jim@example.com&quot;)
+    .WithSubject(&quot;101 Ways to Refactor&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
+    .GetResults();
+</pre></div>
+
+
+<p>This simple class already makes the code exponentially readable and maintainable. But there&#8217;s more!</p>
+
+
+
+<p>What if the program has to create multiple types of messages, such as an email plus a browser notification encoded into a JSON object? The API from the EmailBuilder can be easily extracted into an IMessageBuilder interface, then applied to different types of builders.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public interface IMessageBuilder&lt;T&gt;
+{
+    IMessageBuilder WithSubject(string subject);
+
+    IMessageBuilder&lt;T&gt; WithBody(string body);
+
+    IMessageBuilder&lt;T&gt; From(string sender);
+
+    IMessageBuilder&lt;T&gt; AddressedTo(string recipient);
+
+    T GetResults();
+ }
+</pre></div>
+
+
+<p>This is a generic interface as the return type of each builder differs, depending on the type of message it creates. As a result, the EmailBuilder class definition and method signatures change as shown below. Any code that consumes this class is not affected.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
+{
+    private MailMessage _message;
+
+    public EmailBuilder()
+    {
+        _message = new MailMessage();
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; AddressedTo(string recipient)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; From(string sender)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; WithBody(string body)
+    {
+        …
+    }
+
+    public IMessageBuilder&lt;MailMessage&gt; WithSubject(string subject)
+    {
+        …
+    }
+
+    public MailMessage GetResults()
+    {
+        return _message;
+    }
+}
+</pre></div>
+
+
+<p>This done, we can move on to the JSON builder. For this example, we use types defined in the wildly popular Json.NET library from Newtonsoft.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class JsonBuilder : IMessageBuilder
+{
+    private StringBuilder _builder;
+
+    private JsonTextWriter _writer;
+
+    public JsonBuilder()
+    {
+        _builder = new StringBuilder();
+        var sw = new StringWriter(_builder);
+        _writer = new JsonTextWriter(sw);
+        _writer.WriteStartObject();
+    }
+
+    public IMessageBuilder&lt;string&gt; AddressedTo(string recipient)
+    {
+        _writer.WritePropertyName(&quot;AddressedTo&quot;);
+        _writer.WriteValue(recipient);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; From(string sender)
+    {
+        _writer.WritePropertyName(&quot;From&quot;);
+        _writer.WriteValue(sender);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; WithBody(string body)
+    {
+        _writer.WritePropertyName(&quot;Body&quot;);
+        _writer.WriteValue(body);
+        return this;
+    }
+
+    public IMessageBuilder&lt;string&gt; WithSubject(string subject)
+    {
+        _writer.WritePropertyName(&quot;Subject&quot;);
+        _writer.WriteValue(subject);
+        return this;
+    }
+
+    public string Build()
+    {
+        _writer.WriteEndObject();
+        return _builder.ToString();
+    }
+}
+</pre></div>
+
+
+<p>The client code must instantiate the JsonBuilder and invoke the same methods on it as it does on any other builder. Each builder can have its own customisations, such as only storing a single recipient&#8217;s name in the JSON object, which gets overwritten by any subsequent call to AddressedTo().</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+var builder = new JsonBuilder();
+var message = builder.From(&quot;john@example.com&quot;)
+    .AddressedTo(&quot;jane@example.com&quot;)
+    .AddressedTo(&quot;jim@example.com&quot;)
+    .WithSubject(&quot;101 Ways to Refactor&quot;)
+    .WithBody(&quot;Lorem ipsu…&quot;)
+    .GetResults();
+</pre></div>
+
+
+<p></p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1149" class="post-1149 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-abstract-factory tag-c tag-practical-design-patterns">
 	<div class="blog-item-wrap">
 				<a href="/practical-design-patterns-in-c-abstract-factory/" title="Practical Design Patterns in C# &#8211; Abstract Factory" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/12/IMG_4296-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2018/12/IMG_4296-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -1070,172 +1313,6 @@ namespace Notadesigner.Blog.Models
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1046" class="post-1046 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
-	<div class="blog-item-wrap">
-				<a href="/domain-entities/" title="Domain Entities" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/07/IMG_0036-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/domain-entities/" rel="bookmark">Domain Entities</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/domain-entities/" rel="bookmark"><time class="entry-date published" datetime="2018-07-29T03:59:46+05:30">July 29, 2018</time><time class="updated" datetime="2022-12-27T06:38:42+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/domain-entities/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
-
-
-
-<h3>Basics of Entity Framework</h3>
-
-
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div>
-
-
-
-<h3>Code First</h3>
-
-
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div>
-
-
-
-<h3>Database First</h3>
-
-
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-2" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
-</ul></div>
-
-
-
-<hr class="wp-block-separator has-css-opacity"/>
-
-
-
-<p>An entity class is written in your application programming language using standard language constructs such as the qualifier, class name and public properties. All properties must have an accessor and a mutator.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class Post
-    {
-        public int PostId { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-        public DateTime CreatedOn { get; set; }
-    }
-}
-</pre></div>
-
-
-<p>The class is utilised into the Entity Framework by creating a DbSet instance property for it in the DbContext.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class ContentContext : DbContext
-    {
-        public DbSet Posts { get; set; }
-    }
-}
-</pre></div>
-
-
-<h3>Scalar Properties</h3>
-
-
-
-<p>Entity classes have scalar properties to represent values which are stored in the database column directly. For example, the values for PostId, Title, Body and CreatedOn fields are stored in columns in the Posts table in the database.</p>
-
-
-
-<h3>Navigation Properties</h3>
-
-
-
-<p>Navigation properties are used to represent relationships between database tables. Entity Framework supports relationship multiplicities of zero-or-one, one, zero-or-many, or one-or-many. Object references are used to represent relationships. Properties whose type is of another entity are used for zero-or-one, or one multiplicity. Properties whose type is a generic collection instance represent zero-or-many, or one-or-many relationships.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class Post
-    {
-        public int PostId { get; set; }
-        …
-        // Multiplicity of one or zero-or-one
-        public Author CreatedBy { get; set; }
-
-        // Multiplicity of zero-or-many, or many
-        public ICollection { get; set; }
-    }
-}
-</pre></div>
-
-
-<h3>Entity States</h3>
-
-
-
-<p>Each entity class instance has an associated state which is maintained by the Entity Framework internally. The value of the state property changes automatically based on the operations that the developer performs on the entity instance or the database context instance.</p>
-
-
-
-<p>This property can transition between the following enumerations.</p>
-
-
-
-<ul>
-<li>Added</li>
-
-
-
-<li>Modified</li>
-
-
-
-<li>Deleted</li>
-
-
-
-<li>Unchanged</li>
-
-
-
-<li>Detached</li>
-</ul>
-
-
-
-<p>The context instance in the object service layer is responsible for maintaining the current state and changing it in response to API calls. When the SaveChanges method is called, the context instance determines what database operation has to be performed on each entity instance in the DbSet collection based on the value of its State property.</p>
-
-
-
-<p>An insert operation is performed for entities whose state is set to Added, update for entities whose state property is set to Modified and delete for entities whose state property is set to Deleted.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/author/pranavnegandhi/page/3/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1357,12 +1434,12 @@ namespace Notadesigner.Blog
 </ul></div></div>		</div><!-- .widget-area .first -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
-			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>

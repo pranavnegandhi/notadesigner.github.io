@@ -160,10 +160,237 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1030" class="post-1030 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-state">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-state/" title="Practical Design Patterns in C# &ndash; State" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/06/DSC_4129-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-state/" rel="bookmark">Practical Design Patterns in C# &ndash; State</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-state/" rel="bookmark"><time class="entry-date published" datetime="2018-06-11T10:13:00+05:30">June 11, 2018</time><time class="updated" datetime="2022-12-27T06:26:06+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-state/#respond">Leave a comment</a></span>
+				
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>The purpose of the state design pattern is to allow an object to alter its behaviour when its internal state changes.</p>
+
+
+
+<p>The example of a logging function below is a model candidate for conversion into a state implementation.</p>
+
+
+
+<p>The requirements of this function are as follows.</p>
+
+
+
+<ol>
+<li>Write the log entry to the end of a text file by default.</li>
+
+
+
+<li>The file size is unlimited by default, denoted by setting the value of the maximum file size to 0.</li>
+
+
+
+<li>If the value of the maximum file size is greater than 0 then the log file is archived when it reaches this size, and the entry is written to a new empty log file.</li>
+
+
+
+<li>If the recycle attribute is enabled and the maximum file size is set to a value greater than 0, then the oldest entry in the log file is erased to make space for the new entry instead of archiving the entire log file.</li>
+</ol>
+
+
+
+<p>The implementation of the actual mechanism for writing to disk is not relevant in this example. Rather, the focus is on creating a framework that enables selecting the correct mechanism based on the preferences set.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public void Log(string message)
+{
+    if (LimitSize)
+    {
+        if (file.Length &lt; MAX_SIZE)
+        {
+            // Write to the end of the log file
+        }
+        else
+        {
+            if (Recycle)
+            {
+                // Clear room at the top of the log file
+            }
+            else
+            {
+                // Create a new log file with current time stamp
+            }
+
+            // Write to the end of the log file
+        }
+    }
+    else
+    {
+        // Write to the end of the log file
+    }
+}
+</pre></div>
+
+
+<p>The implementation shown above is very na├»ve, tightly coupled, rigid and brittle. However, it is also a fairly common occurrence in most code bases due to its straightforward approach to addressing the problem.</p>
+
+
+
+<p>The complicated logical structure is difficult to decipher, debug and extend. The tasks of determining file size limits, recovering disk space, creating a new file and writing to the file are all discrete from each other and should have no dependency between themselves. But they are all interwoven in this approach and add a huge cognitive overhead in order to understand the execution path.</p>
+
+
+
+<p>There are multiple conditions being evaluated before the log entry is made. The programmer has to simulate the computer’s own execution path for each statement before even arriving at the important lines related to writing to disk. A couple of blocks are duplicated code. It would be nice if the execution path could be streamlined and duplicate code removed.</p>
+
+
+
+<h3>Restructured Code </h3>
+
+
+
+<p>
+An eager approach to selecting the preferred mechanism breaks up the conditional statements into manageable chunks. It is logically no different from having the same code in the Log method. But moving it into the mutator makes it easier to understand by adding context into the logic rather than handing it all in a single giant function.
+
+</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public int MaxFileSize
+{
+    get
+    {
+        return _maxFileSize;
+    }
+
+    set
+    {
+        _maxFileSize = value;
+
+        if (0 == MaxFileSize)
+        {
+            // Activate the unlimited logger
+            return;
+        }
+
+        if (Recycle)
+        {
+            // Activate the recycling logger
+        }
+        else
+        {
+            // Activate the rotating logger
+        }
+    }
+}
+
+public bool Recycle
+{
+    get
+    {
+        return _recycle;
+    }
+
+    set
+    {
+        _recycle = value;
+
+        if (0 == MaxFileSize)
+        {
+            // Recycling is not applicable when file sizes are unlimited
+            return;
+        }
+
+        if (Recycle)
+        {
+            // Activate the recycling logger
+        }
+        else
+        {
+            // Activate the rotating logger
+        }
+    }
+}
+</pre></div>
+
+
+<p> The comments indicate that you’re still missing some code that actually performs the operation. This is the spot where the behaviour is selected and applied based on the state of the object. We use C# delegates to alter the behaviour of the object at runtime. </p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public delegate void LogDelegate(Level level, string statement)
+
+public LogDelegate Log
+{
+    get;
+    private set;
+}
+</pre></div>
+
+
+<p>
+The Logger class contains private methods that implement the same signature as the Log delegate.
+
+</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+private void AppendAndLog(Level level, string message)
+{
+}
+
+private void RotateAndLog(Level level, string message)
+{
+}
+
+private void RecycleAndLog(Level level, string message)
+{
+}
+</pre></div>
+
+
+<p>
+When the condition evaluation is completed and the logging method has to be selected, a new instance of the Log delegate is created which points to the correct logging method.
+
+</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+if (Recycle)
+{
+    Log = new LogDelegate(RecycleAndLog);
+}
+else
+{
+    Log = new LogDelegate(RotateAndLog);
+}
+</pre></div>
+
+
+<p>
+This separates the selection of the correct logging technique to use from the implementation of the technique itself. The logging method implementations can be changed at will to fix bugs or extend their features without adding risk to breaking the rest of the code.
+
+</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1027" class="post-1027 post type-post status-publish format-standard has-post-thumbnail hentry category-technique tag-asp-net tag-c tag-coding-horror">
 	<div class="blog-item-wrap">
 				<a href="/how-to-write-unmaintainable-code-asp-net-redux/" title="How to Write Unmaintainable Code &ndash; ASP.NET Redux" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/03/DSC_5049-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2018/03/DSC_5049-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -964,237 +1191,6 @@ public class CalculatorViewModel
 
 
 <p>Collectively, these minor improvements in paradigm make WPF a much nicer framework to use over its predecessors.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-994" class="post-994 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
-	<div class="blog-item-wrap">
-				<a href="/in-with-the-new/" title="In With the New" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/in-with-the-new/" rel="bookmark">In With the New</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/in-with-the-new/" rel="bookmark"><time class="entry-date published" datetime="2016-12-15T05:59:00+05:30">December 15, 2016</time><time class="updated" datetime="2022-12-26T19:54:08+05:30">December 26, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/in-with-the-new/#respond">Leave a comment</a></span>
-				
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>It turns out that there is a much better way to manipulate the user interface in WPF which is based on view-models. I cover this aspect in this episode of Building FitNet.</p>
-
-
-
-<p>The System.Windows.Application class is the core of a WPF program. An instance of this class remains in memory for as long as the application is running. In order for the application to do something useful, programmers must extend this class and customise its behaviour to the needs of their own application. By convention, the primary application window is also instantiated by this class in the OnStartup event handler.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-private ShellViewModel _shellViewModel;
-
-override public void OnStartup(StartupEventArgs e)
-{
-  base.OnStartup(e);
-  _shellViewModel = new ShellViewModel();
-
-  var window = new Shell();
-  window.DataContext = _shellViewModel;
-  window.Show();
-}
-</pre></div>
-
-
-<p>An instance of the ShellViewModel class is assigned as the view-model for the application window through its DataContext property. When the properties in the view-model instance change, it dispatches a PropertyChanged event along with the name of the changed property. Corresponding event handlers in the window object then query the view-model for the new state and update the appearance of the display. The ShellViewModel class must implement the System.ComponentModel.INotifyPropertyChanged interface for this behaviour.</p>
-
-
-
-<p>The following example illustrates this by changing the title of the application window.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class ShellViewModel
-{
-  …
-  public string Title
-  {
-   get
-   {
-     return _title;
-   }
-
-   set
-   {
-      _title = value;
-     var e = new PropertyChangedEventArgs(&quot;Title&quot;);
-     PropertyChanged(this, e);
-    }
-  }
-}
-</pre></div>
-
-
-<p>Specific properties of the view are bound to their corresponding counterparts in the view-model. In this example, the Title property of the Window class is bound to its namesake in the view-model.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;Window … Title=&quot;{Binding Path=Title}&quot;&gt;
-  …
-&lt;/Window&gt;
-</pre></div>
-
-
-<p>Therefore, when the title changes on the view-model, the change gets reflected on the view. The key here is assigning an instance of the ShellViewModel to the DataContext property, which establishes the bindings between the view and the view-model.</p>
-
-
-
-<p>This concept is key to understanding and implementing properly architected WPF applications.</p>
-
-
-
-<h4>Binding On-Screen Views</h4>
-
-
-
-<p>This concept of binding a view to data can be extended to any type. Primitive types are rendered as strings. For complex types, programmers can build composite views made up of several different fundamental UI elements such as labels, text fields and buttons. Properties in the view-model are bound to these controls.</p>
-
-
-
-<p>In order to render the content in the window, the application must instantiate ContentControl, which is shipped along with WPF. This class has a property called Content, which can be bound to any property in the view-model.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;ContentControl Content=&quot;{Binding Title}&quot;/&gt;
-</pre></div>
-
-
-<p>The output of the program written so far is shown below.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="656" height="438" src="/wp-content/uploads/2018/01/view.binding.demonstration.png" alt="A string binding between a view-model and a view" class="wp-image-996"/></figure></div>
-
-
-<p>When the value of Title in the view-model changes, the text rendered inside the ContentControl instance is updated to reflect the new text.</p>
-
-
-
-<h4>Building Compound User Interfaces</h4>
-
-
-
-<p>The third part of the equation is assigning a data template to the view, which describes the visual structure of an object. A data template is a window resource.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;Window…&gt;
-  &lt;Window.Resources&gt;
-    &lt;DataTemplate DataType=&quot;{Type system:String}&quot;&gt;
-      &lt;TextBlock Text=&quot;{Binding StringFormat={}The application name is &amp;#x2014; {0}}&quot;/&gt;
-    &lt;DataTemplate&gt;
-  &lt;/Window.Resources&gt;
-  …
-&lt;/Window&gt;
-</pre></div>
-
-
-<p>This modifies the appearance of the ContentControl instance. Instead of rendering plain text with just the name of the application, the output is decorated with some additional text and special characters, and looks like this.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="656" height="438" src="/wp-content/uploads/2018/01/view.binding.demonstration-02.png" alt="An annotated string binding between a view-model and a view" class="wp-image-997"/></figure></div>
-
-
-<h3>The Big Picture</h3>
-
-
-
-<p>Essentially, the outcome of what appears on the screen is now split into three classes – a view-model, a view, and a data template that specifies which determines which view to use to render a view-model.</p>
-
-
-
-<p>It’s a small step from here to building complete user interfaces using this style of programming.</p>
-
-
-
-<p>This is done by having a custom view-model class for the window as shown above, then adding another view-model to it as a public, bindable property called SelectedView.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class ShellViewModel
-{
-  …
-  private Object _selectedView;
-
-  public Object SelectedView
-  {
-    get
-    {
-      return _selectedView;
-    }
-
-    set
-    {
-      if (value == _selectedView)
-      {
-        return;
-      }
-
-      _selectedView = value;
-      OnPropertyChanged(nameof(SelectedView));
-    }
-  }
-}
-</pre></div>
-
-
-<p>It is preferred that SelectedView be a custom type instead of System.Object. A different view-model is required for each view that the application needs to render. For example, if the application requires tabs for a calories consumed calculator and a speed calculator, then two view-models must be made for each of these tabs. Having a common base class between them ensures type-safety when switching between the two view-models.</p>
-
-
-
-<p>A custom renderer is also required for each view. Renderers are typically built on top of the UserControl class. The declarative syntax of XAML makes it very easy to build a user interface with any kind of layout.</p>
-
-
-
-<p>The example below shows a SpeedCalculatorView that computes the value of speed based on the time taken and distance covered.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: xml; title: ; notranslate" title="">
-&lt;UserControl …&gt;
-  &lt;Grid&gt;
-    &lt;Grid.ColumnDefinitions&gt;
-      &lt;ColumnDefinition Width=&quot;150&quot;/&gt;
-      &lt;ColumnDefinition Width=&quot;250&quot;/&gt;
-    &lt;/Grid.ColumnDefinitions&gt;
-
-    &lt;Grid.RowDefinitions&gt;
-      &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-      &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-      &lt;RowDefinition Height=&quot;Auto&quot;/&gt;
-    &lt;/Grid.RowDefinitions&gt;
-    &lt;TextBlock Grid.Column=&quot;0&quot; Grid.Row=&quot;0&quot; Text=&quot;Time&quot;/&gt;
-    &lt;TextBlock Grid.Column=&quot;0&quot; Grid.Row=&quot;1&quot; Text=&quot;Distance&quot;/&gt;
-    &lt;TextBlock Grid.Column=&quot;0&quot; Grid.Row=&quot;2&quot; Text=&quot;Speed&quot;/&gt;
-
-    &lt;TextBox Grid.Column=&quot;1&quot; Grid.Row=&quot;0&quot; Text=&quot;{Binding Time}&quot;/&gt;
-    &lt;TextBox Grid.Column=&quot;1&quot; Grid.Row=&quot;1&quot; Text=&quot;{Binding Distance}&quot;/&gt;
-    &lt;TextBox Grid.Column=&quot;1&quot; Grid.Row=&quot;2&quot; Text=&quot;{Binding Speed}&quot;/&gt;
-  &lt;/Grid&gt;
-&lt;/UserControl&gt;
-</pre></div>
-
-
-<p>The window resources contains a DataTemplate declaration to associate the SpeedCalculatorView with the SpeedCalculatorViewModel. The user interface is changed by setting the value of SelectedView in ShellViewModel to an instance of SpeedCalculatorViewModel.</p>
-
-
-
-<p>In the next part, I will cover how to add interactivity to this application.</p>
 
 							</div><!-- .entry-content -->
 					</div>

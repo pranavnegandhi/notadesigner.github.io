@@ -28,6 +28,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
 </style>
+<link rel='stylesheet' id='plantuml-renderer-css' href='/wp-content/plugins/plantuml-renderer/public/css/plantuml-renderer-public.css?ver=0.0.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-bootstrap-css' href='/wp-content/themes/sparkling/assets/css/bootstrap.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-icons-css' href='/wp-content/themes/sparkling/assets/css/fontawesome-all.min.css?ver=5.1.1.' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-fonts-css' href='//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C400%2C600%2C700%7CRoboto+Slab%3A400%2C300%2C700&#038;ver=6.1.1' type='text/css' media='all' />
@@ -35,6 +36,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <link rel='stylesheet' id='easy_table_style-css' href='/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script>
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/plantuml-renderer/public/js/plantuml-renderer-public.js?ver=0.0.1' id='plantuml-renderer-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/vendor/bootstrap.min.js?ver=6.1.1' id='sparkling-bootstrapjs-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503' id='sparkling-functions-js'></script>
 <link rel="https://api.w.org/" href="/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
@@ -169,8 +171,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-12-27T06:27:10+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -178,11 +179,19 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
-<p>The abstract factory design pattern provides an interface to create instances of related objects which operate in sync with each other. This pattern is a superset of the factory method design pattern, as it separates the object creation from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+<h3>Intent</h3>
 
 
 
-<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code.</p>
+<p>The abstract factory design pattern provides an interface to create instances of related objects without directly specifying their concrete classes. This pattern is a superset of the factory method design pattern, as it separates the creation of an object from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+
+
+
+<h3>Problem</h3>
+
+
+
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. A rudimentary way of  implementing this functionality is to pepper the code with if-else statements throughout the application, which is impractical, brittle and error prone – all traits to avoid in good code.</p>
 
 
 
@@ -190,22 +199,51 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
-<p>
-A database operation requires types to make a connection to the 
-database, a command to contain the query and a type to hold a query 
-parameter. All three have to belong to the same family in order to 
-operate correctly. Swapping any type of them for a type from another 
-family is not allowed. E.g. a MySQL connection instance will not be able
- to operate with a SQL Server command instance. Therefore, if a program 
-has to offer the ability to work with various types of database engines,
- it has to guarantee that only compatible types are instantiated at a 
-given time.
-
-</p>
+<p>A database operation requires types to make a connection to the  database, a command to contain the query and a type to hold a query  parameter. All three have to belong to the same family in order to  operate correctly. Swapping any type of them for a type from another  family is not allowed. E.g. a MySQL connection instance will not be able  to operate with a SQL Server command instance. Therefore, if a program  has to offer the ability to work with various types of database engines, it has to guarantee that only compatible types are instantiated at a given time.</p>
 
 
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XP51JuGm48Nl_HKrNZI6_G5xuCB6nCCc9XwDXr9cboOmO5iq6_M_Iy1bfgN46tdzvhsPXxZnDRGWFqnf5NfXq8CzAGtowL0-AkqxUv5Vua4M5fI7GrbqYA2zwV3kFf3RLc4LQC_AgXP6lr7z2Pt99TOdcr1SV0JRANkjJLK1lZLmyjaAem0YhJdNCtgDeSyKHOQwKSx9eZ60Njxsge6p1K3nfsH3d-MyiBqS73ZnyjvSbLtLVUBkcrFhvroE4jjyB_LKfTj4vzt_uvP3Gf8byVNOlmbcEKFLi3L2axdXC2OkcOQvJuAYlEE5tpZqKQUhvrnEKhBLRJZkTOjCDHldqPAisMYQcEZIfLjcCXSMnyIjyV7GAqbIxYy0" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>interface IDbFactory {<br />
++ CreateDbConnection()<br />
++ CreateDbCommand()<br />
++ CreateDbParameter()<br />
+}</p>
+<p>interface IDbConnection<br />
+interface IDbCommand<br />
+interface IDbParameter</p>
+<p>IDbFactory -[hidden]left- IDbParameter<br />
+IDbConnection -[hidden]right- IDbCommand<br />
+IDbCommand -[hidden]right- IDbParameter</p>
+<p>class Client #palegreen</p>
+<p>Client -up-> IDbFactory : uses</p>
+<p>SqlFactory .down.|> IDbFactory</p>
+<p>SqlFactory .down.> SqlConnection : creates<br />
+SqlFactory .down.> SqlCommand : creates<br />
+SqlFactory .down.> SqlParameter : creates</p>
+<p>SqlConnection .down.|> IDbConnection<br />
+SqlParameter .down.|> IDbParameter<br />
+SqlCommand .down.|> IDbCommand</p>
+<p>SqlConnection -[hidden]right- SqlCommand<br />
+SqlCommand -[hidden]right- SqlParameter</p>
+<p>MySqlFactory .up.|> IDbFactory</p>
+<p>MySqlFactory .up.> MySqlConnection : creates<br />
+MySqlFactory .up.> MySqlCommand : creates<br />
+MySqlFactory .up.> MySqlParameter : creates</p>
+<p>MySqlConnection .up.|> IDbConnection<br />
+MySqlParameter .up.|> IDbParameter<br />
+MySqlCommand .up.|> IDbCommand</p>
+<p>MySqlConnection -[hidden]right- MySqlCommand<br />
+MySqlCommand -[hidden]right- MySqlParameter</p>
+<p>" usemap="#plantuml_map"></p>
 
-<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+
+
+<h3>Solution</h3>
+
+
+
+<p>This pattern consists of at least 2 types – one to define the factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
 
 
 
@@ -224,20 +262,15 @@ public interface IDbFactory
 </pre></div>
 
 
-<p><strong>IDbFactory</strong> defines methods for the database factory.&nbsp; <strong>IDbConnection</strong>, <strong>IDbCommand</strong> and <strong>IDbDataParameter</strong> are interfaces provided by the framework in the System.Data namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces.
-
-</p>
+<p><code>IDbFactory</code> defines methods for the database factory.  <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code> are interfaces provided by the framework in the <code>System.Data</code> namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces. </p>
 
 
 
-<h3> SQL Server Factory </h3>
+<h4>SQL Server Factory </h4>
 
 
 
-<p>
-When the application has to operate against SQL Server, it instantiates the <strong>SqlFactory</strong> class, which implements the IDbFactory interface and returns the SQL Server-specific concrete types for IDbConnection, IDbCommand and IDbDataParameter.
-
-</p>
+<p>When the application has to operate against SQL Server, it instantiates the <code>SqlFactory</code> class, which implements the <code>IDbFactory</code> interface, and returns the SQL Server-specific concrete types for <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code>.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -261,14 +294,11 @@ public class SqlFactory : IDbFactory
 </pre></div>
 
 
-<h3>MySQL Factory</h3>
+<h4>MySQL Factory</h4>
 
 
 
-<p>
-The <strong>MySqlFactory</strong> class operates in the same way and returns objects from the MySql.Data.MySqlClient namespace.
-
-</p>
+<p>The <code>MySqlFactory</code> class operates in the same way and returns objects from the <code>MySql.Data.MySqlClient</code> namespace.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -292,21 +322,21 @@ public class MySqlFactory : IDbFactory
 </pre></div>
 
 
-<h3>Usage</h3>
+<h4>Usage</h4>
 
 
 
-<p>When the application is launched, it determines the active database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate IDbFactory implementation. All objects required to operate on the database are subsequently instantiated from this IDbFactory instance. </p>
+<p>When the application is launched, it determines the database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate <code>IDbFactory</code> implementation. All objects required to operate on the database are subsequently instantiated from this <code>IDbFactory</code> instance.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class Program
 {
-    public static void Main(string&#91;] args)
+    public static void Main(string&#091;] args)
     {
         IDbFactory factory;
 
-        if (&quot;sql&quot; == args&#91;1])
+        if (&quot;sql&quot; == args&#091;1])
         {
             factory = new SqlFactory();
         }
@@ -320,7 +350,7 @@ public class Program
             connection.Open();
             var command = factory.CreateDbCommand();
             command.Connection = connection;
-            command.CommandText = &quot;SELECT * FROM &#91;Users] WHERE &#91;UserId] = ?&quot;;
+            command.CommandText = &quot;SELECT * FROM &#091;Users] WHERE &#091;UserId] = ?&quot;;
             var param = factory.CreateDbDataParameter();
             param.DbType = DbType.Int32;
             param.Value = 42;

@@ -29,6 +29,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
 </style>
+<link rel='stylesheet' id='plantuml-renderer-css' href='/wp-content/plugins/plantuml-renderer/public/css/plantuml-renderer-public.css?ver=0.0.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-bootstrap-css' href='/wp-content/themes/sparkling/assets/css/bootstrap.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-icons-css' href='/wp-content/themes/sparkling/assets/css/fontawesome-all.min.css?ver=5.1.1.' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-fonts-css' href='//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C400%2C600%2C700%7CRoboto+Slab%3A400%2C300%2C700&#038;ver=6.1.1' type='text/css' media='all' />
@@ -36,6 +37,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <link rel='stylesheet' id='easy_table_style-css' href='/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script>
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/plantuml-renderer/public/js/plantuml-renderer-public.js?ver=0.0.1' id='plantuml-renderer-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/vendor/bootstrap.min.js?ver=6.1.1' id='sparkling-bootstrapjs-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503' id='sparkling-functions-js'></script>
 <link rel="https://api.w.org/" href="/wp-json/" /><link rel="alternate" type="application/json" href="/wp-json/wp/v2/categories/39" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
@@ -170,8 +172,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-12-27T06:39:53+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -179,6 +180,10 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
+<h3>Intent</h3>
+
+
+
 <p>The intent of this pattern is to convert the API to an existing library, usually to encapsulate legacy code, simplify its use or provide an alternative output format, into a different interface that a client expects.</p>
 
 
@@ -187,11 +192,31 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 
+<h3>Solution</h3>
+
+
+
 <p>There are many examples of this interface in the real world. Cross-platform GUI toolkits are adapters around the underlying API for each supported platform. Clients can continue to use the API provided by GTK+, Windows Forms or Qt, for their applications that run on Windows, macOS or GNOME. The library takes care of translating the API invocations into native equivalents.</p>
 
 
 
 <p>There are many simpler examples of the adapter pattern. A data-driven website is an adapter. It lets web browsers retrieve contents from a database over HTTP instead of running SQL queries on the database engine. It converts the API from SQL to HTTP.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XOzDYi9048NtTOeIDoCI3n0a89cDYq6lK7QUIJDjTUYk2SWmTpU88wAeswhtlH-QM8S3UF2x96haWkJCdpv_htKVjoaEla7YNvhNCGGuM-MZkeyP_LsaTJpq0OQ6bqiCKAigUi2Bek8lKMd7ABNw39Ri4iJmJhtfaSHyrCqk8mtZ_pcvM5GtXKhkH9k0_wR1ZtOyxIMWJO3IvL8attOsXZxubVoJaUbLcIjyczlut8kvZkv7lv-cqVp-I2S0" alt="PlantUML Syntax:</p>
+<p>!theme vibrant</p>
+<p>class DiskInfoProvider {<br />
++CollectAsync()<br />
+}</p>
+<p>class Completed <<event>></p>
+<p>DiskInfoProvider &#8211;> ManagementClass : create<br />
+DiskInfoProvider &#8211;> ManagementOperationObserver : create<br />
+DiskInfoProvider ..> Completed : handle</p>
+<p>class Client #palegreen</p>
+<p>Client -right-> DiskInfoProvider : uses</p>
+<p>ManagementOperationObserver -right-> Completed : dispatch</p>
+<p>ManagementClass &#8211;> ManagementOperationObserver : notify<br />
+" usemap="#plantuml_map"></p>
 
 
 
@@ -303,8 +328,7 @@ public class WmiClient
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-singleton/" rel="bookmark">Practical Design Patterns in C# &ndash; Singleton</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2022-12-27T06:40:44+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-singleton/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -312,7 +336,15 @@ public class WmiClient
 						<div class="entry-content">
 
 				
+<h3>Intent</h3>
+
+
+
 <p>The Singleton pattern is one of the simplest and most commonly used in practice. Its purpose is to restrict a class to only one instance throughout the lifetime of the application. This is desirable in cases when there is one or only a few resources available and access has to be controlled.</p>
+
+
+
+<h3>Problem</h3>
 
 
 
@@ -324,7 +356,28 @@ public class WmiClient
 
 
 
-<h3>Single-threaded, Lazy Initialisation</h3>
+<h3>Solution</h3>
+
+
+
+<p>This pattern has multiple possible implementations in C#. The ones shown below are built purely on the language features. There are still other ways of limiting a class to single instance through the use of dependency injection frameworks. Those techniques are not covered here.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ur8ioKZDJLKeoqmgIimhuKhEIImkLd3EpyjBJIx9pCyBoC_FKQZcqgqkBaaioKokpSm3ClAIKwrGbN3f5gNcf2OMfwPOUGQdbd3f9YONbcOMmRZQZX2kXYQNTX14eKOot00hJvSaX7509J3BF75OLii50000" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>class ConnectionPool {<br />
+-{static}instance:ConnectionPool<br />
+-released:ISet<br />
+-acquired:ISet<br />
++Acquire()<br />
++Release(connection:IDbConnection)<br />
++{static}Instance:ConnectionPool<br />
+}<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<h4>Single-threaded, Lazy Initialisation</h4>
 
 
 
@@ -386,7 +439,7 @@ public sealed class ConnectionPool
 
 
 
-<h3>Multi-threaded, Lazy Initialisation</h3>
+<h4>Multi-threaded, Lazy Initialisation</h4>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -440,7 +493,7 @@ public sealed class ConnectionPool
 
 
 
-<h3>Lock-free, Multi-threaded, Lazy Initialisation</h3>
+<h4>Lock-free, Multi-threaded, Lazy Initialisation</h4>
 
 
 
@@ -506,8 +559,7 @@ public class ConnectionPool
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-prototype/" rel="bookmark">Practical Design Patterns in C# – Prototype</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2022-12-27T06:41:04+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-prototype/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-prototype/" rel="bookmark"><time class="entry-date published" datetime="2018-12-29T22:07:33+05:30">December 29, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -515,7 +567,11 @@ public class ConnectionPool
 						<div class="entry-content">
 
 				
-<p>The prototype pattern simplifies creating multiple instances of a class by copying the contents of an existing instance to create a new one. This alleviates the cost of any expensive computation or I/O being performed in the constructor, or simply copies over the state of an existing object to the new instance for further modification.</p>
+<h3>Intent</h3>
+
+
+
+<p>The prototype pattern simplifies creating instances of a class by copying the contents of an existing instance to create a new one. This alleviates the cost of any expensive computation or I/O being performed in the constructor, or simply copies over the state of an existing object to the new instance for further modification.</p>
 
 
 
@@ -523,11 +579,37 @@ public class ConnectionPool
 
 
 
+<h3>Problem</h3>
+
+
+
 <p>This article demonstrates a document editor that has the ability to make and display multiple concurrent snap shots of a document. Each can be reviewed and edited individually and compared with each other. The process begins with a single document in memory, which the user can edit before cloning. When a draft is ready, the user duplicates the object by invoking a command from the UI. This copies the contents of the document over into a new instance. The document also contains a date and time field which is modified to match the time when the duplicate is created.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/NOr13e8m54Jt_nGrRZIa7C0ODhXnvOOBb392a_9Bse8cwjqjnWXnDvbvCqERsA67c4pj5KSo7E6lIaESI-iOghOuLeLuK2O-ncvFBz9MXI1EJeyzEAPGJl31EAQiz50HpIN92lUOZBzMQStSsGxAelK0qsyd7uVyMQoUbqWsxiQoM3uFGizKeE-UzARjuegWDm00" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>interface ICloneable<T> {<br />
++ Clone()<br />
+}</p>
+<p>class Document {<br />
+-version<br />
++CreatedOn<br />
++Text<br />
++Clone()<br />
+}</p>
+<p>class Client #palegreen</p>
+<p>Document .up.|> ICloneable</p>
+<p>Document -down-> Document : clones</p>
+<p>Client -right-> Document</p>
+<p>" usemap="#plantuml_map"></p>
 
 
 
 <p>Both versions now exist in memory simultaneously and the user can cycle between them as needed.</p>
+
+
+
+<h3>Solution</h3>
 
 
 
@@ -546,7 +628,7 @@ public interface ICloneable&lt;T&gt;
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-&#91;Serializable]
+&#091;Serializable]
 public class Document : ICloneable&lt;Document&gt;
 {
     private int _version = 0;
@@ -652,22 +734,27 @@ private Document Clone()
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-builder/" rel="bookmark">Practical Design Patterns in C# &ndash; Builder</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2022-12-27T06:43:07+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-builder/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-builder/" rel="bookmark"><time class="entry-date published" datetime="2018-12-22T18:51:31+05:30">December 22, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
 
 						<div class="entry-content">
 
-				<p>The builder pattern abstracts multiple steps required to create a complex object into a coherent interface. Objects that need several input parameters are prime candidates for refactoring behind a builder object.</p>
+				
+<h3>Intent</h3>
 
 
-<p>This example shows how to create an email message as well as a JSON message object from the same input. The utility of builders can be increased manifold through the use of generic interfaces. This is also demonstrated in this example.</p>
+
+<p>The builder pattern abstracts multiple steps required to create a complex object into a coherent interface. Objects that need several input parameters are prime candidates for refactoring behind a builder object.</p>
 
 
 
 <p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<h3>Problem</h3>
 
 
 
@@ -687,6 +774,31 @@ var message = new MailMessage(&quot;john@example.com&quot;,
 
 
 <p>A more readable alternative is clearly required, at least to retain the maintenance programmer&#8217;s sanity for the future. And there&#8217;s our hook for the builder pattern.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/VL11QiCm4Bph5LjoKGZE0qGmD2Kj3UJI1dgMfOsj8ij1kowKjd-lZ6rGGjEBfDcPsLcjkEC6MuGFLqKTMBZ064_Q83mVa4ZNkEsTjnWtnmcNy2LMzzR61D4UEndHkBF3m8eukb0lrQxLpay-iNgCNIi9Gm8t56-EcsrdFsMLZdyqhttrZeObZVSDvHFo2rBlcUHIpLEB7s6y9e9Skpcaz_mjaJEmNd-NrokuL1GUJroKaFK01TN0qfIrfoxCKUEifSXgVuVaWYAwkXb2HlTr_mS_h1qMP-snZeX1J9KYMIw6LM2qzvJpUSvC_m80" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>interface IMessageBuilder<TMessage> {<br />
++AddressedTo(recipient:string):EmailBuilder<br />
++From(sender:string):EmailBuilder<br />
++WithBody(body:string):EmailBuilder<br />
++WithSubject(subject:string):EmailBuilder<br />
++GetResults():TMessage<br />
+}</p>
+<p>class EmailBuilder<MailMessage><br />
+EmailBuilder ..|> IMessageBuilder<br />
+EmailBuilder -left-> MailMessage : builds</p>
+<p>class JsonBuilder<string><br />
+JsonBuilder ..|> IMessageBuilder<br />
+JsonBuilder -right-> string : builds</p>
+<p>class Client #palegreen</p>
+<p>Client &#8211;> EmailBuilder : calls<br />
+Client &#8211;> JsonBuilder : calls<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<h3>Solution</h3>
 
 
 
@@ -813,7 +925,7 @@ public class EmailBuilder : IMessageBuilder&lt;MailMessage&gt;
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class JsonBuilder : IMessageBuilder
+public class JsonBuilder : IMessageBuilder&lt;string&gt;
 {
     private StringBuilder _builder;
 
@@ -895,8 +1007,7 @@ var message = builder.From(&quot;john@example.com&quot;)
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2022-12-27T06:27:10+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-abstract-factory/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -904,11 +1015,19 @@ var message = builder.From(&quot;john@example.com&quot;)
 						<div class="entry-content">
 
 				
-<p>The abstract factory design pattern provides an interface to create instances of related objects which operate in sync with each other. This pattern is a superset of the factory method design pattern, as it separates the object creation from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+<h3>Intent</h3>
 
 
 
-<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. This  is a common problem faced by many applications. A rudimentary way of  implementing this functionality is to pepper the code with if-else  statements throughout the application. Needless to say, this is  impractical, brittle and error prone – all traits to avoid in good code.</p>
+<p>The abstract factory design pattern provides an interface to create instances of related objects without directly specifying their concrete classes. This pattern is a superset of the factory method design pattern, as it separates the creation of an object from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+
+
+
+<h3>Problem</h3>
+
+
+
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. A rudimentary way of  implementing this functionality is to pepper the code with if-else statements throughout the application, which is impractical, brittle and error prone – all traits to avoid in good code.</p>
 
 
 
@@ -916,22 +1035,51 @@ var message = builder.From(&quot;john@example.com&quot;)
 
 
 
-<p>
-A database operation requires types to make a connection to the 
-database, a command to contain the query and a type to hold a query 
-parameter. All three have to belong to the same family in order to 
-operate correctly. Swapping any type of them for a type from another 
-family is not allowed. E.g. a MySQL connection instance will not be able
- to operate with a SQL Server command instance. Therefore, if a program 
-has to offer the ability to work with various types of database engines,
- it has to guarantee that only compatible types are instantiated at a 
-given time.
-
-</p>
+<p>A database operation requires types to make a connection to the  database, a command to contain the query and a type to hold a query  parameter. All three have to belong to the same family in order to  operate correctly. Swapping any type of them for a type from another  family is not allowed. E.g. a MySQL connection instance will not be able  to operate with a SQL Server command instance. Therefore, if a program  has to offer the ability to work with various types of database engines, it has to guarantee that only compatible types are instantiated at a given time.</p>
 
 
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XP51JuGm48Nl_HKrNZI6_G5xuCB6nCCc9XwDXr9cboOmO5iq6_M_Iy1bfgN46tdzvhsPXxZnDRGWFqnf5NfXq8CzAGtowL0-AkqxUv5Vua4M5fI7GrbqYA2zwV3kFf3RLc4LQC_AgXP6lr7z2Pt99TOdcr1SV0JRANkjJLK1lZLmyjaAem0YhJdNCtgDeSyKHOQwKSx9eZ60Njxsge6p1K3nfsH3d-MyiBqS73ZnyjvSbLtLVUBkcrFhvroE4jjyB_LKfTj4vzt_uvP3Gf8byVNOlmbcEKFLi3L2axdXC2OkcOQvJuAYlEE5tpZqKQUhvrnEKhBLRJZkTOjCDHldqPAisMYQcEZIfLjcCXSMnyIjyV7GAqbIxYy0" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>interface IDbFactory {<br />
++ CreateDbConnection()<br />
++ CreateDbCommand()<br />
++ CreateDbParameter()<br />
+}</p>
+<p>interface IDbConnection<br />
+interface IDbCommand<br />
+interface IDbParameter</p>
+<p>IDbFactory -[hidden]left- IDbParameter<br />
+IDbConnection -[hidden]right- IDbCommand<br />
+IDbCommand -[hidden]right- IDbParameter</p>
+<p>class Client #palegreen</p>
+<p>Client -up-> IDbFactory : uses</p>
+<p>SqlFactory .down.|> IDbFactory</p>
+<p>SqlFactory .down.> SqlConnection : creates<br />
+SqlFactory .down.> SqlCommand : creates<br />
+SqlFactory .down.> SqlParameter : creates</p>
+<p>SqlConnection .down.|> IDbConnection<br />
+SqlParameter .down.|> IDbParameter<br />
+SqlCommand .down.|> IDbCommand</p>
+<p>SqlConnection -[hidden]right- SqlCommand<br />
+SqlCommand -[hidden]right- SqlParameter</p>
+<p>MySqlFactory .up.|> IDbFactory</p>
+<p>MySqlFactory .up.> MySqlConnection : creates<br />
+MySqlFactory .up.> MySqlCommand : creates<br />
+MySqlFactory .up.> MySqlParameter : creates</p>
+<p>MySqlConnection .up.|> IDbConnection<br />
+MySqlParameter .up.|> IDbParameter<br />
+MySqlCommand .up.|> IDbCommand</p>
+<p>MySqlConnection -[hidden]right- MySqlCommand<br />
+MySqlCommand -[hidden]right- MySqlParameter</p>
+<p>" usemap="#plantuml_map"></p>
 
-<p>This pattern consists of at least 2 types – one to define the abstract factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+
+
+<h3>Solution</h3>
+
+
+
+<p>This pattern consists of at least 2 types – one to define the factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
 
 
 
@@ -950,20 +1098,15 @@ public interface IDbFactory
 </pre></div>
 
 
-<p><strong>IDbFactory</strong> defines methods for the database factory.&nbsp; <strong>IDbConnection</strong>, <strong>IDbCommand</strong> and <strong>IDbDataParameter</strong> are interfaces provided by the framework in the System.Data namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces.
-
-</p>
+<p><code>IDbFactory</code> defines methods for the database factory.  <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code> are interfaces provided by the framework in the <code>System.Data</code> namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces. </p>
 
 
 
-<h3> SQL Server Factory </h3>
+<h4>SQL Server Factory </h4>
 
 
 
-<p>
-When the application has to operate against SQL Server, it instantiates the <strong>SqlFactory</strong> class, which implements the IDbFactory interface and returns the SQL Server-specific concrete types for IDbConnection, IDbCommand and IDbDataParameter.
-
-</p>
+<p>When the application has to operate against SQL Server, it instantiates the <code>SqlFactory</code> class, which implements the <code>IDbFactory</code> interface, and returns the SQL Server-specific concrete types for <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code>.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -987,14 +1130,11 @@ public class SqlFactory : IDbFactory
 </pre></div>
 
 
-<h3>MySQL Factory</h3>
+<h4>MySQL Factory</h4>
 
 
 
-<p>
-The <strong>MySqlFactory</strong> class operates in the same way and returns objects from the MySql.Data.MySqlClient namespace.
-
-</p>
+<p>The <code>MySqlFactory</code> class operates in the same way and returns objects from the <code>MySql.Data.MySqlClient</code> namespace.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -1018,21 +1158,21 @@ public class MySqlFactory : IDbFactory
 </pre></div>
 
 
-<h3>Usage</h3>
+<h4>Usage</h4>
 
 
 
-<p>When the application is launched, it determines the active database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate IDbFactory implementation. All objects required to operate on the database are subsequently instantiated from this IDbFactory instance. </p>
+<p>When the application is launched, it determines the database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate <code>IDbFactory</code> implementation. All objects required to operate on the database are subsequently instantiated from this <code>IDbFactory</code> instance.</p>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class Program
 {
-    public static void Main(string&#91;] args)
+    public static void Main(string&#091;] args)
     {
         IDbFactory factory;
 
-        if (&quot;sql&quot; == args&#91;1])
+        if (&quot;sql&quot; == args&#091;1])
         {
             factory = new SqlFactory();
         }
@@ -1046,7 +1186,7 @@ public class Program
             connection.Open();
             var command = factory.CreateDbCommand();
             command.Connection = connection;
-            command.CommandText = &quot;SELECT * FROM &#91;Users] WHERE &#91;UserId] = ?&quot;;
+            command.CommandText = &quot;SELECT * FROM &#091;Users] WHERE &#091;UserId] = ?&quot;;
             var param = factory.CreateDbDataParameter();
             param.DbType = DbType.Int32;
             param.Value = 42;

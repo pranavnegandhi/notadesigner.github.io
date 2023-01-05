@@ -28,6 +28,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 :where(.wp-block-columns.is-layout-flex){gap: 2em;}
 .wp-block-pullquote{font-size: 1.5em;line-height: 1.6;}
 </style>
+<link rel='stylesheet' id='plantuml-renderer-css' href='/wp-content/plugins/plantuml-renderer/public/css/plantuml-renderer-public.css?ver=0.0.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-bootstrap-css' href='/wp-content/themes/sparkling/assets/css/bootstrap.min.css?ver=6.1.1' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-icons-css' href='/wp-content/themes/sparkling/assets/css/fontawesome-all.min.css?ver=5.1.1.' type='text/css' media='all' />
 <link rel='stylesheet' id='sparkling-fonts-css' href='//fonts.googleapis.com/css?family=Open+Sans%3A400italic%2C400%2C600%2C700%7CRoboto+Slab%3A400%2C300%2C700&#038;ver=6.1.1' type='text/css' media='all' />
@@ -35,6 +36,7 @@ body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: 
 <link rel='stylesheet' id='easy_table_style-css' href='/wp-content/plugins/easy-table/themes/cuscosky/style.css?ver=1.8' type='text/css' media='all' />
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery.min.js?ver=3.6.1' id='jquery-core-js'></script>
 <script type='text/javascript' src='/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/plantuml-renderer/public/js/plantuml-renderer-public.js?ver=0.0.1' id='plantuml-renderer-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/vendor/bootstrap.min.js?ver=6.1.1' id='sparkling-bootstrapjs-js'></script>
 <script type='text/javascript' src='/wp-content/themes/sparkling/assets/js/functions.js?ver=20180503' id='sparkling-functions-js'></script>
 <link rel="https://api.w.org/" href="/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="/xmlrpc.php?rsd" />
@@ -169,8 +171,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-bridge/" rel="bookmark">Practical Design Patterns in C# &#8211; Bridge</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-bridge/" rel="bookmark"><time class="entry-date published" datetime="2019-01-20T18:12:00+05:30">January 20, 2019</time><time class="updated" datetime="2022-12-27T06:49:13+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-bridge/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-bridge/" rel="bookmark"><time class="entry-date published" datetime="2019-01-20T18:12:00+05:30">January 20, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -178,11 +179,19 @@ body.custom-background { background-color: #f2f2f2; }
 						<div class="entry-content">
 
 				
+<h3>Intent</h3>
+
+
+
 <p>The bridge pattern is designed to separate the implementation of a functionality from its interface. The benefits of this approach are seen when the functionality has multiple implementations which can be swapped out without changing the API. But the separation of concerns can also prove useful when the system is backed by only a single implementation. The client API can continue to remain stable even if the entire implementation changes, because the client is shielded from its effects.</p>
 
 
 
 <p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<h3>Solution</h3>
 
 
 
@@ -214,6 +223,24 @@ public class Playlist
 <p>This class defines the public API of the playlist. The client populates the audio tracks through the usual collection API (not shown here), after which it invokes the <code>PlayAsync</code> method to start iterating through the list. Once it reaches the end of the list, it stops.</p>
 
 
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XOxB2i9034Nt-OeHDugqdo28k2Y8IFyWjgaEPD9X9ZxguzzjfHNgnbL2EEVcmaHFvCXSx26WA1ICCPezOyCsgdd0ejjNiP5YDeSNM54A5HPaiW7AdESEpEB6UMrQRB6ZctOpfqZwyRw9TLBMLqcMOx__ksPBecRgaUaOY0JwIy9KQIiD3coj48PHXVJiq-TlRevIrixUgVpFlW40" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>class Playlist {<br />
++PlayAsync()<br />
+}</p>
+<p>interface IPlaylistImpl {<br />
++IsEmpty()<br />
++Next()<br />
++Reset()<br />
+}</p>
+<p>Playlist o-down-> IPlaylistImpl</p>
+<p>class Client #palegreen</p>
+<p>Client -left-> Playlist</p>
+<p>LinearPlaylistImpl .up.|> IPlaylistImpl<br />
+RandomizedPlaylistImpl .up.|> IPlaylistImpl<br />
+" usemap="#plantuml_map"></p>
+
+
 
 <p>This is coupled with the implementation, defined by the <code>IPlaylistImpl</code> interface, and referenced by the <code>_playlistImpl</code> field.</p>
 
@@ -236,7 +263,7 @@ public interface IPlaylistImpl
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
 public class LinearPlaylistImpl : IPlaylistImpl
 {
-    private readonly string&#91;] _items;
+    private readonly string&#091;] _items;
 
     private readonly IEnumerator _enumerator;
 
@@ -300,7 +327,7 @@ public class RandomizedPlaylistImpl : IPlaylistImpl
         if (_items.Count &gt; 0)
         {
             var index = _random.Next(_items.Count);
-            var item = _items&#91;index];
+            var item = _items&#091;index];
             _items.Remove(item);
             _usedItems.Enqueue(item);
 
@@ -322,7 +349,7 @@ public class RandomizedPlaylistImpl : IPlaylistImpl
 </pre></div>
 
 
-<h3>Emergent Behaviour</h3>
+<h4>Emergent Behaviour</h4>
 
 
 
@@ -364,8 +391,7 @@ public class Playlist
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-proxy/" rel="bookmark">Practical Design Patterns in C# &#8211; Proxy</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-proxy/" rel="bookmark"><time class="entry-date published" datetime="2019-01-13T07:01:00+05:30">January 13, 2019</time><time class="updated" datetime="2022-12-27T06:39:30+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-proxy/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-proxy/" rel="bookmark"><time class="entry-date published" datetime="2019-01-13T07:01:00+05:30">January 13, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -373,11 +399,19 @@ public class Playlist
 						<div class="entry-content">
 
 				
-<p>The intent of this pattern is to substitute an object with a placeholder for any reason, such as to transform the input or output or to provide an alternative representation of the original. This pattern is quite similar to the adapter pattern. The difference is that an adapter changes the interface to suit the client&#8217;s needs, whereas a proxy mirrors the interface of its underlying object.</p>
+<h3>Intent</h3>
 
 
 
-<p>This example uses the SOAP client services framework that ships as a part of the .NET framework. SOAP messages are encoded as XML and can be transmitted over any transport, such as HTTP or SMTP. But parsing XML gets tedious and is prone to errors. And SOAP itself is a gargantuan pile of specifications that few people understand. That&#8217;s why vendors sell tooling to generate language-specific bindings that abstract away the XML documents behind types and methods that mirror the web API. As a result, programmers can consume the service by writing statically-typed imperative methods.</p>
+<p>The intent of this pattern is to substitute an object with a placeholder for any reason, such as to transform the input or output or to provide an alternative representation of the original. This pattern is similar in intent to the adapter pattern. But an adapter changes the interface to suit the client&#8217;s needs, whereas a proxy mirrors the interface of its underlying object.</p>
+
+
+
+<h3>Problem</h3>
+
+
+
+<p>This example uses the SOAP client services tools that ship as a part of .NET. SOAP messages are encoded as XML and can be transmitted over any transport, such as HTTP or SMTP. But parsing XML gets tedious and is prone to errors. And SOAP itself is a gargantuan pile of specifications that few people understand. That&#8217;s why vendors sell tooling to generate language-specific bindings that abstract away the XML documents behind types and methods that mirror the web API. As a result, programmers can consume the service by writing statically-typed imperative methods.</p>
 
 
 
@@ -390,6 +424,23 @@ public class Playlist
 
 
 <p>This service exposes an operation called <code>NumberToWords</code>, that takes an instance of <code>NumberToWordsSoapRequest</code> as a parameter and returns a <code>NumberToWordsSoapResponse</code>. The request object has a Body property of type <code>NumberToWordsRequestBody</code>, which in turn encapsulates an unsigned integer that holds the number to be converted. The operation responds with the type <code>NumberToWordsResponse</code>, containing the string that denotes the value of the number in words.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/dOqz3i8m38LtdoA81OJI0p1qwSJ20X9pMangARKh9-a2t1q4MSF0-7w-zs2LHfpGBDIhumJ42VNc1ZI7Ovvwr4vuGOqaV49Tw1tSOVUDpd8HlSODVzG-1s6_XITKm2uGSZ9Ddfj7MvslqVzovLMiaX-JRKsD7uABqPJwUdO1lI8o5CVQ7zyl" alt="PlantUML Syntax:</p>
+<p>!theme vibrant</p>
+<p>interface INumberConversionService {<br />
++NumberToWords(number:ulong)<br />
+}</p>
+<p>NumberConversionServiceClient .up.|> INumberConversionService</p>
+<p>NumberConversionService .up.|> INumberConversionService</p>
+<p>NumberConversionServiceClient o-right-> NumberConversionService</p>
+<p>class Client #palegreen</p>
+<p>Client &#8211;> INumberConversionService</p>
+<p>" usemap="#plantuml_map"></p>
+
+
+
+<h3>Solution</h3>
 
 
 
@@ -449,8 +500,7 @@ public class NumberConversionSoapTypeClient
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2022-12-27T06:39:53+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-adapter/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -458,6 +508,10 @@ public class NumberConversionSoapTypeClient
 						<div class="entry-content">
 
 				
+<h3>Intent</h3>
+
+
+
 <p>The intent of this pattern is to convert the API to an existing library, usually to encapsulate legacy code, simplify its use or provide an alternative output format, into a different interface that a client expects.</p>
 
 
@@ -466,11 +520,31 @@ public class NumberConversionSoapTypeClient
 
 
 
+<h3>Solution</h3>
+
+
+
 <p>There are many examples of this interface in the real world. Cross-platform GUI toolkits are adapters around the underlying API for each supported platform. Clients can continue to use the API provided by GTK+, Windows Forms or Qt, for their applications that run on Windows, macOS or GNOME. The library takes care of translating the API invocations into native equivalents.</p>
 
 
 
 <p>There are many simpler examples of the adapter pattern. A data-driven website is an adapter. It lets web browsers retrieve contents from a database over HTTP instead of running SQL queries on the database engine. It converts the API from SQL to HTTP.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XOzDYi9048NtTOeIDoCI3n0a89cDYq6lK7QUIJDjTUYk2SWmTpU88wAeswhtlH-QM8S3UF2x96haWkJCdpv_htKVjoaEla7YNvhNCGGuM-MZkeyP_LsaTJpq0OQ6bqiCKAigUi2Bek8lKMd7ABNw39Ri4iJmJhtfaSHyrCqk8mtZ_pcvM5GtXKhkH9k0_wR1ZtOyxIMWJO3IvL8attOsXZxubVoJaUbLcIjyczlut8kvZkv7lv-cqVp-I2S0" alt="PlantUML Syntax:</p>
+<p>!theme vibrant</p>
+<p>class DiskInfoProvider {<br />
++CollectAsync()<br />
+}</p>
+<p>class Completed <<event>></p>
+<p>DiskInfoProvider &#8211;> ManagementClass : create<br />
+DiskInfoProvider &#8211;> ManagementOperationObserver : create<br />
+DiskInfoProvider ..> Completed : handle</p>
+<p>class Client #palegreen</p>
+<p>Client -right-> DiskInfoProvider : uses</p>
+<p>ManagementOperationObserver -right-> Completed : dispatch</p>
+<p>ManagementClass &#8211;> ManagementOperationObserver : notify<br />
+" usemap="#plantuml_map"></p>
 
 
 
@@ -582,8 +656,7 @@ public class WmiClient
 				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-singleton/" rel="bookmark">Practical Design Patterns in C# &ndash; Singleton</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2022-12-27T06:40:44+05:30">December 27, 2022</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>				<span class="comments-link"><i class="fa fa-comments"></i><a href="/practical-design-patterns-in-c-singleton/#respond">Leave a comment</a></span>
-				
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -591,7 +664,15 @@ public class WmiClient
 						<div class="entry-content">
 
 				
+<h3>Intent</h3>
+
+
+
 <p>The Singleton pattern is one of the simplest and most commonly used in practice. Its purpose is to restrict a class to only one instance throughout the lifetime of the application. This is desirable in cases when there is one or only a few resources available and access has to be controlled.</p>
+
+
+
+<h3>Problem</h3>
 
 
 
@@ -603,7 +684,28 @@ public class WmiClient
 
 
 
-<h3>Single-threaded, Lazy Initialisation</h3>
+<h3>Solution</h3>
+
+
+
+<p>This pattern has multiple possible implementations in C#. The ones shown below are built purely on the language features. There are still other ways of limiting a class to single instance through the use of dependency injection frameworks. Those techniques are not covered here.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ur8ioKZDJLKeoqmgIimhuKhEIImkLd3EpyjBJIx9pCyBoC_FKQZcqgqkBaaioKokpSm3ClAIKwrGbN3f5gNcf2OMfwPOUGQdbd3f9YONbcOMmRZQZX2kXYQNTX14eKOot00hJvSaX7509J3BF75OLii50000" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>class ConnectionPool {<br />
+-{static}instance:ConnectionPool<br />
+-released:ISet<br />
+-acquired:ISet<br />
++Acquire()<br />
++Release(connection:IDbConnection)<br />
++{static}Instance:ConnectionPool<br />
+}<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<h4>Single-threaded, Lazy Initialisation</h4>
 
 
 
@@ -665,7 +767,7 @@ public sealed class ConnectionPool
 
 
 
-<h3>Multi-threaded, Lazy Initialisation</h3>
+<h4>Multi-threaded, Lazy Initialisation</h4>
 
 
 <div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
@@ -719,7 +821,7 @@ public sealed class ConnectionPool
 
 
 
-<h3>Lock-free, Multi-threaded, Lazy Initialisation</h3>
+<h4>Lock-free, Multi-threaded, Lazy Initialisation</h4>
 
 
 

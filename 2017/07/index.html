@@ -134,6 +134,7 @@ body.custom-background { background-color: #f2f2f2; }
 </li>
 </ul>
 </li>
+<li id="menu-item-2981" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2981"><a href="/archives/">Archives</a></li>
 <li id="menu-item-965" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-965"><a href="/about/">About Pranav Negandhi</a></li>
 </ul></div>
 
@@ -171,7 +172,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="/a-model-for-sequential-workflow-execution/" rel="bookmark">A Model for Sequential Workflow Execution</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2023-01-07T07:48:19+05:30">January 7, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -198,8 +199,27 @@ body.custom-background { background-color: #f2f2f2; }
 <p>The workflow model constitutes of the entities described below.</p>
 
 
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img decoding="async" width="1008" height="768" src="/wp-content/uploads/2017/07/class-diagram.png" alt="Sequential Workflow Execution" class="wp-image-947" srcset="/wp-content/uploads/2017/07/class-diagram.png 1008w, /wp-content/uploads/2017/07/class-diagram-788x600.png 788w, /wp-content/uploads/2017/07/class-diagram-768x585.png 768w" sizes="(max-width: 1008px) 100vw, 1008px" /></figure></div>
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ZP9BJiCm48RtFiMWRXAXv00HgbGL46m0YLp0jIVj2CSnzgIq0kwEHKCBg7diHYFx-n-skE0DrWXRMdbfMP1bz9LK20yDIus1rXPzlb1CMsB2aDzty_wAdVIondXX3k_YycQ7gcLCZjkYVFePqr-p-1JAo11w5PxnjKMhqFzNM6YTo4wzEEiZFTaWwrhkjo1NWNs4mR2Ndh0pUBITqBAfdObxdQJ7P4j3Q1bcJXfSUqGhnlYGvn_pySx5Q6UGPHCuK00Ux8U_o19tdD_j7Nf3zgMCVo9KZQybKsE7FPwt-CsxHjswMpAnl8cChi1CDszs8CyfTG5A6XEczDEwIEm42h0DKnLFW3gyOymflW00" alt="PlantUML Syntax:<br />
+!theme vibrant<br />
+interface Notadesigner.Activities.IActivity<tparameter> {<br />
++Execute(parameter:TParameter):TParameter<br />
+}</p>
+<p>class Notadesigner.Activities.Sequencer<tparameter> {<br />
++Add(activity:IActivity<tparameter>)<br />
++Execute(input:TParameter):TParameter<br />
+}</p>
+<p>abstract class Notadesigner.Activities.Activity<tparameter> {<br />
+# OnExecuteCompleted()<br />
+}</p>
+<p>class Client #palegreen</p>
+<p>Notadesigner.Activities.Activity ..|> Notadesigner.Activities.IActivity<br />
+Notadesigner.Activities.Sequencer &#8211;> Notadesigner.Activities.IActivity : executes<br />
+Notadesigner.Text.HyperlinkTransformation ..|> Notadesigner.Activities.Activity<br />
+Notadesigner.Text.DedupFilter ..|> Notadesigner.Activities.Activity</p>
+<p>Client -down-> Notadesigner.Activities.Sequencer : calls<br />
+Notadesigner.Activities.Sequencer -up-> Client : notifies completion<br />
+" usemap="#plantuml_map"></p>
+
 
 
 <p>Activities are the steps which must be performed in a workflow. The type <strong>IActivity&lt;TParameter&gt;</strong> defines the common minimum standard that all activities must implement. It requires a method called Execute which takes one parameter.</p>
@@ -278,7 +298,7 @@ public class HyperlinkTransformation : Activity&lt;string&gt;
 {
     void Execute(string input)
     {
-        RegEx.Replace(input, @&quot;http(s)?://&#91;a-z.]+&quot;);
+        RegEx.Replace(input, @&quot;http(s)?://&#091;a-z.]+&quot;);
         base.Execute(input);
     }
 }

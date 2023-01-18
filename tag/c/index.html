@@ -163,10 +163,497 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Tag: <span>c#</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-2994" class="post-2994 post type-post status-publish format-standard has-post-thumbnail hentry category-software-engineering category-technique tag-c">
+	<div class="blog-item-wrap">
+				<a href="/breaking-circular-dependencies-in-microsoft-di-with-lazy-resolution/" title="Breaking Circular Dependencies in Microsoft DI with Lazy Resolution" >
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_3381-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/breaking-circular-dependencies-in-microsoft-di-with-lazy-resolution/" rel="bookmark">Breaking Circular Dependencies in Microsoft DI with Lazy Resolution</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/breaking-circular-dependencies-in-microsoft-di-with-lazy-resolution/" rel="bookmark"><time class="entry-date published" datetime="2023-01-18T14:52:02+05:30">January 18, 2023</time><time class="updated" datetime="2023-01-18T14:55:45+05:30">January 18, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>The service locator pattern is understandably looked down upon. I&#8217;m not the kind to get swept away with hubris, but injecting a service provider into other classes, and telling them to pick whatever they like out of it is just global variables with more steps.</p>
+
+
+
+<p>There are certain cases where this is the most straightforward solution to a problem. But this anti-pattern can still be avoided with a bit of thought. This is a real-world scenario that I faced few months back.</p>
+
+
+
+<h3>Background</h3>
+
+
+
+<p>A wizard is a UI pattern that is used to guide the user through the stages of a process (a license key verification and user registration in this case). I wrote a simple application that would lead the user through each step.</p>
+
+
+
+<ol>
+<li>Welcome and short instruction note.</li>
+
+
+
+<li>License Key Entry and verification.</li>
+
+
+
+<li>Registration Form input and validation.</li>
+
+
+
+<li>Review form input.</li>
+
+
+
+<li>Completion.</li>
+</ol>
+
+
+
+<p>But there may be cases when somebody might need to change their license key after it has been entered. For this, the application had a button to go back to the previous screen.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/RP313e8m44Jl_OgDz_w01q8qUj5uuEAvbXMhfINj8lBt5YXYWEDCNsPcor9Fmb5TQcPlJvG4LzJIbZZApLb9D1xXX2qS3Bbs0y93T8FPUpywmq9vSeAKDN2qhkpfVxSpHpp3jy9cL7jRLXe9SnOt0CzjOtYoQ9jfu4uL3mhWl0YsSC4FiONFDTvfcHpudP2l5Juk6HPFiRtYTRNU7RC6A9aE34y3ZOwbQFBk-xy0" alt="PlantUML Syntax:<br />
+@startuml</p>
+<p>object Welcome<br />
+object &#8220;License Key Entry&#8221; as LicenseKeyEntry</p>
+<p>object &#8220;Registration Form&#8221; as RegistrationForm<br />
+object Review<br />
+object Completed</p>
+<p>Welcome -down-> LicenseKeyEntry</p>
+<p>LicenseKeyEntry -right-> RegistrationForm : Next<br />
+RegistrationForm -left-> LicenseKeyEntry : Back</p>
+<p>RegistrationForm -down-> Review : Next<br />
+Review -up-> RegistrationForm : Back</p>
+<p>Review -> Completed : Register</p>
+<p>@enduml<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<p>Each screen was implemented in its own class as a window object. It would be ideal if the screen object would be injected wherever needed through Microsoft Dependency Injection. The Welcome class would receive a reference to License Key Entry, which would receive a reference to the Registration Form, and so on. But some of the screens also needed a reference to the previous screen. Registration Form would require a reference to License Key Entry. Confirmation would require a reference to the Registration Form.</p>
+
+
+
+<p>This would create a circular dependency, which is not supported by Microsoft Dependency Injection.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class LicenseKeyEntry : Form
+{
+    public LicenseKeyEntry(RegistrationForm next) { … }
+}
+</pre></div>
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class RegistrationForm : Form
+{
+    public RegistrationForm(LicenseKeyEntry previous, Confirmation next) { … }
+}
+</pre></div>
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+private static void ConfigureHostServices(HostBuilderContext _, IServiceCollection services)
+{
+    …
+    services.AddSingleton&lt;LicenseKeyEntry&gt;();
+    services.AddSingleton&lt;RegistrationForm&gt;(); /// Welp! Circular dependency!
+    …
+}
+</pre></div>
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+System.InvalidOperationException: A circular dependency was detected for the service of type ‘LicenseKeyEntry’.
+</pre></div>
+
+
+<p>My first instinct was that this was an impossible problem to solve. Classes need references. References must come from the DI container. The container won&#8217;t allow creating circular dependencies between types. Just hand over a reference to the service provider to the objects, and let them ask for whatever objects they need at runtime.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class RegistrationForm : Form
+{
+    private IServiceProvider _services;
+
+    /// Don't do this!
+    public RegistrationForm(IServiceProvider services)
+    {
+        _services = services;
+    }
+
+    public void Next()
+    {
+        var next = services.GetRequiredService&lt;Confirmation&gt;();
+        …
+    }
+
+    public void Previous()
+    {
+        var previous = services.GetRequiredService&lt;LicenseKeyEntry&gt;();
+        …
+    }
+}
+</pre></div>
+
+
+<p>But this reeks of a code smell. The class was now bound to the types in the specific dependency injection framework. Switching over to another framework or removing it altogether would be difficult. Testing and mocking became more complicated, because the unit tests would now have to inject DI container, which would contain the mock types.</p>
+
+
+
+<h3>A Workaround</h3>
+
+
+
+<p>While the approach shown above is not advisable, it does demonstrate the strategy of using lazy resolution to break circular dependencies. .NET contains a built-in <code>Lazy&lt;T&gt;</code> type that can be leveraged for the job.</p>
+
+
+
+<p>Begin by changing the constructor signatures to use <code>Lazy&lt;T&gt;</code>, where <code>T</code> is the actual type that is required.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public RegistrationForm(Lazy&lt;LicenseKeyEntry&gt; previous, Lazy&lt;Confirmation&gt; next) { … }
+</pre></div>
+
+
+<p>Then, inject the Lazy types into the service container.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+services.AddSingleton&lt;LicenseKeyEntry&gt;();
+services.AddSingleton&lt;RegistrationForm&gt;();
+services.AddSingleton&lt;Confirmation&gt;();
+services.AddTransient&lt;Lazy&lt;RegistrationForm&gt;&gt;();
+services.AddTransient&lt;Lazy&lt;LicenseKeyEntry&gt;&gt;();
+services.AddTransient&lt;Lazy&lt;Confirmation&gt;&gt;();
+</pre></div>
+
+
+<p>This removes the circular dependency because these types don&#8217;t have a direct reference to each other. But it&#8217;s important that the value of the dependent types is not realised in the constructor. They should continue to hold a reference to the <code>Lazy&lt;T&gt;</code> type instead, and only reify the underlying instance later down the line.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class RegistrationForm : Form
+{
+    private Lazy&lt;LicenseKeyEntry&gt; _previous;
+    private Lazy&lt;Confirmation&gt; _next;
+
+    public RegistrationForm(Lazy&lt;LicenseKeyEntry&gt; previous, Lazy&lt;Confirmation&gt; next)
+    {
+        _previous = previous;
+        _next = next;
+    }
+
+    public void Next()
+    {
+        var next = _next.Value;
+        …
+    }
+
+    public void Previous()
+    {
+        var previous = _previous.Value;
+        …
+    }
+}
+</pre></div>
+
+
+<h3>Addendum</h3>
+
+
+
+<p>Thomas Levesque wrapped this into an elegant implementation that is exposed by a simple extension method on the service collection. <a href="https://thomaslevesque.com/2020/03/18/lazily-resolving-services-to-fix-circular-dependencies-in-net-core/">The full article is available on his blog.</a></p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public static class ServiceCollectionExtensions
+{
+    public static IServiceCollection AddLazyResolution(this IServiceCollection services)
+    {
+        return services.AddTransient(typeof(Lazy&lt;&gt;), typeof(LazilyResolved&lt;&gt;));
+    }
+
+    private class LazilyResolved&lt;T&gt; : Lazy&lt;T&gt;
+    {
+        public LazilyResolved(IServiceProvider serviceProvider) : base(serviceProvider.GetRequiredService&lt;T&gt;)
+        {
+        }
+    }
+}
+</pre></div>
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-2042" class="post-2042 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-c">
+	<div class="blog-item-wrap">
+				<a href="/porting-a-windows-forms-application-to-net-6-part-2/" title="Porting a Windows Forms Application to .NET – Part 2" >
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/DSC_0142-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark">Porting a Windows Forms Application to .NET – Part 2</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/porting-a-windows-forms-application-to-net-6-part-2/" rel="bookmark"><time class="entry-date published" datetime="2022-12-28T22:41:02+05:30">December 28, 2022</time><time class="updated" datetime="2023-01-18T14:51:25+05:30">January 18, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><a href="/porting-a-windows-forms-application-to-net-6-part-1/" data-type="post" data-id="1992">Previously</a>, I described the legacy of the Vertika Player, the bottlenecks in its initial development, some elementary efforts to refactor the code, and a major roadblock that came from the deprecation of the Flash Player.</p>
+
+
+
+<p>Once we decided to move to .NET, work began in full earnest. Enthusiasm was running high, and nothing seemed impossible. Don&#8217;t mind the old code. It was trash. We&#8217;d rewrite everything from scratch! Heck, we were so smart, we could do it twice over. But this fervour lasted all of 15 minutes before we folded up and rolled back all our changes.</p>
+
+
+
+<p>I&#8217;m exaggerating, of course. We did write a new application shell from scratch, using newer APIs like the <code>Microsoft.Extensions.Hosting.IHost</code> interface and its dependency injection framework for some of the most fundamental classes that were needed. But there was immense pressure to get the product out of the door. Remember that the Flash Player uninstaller was well and truly active now, and support staff were working overtime to keep up with restoring it every time it got nuked. After a couple of weeks of this effort, the enormity of the exercise hit us and we fell back to copying files wholesale from the old code-base. On the brighter side, in spite of rewriting only a small portion of the code, the groundwork had been laid for more significant breakthroughs in the near future.</p>
+
+
+
+<p>The singular monolith had been deconstructed into separate projects based on functionality, such as the primary executable, model classes, and the web API host. Over the following months, we added more projects to isolate critical portions of data synchronisation, the network download library (eventually replaced by <a href="https://github.com/bezzad/Downloader">the Downloader library, written by Behzad Khosravifar</a>) and background services.</p>
+
+
+
+<h3>A SOAP-y Muddle</h3>
+
+
+
+<p>There&#8217;s a significant chunk of the application functionality that depends on communicating with a remote SOAP service (stop sniggering; this stuff is from 15 years ago). Visual Studio continues to provide tools to automatically generate a SOAP client from a service. But the output does not maintain API compatibility with the client generated with earlier versions of the tool. Among the methods missing from the new client are the synchronous variants of the service calls, which, unfortunately, were a mainstay in the earlier application code.</p>
+
+
+
+<p>That&#8217;s right. Microsoft used to ship tools that allowed developers to make synchronous network calls.</p>
+
+
+
+<p>But this is all gone now. And I had a problem on my hands.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = serviceClient.GetUsers();
+}
+</pre></div>
+
+
+<pre class="wp-block-code"><code>CS1061	'ServiceClient' does not contain a definition for 'GetUsers' and no accessible extension method 'GetUsers' accepting a first argument of type 'object' could be found (are you missing a using directive or an assembly reference?)</code></pre>
+
+
+
+<p>Welp!</p>
+
+
+
+<p>Calling asynchronous code from previously written synchronous methods was not going to be easy. Web service calls were tightly integrated in many classes that were still oversized even after aggressive refactoring. Stephen Cleary&#8217;s AsyncEx library came to our rescue. Asynchronous method invocations were wrapped inside calls to <code>AsyncContext.Run()</code>, which we liberally abused to build a synchronous abstraction over the TAP interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code csharp"><pre class="brush: csharp; title: ; notranslate" title="">
+public void ClickHandler(object sender, MouseEvent e)
+{
+    var users = AsyncContext.Run(serviceClient.GetUsersAsync());
+}
+</pre></div>
+
+
+<p>This was much better than the alternative of calling <code>Wait()</code> or <code>Result</code> directly on the task. In addition to blocking what could potentially be the UI thread, it would also wrap any exceptions thrown during the invocation into an additional <code>AggregateException</code>. And anybody who&#8217;s dealt with <code>InnerException</code> hell knows how bad that can be.</p>
+
+
+
+<p>The second API incompatibility was in the collection types returned from the service. The earlier service client returned a <code>System.Data.DataSet</code> type for collections. This was changed to a new type called <code>ArrayOfXElement</code>. Fortunately, this was an easy fix with a simple extension method to convert the <code>ArrayOfXElement</code> into a <code>DataSet</code>.</p>
+
+
+
+<h3>Wrapping Up and Rolling Out</h3>
+
+
+
+<p>The hour of reckoning arrived about 5 months later, when we finally removed references to the Flash Player ActiveX control from the project, replacing them with the WebView2 control. The minuscule amount of effort required of this step belies the enormity of its significance. Flash had been our rendering mainstay for over a decade. All those thousands of man-hours invested into the application were gone in a blink of an eye, replaced with a still-wet-behind-the-ears port to Blazor. This was the first time in the history of the company that legacy code was discarded entirely, and rewritten from scratch on an empty slate.</p>
+
+
+
+<p>The new product was deployed to several test sites for a month to ensure that everything worked as expected. And other than a few basic layout errors, there were no problems that we encountered. The porting exercise was a success, and offered a major lifeline to the business.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1992" class="post-1992 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-c">
+	<div class="blog-item-wrap">
+				<a href="/porting-a-windows-forms-application-to-net-6-part-1/" title="Porting a Windows Forms Application to .NET – Part 1" >
+				<img width="750" height="384" src="/wp-content/uploads/2022/12/IMG_20190924_125400-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/porting-a-windows-forms-application-to-net-6-part-1/" rel="bookmark">Porting a Windows Forms Application to .NET – Part 1</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/porting-a-windows-forms-application-to-net-6-part-1/" rel="bookmark"><time class="entry-date published" datetime="2022-12-24T15:56:16+05:30">December 24, 2022</time><time class="updated" datetime="2023-01-18T14:50:46+05:30">January 18, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>In a time when every dinky software company is writing massive systems that run in The Cloud™, it&#8217;s a source of astonishment for some to hear about my continued work on a desktop application. It&#8217;s not quite the same effort as synchronising 5K posts per second with millions of followers. But it does have its high notes nevertheless.</p>
+
+
+
+<h3>Understanding the Legacy</h3>
+
+
+
+<p>Like many products from early-stage startups, the first iteration of the Vertika Player was built as a proof-of-concept. The objective was to fetch text, video and images from a web service and play it on a large screen. But the underlying Windows Forms framework wasn&#8217;t really geared towards rendering multimedia content. So a separate application was written in ActionScript, which was hosted inside the Windows Forms application through the Flash Player ActiveX control.</p>
+
+
+
+<p>Even during those days, web development was topping the list of desired programming skills. Nobody on the original team had significant experience engineering a desktop application. As a result, it came to be that most of the code got piled into the main window class, a couple of static utility classes, and a single god class containing approximately 200 public fields to maintain application state. The latter was referenced hither and yon all over the project. It was awful. The project was so fragile that even changing a simple network port number was fraught with risk of breakages in parts of the application that had nothing to do with networking.</p>
+
+
+
+<p>Apparently, none of the programmers understood the significance of the UI thread, or even basic threading in general. Resource contentions were handled with a hail Mary running inside an infinite loop.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+while (!result)
+{
+    try
+    {
+        xmlDoc.Save(FilePath);
+        result = true;
+    }
+    catch (Exception exception)
+    {
+        log.Error(&quot;An error occurred while saving to disk&quot;);
+    }
+}
+</pre></div>
+
+
+<p>There were some hard to replicate bugs that reared their heads at times. Support incidents came up occasionally about missing content, or false alarms were raised when the telemetry and monitoring thread went awry. A particularly egregious bug was the cause for occasional runaway file downloads that never stopped, appending the same sequence of bytes in a file ad infinitum. To the end user, the file would seem to grow continuously until it filled the entire hard disk.</p>
+
+
+
+<p>But in spite of all these issues, the application worked as expected more often than it didn&#8217;t. It generated steady revenue from paying customers who were mostly pleased with its performance. Support staff had formulated scripts for almost every scenario that they were likely to encounter. They could identify symptoms and were able to get in and resolve the problem quickly.</p>
+
+
+
+<h3>Ringing in the New</h3>
+
+
+
+<p>Teams changed, until there was nobody left who had worked on the first iteration of the product.</p>
+
+
+
+<p>New features were gradually added over time. But architectural issues continued to fester, while more lines of code were added to already expansive classes. At one time, the main window class exceeded 5,000 lines of code. It wasn&#8217;t a pleasant experience maintaining this project. But the one thing that we all agreed upon was that we would never discard the project and start from scratch. We bided our time and waited for an opportunity to refactor the application.</p>
+
+
+
+<p>We got our foot in when customers started reporting stutter during playback after minor update. Telemetry reports had to include a screen shot of the running application. But due to data caps at many locations, captured images used to be down-sampled to postage stamp sizes before uploading. Network capacities had recently been improved, and screen shot dimensions were increased accordingly.</p>
+
+
+
+<p>Herein lay the catch. A 100 pixel square image is about 2 KB in size. But a 500 pixel square accounts for a 25x increase in data. The code to upload the image was being executed on the UI thread, blocking it while the network request was completing. This was imperceptible when the file sizes were small. But it became immediately noticeable once the images sizes were increased. It was glaringly obvious during playback of video because of periodic frame freeze that occurred while an image was uploaded.</p>
+
+
+
+<p>We chose the expeditious fix for the time being. Instead of directly calling the upload method, it was wrapped into a <code>WaitCallback</code> delegate and queued for later execution through <code>ThreadPool.QueueUserWorkItem()</code>. The UI thread was freed up again, solving the playback stutters. But we made dozens of commits in the project while working our way to these few lines of change. This was the chance we were looking for. We had to get the cat out of the bag.</p>
+
+
+
+<p>All our early modifications were mechanical and low-risk. Auto-format the code. Reduce the API surface area by hiding unnecessary public members. Remove dead and commented lines of code.</p>
+
+
+
+<p>This exercise gave us the exposure to the codebase that was necessary to make further modifications. Further refactoring was driven by some of the SOLID principles. If we found a class that was doing too many things, we&#8217;d try to split it into different types with individual responsibilities. Interfaces were scarcely in use so far. So we began to define some new ones, being careful to contain their scope. But dependency inversion wasn&#8217;t quite as high on our list of priorities. .NET Framework didn&#8217;t ship with built-in DI features, and adding a third-party library for the job would impede our path to upgrade to .NET Core later down the line.</p>
+
+
+
+<p>Over time, the quality of the codebase improved, and our knowledge of its internal working increased. There were few changes which were visible to the end user. In general, it was just a little more robust, faster to launch and run, and the UI looked a bit tidier.</p>
+
+
+
+<h3>The Demise of Flash</h3>
+
+
+
+<p>Come January 2021, disaster struck. Flash had been on its last legs since a long time. But nobody expected Adobe to pull the rug from under us by forcefully removing the plug-in from all computers. This bricked every deployed instance of the application. Nothing could be displayed on any screen without the Flash Player.</p>
+
+
+<div class="wp-block-image">
+<figure class="aligncenter size-full"><img decoding="async" loading="lazy" width="382" height="206" src="/wp-content/uploads/2022/12/flash-disabled.png" alt="" class="wp-image-2090"/><figcaption class="wp-element-caption">He&#8217;s dead, Jim.</figcaption></figure></div>
+
+
+<p>We scrambled to find workarounds, such as installing older versions of Flash Player that did not contain the the self-destruct switch, blocking Windows Updates, and even deploying older versions of Windows that shipped with working versions of Flash. These were all temporary solutions. The juggernaut was unstoppable, and we were fielding support calls every week that involved a missing Flash Player. In addition to the technical complexities, Adobe had also revoked the license to install and run the Flash Player. Continuing to use it was exposing the company to legal ramifications that nobody wanted to deal with. We needed an alternative for Flash as soon as possible.</p>
+
+
+
+<h3>Blazing Guns of Glory</h3>
+
+
+
+<p>Our salvation came in the form of the recently released Blazor framework from Microsoft. Built on the C# language, it borrowed a lot of concepts from ASP.NET and MVC. A crack team of developers was assembled, with the singular motive of porting the entire Flash application into Blazor. This was a significant diversion from our ground rule to never throw away everything and start from scratch.</p>
+
+
+
+<p>Blazor generates a web application that runs in a browser. Embed a browser control into a Windows Forms project, and voila! It works just the same as the Flash application. The only significant difference was the communication protocol across process boundaries. Flash used to expose a TCP sockets API to communicate with the host process. Since web browsers don&#8217;t expose any such interface, we had to fall back upon standard HTTP. The hosting process would expose a web API that would be accessible on localhost over the HTTP protocol.</p>
+
+
+
+<p>The last item was a significant pivot point. Hosting a HTTP API would require a web server, for which there were limited options that worked within the .NET Framework ecosystem. HttpListener was far too low-level. Cassini wasn&#8217;t as tightly integrated. GenHttp came with its own learning curve. In the long-term, it was going to be far better to switch from .NET Framework to .NET 5. And it shipped with its own built-in web server that supported running ASP.NET Web API out of the box.</p>
+
+
+
+<p>The writing was on the wall. We would be porting to .NET 5.</p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+
+
+<p></p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1597" class="post-1597 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
 	<div class="blog-item-wrap">
 				<a href="/valknut-json-serialization/" title="Valknut &#8211; JSON Serialization" >
-				<img width="750" height="384" src="/wp-content/uploads/2020/09/DSC_4230-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2020/09/DSC_4230-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -451,385 +938,12 @@ search&#91;regex]=false
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1590" class="post-1590 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
-	<div class="blog-item-wrap">
-				<a href="/valknut-validation/" title="Valknut &#8211; Validation" >
-				<img width="750" height="384" src="/wp-content/uploads/2020/09/DSC_5030-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/valknut-validation/" rel="bookmark">Valknut &#8211; Validation</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-validation/" rel="bookmark"><time class="entry-date published" datetime="2020-09-04T07:43:48+05:30">September 4, 2020</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<h3>Introduction</h3>
-
-
-
-<p>ASP.NET MVC has always had a robust request validation model that is easily harnessed. The model in question has to be decorated with validation attributes from a broad collection of possibilities, and the framework takes care of ensuring compliance and distilling it into a single boolean that can be referenced from <code>ModelState.IsValid</code>.</p>
-
-
-
-<p>Nothing could be easier.</p>
-
-
-
-<p>However, this approach requires that the programmer must remember to write the code to perform a validation check in each action method. This is tedious and error-prone, and results in duplicated code.</p>
-
-
-
-<p>It is possible to implement this functionality in a more modular fashion by implementing it as a filter attribute and plugging it into the ASP.NET request pipeline.</p>
-
-
-
-<h3>Passive Attributes</h3>
-
-
-
-<p>Before we go into the implementation of the filter itself, there is a slight design idiosyncracy that has to be understood. Request filtering through a class that derives from <code>ActionFilterAttribute</code> is a common enough pattern. A request is filtered through this attribute if the method implementing its corresponding action is decorated with this attribute. But this approach imposes various technical restrictions and design compromises.</p>
-
-
-
-<p>A more robust approach is to decorate the action method with a non-behavioural attribute that derives from <code>Attribute</code>, and adding the filter directly into the global filter collection.</p>
-
-
-
-<p>Passive attributes are described by Mark Seemann at the link below.</p>
-
-
-
-<p><a href="https://blog.ploeh.dk/2014/06/13/passive-attributes/">Passive Attributes</a></p>
-
-
-
-<h3>Implementation</h3>
-
-
-
-<p>The passive attribute approach results in an attribute class called <code>ValidateModelAttribute</code>. Any method that requires model validation can be decorated with this attribute.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-&#91;HttpPost]
-&#91;ValidateModel]
-public ActionResult Edit(PageViewModel&lt;ExerciseEditViewModel&gt; viewModel)
-</pre></div>
-
-
-<p>A <code>RequestValidateModelFilter</code> class implements the <code>IActionFilter</code> interface and is added into the global filters collection during the <code>Application_Start</code> event. When an incoming request arrives, it is passed through the <code>RequestValidateModelFilter</code> instance, which checks if the request requires validation, and if so, checks if the <code>IsValid</code> property of the model state is true.</p>
-
-
-
-<p>If the model state is not valid, then the request pipeline is truncated and all validation errors are gathered into a JSON response. The application returns a HTTP status code 400 along with the list of errors in the body of the response.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1586" class="post-1586 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
-	<div class="blog-item-wrap">
-				<a href="/valknut-localisation/" title="Valknut &#8211; Localisation" >
-				<img width="750" height="178" src="/wp-content/uploads/2020/09/IMG_3806-750x178.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/valknut-localisation/" rel="bookmark">Valknut &#8211; Localisation</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-localisation/" rel="bookmark"><time class="entry-date published" datetime="2020-09-03T14:38:51+05:30">September 3, 2020</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<h3>Client-specific Regional Settings</h3>
-
-
-
-<h4>Request Structure</h4>
-
-
-
-<p>Valknut implements localisation of temporal data to match the client&#8217;s preferred locale through the use of the <code>Accept-Language</code> header in an incoming request. The value of this header can be an array of one or more language tags, such as en-US, along with a weightage indicator for the language.</p>
-
-
-
-<p>This value is set automatically by the browser based on the regional settings of the operating system, and can be overridden by the user to suit their needs. The language tag may be followed by an optional quality factor parameter that indicates the preferred weightage to the given language tag. The value of the q-factor is a decimal number between 0 to 1.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-en-US;q=1,en-GB;0.5
-</pre></div>
-
-
-<p>The above example indicates that the client prefers American as well as British English, with a higher preference for American English.</p>
-
-
-
-<p>An example of an entire <code>Accept-Language</code> header is shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-Accept-Language: en, en-GB;q=0.8, hi;q=0.7
-</pre></div>
-
-
-<p>This is equivalent to having the value <code>en;q=1,en-GB;q=0.8,hi;q=0.7</code>.</p>
-
-
-
-<h4>Server-side Extraction</h4>
-
-
-
-<p>On the server side, the framework parses the header and automatically populates the <code>UserLanguages</code> property of the request object. The type of <code>UserLanguages</code> is <code>string[]</code>, and its entries are sorted in descending order by the quality factor. In the example above, the language tag en is the first entry, and hi is the last entry.</p>
-
-
-
-<p>Once the request language has been determined, the method checks if it is whitelisted in the allowedLanguages parameter. It first checks if the entire language tag and its subtag are present in the whitelist, or failing that, if the language tag alone is found. That way, if the application only supports French language localisation, but the request contains the tag fr-CA, the response is still localised to the French language, even though it does not contain Canadian region-specific date or number formatting.</p>
-
-
-
-<p>In spite of all this, if the method is unable to determine the preferred language from the request, it applies the culture that is currently active on the operating system.</p>
-
-
-
-<h4>Request Handling</h4>
-
-
-
-<p>The server matches the current culture of the thread fulfilling the request to a value from this array in order to process the request in a culture-aware manner. Currently this extends to temporal data, with scope for future support for UI string localisation, formatting of numerical data, units of measurement and iconography.</p>
-
-
-
-<p>The code to configure this for the current thread is written in an extension method on the <code>System.Web.HttpApplication</code> class.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-void SetLocale(this HttpApplication application, 
-    string culture = null, 
-    string uiCulture = null, 
-    bool setUiCulture = true, 
-    string allowedLocales = null)
-</pre></div>
-
-
-<p>This method is invoked from the <code>Application_BeginRequest</code> event handler, because the locale has to be set separately for each request. The <code>SetLocale</code> method is called directly from this event handler. The method is invoked without any parameters, which indicates that the preferred locale has to be inferred from the request headers.</p>
-
-
-
-<p>If the <code>Accept-Language</code> header is not present in the request, the method falls back upon the regional settings configured on the server to handle the request.</p>
-
-
-
-<p>The <code>Thread</code> class has two properties to set the culture.</p>
-
-
-
-<ol><li>CurrentCulture, which determines the writing system (LTR or RTL), calendar, string sorting and formatting of date and time strings.</li><li>CurrentUICulture, which determines the resource file used by the Resource Manager to localise the strings, icons and other non-code assets for the application.</li></ol>
-
-
-
-<p>This separation allows applications to be able to handle regional settings for data even if it does not support region-specific UI labels. The <code>SetLocale</code> method sets both properties to the same culture unless the value of <code>setUiCulture</code> is false.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1584" class="post-1584 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
-	<div class="blog-item-wrap">
-				<a href="/valknut-domain-model/" title="Valknut &#8211; Domain Model" >
-				<img width="750" height="384" src="/wp-content/uploads/2020/09/vlcsnap-2021-01-11-12h42m33s116-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/valknut-domain-model/" rel="bookmark">Valknut &#8211; Domain Model</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-domain-model/" rel="bookmark"><time class="entry-date published" datetime="2020-09-03T13:39:00+05:30">September 3, 2020</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The application centres around log entries. Every time you train, you create a log entry. The log entry stores the time when the training session was started and completed. The log entry contains a collection of sets. A set consists of one or more repetitions of a single exercise at a uniform intensity.</p>
-
-
-
-<p>All other entities in the domain model projects out from this central requirement.</p>
-
-
-
-<p>A set consists of an exercise and repetitions. Exercises are categorised by muscle groups. Hence there are exercises and categories.</p>
-
-
-
-<p>Sequences of sets are organised into a routine, which serve as a template for a training log.</p>
-
-
-
-<ol>
-<li>Categories – A list of body muscle groups, which is used to classify exercises.</li>
-
-
-
-<li>Exercises – A list of body activities for improved strength, conditioning, agility or endurance.</li>
-
-
-
-<li>Repetitions – The number of times a complete motion of an exercise has to be executed.</li>
-
-
-
-<li>Sets – A group of continuous, consecutive repetitions of the same exercise.</li>
-
-
-
-<li>Routines – A collection of several sets of one or more exercises, to be performed sequentially.</li>
-
-
-
-<li>Training Logs – A record of the date, time and duration when a particular routine was performed.</li>
-</ol>
-
-
-
-<h3>Categories</h3>
-
-
-
-<p>Categories muscle groups in the body. This list is static and has no user-interface elements to modify its contents. It is created when the database for the application is initially created, and remains unchanged throughout its lifetime. The full list of categories included in Valknut is given below.</p>
-
-
-
-<ol>
-<li>Abdominals</li>
-
-
-
-<li>Abductors</li>
-
-
-
-<li>Adductors</li>
-
-
-
-<li>Biceps</li>
-
-
-
-<li>Body</li>
-
-
-
-<li>Calves</li>
-
-
-
-<li>Chest</li>
-
-
-
-<li>Forearms</li>
-
-
-
-<li>Glutes</li>
-
-
-
-<li>Hamstrings</li>
-
-
-
-<li>Lats</li>
-
-
-
-<li>Lower Back</li>
-
-
-
-<li>Middle Back</li>
-
-
-
-<li>Neck</li>
-
-
-
-<li>Quadriceps</li>
-
-
-
-<li>Shoulders</li>
-
-
-
-<li>Traps</li>
-
-
-
-<li>Triceps</li>
-</ol>
-
-
-
-<p>Some fitness-training literature uses the term category to describe the the primary goal of the exercise. These systems consist of strength, hypertrophy, endurance, flexibility, balance, agility, speed, power and accuracy. This aspect is (partially) fulfilled in Valknut by the exercise property called type.</p>
-
-
-
-<h3>Exercises</h3>
-
-
-
-<p>An exercise has a name, a category and a type. Categories and types have been explained above. New exercises can be created at any time, but to delete an exercise, its entries from the routines and log entries must be remove manually beforehand.</p>
-
-
-
-<h3>Routines</h3>
-
-
-
-<p>A routine is a sequence template. It describes the desired initial structure of a training session as a series of exercises to be performed, the number of sets for each exercise, the intensity of the set, and the number of repetitions to be performed. Weights and repetitions for each set can differ in order to create straight, pyramid or reverse-pyramid patterns.</p>
-
-
-
-<h3>Training Log</h3>
-
-
-
-<p>The training log is a memo of the name of the workout, the sequence, intensity and repetitions of its component exercises, the date and time when it was performed and the duration it took.</p>
-
-
-
-<p>Routines serve as a template for a log entry. When a new entry is added to the training log, the sequence of exercises, the number of sets, the intensity of the exercise and the number of repetitions are copied from a previously created routine. But log entries do not retain any association with the routine. If the routine is modified after a log entry has been created, its modifications do not reflect on the log entry. Conversely, the sequence of exercises and sets in a log entry can be altered without affecting the routine from which it was created.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
 <a class="page-numbers" href="/tag/c/page/2/">2</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="/tag/c/page/7/">7</a>
+<a class="page-numbers" href="/tag/c/page/8/">8</a>
 <a class="next page-numbers" href="/tag/c/page/2/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -855,7 +969,8 @@ void SetLocale(this HttpApplication application,
 			<aside id="archives" class="widget">
 				<h3 class="widget-title">Archives</h3>
 				<ul>
-						<li><a href='/2022/12/'>December 2022</a></li>
+						<li><a href='/2023/01/'>January 2023</a></li>
+	<li><a href='/2022/12/'>December 2022</a></li>
 	<li><a href='/2020/09/'>September 2020</a></li>
 	<li><a href='/2020/06/'>June 2020</a></li>
 	<li><a href='/2019/12/'>December 2019</a></li>
@@ -951,45 +1066,45 @@ void SetLocale(this HttpApplication application,
 <li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
 <a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
 <a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
 <a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
 <a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
 <a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
 <a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1033,6 +1148,7 @@ void SetLocale(this HttpApplication application,
 		  })
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
 <script type='text/javascript'>
 	(function(){

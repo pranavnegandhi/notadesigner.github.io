@@ -163,10 +163,617 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Tag: <span>c#</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1688" class="post-1688 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-bridge tag-c tag-practical-design-patterns">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-bridge/" title="Practical Design Patterns in C# &#8211; Bridge" >
+				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4704-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-bridge/" rel="bookmark">Practical Design Patterns in C# &#8211; Bridge</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-bridge/" rel="bookmark"><time class="entry-date published" datetime="2019-01-20T18:12:00+05:30">January 20, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Intent</h3>
+
+
+
+<p>The bridge pattern is designed to separate the implementation of a functionality from its interface. The benefits of this approach are seen when the functionality has multiple implementations which can be swapped out without changing the API. But the separation of concerns can also prove useful when the system is backed by only a single implementation. The client API can continue to remain stable even if the entire implementation changes, because the client is shielded from its effects.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<h3>Solution</h3>
+
+
+
+<p>This example demonstrates the use of this pattern by building a playlist which stores and cycles through audio tracks. Tracks can be retrieved in linear or random order. The playlist can either stop after it has cycled over all the items, or loop back and begin afresh.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class Playlist
+{
+    private readonly IPlaylistImpl _playlistImpl;
+
+    public async Task PlayAsync()
+    {
+        …
+        var item = _playlistImpl.Next();
+        while (item != null)
+        {
+            // Perform an operation on the item.
+            …
+
+            // Pick the next item.
+            item = _playlistImpl.Next();
+        }
+    }
+}
+</pre></div>
+
+
+<p>This class defines the public API of the playlist. The client populates the audio tracks through the usual collection API (not shown here), after which it invokes the <code>PlayAsync</code> method to start iterating through the list. Once it reaches the end of the list, it stops.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XOxB2i9034Nt-OeHDugqdo28k2Y8IFyWjgaEPD9X9ZxguzzjfHNgnbL2EEVcmaHFvCXSx26WA1ICCPezOyCsgdd0ejjNiP5YDeSNM54A5HPaiW7AdESEpEB6UMrQRB6ZctOpfqZwyRw9TLBMLqcMOx__ksPBecRgaUaOY0JwIy9KQIiD3coj48PHXVJiq-TlRevIrixUgVpFlW40" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>class Playlist {<br />
++PlayAsync()<br />
+}</p>
+<p>interface IPlaylistImpl {<br />
++IsEmpty()<br />
++Next()<br />
++Reset()<br />
+}</p>
+<p>Playlist o-down-> IPlaylistImpl</p>
+<p>class Client #palegreen</p>
+<p>Client -left-> Playlist</p>
+<p>LinearPlaylistImpl .up.|> IPlaylistImpl<br />
+RandomizedPlaylistImpl .up.|> IPlaylistImpl<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<p>This is coupled with the implementation, defined by the <code>IPlaylistImpl</code> interface, and referenced by the <code>_playlistImpl</code> field.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public interface IPlaylistImpl
+{
+    bool IsEmpty();
+
+    string Next();
+
+    void Reset();
+}
+</pre></div>
+
+
+<p>This interface is implemented by the <code>LinearPlaylistImpl</code> and <code>RandomizedPlaylistImpl</code> classes, each of which approaches the collection of items differently. The linear playlist iterates over each audio track in the same order that they are stored in the items array.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class LinearPlaylistImpl : IPlaylistImpl
+{
+    private readonly string&#091;] _items;
+
+    private readonly IEnumerator _enumerator;
+
+    public LinearPlaylistImpl(IEnumerable&lt;string&gt; items)
+    {
+        _items = items.ToArray();
+        _enumerator = _items.GetEnumerator();
+    }
+
+    public bool IsEmpty()
+    {
+        return _items.Count() == 0;
+    }
+
+    public string Next()
+    {
+        if (_enumerator.MoveNext())
+        {
+            return _enumerator.Current as string;
+        }
+
+        return null;
+    }
+
+    public void Reset()
+    {
+        _enumerator.Reset();
+    }
+}
+</pre></div>
+
+
+<p>The randomized playlist picks an item at random from the list, marks it visited so it is not repeated, and stops after all audio tracks have been visited.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class RandomizedPlaylistImpl : IPlaylistImpl
+{
+    private readonly List&lt;string&gt; _items;
+
+    private readonly Random _random = new Random((int)DateTime.Now.Ticks);
+
+    private readonly Queue&lt;string&gt; _usedItems;
+
+    public RandomizedPlaylistImpl(IEnumerable&lt;string&gt; items)
+    {
+        _items = new List&lt;string&gt;(items);
+        _usedItems = new Queue&lt;string&gt;();
+    }
+
+    public bool IsEmpty()
+    {
+        var c1 = _items.Count;
+        var c2 = _usedItems.Count;
+
+        return c1 + c2 == 0;
+    }
+
+    public string Next()
+    {
+        if (_items.Count &gt; 0)
+        {
+            var index = _random.Next(_items.Count);
+            var item = _items&#091;index];
+            _items.Remove(item);
+            _usedItems.Enqueue(item);
+
+            return item;
+        }
+
+        return null;
+    }
+
+    public void Reset()
+    {
+        while (_usedItems.Count &gt; 0)
+        {
+            var item = _usedItems.Dequeue();
+            _items.Add(item);
+        }
+    }
+}
+</pre></div>
+
+
+<h4>Emergent Behaviour</h4>
+
+
+
+<p>The real magic of this approach becomes more evident once you add looping to the Playlist class. Since the effect of looping is the same on all implementations, it is best stored in the Playlist itself.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class Playlist
+{
+    …
+    public bool IsLooping()
+    {
+        get;
+        set;
+    }
+    …
+}
+</pre></div>
+
+
+<p>When all items have been iterated through, the state of this property is checked. If looping is not enabled, the playback loop exits. If it is set, the playlist implementation is reset back to the first index and the iteration process is begun afresh.</p>
+
+
+
+<p></p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1632" class="post-1632 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-adapter tag-c tag-practical-design-patterns">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-adapter/" title="Practical Design Patterns in C# &#8211; Adapter" >
+				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4763-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-adapter/" rel="bookmark">Practical Design Patterns in C# &#8211; Adapter</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-adapter/" rel="bookmark"><time class="entry-date published" datetime="2019-01-10T09:14:00+05:30">January 10, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Intent</h3>
+
+
+
+<p>The intent of this pattern is to convert the API to an existing library, usually to encapsulate legacy code, simplify its use or provide an alternative output format, into a different interface that a client expects.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<h3>Solution</h3>
+
+
+
+<p>There are many examples of this interface in the real world. Cross-platform GUI toolkits are adapters around the underlying API for each supported platform. Clients can continue to use the API provided by GTK+, Windows Forms or Qt, for their applications that run on Windows, macOS or GNOME. The library takes care of translating the API invocations into native equivalents.</p>
+
+
+
+<p>There are many simpler examples of the adapter pattern. A data-driven website is an adapter. It lets web browsers retrieve contents from a database over HTTP instead of running SQL queries on the database engine. It converts the API from SQL to HTTP.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XOzDYi9048NtTOeIDoCI3n0a89cDYq6lK7QUIJDjTUYk2SWmTpU88wAeswhtlH-QM8S3UF2x96haWkJCdpv_htKVjoaEla7YNvhNCGGuM-MZkeyP_LsaTJpq0OQ6bqiCKAigUi2Bek8lKMd7ABNw39Ri4iJmJhtfaSHyrCqk8mtZ_pcvM5GtXKhkH9k0_wR1ZtOyxIMWJO3IvL8attOsXZxubVoJaUbLcIjyczlut8kvZkv7lv-cqVp-I2S0" alt="PlantUML Syntax:</p>
+<p>!theme vibrant</p>
+<p>class DiskInfoProvider {<br />
++CollectAsync()<br />
+}</p>
+<p>class Completed <<event>></p>
+<p>DiskInfoProvider &#8211;> ManagementClass : create<br />
+DiskInfoProvider &#8211;> ManagementOperationObserver : create<br />
+DiskInfoProvider ..> Completed : handle</p>
+<p>class Client #palegreen</p>
+<p>Client -right-> DiskInfoProvider : uses</p>
+<p>ManagementOperationObserver -right-> Completed : dispatch</p>
+<p>ManagementClass &#8211;> ManagementOperationObserver : notify<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<p>Modern-day C# applications are often built around the task-based asynchronous pattern, but may need to utilise legacy frameworks or libraries that do not have task-based APIs. The Windows Management Instrumentation (WMI) API is a good example. The <code>ManagementClass</code> and <code>ManagementOperationObserver</code> types work collectively to query the WMI database and raise an event when the results are retrieved.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class WmiClient
+{
+  public void GetDiskData()
+  {
+    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
+    var watcher = new ManagementOperationObserver();
+    watcher.Completed += WatcherCompletedHandler;
+    management.GetInstances(watcher);
+  }
+
+  private void WatcherCompletedHandler(object sender, CompletedEventArgs e)
+  {
+    // Consume the results of the operation.
+    …
+  }
+}
+</pre></div>
+
+
+<p>The code below illustrates how an adapter can convert this into a task-based asynchronous interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class DiskInfoProvider
+{
+  public async Task&lt;PropertyDataCollection&gt; CollectAsync()
+  {
+    var tcs = new TaskCompletionSource&lt;PropertyDataCollection&gt;();
+    var watcher = new ManagementOperationObserver();
+
+    // The event handler that gets invoked by the watcher.
+    var completedHandler = default(CompletedEventHandler);
+    completedHandler = new CompletedEventHandler((sender, e) =&gt;
+    {
+      var tcsLocal = tcs;
+      try
+      {
+        if (e.Status == ManagementStatus.NoError)
+        {
+          // The operation was completed without any errors.
+          tcsLocal.SetResult(e.StatusObject.Properties);
+          return;
+        }
+
+        if (e.Status == ManagementStatus.CallCanceled || e.Status == ManagementStatus.OperationCanceled)
+        {
+          // The task was cancelled before it could be completed.
+          tcsLocal.SetCanceled();
+          return;
+        }
+
+        // An exception occurred during the operation.
+        tcsLocal.SetException(new Exception($&quot;Runtime error {e.Status}&quot;));
+        return;
+      }
+      finally
+      {
+        // Clean up the event handlers.
+        watcher.Completed -= completedHandler;
+      }
+    });
+
+    // Wire up the event handler and begin the operation.
+    watcher.Completed += completedHandler;
+    var management = new ManagementClass(&quot;Win32_LogicalDisk&quot;);
+    management.GetInstances(watcher);
+    return tcs.Task;
+  }
+}
+</pre></div>
+
+
+<p><code>DiskInfoProvider</code> encapsulates <code>ManagementOperationObserver</code> and <code>ManagementClass</code>. The client instantiates <code>DiskInfoProvider</code> and awaits the results from <code>CollectAsync()</code>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class WmiClient
+{
+  public void GetDiskData()
+  {
+    var provider = new DiskInfoProvider();
+    var diskProperties = await provider.CollectAsync();
+  }
+}
+</pre></div>
+
+
+<p>Many structural patterns serve similar roles, but have a singular differentiator between themselves. Adapters and proxies are at parallel purpose to each other. A proxy provides a matching replacement to all or most of its underlying API. An adapter changes the API to meet the client&#8217;s requirement.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1371" class="post-1371 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-singleton">
+	<div class="blog-item-wrap">
+				<a href="/practical-design-patterns-in-c-singleton/" title="Practical Design Patterns in C# &ndash; Singleton" >
+				<img width="750" height="384" src="/wp-content/uploads/2019/01/DSC_4695-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-singleton/" rel="bookmark">Practical Design Patterns in C# &ndash; Singleton</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-singleton/" rel="bookmark"><time class="entry-date published" datetime="2019-01-05T23:08:38+05:30">January 5, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Intent</h3>
+
+
+
+<p>The Singleton pattern is one of the simplest and most commonly used in practice. Its purpose is to restrict a class to only one instance throughout the lifetime of the application. This is desirable in cases when there is one or only a few resources available and access has to be controlled.</p>
+
+
+
+<h3>Problem</h3>
+
+
+
+<p>A common use case is resource pools to objects which are expensive to acquire. Some examples are a database connection pool or a local cache of the results of a network operation. The object pool itself is a design pattern worthy of its own detailed discussion. In this article, however, I will limit myself to describing its implementation as a singleton.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<h3>Solution</h3>
+
+
+
+<p>This pattern has multiple possible implementations in C#. The ones shown below are built purely on the language features. There are still other ways of limiting a class to single instance through the use of dependency injection frameworks. Those techniques are not covered here.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ur8ioKZDJLKeoqmgIimhuKhEIImkLd3EpyjBJIx9pCyBoC_FKQZcqgqkBaaioKokpSm3ClAIKwrGbN3f5gNcf2OMfwPOUGQdbd3f9YONbcOMmRZQZX2kXYQNTX14eKOot00hJvSaX7509J3BF75OLii50000" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>class ConnectionPool {<br />
+-{static}instance:ConnectionPool<br />
+-released:ISet<br />
+-acquired:ISet<br />
++Acquire()<br />
++Release(connection:IDbConnection)<br />
++{static}Instance:ConnectionPool<br />
+}<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<h4>Single-threaded, Lazy Initialisation</h4>
+
+
+
+<p>The first example is the simplest possible implementation of this pattern. This version is not thread-safe, but can use lazy initialisation in a single-threaded scenario. If there are multiple threads attempting to invoke the Instance property of this class, many or all of them will cause an invocation of the constructor. In this case, it has to be eagerly initialised.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public sealed class ConnectionPool
+{
+    private static ConnectionPool _instance;
+
+    private ISet&lt;IDbConnection&gt; _released;
+
+    private ISet&lt;IDbConnection&gt; _acquired;
+
+    private ConnectionPool()
+    {
+        // Initialise the collection objects
+    }
+
+    public IDbConnection Acquire()
+    {
+        // Retrieve a free connection instance
+        // Instantiate a new one if there are no free instances
+        // Move the connection instance into the acquired collection
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        // Remove the connection from the acquired collection
+        // Add it into the released collection
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            if (null == _instance)
+            {
+                _instance = new ConnectionPool();
+            }
+
+            return _instance;
+        }
+    }
+}
+</pre></div>
+
+
+<p>This could be an acceptable solution for simple situations where multiple threads are not involved. But with multi-threaded applications being more or less the norm in a language like C#, the actual number of situations where this code will be safe to use are very limited. This is truer than ever before with the advent of opaque multi-threading as supported by TPL. In my experience, it is safer to err on the side of caution and not use this implementation in production.</p>
+
+
+
+<p>In multi-threaded situations, the risk of invoking the constructor multiple times can be mitigated by calling the Instance property immediately on startup before launching any additional threads, i.e. by using eager initialisation. But the cost of eager initialisation and high risk of introducing synchronisation bugs in the future makes it an unattractive option.</p>
+
+
+
+<p>If you need thread-safety in your singleton, you need a different solution. The simplest way is to use a lock.</p>
+
+
+
+<h4>Multi-threaded, Lazy Initialisation</h4>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public sealed class ConnectionPool
+{
+    private static ConnectionPool _instance;
+
+    …
+
+    private readonly object padlock = new { };
+
+    private ConnectionPool()
+    {
+        // Initialise the collection objects
+    }
+
+    public IDbConnection Acquire()
+    {
+        …
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        …
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            lock (padlock)
+            {
+                if (null == _instance)
+                {
+                    _instance = new ConnectionPool();
+                }
+
+                return _instance;
+            }
+        }
+    }
+}
+</pre></div>
+
+
+<p>The drawback to this technique is that every invocation of Instance has to acquire a lock. This is an unnecessary performance hit after an instance has been created once, because the property does not modify the instance ever afterwards.</p>
+
+
+
+<p>Again, this is not incorrect. The code will perform exactly according to the pattern specification, and can be used if bleeding-edge performance is not an absolute must-have or the instance is not being referenced frequently. In practice, locking impacts performance by a single-digit percentage.</p>
+
+
+
+<h4>Lock-free, Multi-threaded, Lazy Initialisation</h4>
+
+
+
+<p>But faster it can get. The advantages of ease in maintaining and reasoning about lock-free code are a bonus.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class ConnectionPool
+{
+    private static readonly ConnectionPool _instance = new ConnectionPool();
+
+    static ConnectionPool()
+    {
+    }
+
+    private ConnectionPool()
+    {
+    }
+
+    public IDbConnection Acquire()
+    {
+        …
+    }
+
+    public void Release(IDbConnection connection)
+    {
+        …
+    }
+
+    public static ConnectionPool Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+}
+</pre></div>
+
+
+<p>The above example contains a static constructor along with the regular instance constructor. The static constructor itself does not require any code. But as a side-effect of its presence in the code, the type initialiser method of this class is only executed when a static or instance field is accessed for the first time, or when a static, instance or virtual method of the type is invoked for the first time.</p>
+
+
+
+<p>This is a by-product of the language design and <a href="http://www.csharpindepth.com/articles/BeforeFieldInit">described in detail by Jon Skeet on his website</a>. The runtime runs this check before creating a new type, and guarantees that this executes only once. This implementation leverages this behaviour to constrain the class instantiation to just once, only when the Instance property of the class is invoked for the first time.</p>
+
+
+
+<p></p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1349" class="post-1349 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-practical-design-patterns tag-prototype">
 	<div class="blog-item-wrap">
 				<a href="/practical-design-patterns-in-c-prototype/" title="Practical Design Patterns in C# – Prototype" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/12/DSC_4901-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="384" src="/wp-content/uploads/2018/12/DSC_4901-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -611,684 +1218,6 @@ var message = builder.From(&quot;john@example.com&quot;)
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1149" class="post-1149 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-abstract-factory tag-c tag-practical-design-patterns">
-	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-abstract-factory/" title="Practical Design Patterns in C# &#8211; Abstract Factory" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/12/IMG_4296-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<h3>Intent</h3>
-
-
-
-<p>The abstract factory design pattern provides an interface to create instances of related objects without directly specifying their concrete classes. This pattern is a superset of the factory method design pattern, as it separates the creation of an object from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
-
-
-
-<h3>Problem</h3>
-
-
-
-<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. A rudimentary way of  implementing this functionality is to pepper the code with if-else statements throughout the application, which is impractical, brittle and error prone – all traits to avoid in good code.</p>
-
-
-
-<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
-
-
-
-<p>A database operation requires types to make a connection to the  database, a command to contain the query and a type to hold a query  parameter. All three have to belong to the same family in order to  operate correctly. Swapping any type of them for a type from another  family is not allowed. E.g. a MySQL connection instance will not be able  to operate with a SQL Server command instance. Therefore, if a program  has to offer the ability to work with various types of database engines, it has to guarantee that only compatible types are instantiated at a given time.</p>
-
-
-<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XP51JuGm48Nl_HKrNZI6_G5xuCB6nCCc9XwDXr9cboOmO5iq6_M_Iy1bfgN46tdzvhsPXxZnDRGWFqnf5NfXq8CzAGtowL0-AkqxUv5Vua4M5fI7GrbqYA2zwV3kFf3RLc4LQC_AgXP6lr7z2Pt99TOdcr1SV0JRANkjJLK1lZLmyjaAem0YhJdNCtgDeSyKHOQwKSx9eZ60Njxsge6p1K3nfsH3d-MyiBqS73ZnyjvSbLtLVUBkcrFhvroE4jjyB_LKfTj4vzt_uvP3Gf8byVNOlmbcEKFLi3L2axdXC2OkcOQvJuAYlEE5tpZqKQUhvrnEKhBLRJZkTOjCDHldqPAisMYQcEZIfLjcCXSMnyIjyV7GAqbIxYy0" alt="PlantUML Syntax:<br />
-!theme vibrant</p>
-<p>interface IDbFactory {<br />
-+ CreateDbConnection()<br />
-+ CreateDbCommand()<br />
-+ CreateDbParameter()<br />
-}</p>
-<p>interface IDbConnection<br />
-interface IDbCommand<br />
-interface IDbParameter</p>
-<p>IDbFactory -[hidden]left- IDbParameter<br />
-IDbConnection -[hidden]right- IDbCommand<br />
-IDbCommand -[hidden]right- IDbParameter</p>
-<p>class Client #palegreen</p>
-<p>Client -up-> IDbFactory : uses</p>
-<p>SqlFactory .down.|> IDbFactory</p>
-<p>SqlFactory .down.> SqlConnection : creates<br />
-SqlFactory .down.> SqlCommand : creates<br />
-SqlFactory .down.> SqlParameter : creates</p>
-<p>SqlConnection .down.|> IDbConnection<br />
-SqlParameter .down.|> IDbParameter<br />
-SqlCommand .down.|> IDbCommand</p>
-<p>SqlConnection -[hidden]right- SqlCommand<br />
-SqlCommand -[hidden]right- SqlParameter</p>
-<p>MySqlFactory .up.|> IDbFactory</p>
-<p>MySqlFactory .up.> MySqlConnection : creates<br />
-MySqlFactory .up.> MySqlCommand : creates<br />
-MySqlFactory .up.> MySqlParameter : creates</p>
-<p>MySqlConnection .up.|> IDbConnection<br />
-MySqlParameter .up.|> IDbParameter<br />
-MySqlCommand .up.|> IDbCommand</p>
-<p>MySqlConnection -[hidden]right- MySqlCommand<br />
-MySqlCommand -[hidden]right- MySqlParameter</p>
-<p>" usemap="#plantuml_map"></p>
-
-
-
-<h3>Solution</h3>
-
-
-
-<p>This pattern consists of at least 2 types – one to define the factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
-
-
-
-<p>The core API is provided by the IDbFactory interface.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public interface IDbFactory
-{
-    IDbConnection CreateDbConnection();
-
-    IDbCommand CreateDbCommand();
-
-    IDbDataParameter CreateDbDataParameter();
-}
-</pre></div>
-
-
-<p><code>IDbFactory</code> defines methods for the database factory.  <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code> are interfaces provided by the framework in the <code>System.Data</code> namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces. </p>
-
-
-
-<h4>SQL Server Factory </h4>
-
-
-
-<p>When the application has to operate against SQL Server, it instantiates the <code>SqlFactory</code> class, which implements the <code>IDbFactory</code> interface, and returns the SQL Server-specific concrete types for <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code>.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class SqlFactory : IDbFactory
-{
-    public IDbConnection CreateDbConnection()
-    {
-        return new System.Data.SqlClient.SqlConnection();
-    }
-
-    public IDbCommand CreateDbCommand()
-    {
-        return new System.Data.SqlClient.SqlDbCommand();
-    }
-
-    public IDbDataParameter CreateDbDataParmeter()
-    {
-        return new System.Data.SqlClient.SqlParameter();
-    }
-}
-</pre></div>
-
-
-<h4>MySQL Factory</h4>
-
-
-
-<p>The <code>MySqlFactory</code> class operates in the same way and returns objects from the <code>MySql.Data.MySqlClient</code> namespace.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class MySqlFactory : IDbFactory
-{
-    public IDbConnection CreateDbConnection()
-    {
-        return new MySql.Data.MySqlClient.MySqlConnection();
-    }
-
-    public IDbCommand CreateDbCommand()
-    {
-        return new MySql.Data.MySqlClient.MySqlCommand();
-    }
-
-    public IDbDataParameter CreateDbDataParameter()
-    {
-        return new MySql.Data.MySqlClient.MySqlParameter();
-    }
-}
-</pre></div>
-
-
-<h4>Usage</h4>
-
-
-
-<p>When the application is launched, it determines the database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate <code>IDbFactory</code> implementation. All objects required to operate on the database are subsequently instantiated from this <code>IDbFactory</code> instance.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class Program
-{
-    public static void Main(string&#091;] args)
-    {
-        IDbFactory factory;
-
-        if (&quot;sql&quot; == args&#091;1])
-        {
-            factory = new SqlFactory();
-        }
-        else
-        {
-            factory = new MySqlFactory();
-        }
-
-        using (var connection = factory.CreateDbConnection())
-        {
-            connection.Open();
-            var command = factory.CreateDbCommand();
-            command.Connection = connection;
-            command.CommandText = &quot;SELECT * FROM &#091;Users] WHERE &#091;UserId] = ?&quot;;
-            var param = factory.CreateDbDataParameter();
-            param.DbType = DbType.Int32;
-            param.Value = 42;
-            command.Parameters.Add(param);
-
-            command.ExecuteReader();
-        }
-    }
-}
-</pre></div>
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1276" class="post-1276 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-factory-method tag-practical-design-patterns">
-	<div class="blog-item-wrap">
-				<a href="/practical-design-patterns-in-c-factory-method/" title="Practical Design Patterns in C# &ndash; Factory Method" >
-				<img width="750" height="270" src="/wp-content/uploads/2018/12/IMG_0311-750x270.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark">Practical Design Patterns in C# &ndash; Factory Method</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/practical-design-patterns-in-c-factory-method/" rel="bookmark"><time class="entry-date published" datetime="2018-12-08T21:29:40+05:30">December 8, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<h3>Intent</h3>
-
-
-
-<p>The factory method is exactly what is says on the label &#8211; a method that produces object instances on demand. Ergo, a factory method. The intent of this pattern is to implement a method (in class or instance scope) that separates the creation of object instances from the consumption. It is often used to lazily instantiate objects during dependency injection. The factory method is the foundation to the abstract factory.</p>
-
-
-
-<h3>Problem</h3>
-
-
-
-<p>In this example, we look at an application that has to write data to one of two different file formats. The format is selected at runtime through some kind of user input. The application should be able to select the appropriate file encoder, and request it to serialize the data.</p>
-
-
-
-<h3>Solution</h3>
-
-
-
-<p>Separate file writer classes are required for each format, but both must share a common interface. The correct class is instantiated, and its <code>Write</code> method is invoked to perform the save operation.</p>
-
-
-<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ZOz12u9048Nl-oiskXZb_W0FNWIX3j6jGtGOrz4MrbLsnqAg_zucaX8ItMRUVEyzXYteWXNogyei66BA4De29F9jgZGUhV9x2f9gs_4xM_F48X06A_QSPtke7uCS2AAi8poTDxpmn1ugZ1nPPSgtVwP1Y7YQ5N7PrpcsQx0SHD4suX5FEzd1_3YErazBNj_C5pRSngX_OAd1EPveXORuiW6DfKKqR512ZGM5Sqx_MUlyMoy0" alt="PlantUML Syntax:<br />
-!theme vibrant</p>
-<p>interface IFileWriterFactory {<br />
-+ Create()<br />
-}</p>
-<p>interface IFileWriter {<br />
-+ Write(data:byte[], fileName:string)<br />
-}</p>
-<p>IFileWriterFactory ..>IFileWriter : creates</p>
-<p>JpegWriter .up.|> IFileWriter<br />
-PngWriter .up.|> IFileWriter</p>
-<p>JpegWriterFactory .down.|> IFileWriterFactory<br />
-PngWriterFactory .down.|> IFileWriterFactory</p>
-<p>class Client #palegreen</p>
-<p>Client -left-> IFileWriterFactory : uses</p>
-<p>" usemap="#plantuml_map"></p>
-
-
-
-<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
-
-
-
-<p>All writer classes are required to implement the <code>IFileWriter</code> interface.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public interface IFileWriter
-{
-    void Write(byte&#091;] data, string filename);
-}
-</pre></div>
-
-
-<p>This interface is implemented by each writer class. The example below shows the <code>JpegWriter</code> and <code>PngWriter</code> classes.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class JpegWriter : IFileWriter
-{
-    void Write(byte&#091;] data, string filename) { … }
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class PngWriter : IFileWriter
-{
-    void Write(byte&#091;] data, string filename) { … }
-}
-</pre></div>
-
-
-<p>Then a factory interface is declared, and a factory class created for each file type.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public interface IFileWriterFactory
-{
-    public IFileWriter Create();
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class JpegWriterFactory : IFileWriterFactory
-{
-    public Create()
-    {
-        return new JpegWriter();
-    }
-}
-</pre></div>
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class PngWriterFactory : IFileWriterFactory
-{
-    public Create()
-    {
-        return new PngWriter();
-    }
-}
-</pre></div>
-
-
-<h4>Usage</h4>
-
-
-
-<p>The application determines the file type that is required, then invokes the Create method on the appropriate writer factory, which in turn returns a concrete implementation of the IFileWriter class. </p>
-
-
-
-<p>The application then invokes the Write method on the writer instance, which handles format-specific details such as endianness, file headers, encoding and more.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-static class Program
-{
-    private static _jpegWriterFactory = new JpegWriterFactory();
-
-    private static _pngWriterFactory = new PngWriterFactory();
-
-    static void Main()
-    {
-        // Image created and serialized into byte&#091;]
-        …
-
-        IFileWriter writer;
-        if (&quot;jpg&quot; == args&#091;1])
-        {
-            writer = _jpegWriterFactory.Create();
-        }
-        else
-        {
-            writer = _pngWriterFactory.Create();
-        }
-
-        writer.Write(data, &quot;lena&quot;);
-    }
-}
-</pre></div>
-
-
-<p></p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-1108" class="post-1108 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
-	<div class="blog-item-wrap">
-				<a href="/the-content-data-context/" title="The Content Data Context" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/09/IMG_0441-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/the-content-data-context/" rel="bookmark">The Content Data Context</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-content-data-context/" rel="bookmark"><time class="entry-date published" datetime="2018-09-13T18:09:35+05:30">September 13, 2018</time><time class="updated" datetime="2023-01-05T11:40:08+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
-
-
-
-<h3>Basics of Entity Framework</h3>
-
-
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
-<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
-<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div>
-
-
-
-<h3>Code First</h3>
-
-
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
-<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
-<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div>
-
-
-
-<h3>Database First</h3>
-
-
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
-</ul></div>
-
-
-
-<hr class="wp-block-separator has-css-opacity"/>
-
-
-
-<p>Recall <a href="http://www.notadesigner.com/the-database-context/">from an earlier post</a> how the DbContext class provides the framework to establish and maintain an open connection to the database. This class is typically extended with a custom context for the application, which allows the developer to add DbSet instances for all the types which are part of the application’s Entity Framework model. Each DbSet property is a collection of entity instances, one for each record in the database. The DbSet is an implementation of IDbSet, which in turn extends IQueryable and IEnumerable.</p>
-
-
-
-<p>The DbContext primarily fulfils the following roles.</p>
-
-
-
-<h4>Querying</h4>
-
-
-
-<p>Provides an interface to convert statements from LINQ-to-Entities (using queries as well as method syntax) to the SQL syntax specific to the underlying database provider.</p>
-
-
-
-<h4>Object Materialisation</h4>
-
-
-
-<p>Converts database records from ADO.NET types such as DataSet to application-specific types through mapping rules.</p>
-
-
-
-<h4>Change Tracking</h4>
-
-
-
-<p>Tracks the state of newly created, modified or deleted entities for later committing to the database.</p>
-
-
-
-<h4>Persistence</h4>
-
-
-
-<p>Triggering INSERT, UPDATE or DELETE queries on changed entities when the SaveChanges method is called.</p>
-
-
-
-<h4>Caching</h4>
-
-
-
-<p>Provides a local, lightweight embedded store for recently retrieved entities to avoid repeated querying against the primary database.</p>
-
-
-
-<h3>Connecting to the Database</h3>
-
-
-
-<p>The DbContext class automatically creates a database whose name is derived from the fully-qualified name of the context class. However, this behaviour can be overridden by the programmer by passing a custom connection string, database name, or connection string name from the .config file associated with the running application.</p>
-
-
-
-<p>The DbContext class has 7 variants of the constructor to provide different ways of establishing a connection to the database server. The default constructor triggers the behaviour described above.</p>
-
-
-
-<p>The constructor variant that takes a string parameter can be used to specify any one of the following.</p>
-
-
-
-<ol>
-<li>A standard connection string.</li>
-
-
-
-<li>A name of a connection string declared in the configuration file (using the syntax &#8220;name=connectionString&#8221;).</li>
-
-
-
-<li>An Entity Framework connection string declared in the configuration file.</li>
-
-
-
-<li>A database name (which is sought on the server .\SQLEXPRESS by default).</li>
-</ol>
-
-
-
-<p>Alternative constructors can accept DbConnection or ObjectContext instances instead of a string in order to work with already open connections.</p>
-
-
-
-<h3>Entity Collections</h3>
-
-
-
-<p>Records in the database tables are referenced through a DbSet instance, which is an implementation of the set abstract data type specifically designed for Entity Framework. A collection can be&nbsp;non-generic by using the System.Data.Entity.DbSet type, or generic through the use of System.Data.Entity.DbSet&lt;TEntity&gt; type.</p>
-
-
-
-<p>Collections of root entities are often exposed as DbSet properties of the application’s context class. But specific entity types can also be extracted from the database by using the Set method (or its generic variant) on the context.</p>
-
-
-
-<p>The DbSet class exposes methods to perform your standard CRUD operations on the table. The most important methods are Create, Add, Find, Remove and Attach. You will notice that most of these methods are also available on the Set ADT, which the DbSet type is based on.</p>
-
-
-
-<p>Create, Add and Attach sound similar in nature, but are quite different. The Create method instantiates an entity without adding it to the DbSet. The Add method is used to add the entity to the database and mark it for saving later. Finally, Attach adds an entity to the collection without marking it for saving. This is useful for adding temporary entities to read-only collections.</p>
-
-
-
-<p>The revised ContentContext class for this application looks like this.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class ContentContext : DbContext
-    {
-        public ContentContext(&quot;Notadesigner&quot;)
-        {
-        }
-
-        public virtual DbSet Blogs
-        {
-            get;
-            set;
-        }
-
-        public virtual DbSet Posts
-        {
-            get;
-            set;
-        }
-
-        public virtual DbSet Categories
-        {
-            get;
-            set;
-        }
-    }
-}
-</pre></div>
-
-
-<p>Based on this structure, the code to retrieve a specific Post by its primary key would be as shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-var db = new ContentContext();
-var post = db.Posts.Find(10);
-</pre></div>
-
-
-<p>Inserting a new record is done in two parts. First, the entity instance is created, then it is added to the collection and the changes saved to the database.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-var db = new ContentContext();
-var post = db.Posts.Create();
-post.Title = &quot;Ways to Try and Take Over the World&quot;;
-post.Slug = GenerateSlug(post.Title);
-// Set other properties on the entity
-…
-db.Posts.Add(post);
-db.SaveChanges();
-</pre></div>
-
-
-<p>Attach is useful when you wish to update only a few properties in a record which contains many columns.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-var db = new ContentContext();
-var post = db.Posts
-                .AsNoTracking()
-                .Where(p =&gt; p.PostId = 10)
-                .FirstOrDefault();
-// Change the title only
-post.Title = &quot;More Ways to Try and Take Over the World&quot;;
-db.Posts.Attach(post);
-db.SaveChanges();
-</pre></div>
-
-
-<p>The above code generates an update statement that only affects the Title column, as opposed to updating all the columns in the Posts table.</p>
-
-
-
-<p>Deleting records is as simple as finding an entity and marking it for deletion through the Remove method.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-var db = new ContentContext();
-var post = db.Posts.Find(10);
-db.Posts.Remove(post);
-db.SaveChanges();
-</pre></div>
-
-
-<p>Irrespective of the method used, changes are committed only if the SaveChanges method is called on the context instance.</p>
-
-
-
-<h3>Conventions, Overrides</h3>
-
-
-
-<p>When an application using the code-first approach is launched for the first time, Entity Framework creates tables for each entity in the newly created database by converting the entity name into its plural form. For example, the Post entity is associated with a table called “Posts”. The columns in the table are also created automatically based on the entity properties. The property PostId is associated with a column of non-nullable integers of the same name, and it is assigned as the primary key. Similarly, the Title property gets associated with the non-nullable varchar column called Title, whose maximum size is 256 characters. Default conventions can be overridden by using attributes as shown in the previous post, or by using the Fluent API in the initialisation strategy.</p>
-
-
-
-<p>Some of the most essential default conventions are shown below.</p>
-
-
-
-<h4>Schema</h4>
-
-
-
-<p>The dbo schema is used for all database operations by default.</p>
-
-
-
-<h4>Tables</h4>
-
-
-
-<p>Table names are derived from the plural form of the entity they represent.</p>
-
-
-
-<h4>Primary and Foreign Keys</h4>
-
-
-
-<p>The Id property or &lt;Entity&gt;Id property is the default primary key. A property with the same name is required in the dependent table. The foreign key is named by combining the dependent navigation property name with the principal primary key property name, separated by an underscore (i.e. Post_OwnerId).</p>
-
-
-
-<h4>Nullability</h4>
-
-
-
-<p>Columns to store reference type and nullable primitive type properties are nullable, and primitive type properties are stored in non-nullable columns.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/tag/c/page/2/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1297,7 +1226,7 @@ db.SaveChanges();
 <span aria-current="page" class="page-numbers current">3</span>
 <a class="page-numbers" href="/tag/c/page/4/">4</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="/tag/c/page/7/">7</a>
+<a class="page-numbers" href="/tag/c/page/8/">8</a>
 <a class="next page-numbers" href="/tag/c/page/4/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -1323,7 +1252,8 @@ db.SaveChanges();
 			<aside id="archives" class="widget">
 				<h3 class="widget-title">Archives</h3>
 				<ul>
-						<li><a href='/2022/12/'>December 2022</a></li>
+						<li><a href='/2023/01/'>January 2023</a></li>
+	<li><a href='/2022/12/'>December 2022</a></li>
 	<li><a href='/2020/09/'>September 2020</a></li>
 	<li><a href='/2020/06/'>June 2020</a></li>
 	<li><a href='/2019/12/'>December 2019</a></li>
@@ -1409,55 +1339,55 @@ db.SaveChanges();
 </ul></div></div>		</div><!-- .widget-area .first -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
-			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework" class="menu"><li id="menu-item-1092" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li id="menu-item-1091" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li id="menu-item-1090" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li id="menu-item-1089" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li id="menu-item-1088" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first" class="menu"><li id="menu-item-1096" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
 <a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
 <a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
 <a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
 <a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
 <a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
 <a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1502,7 +1432,6 @@ db.SaveChanges();
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
-<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');

@@ -163,10 +163,93 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Software Engineering</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1590" class="post-1590 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
+	<div class="blog-item-wrap">
+				<a href="/valknut-validation/" title="Valknut &#8211; Validation" >
+				<img width="750" height="384" src="/wp-content/uploads/2020/09/DSC_5030-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/valknut-validation/" rel="bookmark">Valknut &#8211; Validation</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/valknut-validation/" rel="bookmark"><time class="entry-date published" datetime="2020-09-04T07:43:48+05:30">September 4, 2020</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Introduction</h3>
+
+
+
+<p>ASP.NET MVC has always had a robust request validation model that is easily harnessed. The model in question has to be decorated with validation attributes from a broad collection of possibilities, and the framework takes care of ensuring compliance and distilling it into a single boolean that can be referenced from <code>ModelState.IsValid</code>.</p>
+
+
+
+<p>Nothing could be easier.</p>
+
+
+
+<p>However, this approach requires that the programmer must remember to write the code to perform a validation check in each action method. This is tedious and error-prone, and results in duplicated code.</p>
+
+
+
+<p>It is possible to implement this functionality in a more modular fashion by implementing it as a filter attribute and plugging it into the ASP.NET request pipeline.</p>
+
+
+
+<h3>Passive Attributes</h3>
+
+
+
+<p>Before we go into the implementation of the filter itself, there is a slight design idiosyncracy that has to be understood. Request filtering through a class that derives from <code>ActionFilterAttribute</code> is a common enough pattern. A request is filtered through this attribute if the method implementing its corresponding action is decorated with this attribute. But this approach imposes various technical restrictions and design compromises.</p>
+
+
+
+<p>A more robust approach is to decorate the action method with a non-behavioural attribute that derives from <code>Attribute</code>, and adding the filter directly into the global filter collection.</p>
+
+
+
+<p>Passive attributes are described by Mark Seemann at the link below.</p>
+
+
+
+<p><a href="https://blog.ploeh.dk/2014/06/13/passive-attributes/">Passive Attributes</a></p>
+
+
+
+<h3>Implementation</h3>
+
+
+
+<p>The passive attribute approach results in an attribute class called <code>ValidateModelAttribute</code>. Any method that requires model validation can be decorated with this attribute.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+&#91;HttpPost]
+&#91;ValidateModel]
+public ActionResult Edit(PageViewModel&lt;ExerciseEditViewModel&gt; viewModel)
+</pre></div>
+
+
+<p>A <code>RequestValidateModelFilter</code> class implements the <code>IActionFilter</code> interface and is added into the global filters collection during the <code>Application_Start</code> event. When an incoming request arrives, it is passed through the <code>RequestValidateModelFilter</code> instance, which checks if the request requires validation, and if so, checks if the <code>IsValid</code> property of the model state is true.</p>
+
+
+
+<p>If the model state is not valid, then the request pipeline is truncated and all validation errors are gathered into a JSON response. The application returns a HTTP status code 400 along with the list of errors in the body of the response.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1586" class="post-1586 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
 	<div class="blog-item-wrap">
 				<a href="/valknut-localisation/" title="Valknut &#8211; Localisation" >
-				<img width="750" height="178" src="/wp-content/uploads/2020/09/IMG_3806-750x178.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<img width="750" height="178" src="/wp-content/uploads/2020/09/IMG_3806-750x178.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
@@ -691,235 +774,6 @@ WHERE [Article_].[Hash] = '704E8';</pre>
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1447" class="post-1447 post type-post status-publish format-standard has-post-thumbnail hentry category-technique tag-asp-net tag-c tag-programming">
-	<div class="blog-item-wrap">
-				<a href="/runtime-resource-authorisation-in-asp-net-mvc/" title="Runtime Resource Authorisation in ASP.NET MVC" >
-				<img width="750" height="384" src="/wp-content/uploads/2019/12/DSC_4889-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark">Runtime Resource Authorisation in ASP.NET MVC</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/runtime-resource-authorisation-in-asp-net-mvc/" rel="bookmark"><time class="entry-date published" datetime="2019-12-05T21:51:00+05:30">December 5, 2019</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The Authorize attribute is a feature of the ASP.NET MVC framework that programmers learn early on. While it is a good out of the box solution for general cases, it doesn&#8217;t work well for dynamic authorisation. Take the HTTP request shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-GET /posts/edit/12 HTTP/1.1
-Host: www.example.com
-</pre></div>
-
-
-<p>In colloquial MVC, this requests the <code>PostsController</code> to retrieve the contents of the post with ID 12 and display them in a form. The <code>Authorize</code> attribute does not determine if the currently logged in user has been granted editing rights for that specific post. At best, operations are allowed based on roles or claims, which still becomes an all or nothing situation. Either an individual user can edit all posts, or none at all.</p>
-
-
-
-<p>Finer-grained control over individual resources for each user in the system requires a custom solution.</p>
-
-
-
-<p>The system described below eschews the <code>Authorize</code> attribute entirely, and chooses to instead use filters in the ASP.NET request pipeline. It imposes the restriction that the name of the resource identifier parameter should always be well-known, such as <code>id</code>. Since the default route already follows this convention, this usually isn&#8217;t a problem.</p>
-
-
-
-<h3>Identifying the What</h3>
-
-
-
-<p>The first piece of the puzzle is a custom action filter called <code>SecuredAttribute</code>. This class inherits from <code>System.Attribute</code> and is applied to methods. Any controller action method that is marked with this attribute identifies as a sensitive access point that requires some kind of screening procedure before being invoked.</p>
-
-
-
-<p>But this attribute only identifies the method. It does not perform any kind of screening on incoming requests. This is also why it doesn&#8217;t inherit from any of the more higher-level attributes from the MVC framework, such as <code>ActionFilterAttribute</code>.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class SecuredAttribute : Attribute
-{
-}
-</pre></div>
-
-
-<p>The <code>SecuredAttribute</code> is used by applying it to the top of the controller method that needs runtime screening.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class AdminController : Controller
-{
-    &#91;Secured]
-    public IActionResult Edit(int id)
-    {
-        …
-    }
-}
-</pre></div>
-
-
-<h3>Implementing the How</h3>
-
-
-
-<p>The screening is performed by a class that implements <code>IActionFilter</code>. There can be multiple screening filters, and they are queued up in the <code>GlobalFilterCollection</code> during <code>Application_Start()</code>. The screening process is performed before the action method is executed, by implementing it in the <code>OnActionExecuting</code> method of the filter class.</p>
-
-
-
-<div class="is-layout-flow wp-block-group"><div class="wp-block-group__inner-container"><div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class AuthorizationFilter : IActionFilter
-{
-    … 
-    public void OnActionExecuting(ActionExecutingContext context)
-    {
-        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
-        if (null == secured)
-        {
-            return;
-        }
-
-        var user = context.HttpContext.User;
-        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
-        var id = Convert.ToInt32(param.Value);
-
-        // Invoke a service to check if the request should be allowed
-        var isAllowed = securityService.IsAllowed(user, id);
-        if (!isAllowed)
-        {
-             context.Result = new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
-        }
-    }
-}
-</pre></div></div></div>
-
-
-
-<p>The filter looks for the <code>[Secured]</code> attribute. If the method being invoked doesn’t have the attribute, the filter immediately returns and lets the method execution proceed. If the attribute is found, the filter performs a screening procedure to determine if the request should be allowed or not. It may use a injected service class or even a third-party API to perform this action.</p>
-
-
-
-<p>Since the attribute is only identifying the method, it remains simple. Discrete behaviours can be attached to the same action method, that can also be dependent on the request context (e.g. invocation through web vs. API) while maintaining a clean separation of concerns.</p>
-
-
-
-<p>Some of these techniques are shown below.</p>
-
-
-
-<h3>Extending Beyond Simple Authorisation</h3>
-
-
-
-<p>The method attribute can be leveraged for performing other cross-functional requirements, which are tangent to authorisation. The secured method may require an audit trail.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class AuditTrailFilter : IActionFilter
-{
-    public void OnActionExecuting(ActionExecutingContext filterContext)
-    {
-        var secured = filterContext.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
-        if (null == secured)
-        {
-            return;
-        }
-
-        // Invoke a service to log the method access
-        Logger.Info(…);
-    }
-}
-</pre></div>
-
-
-<p>The authorisation and audit trail filters can coexist and are fired independently. They use the same marker to identify the methods, but perform widely different tasks with different resources at their disposal. <code>AuditTrailFilter</code> can be programmed to log requests to secured location in one store and all other requests into another store, while <code>AuthorizationFilter</code> always allows requests to unsecured locations.</p>
-
-
-
-<p>Another example is to return different responses to the client based on its type. When a request comes from a browser, its Accepts header is set to <code>text/html</code>, while an API client such as a SPA or a mobile app sets it to <code>application/xml</code> or <code>application/json</code>. The <code>WebAuthorizationFilter</code> class returns the access-denied error as a HTML view, which the browser displays as a user-friendly error page.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class WebAuthorizationFilter : IActionFilter
-{
-    … 
-    public void OnActionExecuting(ActionExecutingContext context)
-    {
-        // Return if a non-API request is received
-        var acceptTypes = HttpContext.Current.Request.AcceptTypes;
-        if (!acceptTypes.Contains(&quot;text/html&quot;))
-        {
-            return;
-        }
-
-        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
-        if (null == secured)
-        {
-            return;
-        }
-
-        var user = context.HttpContext.User;
-        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
-        var id = Convert.ToInt32(param.Value);
-
-        // Invoke a service to check if the request should be allowed
-        var isAllowed = securityService.IsAllowed(user, id);
-        if (!isAllowed)
-        {
-            context.Result = new ViewResult()
-            {
-                ViewName = &quot;AccessDenied&quot;,
-            }
-        }
-    }
-}
-</pre></div>
-
-
-<p>The <code>ApiAuthorizationFilter</code> class, on the other hand, returns a HTTP status code 403 in the response. The API client generates an appropriate error view on the client-side.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class ApiAuthorizationFilter : IActionFilter
-{
-    … 
-    public void OnActionExecuting(ActionExecutingContext context)
-    {
-        // Return if a non-API request is received
-        var acceptTypes = HttpContext.Current.Request.AcceptTypes;
-        if (!acceptTypes.Contains(&quot;application/xml&quot;))
-        {
-            return;
-        }
-
-        var secured = context.ActionDescriptor.GetCustomAttribute(typeof(SecuredAttribute), false).FirstOrDefault();
-        if (null == secured)
-        {
-            return;
-        }
-
-        var user = context.HttpContext.User;
-        var param = context.ActionParameters.Where(p =&gt; p.Key == &quot;id&quot;).FirstOrDefault();
-        var id = Convert.ToInt32(param.Value);
-
-        // Invoke a service to check if the request should be allowed
-        var isAllowed = securityService.IsAllowed(user, id);
-        if (!isAllowed)
-        {
-             context.Result = new HttpStatusCodeResult(HttpStatusCode.Unauthorized);
-        }
-    }
-}
-</pre></div>
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/category/software-engineering/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -927,7 +781,7 @@ public class ApiAuthorizationFilter : IActionFilter
 <span aria-current="page" class="page-numbers current">2</span>
 <a class="page-numbers" href="/category/software-engineering/page/3/">3</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="/category/software-engineering/page/13/">13</a>
+<a class="page-numbers" href="/category/software-engineering/page/14/">14</a>
 <a class="next page-numbers" href="/category/software-engineering/page/3/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -953,7 +807,8 @@ public class ApiAuthorizationFilter : IActionFilter
 			<aside id="archives" class="widget">
 				<h3 class="widget-title">Archives</h3>
 				<ul>
-						<li><a href='/2022/12/'>December 2022</a></li>
+						<li><a href='/2023/01/'>January 2023</a></li>
+	<li><a href='/2022/12/'>December 2022</a></li>
 	<li><a href='/2020/09/'>September 2020</a></li>
 	<li><a href='/2020/06/'>June 2020</a></li>
 	<li><a href='/2019/12/'>December 2019</a></li>
@@ -1049,45 +904,45 @@ public class ApiAuthorizationFilter : IActionFilter
 <li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
 <a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
 <a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
 <a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
 <a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
 <a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
 <a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1132,7 +987,6 @@ public class ApiAuthorizationFilter : IActionFilter
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
-<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');

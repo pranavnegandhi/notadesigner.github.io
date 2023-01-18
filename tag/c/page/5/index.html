@@ -163,17 +163,17 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Tag: <span>c#</span></h1>				</header><!-- .page-header -->
 
 				
-<article id="post-1038" class="post-1038 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+<article id="post-1044" class="post-1044 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
 	<div class="blog-item-wrap">
-				<a href="/introduction-to-orm-entity-framework/" title="Introduction to ORM &#038; Entity Framework" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/07/Untitled-1-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+				<a href="/the-database-context/" title="The Database Context" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/DSC_4507-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
 		<div class="post-inner-content">
 			<header class="entry-header page-header">
 
-				<h2 class="entry-title"><a href="/introduction-to-orm-entity-framework/" rel="bookmark">Introduction to ORM &#038; Entity Framework</a></h2>
+				<h2 class="entry-title"><a href="/the-database-context/" rel="bookmark">The Database Context</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/introduction-to-orm-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-01T17:45:29+05:30">July 1, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -212,6 +212,342 @@ body.custom-background { background-color: #f2f2f2; }
 
 
 <div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first" class="menu"><li id="menu-item-1098" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<p>DbContext is probably the single most important class in the EF API, as it directly represents a connection with the database from the application. A minimal context class inherits from DbContext and exposes DbSet instances for each entity type which has to be stored or retrieved from the database.</p>
+
+
+
+<p>Querying for information retrieval and storage is done through the DbContext instance. If the developer has not overridden any configuration settings, Entity Framework attempts to connect to a database with the fully qualified name of the DbContext class itself.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext()
+        {
+        }
+    }
+}
+</pre></div>
+
+
+<p>In the above example, Entity Framework automatically tries to connect to a database called Notadesigner.Blog.ContentContext. This can be overridden by setting the configuration in various ways.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+namespace Notadesigner.Blog
+{
+    public class ContentContext : DbContext
+    {
+        public ContentContext(&quot;Notadesigner&quot;)
+        {
+        }
+    }
+}
+</pre></div>
+
+
+<p>Other ways to override the default connection name is to add a connection string in the application configuration file and supplying it as a parameter to the DbContext constructor.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1042" class="post-1042 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<div class="blog-item-wrap">
+				<a href="/operating-entity-framework/" title="Operating Entity Framework" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/DSC_4149-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/operating-entity-framework/" rel="bookmark">Operating Entity Framework</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/operating-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-15T17:53:37+05:30">July 15, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-1" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<h3>Define the Model</h3>
+
+
+
+<p>Entity Framework begins be preparing an in-memory model of the entity objects and their relationships, and the mapping of this model to the storage model. A default configuration can be derived by using conventional names for entities and their properties. Programmers can achieve finer control for exceptional cases by overriding configuration settings through various mechanisms.</p>
+
+
+
+<p>If the database does not exist, or the configuration directs automatic modification or recreation of the database, then the database is modified or created to match the fields in the conceptual model.</p>
+
+
+
+<h3>Data Creation, Retrieval, Modification &amp; Storage</h3>
+
+
+
+<p>An entity is instantiated from its defining class and added to the database context through the object service. Querying to retrieve records is also done through the same layer. Any modifications to the data are performed on the entity instances, followed by a call to the SaveChanges API to commit them to the database.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1040" class="post-1040 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<div class="blog-item-wrap">
+				<a href="/components-of-entity-framework/" title="Components of Entity Framework" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/DSC_4259-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/components-of-entity-framework/" rel="bookmark">Components of Entity Framework</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/components-of-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-08T17:53:00+05:30">July 8, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-2" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-2" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
+</ul></div>
+
+
+
+<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+
+
+<p>Like most well-designed APIs, Entity Framework is composed of several discrete components which complement each other. There are three high-level components – the Entity Data Model, the Querying API and the Persistence API.</p>
+
+
+
+<p>Collectively, these components allow application programmers to operate upon classes which are specific to their business domain rather than indulging in the low-level details of ADO.NET and SQL.</p>
+
+
+
+<h3>Entity Data Model</h3>
+
+
+
+<h4>Conceptual Model</h4>
+
+
+
+<p>This layer of the data access layer is built by the application programmer. It contains class representations of the domain model for whatever business requirement that the application aims to achieve. The programmer identifies the objects which make up the given domain, then implements them as classes. The classes have public properties that correspond to properties of the domain object, and are also converted into database columns by the Storage Model. At runtime, these classes are instantiated as CLR objects and their properties are populated with values from corresponding database columns.</p>
+
+
+
+<h4>Storage Model</h4>
+
+
+
+<p>The database and its various elements – the tables, views, stored procedures, indexes and keys – make up this layer. This is a relational database such as SQL Server or PostgreSQL, although future versions of the Entity Framework are said to support NoSQL databases.</p>
+
+
+
+<h4>Mappings</h4>
+
+
+
+<p>Object-oriented programming can be mapped to relational schemas quite closely in most standard scenarios. A class can easily have the same properties as a table column and use equivalent data types to represent it in memory at runtime. Object references are represented as relationships between two tables with all accompanying aspects such as defining keys between tables.</p>
+
+
+
+<p>Data constraints and default values can also be declared in this layer by using the appropriate configuration APIs. Any mismatch between the objects, tables and mapping results in a runtime exception which can be handled by the programmer.</p>
+
+
+
+<h3>Querying API</h3>
+
+
+
+<p>There are two APIs that programmers can use to interact with the database from Entity Framework.</p>
+
+
+
+<h4>LINQ to Entities</h4>
+
+
+
+<p>This is a query language that retrieves data from the storage model, and with the aid of mappings, converts it into object instances from the conceptual model.</p>
+
+
+
+<h4>Entity SQL</h4>
+
+
+
+<p>This is a dialect of SQL which operates upon conceptual models instead of relational tables. It is independent of the underlying SQL engine, and as a result, can be used unchanged between various database engines.</p>
+
+
+
+<p>Both querying languages are operational through the Entity Client data provider, which manages connections, translates queries into data source-specific SQL syntax, and returns a data reader with records for conversion into entity instances. By dint of being an abstraction over the connection, Entity Client can also be used to breach the Entity Framework abstraction and interact with the database directly with ADO.NET APIs.</p>
+
+
+
+<h3>Persistence API</h3>
+
+
+
+<h4>Object Service</h4>
+
+
+
+<p>The programmer interacts with the object service to access information from the database. It is the primary actor in the process of converting the records retrieved from the data provider into an entity object instance.</p>
+
+
+
+<h4>Entity Client Data Provider</h4>
+
+
+
+<p>The Entity Client Data Provider works the other way around, to translate queries written in LINQ-to-Entity into SQL queries that the database understands. This layer interacts with the ADO.NET data provider to fetch from or send data into the database.</p>
+
+
+
+<h4>ADO.NET Data Provider</h4>
+
+
+
+<p>This is the standard data access framework from Microsoft. Entity Framework is an entity-level abstraction over the APIs provided by this library.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
+<article id="post-1038" class="post-1038 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
+	<div class="blog-item-wrap">
+				<a href="/introduction-to-orm-entity-framework/" title="Introduction to ORM &#038; Entity Framework" >
+				<img width="750" height="384" src="/wp-content/uploads/2018/07/Untitled-1-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/introduction-to-orm-entity-framework/" rel="bookmark">Introduction to ORM &#038; Entity Framework</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/introduction-to-orm-entity-framework/" rel="bookmark"><time class="entry-date published" datetime="2018-07-01T17:45:29+05:30">July 1, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
+
+
+
+<h3>Basics of Entity Framework</h3>
+
+
+<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
+</ul></div>
+
+
+
+<h3>Code First</h3>
+
+
+<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
+</ul></div>
+
+
+
+<h3>Database First</h3>
+
+
+<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
 </ul></div>
 
 
@@ -477,710 +813,6 @@ This separates the selection of the correct logging technique to use from the im
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1027" class="post-1027 post type-post status-publish format-standard has-post-thumbnail hentry category-technique tag-asp-net tag-c tag-coding-horror">
-	<div class="blog-item-wrap">
-				<a href="/how-to-write-unmaintainable-code-asp-net-redux/" title="How to Write Unmaintainable Code &ndash; ASP.NET Redux" >
-				<img width="750" height="384" src="/wp-content/uploads/2018/03/DSC_5049-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" loading="lazy" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark">How to Write Unmaintainable Code &ndash; ASP.NET Redux</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/how-to-write-unmaintainable-code-asp-net-redux/" rel="bookmark"><time class="entry-date published" datetime="2018-03-19T06:36:00+05:30">March 19, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>No matter how far technology progresses, it seems that we still remain bound to the past by an innate ability of writing poorly structured programs. To me, this points to a rot that is far deeper than languages and platforms. It is a fundamental failure of people who claim to be professionals to understand their tools and the principles that guide their usage.</p>
-
-
-
-<p>It has been eight years since I wrote <a href="/how-to-write-unmaintainable-code-php-redux">the previous piece in this series that demonstrated poorly written PHP code</a>. The language gets a bad rap due to the malpractices that abound among users of the platform. But this was a theme I was hoping would be left behind after graduating to the .NET framework in the past few years.</p>
-
-
-
-<p>It turns out that I was wrong. Bad programmers will write bad code irrespective of the language or platform that is offered to them. And the most shocking bit is that so many of the points from the previous article (and the original by Roedy Green) are still applicable, that it feels like we learned nothing at all.</p>
-
-
-
-<h3>Reinvent the wheel again. Poorly.</h3>
-
-
-
-<p>Maintainable code adheres to standards – industry, platform, semantics, or just simply internal to the company. Standard practices make it easy to build, maintain and extend software. As such, they’re anathema to anybody who aims to exclude newcomers from modifying his program.</p>
-
-
-
-<p>Therefore, ignore standards.</p>
-
-
-
-<p>Take the case of date and time. It is 2018, and people want to and expect to be able to use any software product irrespective of their personal regional settings.</p>
-
-
-
-<p>Be merciless in thrashing their expectations. Tailor your product to work exclusively with the regional settings used on your development computer. If you are using the American date format, say you’re paying homage to the original home of the PC. If you’re using British settings, extol upon the semantic benefits of the dd-mm-yy structure over the unintelligible American format.</p>
-
-
-
-<p>Modern programming platforms have a dedicated date and time data type precisely to avoid this problem. Sidestep it by transmitting and storing dates as strings in your preferred formats (there doesn’t have to be just one). That way, you also get to scatter a 200-line snippet of code to parse and extract individual fields from the string.</p>
-
-
-
-<p>For extra points, close all bug reports about the issue from the test engineers with a “Works for me” comment. Your development computer is the ultimate benchmark for your software. Everybody who wishes to run your program should aspire to replicate the immaculate state of existence of your computer. They have no business running or modifying your program otherwise.</p>
-
-
-
-<p>Never acknowledge the presence of alternative universal standards.</p>
-
-
-
-<h3>Ignorance is bliss</h3>
-
-
-
-<p>Nobody writes raw C# code if they are going to deploy on the web. A standard deployment of ASP.NET contains significant amounts of framework libraries that enable the web pipeline and extensions to work with popular third-party tools. Frameworks in the ecosystem are a programming language unto themselves, and require training before use.</p>
-
-
-
-<p>Skip the books and dive into writing code headfirst.</p>
-
-
-
-<p>Write your own code from scratch to do everything from form handling to error logging. Only n00bs use frameworks. Real programmers write their own frameworks to work inside of frameworks. This gives rise to brilliant nuggets such as this.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class FooController
-{
-    …
-    public new void OnActionExecuting(ActionExecutingContext filterContext)
-    {
-    }
-    …
-}
-</pre></div>
-
-
-<p>By essentially reinventing the framework, you are the master of your destiny and that of the company that you are working for. Each line of custom-built code that you write to replace the standard library tightens your chokehold on their business, and makes you irreplaceable.</p>
-
-
-
-<h3>Allow unsanitised input</h3>
-
-
-
-<p>Protecting from SQL injection is difficult and requires constant vigilance. If everything is open to injection, the maintenance programmer will be bogged under the sheer volume of things to repair and hopefully, either go away or be denied permission to fix it due to lack of meaningful effort estimates.</p>
-
-
-
-<p>Mask these shortcomings by only writing client-side validation. That way, the bugs remain hidden until the day some script kiddie uses the contact form on the site to send “; DELETE TABLE Users” to your server.</p>
-
-
-
-<h3>Try…catch…swallow</h3>
-
-
-
-<p>Nobody wants to see those ugly-ass “Server Error” pages in the browser. So do the most obvious thing and wrap your code in a try-catch block. But write only one catch handler for the most general exception possible. Then leave it empty.</p>
-
-
-
-<p>This becomes doubly difficult to diagnose if you still return something which looks like a meaningful response, but is actually utterly incorrect. For example, if your method is supposed to return a JSON object for the active record, return a mock object from the error handler which looks like the real thing. But populate it with empty or completely random values. Leave some of the values correct to avoid making it too obvious.</p>
-
-
-
-<p>Maintenance programmers have no business touching your code if they do not have an innate ken for creating perfect conditions where errors do not occur.</p>
-
-
-
-<h3>String up performance</h3>
-
-
-
-<p>Fundamental data types such as strings and numbers are universal. Especially strings. Therefore, store all your data as strings, including obvious numeric entities such as record identifiers.</p>
-
-
-
-<p>This strategy has even more potential when working with complex data types containing multiple data fields. Eschew standard schemes such as CSV. Instead come up with your own custom scheme using uncommonly used text characters. The Unicode standard is very vast. I personally recommend using pips from playing cards. The “♥” character is appropriately labelled “Black Heart Suit”, because it lets the maintenance programmer perceive the hatred you bear towards him for attempting to tarnish the pristine beauty of the code you have so lovingly written.</p>
-
-
-
-<p>This technique also has a lot of potential in the database. Storing numeric data as strings increases the potential for writing custom parsers or making type-casts mandatory before the data can be used.</p>
-
-
-
-<h3>Use the global scope</h3>
-
-
-
-<p>Global variables are one of the fundamental arsenal in the war against maintainable code. Never fail an opportunity to use them.</p>
-
-
-
-<p>JavaScript is a prime environment for unleashing them upon the unwary maintenance programmer. Every variable that is not explicitly wrapped up inside a function automatically becomes accessible to all other code being loaded on that page. This is an increasingly rare scenario with modern languages. The closest it can be approximated in C# is to have a global class with several public properties which are referenced directly all over the application. While it looks the same, it is still highly insulated. Try these snippets as an example.</p>
-
-
-
-<p>JavaScript –</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate" title="">
-var a = 0; // Variable a declared in global scope
- 
-function doFoo() {
-    a++; // Modifies the variable in global scope
-}
- 
-function doBar() {
-    var a = 1;
-    a++; // Modifies the variable in local scope
-}
-</pre></div>
-
-
-<p>C# –</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class AppGlobals
-{
-    public int A = 0;
-}
- 
-public class Foo
-{
-    public void DoSomething()
-    {
-        // Scope of A is abundantly clear
-        AppGlobals.A++;
-        var A = 0;
-        A++;
-    }
-}
-</pre></div>
-
-
-<p>It is very easy to overlook the scope of the variable in JavaScript if the method is lengthy. Use it to your advantage. Camouflage any attempts to detect the scope correctly by using different conventions across the application. Modify the global variable in some functions. Define and use local variables with the same name in others. Modifying a function must require extensive meditation upon it first. Maintenance programmers must achieve a state of Zen and become one with your code in order to change it.</p>
-
-
-
-<h3>Use unconventional data types</h3>
-
-
-
-<p>Libraries often leverage the use of conventions to eliminate the need to write custom code. For example, the Entity Framework can automatically handle table per type conditions if the primary key column in the base class is an identity column.</p>
-
-
-
-<p>You can sideline this feature by using string or UUID columns as primary keys. Columns with these data types cannot be marked as identity. This necessitates writing custom code to operate upon the data entities. As you must be aware by now, every extra line of code is invaluable.</p>
-
-
-
-<h3>Database tables without relationships</h3>
-
-
-
-<p>If you are working at a small organisation, chances are there is no dedicated database administrator role and developers manage their own database. Take advantage of this lack of oversight and build tables without any relationships or meaningful constraints. Extra points if you can pull it off with no primary keys or indexes.</p>
-
-
-
-<p>Combine this with the practice of creating and leaving several unwanted tables with similar names to give rise to a special kind of monstrosity that nobody has the courage to deal with. For still extra marks, perform updates in all the tables, including the dead ones. Fetch it from different tables in different parts of the application. They cannot be called unwanted tables if even one part of your application depends on them. Call it “sharding” if anybody questions your design.</p>
-
-
-
-<h3>Conclusion</h3>
-
-
-
-<p>This post is not meant to trigger language wars. Experienced developers have seen bad code written in many languages. Some languages are just more amenable to poor practices than others.</p>
-
-
-
-<p>The same principle applies to the .NET framework, which was supposed to be a clean break from the monstrosities of the past. On the web, the ASP.NET framework and its associated libraries are still one of the best environments I have used to build applications.</p>
-
-
-
-<p>That people still write badly structured code in spite of all these advances cements my original point – bad programmers write bad code irrespective of the language thrown at them.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-950" class="post-950 post type-post status-publish format-standard hentry category-foundation tag-c">
-	<div class="blog-item-wrap">
-				<a href="/a-hash-table-using-c/" title="A Hash Table using C#" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/a-hash-table-using-c/" rel="bookmark">A Hash Table using C#</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-hash-table-using-c/" rel="bookmark"><time class="entry-date published" datetime="2017-08-27T12:11:00+05:30">August 27, 2017</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p><a href="https://medium.com/@bartobri/hash-crash-the-basics-of-hash-tables-bef82a8ea550">Brian Barto recently put up a post</a> where he described how hash tables are implemented. Many modern programming languages have this data structure as a built-in feature, making it a commonly used item in a developer’s toolkit. Due to its ready availability, few programmers ever have the need to roll their implementation. So it comes as no surprise when people who do not have a formal education in software engineering do not understand how it works. Brian&#8217;s post explains the most essential parts of this magical data structure very well.</p>
-
-
-
-<p>After reading about it, I felt the urge to implement the same thing in C# as a learning experience. His post carries an implementation using the C programming language, which could be copied over with some tweaking in order to work with the different semantics of C#. This post documents the exercise and its learnings.</p>
-
-
-
-<h3>The Associative Array</h3>
-
-
-
-<p>A hash table is an implementation of an associative array, which is a collection of key-value pairs. Each key is unique and can appear only once in the collection. The data structure supports the full range of CRUD operations &#8211; create, retrieve, update and delete. All operations are constant time on average or linear time in the worst case, making speed the main advantage of this data structure. In some languages, all operations are rolled into the same operator for simplicity. If the key does not exist, it is added. If the key already exists in the collection, its value is overwritten with the new one. Keys are removed by setting their value to null, or having a separate delete operator for associative arrays.</p>
-
-
-
-<p>JavaScript objects are an example of associative arrays.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: jscript; title: ; notranslate" title="">
-o&#91;“occupation”] = “Wizard”; // Key created
-o&#91;“name”] = “Jane Doe”; // Key updated
-console.log(o&#91;“name”]); // Value retrieval
-delete o&#91;“occupation”]; // Jane just retired
-</pre></div>
-
-
-<p>A hash table uses a linear array internally to store values. The key is converted into an integer by running it through a hash function, which is then used as the index into the backing array where the value is stored. A good hash function has two characteristics – <strong>minimal conflicts</strong> and <strong>uniform distribution</strong>.</p>
-
-
-
-<h4>Minimal Conflicts</h4>
-
-
-
-<p>As explained above, a hash function works by converting an input into an integer. A modular hash function is one of the simplest implementations possible, which returns the remainder of a division (aka modulo) of the key by the table length.</p>
-
-
-
-<pre class="wp-block-code"><code>int size = 100;<br>int key = 10;<br>int index = key % size; // 10</code></pre>
-
-
-
-<p>However, this function can end up with a high number of conflicts. The remainder of dividing 10, 110, 210 and so on are are all 10, and require additional steps to resolve the conflict. This condition is minimised by setting the length of the array to a prime number.</p>
-
-
-
-<pre class="wp-block-code"><code>int size = 97;<br>int key = 10;<br>int index = key % size; // 10<br>key = 110;<br>index = key % size; // 13<br>key = 210;<br>index = key % size; // 16</code></pre>
-
-
-
-<h4>Uniform Distribution</h4>
-
-
-
-<p>Discrete uniform distribution is a statistical term for a condition where all values in a finite set all have an equal probability of being observed. A uniform distribution of hash values over the indexes into an array reduces the possibilities of key conflict, and reduces the cost of frequent conflict resolution. Uniform distribution over an arbitrary set of keys is a difficult mathematical challenge, and I won’t even pretend to understand what I’m talking about. Let it just suffice that a lot of really smart folks have already worked on that and we get to build upon their achievements.</p>
-
-
-
-<p>If the keys in a hash table belong to a known and finite set (such as a language dictionary), then the developer can write what is known as a perfect hash function that provides an even distribution of hashes with zero conflicts.</p>
-
-
-
-<h4>Resolving Conflicts</h4>
-
-
-
-<p>Finally, general purpose hash functions can often result in conflicts, i.e. return the same output for two separate inputs. In this case, the hash table must resolve the conflict. For example, the modular hash function returns the index 13 for the key 13 as well as 110. There must be a way to set both these keys simultaneously in the same collection. Broadly, there are three techniques to achieve this.</p>
-
-
-
-<h5>Separate Chaining</h5>
-
-
-
-<p>In this technique, the values themselves are not stored in the array. They are stored in a separate data structure such as a linked list, and a pointer or reference to that list is stored in the backing array. When a value is to be located, the function first computes its index by hashing the key, then walks through the list associated with that index until it finds the desired key-value pair.</p>
-
-
-
-<h5>Open Addressing</h5>
-
-
-
-<p>Open addressing stores all records in the array itself. When a new value is to be inserted, its index position is computed by applying the hash function on the key. If the desired position is occupied, then the rest of the positions are probed. There are several probing algorithms also. Linear probing, the simplest of them, requires walking the array in fixed increments from the desired index until an empty spot is found in the array.</p>
-
-
-
-<h3>Implementation</h3>
-
-
-
-<p>Enough theory. Let us move on to implementation details.</p>
-
-
-
-<p>The first step is to define a HashTable class. The size of the hash table is restricted to 100 entries for this exercise and a fixed-length array is initialised to store these entries.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class HashTable
-{
-┬á┬á┬á private static readonly int SIZE = 100;
-┬á┬á┬á private object&#91;] _entries = new object&#91;SIZE];
-}
-</pre></div>
-
-
-<p>This is where the implementation of this data structure veers away from the one shown in Brian Barto&#8217;s post. The original post used explicitly named method for insert, search and delete operations. However, C# allows the nicer and more intuitive use of a square-bracket syntax to perform these same operations.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class HashTable
-{
-    ...
-
-    public int this&#91;int key]
-    {
-        get;
-        set;
-    }
-}
-</pre></div>
-
-
-<p>The client program uses the following syntax to consume this interface, which is much more concise than having separate methods for each operation.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-HashTable map = new HashTable();
-map&#91;key] = value; // Insert
-int value = map&#91;key]; Retrieve
-map&#91;key] = null; // Delete
-</pre></div>
-
-
-<p>The HashTable class internally uses a struct called Entry to store individual key-value pairs.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-struct Entry
-{
-    internal int key;
-    internal int? value;
-}
-</pre></div>
-
-
-<p>The type of the value field in the Entry struct must be set to a nullable int so that the client can set it to null when the value has to be cleared. The declaration of the _entries field is changed as follows.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-private Entry?&#91;] _entries = new Entry?&#91;HashTable.SIZE];
-</pre></div>
-
-
-<p>Finally, we come to the meat and potatoes of this exercise &#8211; the accessor &amp; mutator functions, whose signature is also modified to support the nullable type.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public int? this&#91;int key]
-{
-    get
-    {
-        ...
-    }
-
-    set
-    {
-        ...
-    }
-}
-</pre></div>
-
-
-<p>The code for these methods and the hash function is more or less identical to the one described in Brian&#8217;s post, with some tweaks to accommodate for the nullable value.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-get
-{
-    int index = _hash(key);
-    
-    while (null != _entries&#91;index])
-    {
-        if (key == _entries&#91;index]?.key)
-        {
-            break;
-        }
-        index = (index + 1) % HashTable.SIZE;
-    } 
-    return _entries&#91;index]?.value;
-}
-
-set
-{
-    if (null == value)
-    {
-        Delete(key);
-    }
-    else
-    {
-        int index = _hash(key);
-        while (null != _entries&#91;index])
-        {
-            if (key == _entries&#91;index]?.key)
-            {
-                break;
-            }
-            index = (index + 1) % HashTable.SIZE;
-        }
-
-        _entries&#91;index] = new HashEntry { key = key, value = value };
-     }
-}
-</pre></div>
-
-
-<p>The one additional member in this class is the private Delete method which is required to delete the entry. This method is called by the mutator function when the client passes in a null value.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-private void Delete(int key)
-{
-    int index = _hash(key);
-
-    while (null != _entries&#91;index])
-    {
-        if (key == _entries&#91;index]?.key)
-        {
-            break;
-        }
-        else
-        {
-            index = (index + 1) % HashTable.SIZE;
-        }
-    }
-
-    if (null == _entries&#91;index])
-    {
-        return;
-    }
-
-    _entries&#91;index] = null;
-}
-</pre></div>
-
-
-<p>That&#8217;s all that&#8217;s needed to implement this data structure. The hash function shown in this example is a very na├»ve implementation. The probability of collisions is very high and the probing function is very slow. It also cannot work with any data type other than int for both keys and their values.</p>
-
-
-
-<p>In spite of these limitations, this still made for a very useful learning exercise.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
-<article id="post-936" class="post-936 post type-post status-publish format-standard hentry category-technique tag-c">
-	<div class="blog-item-wrap">
-				<a href="/a-model-for-sequential-workflow-execution/" title="A Model for Sequential Workflow Execution" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/a-model-for-sequential-workflow-execution/" rel="bookmark">A Model for Sequential Workflow Execution</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2023-01-07T07:48:19+05:30">January 7, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>Many features like automatic memory management have made modern programming technically easier. But pesky business requirements still remain a formidable challenge. A large portion of the complexity in modern applications originates from ever-evolving business rules. In an ideal scenario, there would be no functional requirements and programmers would be paid directly in Cheetos and Mountain Dew for doing cool stuff all day. Unfortunately, that&#8217;s not the case, and all payments must be made in fiat currency rather than snacks. So a business is necessary in order to generate revenue. And with it come its own requirements for things like processes, regulations and laws.</p>
-
-
-
-<p>In spite of this, a smart programmer can notice that the application of rules to a process is easily separated from the rules themselves. They can be applied in linear sequence or driven by outcomes of its component steps (such as offering the customer a choice between cash discounts or adding complimentary products instead). Linear processing is straightforward to implement – execute each step in a queue one at a time until they are all done. Conditional processing depends on the outcome of the previous step, making the workflow a gigantic mishmash of if-else statements if not handled carefully from the start.</p>
-
-
-
-<p>Both types of processing can incorporate structures such as loops, sub-routines and interrupts.</p>
-
-
-
-<p>This post demonstrates an implementation of a sequential workflow where the process pipeline is separated from the steps in the process. This architecture allows for the execution of the pipeline to remain unchanged even if the steps in the process change.</p>
-
-
-
-<p>The workflow model constitutes of the entities described below.</p>
-
-
-<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ZP9BJiCm48RtFiMWRXAXv00HgbGL46m0YLp0jIVj2CSnzgIq0kwEHKCBg7diHYFx-n-skE0DrWXRMdbfMP1bz9LK20yDIus1rXPzlb1CMsB2aDzty_wAdVIondXX3k_YycQ7gcLCZjkYVFePqr-p-1JAo11w5PxnjKMhqFzNM6YTo4wzEEiZFTaWwrhkjo1NWNs4mR2Ndh0pUBITqBAfdObxdQJ7P4j3Q1bcJXfSUqGhnlYGvn_pySx5Q6UGPHCuK00Ux8U_o19tdD_j7Nf3zgMCVo9KZQybKsE7FPwt-CsxHjswMpAnl8cChi1CDszs8CyfTG5A6XEczDEwIEm42h0DKnLFW3gyOymflW00" alt="PlantUML Syntax:<br />
-!theme vibrant<br />
-interface Notadesigner.Activities.IActivity<tparameter> {<br />
-+Execute(parameter:TParameter):TParameter<br />
-}</p>
-<p>class Notadesigner.Activities.Sequencer<tparameter> {<br />
-+Add(activity:IActivity<tparameter>)<br />
-+Execute(input:TParameter):TParameter<br />
-}</p>
-<p>abstract class Notadesigner.Activities.Activity<tparameter> {<br />
-# OnExecuteCompleted()<br />
-}</p>
-<p>class Client #palegreen</p>
-<p>Notadesigner.Activities.Activity ..|> Notadesigner.Activities.IActivity<br />
-Notadesigner.Activities.Sequencer &#8211;> Notadesigner.Activities.IActivity : executes<br />
-Notadesigner.Text.HyperlinkTransformation ..|> Notadesigner.Activities.Activity<br />
-Notadesigner.Text.DedupFilter ..|> Notadesigner.Activities.Activity</p>
-<p>Client -down-> Notadesigner.Activities.Sequencer : calls<br />
-Notadesigner.Activities.Sequencer -up-> Client : notifies completion<br />
-" usemap="#plantuml_map"></p>
-
-
-
-<p>Activities are the steps which must be performed in a workflow. The type <strong>IActivity&lt;TParameter&gt;</strong> defines the common minimum standard that all activities must implement. It requires a method called Execute which takes one parameter.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-void Execute(TParameter parameter)
-</pre></div>
-
-
-<p>The parameter is the input that this activity may require. Its type should match the type specified in the concrete constructor of this interface. Consuming the Sequence class is easy if this is a reference type. The client simply has to call its Execute method and wait for it to return. The modifications will show up in the input instance that the client already has. But if it is a value type, the the caller has to subscribe for the ExecuteCompleted event from the Sequence, whose handler receives the modified value as a parameter.</p>
-
-
-
-<p>The IActivity&lt;TParameter&gt; type exposes an ExecuteCompleted event. The Sequencer must subscribe to this event in order to be notified when the activity completes its execution successfully. The event delegate receives a parameter of type ExecuteCompletedEventArgs. The Result property of this instance contains the modified value of the input.</p>
-
-
-
-<p><strong>Activity&lt;TParameter&gt;</strong> is an abstract class that provides a minimal implementation of the IActivity interface. Derived classes which override the Execute method must ensure that the method in the base class is called, or otherwise ensure that the OnExecuteCompleted method is called when the method completes successfully.</p>
-
-
-
-<p><strong>Sequence&lt;TParameter&gt;</strong> is the primary execution path of the workflow. It lets the client add activities to the workflow and execute them in the order that they were added.</p>
-
-
-
-<p>The Sequence class stores the activity class instances in a queue. It uses an enumerator to ratchet through the list. The enumerator points to the first activity instance and executes it. The Sequence class subscribes to the ExecuteCompleted event from the Activity instance, which causes the enumerator to move to the next activity in the list and execute it. This process continues until all the activities in the list have been executed. At this point, the Sequence itself dispatches the ExecuteCompleted event, which the client must subscribe to.</p>
-
-
-
-<p>The Sequence class exposes the following methods.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-void Add(IActivity&lt;TParameter&gt; activity)
-</pre></div>
-
-
-<p>This method accepts an IActivity instance, whose generic parameter must match the generic type of the Sequence class instance itself.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public void Execute(TParameter input)
-</pre></div>
-
-
-<p>This method triggers the execution of the Sequence. It takes a single parameter of the type declared in TParameter. This input is passed as a parameter to the Execute method of all the Activity instances in the sequence.</p>
-
-
-
-<p>Activities are further classified into filters and transformations. A filter scans the input and either allows or disallows further processing. It does not modify the input in any manner. A transformation activity modifies the input in some way and returns the modified value as output. In the case of the former, there needs to be a mechanism to signal a break in the process to the client. For this, the activity must throw a <strong>ExecuteException</strong>. The client of the Sequence class must wrap the call to the Execute method in a try block and handle any failure to complete the process in the catch block.</p>
-
-
-
-<p>These types are collectively sufficient to provide the framework for any simple linear workflow. However, the actual steps to be performed are not part of the framework. The client must provide the concrete implementations of the Activity class, one for each step in the process. These classes are instantiated and added to the Sequence class.</p>
-
-
-
-<h3>Examples</h3>
-
-
-
-<p>The following section demonstrates how a transformation and a filter can be implemented and consumed by this framework.</p>
-
-
-
-<p>Classes which derive from Activity are part of the client implementation and must be stored in the client namespace. In this example we use the Notadesigner.Text namespace to implement a HyperlinkTransformation and a DeDupFilter.</p>
-
-
-
-<p><strong>HyperlinkTransformation</strong> scans the input string for any sequences that begin with http:// or https:// and wraps it within an anchor tag. This example uses a very simple RegEx sequence to perform this step. We are not really interested in the versatility of the regex for this throwaway example.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class HyperlinkTransformation : Activity&lt;string&gt;
-{
-    void Execute(string input)
-    {
-        RegEx.Replace(input, @&quot;http(s)?://&#091;a-z.]+&quot;);
-        base.Execute(input);
-    }
-}
-
-…
-var activity = new HyperlinkTransformation();
-activity.ExecuteCompleted += (sender, e)
-{
-    Console.WriteLine{&quot;Result {0}&quot;, e.Result);
-};
-activity.Execute(&quot;Visit http://www.notadesigner.com for best deals in programming snippets.&quot;);
-…
-</pre></div>
-
-
-<p>When the Execute method completes, it dispatches the ExecuteCompleted event.</p>
-
-
-
-<p><strong>DeDupFilter</strong> compares the string with existing values in the database. If it is a duplicate, then the previous string is maintained as is and the new one is discarded. This is achieved by throwing a SequenceException from the Execute method of this class if an existing match is found.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public class DeDupFilter : Activity&lt;string&gt;
-{
-    void Execute(string input)
-    {
-        // CurrentEntries is of type List&lt;string&gt; and is populated previously with string entries
-        if (CurrentEntries.IndexOf(input) &gt; -1)
-        {
-            throw new ExecuteException(&quot;Entry already exists&quot;);
-        }
-    }
-}
-
-…
-try
-{
-    var activity = new DeDupFilter();
-    activity.Execute(&quot;Talk is cheap. Show me the code.&quot;);
-}
-catch (SequenceException)
-{
-    Trace.TraceError(&quot;Entry already exists&quot;);
-}
-…
-</pre></div>
-
-
-<p>The client can then handle the exception and proceed with the understanding the input being inserted was already present in the database.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/tag/c/page/4/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1189,7 +821,8 @@ catch (SequenceException)
 <a class="page-numbers" href="/tag/c/page/4/">4</a>
 <span aria-current="page" class="page-numbers current">5</span>
 <a class="page-numbers" href="/tag/c/page/6/">6</a>
-<a class="page-numbers" href="/tag/c/page/7/">7</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="/tag/c/page/8/">8</a>
 <a class="next page-numbers" href="/tag/c/page/6/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -1215,7 +848,8 @@ catch (SequenceException)
 			<aside id="archives" class="widget">
 				<h3 class="widget-title">Archives</h3>
 				<ul>
-						<li><a href='/2022/12/'>December 2022</a></li>
+						<li><a href='/2023/01/'>January 2023</a></li>
+	<li><a href='/2022/12/'>December 2022</a></li>
 	<li><a href='/2020/09/'>September 2020</a></li>
 	<li><a href='/2020/06/'>June 2020</a></li>
 	<li><a href='/2019/12/'>December 2019</a></li>
@@ -1301,55 +935,55 @@ catch (SequenceException)
 </ul></div></div>		</div><!-- .widget-area .first -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
-			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="/the-database-context/">The Database Context</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="/domain-entities/">Domain Entities</a></li>
-</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-1" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
 <a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
 <a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
 <a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
 <a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
 <a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
 <a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1394,7 +1028,6 @@ catch (SequenceException)
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
-<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushJScript.js?ver=3.0.9b' id='syntaxhighlighter-brush-jscript-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');

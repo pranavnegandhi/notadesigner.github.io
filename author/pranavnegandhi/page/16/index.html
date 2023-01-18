@@ -163,6 +163,259 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-61" class="post-61 post type-post status-publish format-standard hentry category-construction tag-version-control">
+	<div class="blog-item-wrap">
+				<a href="/a-gentle-introduction-to-version-control-part-ii/" title="A Gentle Introduction to Version Control &#8211; Part II" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark">A Gentle Introduction to Version Control &#8211; Part II</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/a-gentle-introduction-to-version-control-part-ii/" rel="bookmark"><time class="entry-date published" datetime="2008-02-23T12:54:31+05:30">February 23, 2008</time><time class="updated" datetime="2023-01-05T11:41:37+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3>Using SVN</h3>
+
+
+
+<p>Subversion, or svn, is a very popular version control tool, used by some of the best software teams in the world. The fact that it is free and open source, in addition to being really, really good may have something to do with that. Like most good version control tools, Subversion too is split into two components – a server and a client.</p>
+
+
+
+<p>You don’t need to worry about the server usually because it is set up on a system far out of your reach. If you are located in North America or Europe, it means that your company has outsourced the Subversion hosting somewhere in South America or India. Funnily enough, good companies in Bangalore (or Pune) usually outsource their Subversion hosting to a really, really good outfit in LA (read, Dreamhost). Silly. But that’s how the global economy works, and which is why it is more fun to be a software developer than to be an economist.</p>
+
+
+
+<p>Coming back to our topic&#8230;</p>
+
+
+
+<p>What you will use on a day-to-day basis is&nbsp;the Subversion command-line client (or TortoiseSVN, a GUI replacement).</p>
+
+
+
+<p><strong>Disclaimer:</strong> This article touches briefly upon how to get started with the client, without worrying about details. If you are a svn alpha-geek who dreams about hosting your own repository someday or whatever else you svn alpha-geeks dream about, and find my guide to be incomplete, don’t email me to write about the 10,542 variations in syntax that the svn client allows. I know you adore your svn client. But this article is targeted at people who don’t as much as <em>know</em> about svn, much less adore it.</p>
+
+
+
+<p>Once the client is installed, you can&nbsp;launch a command prompt session by typing cmd into the Run dialog box in&nbsp;Windows and hitting enter. Once on the command prompt, type the following and&nbsp;hit enter.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\svn help
+</pre></div>
+
+
+<p>Detailed help is also available for some of the more oft-used commands by modifying the help command like so –</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\svn help import
+</pre></div>
+
+
+<h3>Import</h3>
+
+
+
+<p>You can use the import command to <strong>add&nbsp;files from your computer into the repository for the first time</strong>, and hence,&nbsp;begin versioning them.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\svn import trunk/ file:///F:/projects/notadesigner/trunk/web/index.htm -m &quot;Initial import&quot;
+</pre></div>
+
+
+<h3>Checkout</h3>
+
+
+
+<p>If you are a new developer on a team that&nbsp;has been using Subversion for a while, you can use the checkout command <strong>to retrieve the source code from the repository onto your hard drive</strong>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\cd projects\notadesigner\trunk
+C:\projects\notadesigner\trunk\web&gt;svn checkout https://notadesigner.com/svn/trunk
+</pre></div>
+
+
+<p>Note how the active directory is first&nbsp;changed to the path where the files have to be stored, and then the checkout command is called.</p>
+
+
+
+<p>Alternatively, you can also specify the&nbsp;path to the working folder as a parameter to the checkout command.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\svn checkout https://notadesigner.com/svn/trunk C:\projects\notadesigner\trunk
+</pre></div>
+
+
+<h3>Update</h3>
+
+
+
+<p>This is probably the next most used command&nbsp;in the Subversion client. Millions of developers across the globe run this&nbsp;command every morning to retrieve the latest version of files from the&nbsp;repository into their working folder. Running this command makes sure that you&nbsp;are running abreast of everyone else on your team, by bringing the latest&nbsp;changes they have committed to the repository onto your machine (and likewise,&nbsp;your latest changes get updated on their machines).</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\projects\notadesigner\trunk\web&gt;svn update
+</pre></div>
+
+
+<p>Like true Zen, it is a deceptively simple&nbsp;command. Just two words that do you a whole lot of good.</p>
+
+
+
+<h3>Add / Delete</h3>
+
+
+
+<p>These commands do just what they say. They&nbsp;make changes to your working copy, and schedule the same change to the&nbsp;repository when you commit your changes later.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\projects\notadesigner\trunk\web&gt;svn add locations.htm
+C:\projects\notadesigner\trunk\web&gt;svn delete directions.htm
+C:\projects\notadesigner\trunk\web&gt;svn commit -m &quot;Added new locations. Deleted directions because we're spread all over the city and I didn't know where to send them.&quot;
+</pre></div>
+
+
+<h3>Copy / Move</h3>
+
+
+
+<p>Copy and move work exactly as they do on&nbsp;your operating system, except that they are targeted at the repository.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\projects\notadesigner\trunk\web&gt;svn copy jobs.htm https://notadesigner.com/svn/trunk -m &quot;Adding new jobs page&quot;
+</pre></div>
+
+
+<p>Move requires a separate commit to&nbsp;implement your changes into the repository.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\projects\notadesigner\trunk\web&gt;svn move jobs.htm jobs/index.htm
+C:\projects\notadesigner\trunk\web&gt;svn commit -m &quot;Moved jobs page into separate folder&quot;
+</pre></div>
+
+
+<h3>Revert</h3>
+
+
+
+<p>This command rolls back any changes made to&nbsp;a file in your working folder, and restores it to the version on the repository.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+C:\projects\notadesigner\trunk\web&gt;svn revert contact.htm
+</pre></div>
+
+
+<h3>Using TortoiseSVN</h3>
+
+
+
+<p>TortoiseSVN lets you perform all actions that the svn command-line client lets you, without messing with the command-line. If you are new to Subversion, it’s a compelling replacement to the regular svn client.</p>
+
+
+
+<h3>Finally, Don&#8217;t Do This</h3>
+
+
+
+<p>I have found a shockingly large number of people doing silly things while using a VCS. I am tired of telling them not to do it and so if you abuse a VCS in any of the following ways and I catch you at it, I’ll make you write this list on a blackboard that screeches, for at least a week&#8230;without ear muffs.</p>
+
+
+
+<p>It’s not that difficult to avoid them. So listen up.</p>
+
+
+
+<h4>Don&#8217;t make a copy of your working folder to make edits</h4>
+
+
+
+<p>If you are checking out files from the repository in a working folder and then making a copy of that folder to make edits because you don’t want to overwrite your old files, you haven’t understood the most basic premise of version control.</p>
+
+
+
+<p>The repository already has a copy of your files which compile correctly. If you make a mistake, revert your files and you’re back where you began from.</p>
+
+
+
+<h4>Don&#8217;t make a copy of your folder in the repository before editing your files</h4>
+
+
+
+<p>A more severe case of the previous symptom is when a developer copies the entire trunk in the repository into trunk-2 (effectively creating a branch) and making edits to that.</p>
+
+
+
+<h4>Don&#8217;t delete the current version of the file from the repository to add the edited working copy in its place</h4>
+
+
+
+<p>The whole point of version control is to&nbsp;have a history of your file over time. If you delete the file from your repository, you destroy that history. If you do it every time, somebody who looks at your&nbsp;file six months down the line will have no idea about the pedigree of your&nbsp;file, the bugs that have been fixed or the new code that has been added to it.</p>
+
+
+
+<h4>Don&#8217;t forget to add comments when committing changes</h4>
+
+
+
+<p>You’ve got to be really lazy to not add comments at the time of committing your changes. Vague comments such as &#8220;updated file&#8221; are just as unhelpful.</p>
+
+
+
+<p>It helps to be descriptive in the changelog because that’s the first place people go to find out what’s been cooking in your files. If you don’t tell them up front what you’ve been up to, they’ll just think that you’ve been messing up and saddle you with all the blame.</p>
+
+
+
+<h4>Don&#8217;t forget to add new files to the repository</h4>
+
+
+
+<p>This is a common mistake and can happen by even the most seasoned developers. But I’m writing it here to simply reinforce it that this should be avoided.</p>
+
+
+
+<h3>References</h3>
+
+
+
+<p>If you find this article doesn’t quite quench your thirst about version control systems or Subversion, you can learn more stuff by visiting the following websites.</p>
+
+
+
+<p><a href="http://svnbook.red-bean.com/">http://svnbook.red-bean.com/</a><br>Colloquially referred to as the svn-book, this is the granddaddy of all Subversion books. Contains detailed explanations about the history of svn, repository and server setup and administration, detailed explanations about the acrobatic feats that the client lets you do, and if you’re really interested, a description of the C APIs that let you hook up svn with your own applications.</p>
+
+
+
+<p><a href="http://www.joelonsoftware.com/">http://www.joelonsoftware.com</a><br>A delightful collection of extremely well-written and funny articles about computers, software and management by Joel Spolsky. This should be a must-read for every developer.</p>
+
+
+
+<p><a href="http://www.ericsink.com/scm/source_control.html">http://www.ericsink.com/scm/source_control.html</a><br>Eric Sink is the founder of SourceGear, a company that specializes in selling version control software. You can’t get anybody better to write about version control.</p>
+
+
+
+<p><a href="http://betterexplained.com/articles/a-visual-guide-to-version-control/">http://betterexplained.com/articles/a-visual-guide-to-version-control/</a><br>Kalid Azad maintains this brilliant blog about all things mathematical and computer-sciencey. It’s a refreshing view to everyday complexities that you take for granted.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-59" class="post-59 post type-post status-publish format-standard hentry category-construction tag-version-control">
 	<div class="blog-item-wrap">
 				<a href="/a-gentle-introduction-to-version-control-part-i/" title="A Gentle Introduction to Version Control &#8211; Part I" >
@@ -787,51 +1040,6 @@ class ConsultancyFirmInventory extends Inventory
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-39" class="post-39 post type-post status-publish format-standard hentry category-software-engineering">
-	<div class="blog-item-wrap">
-				<a href="/learning-actionscript/" title="Learning ActionScript" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="/learning-actionscript/" rel="bookmark">Learning ActionScript</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="/learning-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2006-07-13T11:02:08+05:30">July 13, 2006</time><time class="updated" datetime="2023-01-05T11:41:37+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>When I first jumped into programming in ActionScript about a year ago, I was carrying a lot of baggage with me from 6 years of Director/Lingo development. I was expecting more than just a change in syntax &#8211; this was going to be a paradigm shift for me! From coding in a language that comes close to writing a sentence, to something that resembled a <strong>real</strong> programming language. Heck, it even had {}&#8217;s.</p>
-
-
-
-<p>Thing&#8217;s didn&#8217;t go as smoothly as I had expected though. This was nothing like what I had expected or was used to. Code in separate text files? What in heavens name are classpaths? And why does this language have an overdose of ;&#8217;s? Being on a tight schedule didn&#8217;t help much. I threw in the towel, hacked together something using old school techniques, and just about threw out Flash from my arsenal.</p>
-
-
-
-<p>But an opportunity presented itself to give a second shot at Flash. <a title="NPAPL.com" href="http://www.npapl.com" target="_blank" rel="noopener">NPAPL</a> contracted their website redesign to Fractal Ink and an important aspect of the project was their portfolio. Since they wanted a lot of glitz into the presentation, this task would generally have been assigned to the designers. But due to the immense volume of data involved (100+ projects), I figured that a data-driven solution would make more sense than having the design team churn out a multi-megabyte, timeline driven file.</p>
-
-
-
-<p>So I got to work digging up tutorials on component development, database access and XML parsing. Since the site was being hosted on a Windows server meant that my PHP skills would be of limited help (we ended up using static XML files instead). But the Flash code was pristine. I had finally broken through the glass ceiling.</p>
-
-
-
-<p>I don&#8217;t remember the instant at which the change came through. But even today as I look upon the code, it looks nice. Simple, easy, readable. It took less than a few seconds to understand how it all fits together. What I remember thinking at that time was &#8220;How will I do this in Director&#8221;. By abstracting my thoughts out of the unfamiliar syntax of ActionScript, I was able to work my way around the requirements and atleast devise a solution. What remained was a very simple translation exercise, which got underway with ease.</p>
-
-
-
-<p>I&#8217;ve moved on a lot since then today. I&#8217;m not a Flash guru or anything. But then I&#8217;d rather not be stuck working in a single environment day-in day-out. The new world of the interweb is rich in technologies, and I&#8217;m going to taste them all.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="/author/pranavnegandhi/page/15/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -865,7 +1073,8 @@ class ConsultancyFirmInventory extends Inventory
 			<aside id="archives" class="widget">
 				<h3 class="widget-title">Archives</h3>
 				<ul>
-						<li><a href='/2022/12/'>December 2022</a></li>
+						<li><a href='/2023/01/'>January 2023</a></li>
+	<li><a href='/2022/12/'>December 2022</a></li>
 	<li><a href='/2020/09/'>September 2020</a></li>
 	<li><a href='/2020/06/'>June 2020</a></li>
 	<li><a href='/2019/12/'>December 2019</a></li>
@@ -961,45 +1170,45 @@ class ConsultancyFirmInventory extends Inventory
 <li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.666666666667pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.777777777778pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 14.111111111111pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 10pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (35 items)">c#</a>
+<a href="/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
 <a href="/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 10pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.666666666667pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.222222222222pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 10pt;" aria-label="learning (2 items)">learning</a>
+<a href="/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
 <a href="/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.777777777778pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
 <a href="/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.333333333333pt;" aria-label="php (3 items)">php</a>
-<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.222222222222pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.333333333333pt;" aria-label="programming (3 items)">programming</a>
+<a href="/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
+<a href="/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
 <a href="/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.777777777778pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
 <a href="/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
 <a href="/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 10pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.333333333333pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1043,6 +1252,7 @@ class ConsultancyFirmInventory extends Inventory
 		  })
 		</script>
 	<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0.9b' id='syntaxhighlighter-brush-powershell-js'></script>
 <script type='text/javascript' src='/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
 <script type='text/javascript'>
 	(function(){

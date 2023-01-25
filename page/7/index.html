@@ -185,6 +185,199 @@ body.custom-background { background-color: #f2f2f2; }
 		<main id="main" class="site-main" role="main">
 
 		
+<article id="post-936" class="post-936 post type-post status-publish format-standard hentry category-technique tag-c">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/a-model-for-sequential-workflow-execution/" title="A Model for Sequential Workflow Execution" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/a-model-for-sequential-workflow-execution/" rel="bookmark">A Model for Sequential Workflow Execution</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/a-model-for-sequential-workflow-execution/" rel="bookmark"><time class="entry-date published" datetime="2017-07-17T19:48:00+05:30">July 17, 2017</time><time class="updated" datetime="2023-01-07T07:48:19+05:30">January 7, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Many features like automatic memory management have made modern programming technically easier. But pesky business requirements still remain a formidable challenge. A large portion of the complexity in modern applications originates from ever-evolving business rules. In an ideal scenario, there would be no functional requirements and programmers would be paid directly in Cheetos and Mountain Dew for doing cool stuff all day. Unfortunately, that&#8217;s not the case, and all payments must be made in fiat currency rather than snacks. So a business is necessary in order to generate revenue. And with it come its own requirements for things like processes, regulations and laws.</p>
+
+
+
+<p>In spite of this, a smart programmer can notice that the application of rules to a process is easily separated from the rules themselves. They can be applied in linear sequence or driven by outcomes of its component steps (such as offering the customer a choice between cash discounts or adding complimentary products instead). Linear processing is straightforward to implement – execute each step in a queue one at a time until they are all done. Conditional processing depends on the outcome of the previous step, making the workflow a gigantic mishmash of if-else statements if not handled carefully from the start.</p>
+
+
+
+<p>Both types of processing can incorporate structures such as loops, sub-routines and interrupts.</p>
+
+
+
+<p>This post demonstrates an implementation of a sequential workflow where the process pipeline is separated from the steps in the process. This architecture allows for the execution of the pipeline to remain unchanged even if the steps in the process change.</p>
+
+
+
+<p>The workflow model constitutes of the entities described below.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/ZP9BJiCm48RtFiMWRXAXv00HgbGL46m0YLp0jIVj2CSnzgIq0kwEHKCBg7diHYFx-n-skE0DrWXRMdbfMP1bz9LK20yDIus1rXPzlb1CMsB2aDzty_wAdVIondXX3k_YycQ7gcLCZjkYVFePqr-p-1JAo11w5PxnjKMhqFzNM6YTo4wzEEiZFTaWwrhkjo1NWNs4mR2Ndh0pUBITqBAfdObxdQJ7P4j3Q1bcJXfSUqGhnlYGvn_pySx5Q6UGPHCuK00Ux8U_o19tdD_j7Nf3zgMCVo9KZQybKsE7FPwt-CsxHjswMpAnl8cChi1CDszs8CyfTG5A6XEczDEwIEm42h0DKnLFW3gyOymflW00" alt="PlantUML Syntax:<br />
+!theme vibrant<br />
+interface Notadesigner.Activities.IActivity<tparameter> {<br />
++Execute(parameter:TParameter):TParameter<br />
+}</p>
+<p>class Notadesigner.Activities.Sequencer<tparameter> {<br />
++Add(activity:IActivity<tparameter>)<br />
++Execute(input:TParameter):TParameter<br />
+}</p>
+<p>abstract class Notadesigner.Activities.Activity<tparameter> {<br />
+# OnExecuteCompleted()<br />
+}</p>
+<p>class Client #palegreen</p>
+<p>Notadesigner.Activities.Activity ..|> Notadesigner.Activities.IActivity<br />
+Notadesigner.Activities.Sequencer &#8211;> Notadesigner.Activities.IActivity : executes<br />
+Notadesigner.Text.HyperlinkTransformation ..|> Notadesigner.Activities.Activity<br />
+Notadesigner.Text.DedupFilter ..|> Notadesigner.Activities.Activity</p>
+<p>Client -down-> Notadesigner.Activities.Sequencer : calls<br />
+Notadesigner.Activities.Sequencer -up-> Client : notifies completion<br />
+" usemap="#plantuml_map"></p>
+
+
+
+<p>Activities are the steps which must be performed in a workflow. The type <strong>IActivity&lt;TParameter&gt;</strong> defines the common minimum standard that all activities must implement. It requires a method called Execute which takes one parameter.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+void Execute(TParameter parameter)
+</pre></div>
+
+
+<p>The parameter is the input that this activity may require. Its type should match the type specified in the concrete constructor of this interface. Consuming the Sequence class is easy if this is a reference type. The client simply has to call its Execute method and wait for it to return. The modifications will show up in the input instance that the client already has. But if it is a value type, the the caller has to subscribe for the ExecuteCompleted event from the Sequence, whose handler receives the modified value as a parameter.</p>
+
+
+
+<p>The IActivity&lt;TParameter&gt; type exposes an ExecuteCompleted event. The Sequencer must subscribe to this event in order to be notified when the activity completes its execution successfully. The event delegate receives a parameter of type ExecuteCompletedEventArgs. The Result property of this instance contains the modified value of the input.</p>
+
+
+
+<p><strong>Activity&lt;TParameter&gt;</strong> is an abstract class that provides a minimal implementation of the IActivity interface. Derived classes which override the Execute method must ensure that the method in the base class is called, or otherwise ensure that the OnExecuteCompleted method is called when the method completes successfully.</p>
+
+
+
+<p><strong>Sequence&lt;TParameter&gt;</strong> is the primary execution path of the workflow. It lets the client add activities to the workflow and execute them in the order that they were added.</p>
+
+
+
+<p>The Sequence class stores the activity class instances in a queue. It uses an enumerator to ratchet through the list. The enumerator points to the first activity instance and executes it. The Sequence class subscribes to the ExecuteCompleted event from the Activity instance, which causes the enumerator to move to the next activity in the list and execute it. This process continues until all the activities in the list have been executed. At this point, the Sequence itself dispatches the ExecuteCompleted event, which the client must subscribe to.</p>
+
+
+
+<p>The Sequence class exposes the following methods.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+void Add(IActivity&lt;TParameter&gt; activity)
+</pre></div>
+
+
+<p>This method accepts an IActivity instance, whose generic parameter must match the generic type of the Sequence class instance itself.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public void Execute(TParameter input)
+</pre></div>
+
+
+<p>This method triggers the execution of the Sequence. It takes a single parameter of the type declared in TParameter. This input is passed as a parameter to the Execute method of all the Activity instances in the sequence.</p>
+
+
+
+<p>Activities are further classified into filters and transformations. A filter scans the input and either allows or disallows further processing. It does not modify the input in any manner. A transformation activity modifies the input in some way and returns the modified value as output. In the case of the former, there needs to be a mechanism to signal a break in the process to the client. For this, the activity must throw a <strong>ExecuteException</strong>. The client of the Sequence class must wrap the call to the Execute method in a try block and handle any failure to complete the process in the catch block.</p>
+
+
+
+<p>These types are collectively sufficient to provide the framework for any simple linear workflow. However, the actual steps to be performed are not part of the framework. The client must provide the concrete implementations of the Activity class, one for each step in the process. These classes are instantiated and added to the Sequence class.</p>
+
+
+
+<h3>Examples</h3>
+
+
+
+<p>The following section demonstrates how a transformation and a filter can be implemented and consumed by this framework.</p>
+
+
+
+<p>Classes which derive from Activity are part of the client implementation and must be stored in the client namespace. In this example we use the Notadesigner.Text namespace to implement a HyperlinkTransformation and a DeDupFilter.</p>
+
+
+
+<p><strong>HyperlinkTransformation</strong> scans the input string for any sequences that begin with http:// or https:// and wraps it within an anchor tag. This example uses a very simple RegEx sequence to perform this step. We are not really interested in the versatility of the regex for this throwaway example.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class HyperlinkTransformation : Activity&lt;string&gt;
+{
+    void Execute(string input)
+    {
+        RegEx.Replace(input, @&quot;http(s)?://&#091;a-z.]+&quot;);
+        base.Execute(input);
+    }
+}
+
+…
+var activity = new HyperlinkTransformation();
+activity.ExecuteCompleted += (sender, e)
+{
+    Console.WriteLine{&quot;Result {0}&quot;, e.Result);
+};
+activity.Execute(&quot;Visit http://www.notadesigner.com for best deals in programming snippets.&quot;);
+…
+</pre></div>
+
+
+<p>When the Execute method completes, it dispatches the ExecuteCompleted event.</p>
+
+
+
+<p><strong>DeDupFilter</strong> compares the string with existing values in the database. If it is a duplicate, then the previous string is maintained as is and the new one is discarded. This is achieved by throwing a SequenceException from the Execute method of this class if an existing match is found.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class DeDupFilter : Activity&lt;string&gt;
+{
+    void Execute(string input)
+    {
+        // CurrentEntries is of type List&lt;string&gt; and is populated previously with string entries
+        if (CurrentEntries.IndexOf(input) &gt; -1)
+        {
+            throw new ExecuteException(&quot;Entry already exists&quot;);
+        }
+    }
+}
+
+…
+try
+{
+    var activity = new DeDupFilter();
+    activity.Execute(&quot;Talk is cheap. Show me the code.&quot;);
+}
+catch (SequenceException)
+{
+    Trace.TraceError(&quot;Entry already exists&quot;);
+}
+…
+</pre></div>
+
+
+<p>The client can then handle the exception and proceed with the understanding the input being inserted was already present in the database.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1006" class="post-1006 post type-post status-publish format-standard hentry category-demonstration tag-c tag-fitnet tag-wpf">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/adding-some-life/" title="Adding Some Life" >
@@ -789,121 +982,6 @@ Title=&quot;FitNet Desktop&quot; Height=&quot;400&quot; Width=&quot;300&quot; /&
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-915" class="post-915 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-c">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/" title="Reifying Your Commands – Interprocess Communications by Example" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark">Reifying Your Commands – Interprocess Communications by Example</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/reifying-your-commands-interprocess-communications-by-example/" rel="bookmark"><time class="entry-date published" datetime="2016-10-17T22:05:19+05:30">October 17, 2016</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>In the first part of this series, I introduced readers to the work reify, which means to make something real. So far, we have seen how the ActionScript application converts a logging request into a command object, serialises it into a byte array, and sends it over a TCP socket connection into the waiting arms of a server. The server for its part must deserialise the byte array back into a command object and execute it.</p>
-
-
-
-<p>This last part in the series explains how this is done.</p>
-
-
-
-<p>The Story So Far</p>
-
-
-
-<p>We have seen how the Puppeteer receives a message. In the receive callback method is a call to deserialise the message into an object.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-byte&#91;] message = new byte&#91;messageLength];
-Buffer.BlockCopy(buffer, 4, message, 0, messageLength);
-
-ICommand command = Util.Deserialize(message);
-</pre></div>
-
-
-<p>The Deserialize utility method receives only the portion of the message that constitutes the actual data. The first 32 bits are discarded as they are not relevant to the deserialisation process. The Deserialize method is extremely simple.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public static ICommand Deserialize(byte&#91;] message)
-{
-    Dictionary&lt;byte, type=&quot;&quot;&gt; instructionClassMap = new Dictionary&lt;byte, type=&quot;&quot;&gt;() { { 0x02, typeof(Trace) } };
-
-    Type commandType = null;
-    ICommand command = null;
-    if (instructionClassMap.TryGetValue(message&#91;0], out commandType))
-    {
-        command = (ICommand)Activator.CreateInstance(commandType, new object&#91;] { message });
-    }
-
-    return command;
-}
-</pre></div>
-
-
-<p>It reads the first byte from the message which contains the instruction to be executed. The instruction is then used as key to look for the type in the instruction map. The Activator.CreateInstance() API is used to instantiate the type into a variable. The instance is then returned from the function.</p>
-
-
-
-<p>The receive callback then dispatches a CommandReceived event. The application implements the plumbing from that point onward to handle the event notification and act upon it.</p>
-
-
-
-<p>At this point, we need to take a step back and observe the command object instantiation in detail. Each command type has its own implementation detail which interprets and utilises the message. The Trace class, for example, reads the level, category and message values from the message. Its constructor is listed below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-public Trace(byte&#91;] message)
-{
-    int unixTimeStamp = message&#91;1] &lt;&lt; 24 | message&#91;2] &lt;&lt; 16 | message&#91;3] &lt;&lt; 8 | message&#91;4];
-    TimeStamp = Util.UnixTimeStampToDateTime((double)unixTimeStamp);
-    int paramCount = message&#91;5] &lt;&lt; 24 | message&#91;6] &lt;&lt; 16 | message&#91;7] &lt;&lt; 8 | message&#91;8];
-    parameters = new string&#91;paramCount];
-    int index = 9;
-    
-    for (int i = 0; i &lt;&lt; paramCount; i++)
-    {
-        int length = message&#91;index] &lt;&lt; 8 | message&#91;index + 1];
-        parameters&#91;i] = Encoding.UTF8.GetString(message, index + 2, length);
-
-        index += (2 + length);
-    }
-
-    Level = parameters&#91;0];
-    Category = parameters&#91;1];
-    Parameters = parameters;
-}
-</pre></div>
-
-
-<p>The first byte contains the instruction. This is ignored since we already know that the instruction is Trace (0x02).</p>
-
-
-
-<p>The next four bytes contain the timestamp of the message as a 32-bit integer. The value is converted into DateTime object through a utility method.</p>
-
-
-
-<p>The next four bytes contain the number of parameters that are passed into the Trace command. The command uses this number to determine the number of string objects to retrieve from the message. Remember that each string object is prefixed by a 16-bit integer that contains the number of characters that make up the string. That&#8217;s where the index + 2 comes from, which offsets the current position in the array by another 2 bytes. Once the parameters are loaded into an array, they are assigned to public accessors of the Trace class.</p>
-
-
-
-<p>The application uses the public members to display the Trace command on screen and store them into a database for persistence.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="https://notadesigner.com/page/6/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1035,46 +1113,47 @@ public Trace(byte&#91;] message)
 <li id="menu-item-1110" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
 <li id="menu-item-1100" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-1" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-2" style="font-size: 16.46511627907pt;" aria-label="actionscript (11 items)">actionscript</a>
-<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-3" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
-<a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-4" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
-<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-5" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-6" style="font-size: 15.596899224806pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-7" style="font-size: 13.968992248062pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-8" style="font-size: 9.953488372093pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
-<a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-9" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
-<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-10" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-11" style="font-size: 22pt;" aria-label="c# (38 items)">c#</a>
-<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-12" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-13" style="font-size: 9.953488372093pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-14" style="font-size: 14.511627906977pt;" aria-label="entity-framework (7 items)">entity-framework</a>
-<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-15" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-16" style="font-size: 16.031007751938pt;" aria-label="fitnet (10 items)">fitnet</a>
-<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-17" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-18" style="font-size: 9.953488372093pt;" aria-label="learning (2 items)">learning</a>
-<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-19" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-20" style="font-size: 15.596899224806pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
-<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-21" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
-<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-22" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
-<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-23" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
-<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-24" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
-<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-25" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-26" style="font-size: 8pt;" aria-label="performance (1 item)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-27" style="font-size: 11.255813953488pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-28" style="font-size: 15.054263565891pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-29" style="font-size: 11.255813953488pt;" aria-label="programming (3 items)">programming</a>
-<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-30" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
-<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-31" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
-<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-32" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
-<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-33" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
-<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-34" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-35" style="font-size: 15.596899224806pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-36" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
-<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-37" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-38" style="font-size: 9.953488372093pt;" aria-label="version-control (2 items)">version-control</a>
-<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-39" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-40" style="font-size: 13.209302325581pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+</ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
+<a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.4pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
+<a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
+<a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.538461538462pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.923076923077pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9384615384615pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
+<a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (39 items)">c#</a>
+<a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9384615384615pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.461538461538pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.969230769231pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9384615384615pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.538461538462pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
+<a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
+<a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
+<a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
+<a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9384615384615pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.230769230769pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 15pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.230769230769pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
+<a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
+<a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
+<a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
+<a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.538461538462pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 8pt;" aria-label="usability (1 item)">usability</a>
+<a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9384615384615pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.169230769231pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>

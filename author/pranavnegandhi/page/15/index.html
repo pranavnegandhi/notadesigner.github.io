@@ -190,6 +190,365 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-44" class="post-44 post type-post status-publish format-standard hentry category-demonstration tag-actionscript">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/breaking-free-from-your-api/" title="Breaking Free from Your API" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/breaking-free-from-your-api/" rel="bookmark">Breaking Free from Your API</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/breaking-free-from-your-api/" rel="bookmark"><time class="entry-date published" datetime="2009-06-05T11:05:13+05:30">June 5, 2009</time><time class="updated" datetime="2023-01-05T11:41:21+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>I have been noticing off-late that as a UI developer, I dabble less in what can be considered programming and more often in HTML and CSS and making them work across the bazillion browsers out there. The closest I get to what can be considered writing lines of code is where the interaction requires a few lines of JavaScript to transition a control in or out of the screen or some Ajax operation to send data across the wire or update the view. And even such programming is greatly abstracted away, thanks to frameworks such as jQuery. With the browser taking care of everything, from drawing widgets, to layout, to handling user interaction, there is little left to do other than send the page layout to the browser. Sadly, that is the lot of most UI developers who have been reduced to pixel-pushers in this advent of web-based applications.</p>
+
+
+
+<p>Even the folks who develop RIAs on platforms such as Flash and Silverlight do not feel the need to get into performance oriented code beyond optimizing network requests.</p>
+
+
+
+<p>Don’t worry about widgets. Don’t fiddle with the whatchamacallit. Don’t! Don’t! It is all done! Just fetch me another recordset, sonny. And make it snappy!</p>
+
+
+
+<p>And though this kind of work does pay the bills, every once in a while someone runs into a problem that cannot be addressed through an API call. When that happens, the first reaction of the average development team is to clutch at their hair and run around in circles screaming “Omigod! Omigod! Omigod!” And though someone on the team usually manages to whack something out over a weekend, it often isn’t the best solution because nobody has done this before! Whereas programmers of yore that I worked with never flinched at getting their hands dirty with low-level stuff, even up to writing custom extensions to their platform in a language like C, many of today’s programmers work on enough abstractions to make the underlying hardware and operating system entirely irrelevant. To them, the browser or virtual machine is the machine.</p>
+
+
+
+<h3 class="wp-block-heading">Where Does One Draw the Line?</h3>
+
+
+
+<p>Let me lead you through a programming exercise using ActionScript that demonstrates the joy of extending missing API calls. We are not inventing new algorithms here, but implementing a simple, well-defined solution for drawing lines on raster displays using the slope-intercept formula. Then we are coming up with a better implementation, using a better algorithm, trading performance and accuracy to reach a balanced result in the end.</p>
+
+
+<p>[swf]http://www.notadesigner.com/wp-content/uploads/2012/10/line.swf, 400, 400[/swf]</p>
+
+
+
+<h3 class="wp-block-heading">The Shape of a Line</h3>
+
+
+
+<p>For those who do not remember high-school geometry and algebra, a line can be specified by providing its start and end coordinates, using the slope-intercept formula to determine the path between these two points. This information used to be enough to display lines on vector displays of yore, which could draw all sorts of mathematically defined shapes. But with the advent of raster displays which only allow discrete pixels to be turned on, lines and other shapes are now displayed by calculating the pixels which approximate the ideal line as closely as possible.</p>
+
+
+
+<p>The slope intercept formula goes as follows –</p>
+
+
+
+<p>y = (y1 &#8211; y0) / (x1 &#8211; x0) * x + b</p>
+
+
+
+<p>This is further condensed into –</p>
+
+
+
+<p>y = m * x + b</p>
+
+
+
+<p>Here m is the slope of the line, which is the ratio of rise against the run. The value b represents the y-intercept, which is the location where the line crosses the origin on the y-axis. So to compute the y-coordinate on any given x-coordinate on that line, you multiply the slope of the line with the x-coordinate and add the y-intercept to the result. To extend this into drawing lines, you would run a loop incrementing a value between the start and end x-coordinates and computing the y-coordinate with each iteration.</p>
+
+
+
+<p>Here is an implementation.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public static function lineSimple(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Naive implementation of slope-intercept formula
+	 */
+
+	var m:Number;
+	var b:Number;
+	var dx:Number, dy:Number;
+
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	if (dx != 0)
+	{
+		m = dy / dx;
+		b = y0 - m * x0;
+		dx = (x1 &gt; x0) ? 1 : -1;
+
+		while (x0 != x1)
+		{
+			x0 += dx;
+			y0 = m * x0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}
+</pre></div>
+
+
+<p>This is a very straight-forward implementation and leaves a lot to be desired. But let us take it line by line to understand it.</p>
+
+
+
+<p>The first 2 lines calculate the difference between the start and end points in both axes. Then it divides dy by dx after checking for a potential divide by zero error and then calculates the slope and the y-intercept of the line. It also changes the value of dx to 1 if the x-coordinate of the second point is greater than the x-coordinate of the first point, or -1 if it is less than.</p>
+
+
+
+<p>We now enter the loop which continues until x0 becomes greater than or equal to x1. Inside this loop it increments the value of x0 by dx (1 or -1) and calculates the value of y0 using the slope-intercept formula. It then places a pixel at the newly calculated coordinate and continues the loop.</p>
+
+
+
+<p>This is a very simple implementation and just barely does the job. In fact, it does not even cover all possible cases that a line-drawing function might run into. For example, this will not work correctly if the slope of the line is greater than 1 (in other words, if the line is taller than it is wider). As the loop iterates over values in the x-axis, it plots exactly one pixel in every column while possibly plotting more than one pixel in the same row. But when the line becomes steep, there are fewer columns than rows. Since the algorithm iterates over the x-axis and computes the position in the y-axis, the distance between consecutive pixels on the y-axis increases as the line becomes steeper and makes for a discontinuous line.</p>
+
+
+
+<h3 class="wp-block-heading">Resolution for Slopes Greater than 1 or Negative Slopes</h3>
+
+
+
+<p>To resolve this issue, with come up with a second iteration of our line drawing function. This function first calculates the slope of the line and if it is less than 1 then it continues using the previously demonstrated algorithm. But if the slope is greater than 1 or less than -1 then it increments the value of the y-axis in the loop and computes the position in the x-axis. The complete implementation is shown below.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public static function lineImproved(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Advanced implementation of slope-intercept formula
+	 * to handle slopes greater than 1 or less than -1
+	 */
+
+	var m:Number;
+	var b:Number;
+	var dx:Number, dy:Number;
+
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	if (Math.abs(dx) &gt; Math.abs(dy))
+	{
+		/**
+		 * Slope is &lt; 1 or &gt; -1
+		 * Increment horizontally
+		 */
+
+		m = dy / dx;
+		b = y0 - m * x0;
+		dx = (x1 &gt; x0) ? 1 : -1;
+
+		while (x0 != x1)
+		{
+			x0 += dx;
+			y0 = m * x0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+	else if (dy != 0)
+	{
+		/*
+		 * Slope is &gt; 1 or &lt; -1
+		 * Increment vertically
+		 */
+
+		m = dx / dy;
+		b = x0 - m * y0;
+		dy = (dy &lt; 0) ? -1 : 1;
+
+		while (y0 != y1)
+		{
+			y0 += dy;
+			x0 = m * y0 + b;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}
+</pre></div>
+
+
+<p>This program is essentially the same as the previous one but functionally complete to render lines correctly for all possible cases. But there is plenty of room for optimization. Firstly, it uses floating point numbers for what is eventually to be plotted on screen as pixels, which are in whole numbers. Secondly, it computes the value of the next pixel using the slope-intercept formula. This can be optimized away by pre-calculating this equation once out of the loop and then incrementing the value of the row or column in the loop.</p>
+
+
+
+<h3 class="wp-block-heading">Optimization of Inner Loops</h3>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public static function lineDDA(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	/**
+	 * Line drawn using DDA algorithm
+	 * Optimizations are made by replacing the repetitive
+	 * calculations of the slope-intercept formula in
+	 * the loop with 2 division operations outside it
+	 * and instead incrementing the values of x and y
+	 * variables with these pre-computed numbers
+	 * inside the loop
+	 */
+
+	var dx:Number, dy:Number;
+	var steps:Number;
+	var m:Number;
+	var x:Number, y:Number;
+	var xinc:Number, yinc:Number;
+
+	// Determine the direction of incrementation based on the slope
+	dx = x1 - x0;
+	dy = y1 - y0;
+	if (Math.abs(dx) &gt; Math.abs(dy))
+		steps = Math.abs(dx);
+	else
+		steps = Math.abs(dy);
+
+	// Calculate the incrementation for each axes
+	xinc = dx / steps;
+	yinc = dy / steps;
+
+	x = x0;
+	y = y0;
+
+	for (var i:Number = 1; i &lt; steps; i++)
+	{
+		x += xinc;
+		y += yinc;
+		bmdCanvas.setPixel32(x, y, lColor);
+	}
+}
+</pre></div>
+
+
+<p>This algorithm does not use the slope-intercept formula at all. Instead, it calculates the difference between the start and end points and increments the position on both axes in the loop. Whereas calculating the y-coordinate with the slope-intercept formula requires the use of one multiplication and one addition, incrementing the y-coordinate only requires a single addition operation, which makes it blazingly fast.</p>
+
+
+
+<h3 class="wp-block-heading">Further Speed Gains</h3>
+
+
+
+<p>Floating point operations are desirable for plotting on vector graphics terminals because they are capable for drawing a continuous line. But when using raster displays, which only allow plotting discrete points to approximate a true line, floating point data becomes redundant. Thus, if we can find a way to compute a line using only integers, we can speed up our algorithm, while not losing any substantial information because the pixels used to approximate the line are whole numbers anyway.</p>
+
+
+
+<p>Bresenham’s Line Drawing Algorithm uses integers to plot a line on the screen. An implementation is shown below.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+public static function lineBresenham2(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
+{
+	var dx:int;
+	var dy:int;
+	var stepx:int
+	var stepy:int;
+	var counter:int
+
+	// Calculate the difference between the start and end coordinates
+	dx = x1 - x0;
+	dy = y1 - y0;
+
+	// Determine the direction of the increment in both axes
+	if (dx &lt; 0)
+	{
+		dx = -dx;
+		stepx = -1;
+	}
+	else
+	{
+		stepx = 1;
+	}
+
+	if (dy &lt; 0)
+	{
+		dy = -dy;
+		stepy = -1;
+	}
+	else
+	{
+		stepy = 1;
+	}
+
+	bmdCanvas.setPixel32(x0, y0, lColor);
+
+	dx &lt;&lt;= 1;
+	dy &lt;&lt;= 1;
+
+	if (dx &gt; dy)
+	{
+		/** Line is wider than it is taller */
+
+		/**
+		 * Counter is used to track the number of times
+		 * dx is divisible by dy. The value of dy is
+		 * repeatedly subtracted from it on every iteration
+		 * until it becomes less than or equal to 0.
+		 * When that happens, the y-coordinate is incremented
+		 * by stepy and counter is reset to dx.
+		 */
+		counter = dx;
+
+		while (x0 != x1)
+		{
+			/**
+			 * Increment the y-coordinate by stepy when
+			 * the counter becomes less than 0
+			 */
+			if (counter &lt;= 0)
+			{
+				y0 += stepy;
+				counter += dx;
+			}
+
+			// Increment the x-coordinate on every iteration
+			x0 += stepx;
+
+			// Reduce the counter by dy
+			counter -= dy;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+	else
+	{
+		/** Line is taller than it is wider */
+
+		counter = dy &gt;&gt; 1;
+
+		while (y0 != y1)
+		{
+			if (counter &lt;= 0)
+			{
+				x0 += stepx;
+				counter += dy;
+			}
+
+			y0 += stepy;
+			counter -= dx;
+
+			bmdCanvas.setPixel32(x0, y0, lColor);
+		}
+	}
+}
+</pre></div>
+
+
+<p>Division here is implemented as a series of continuous subtractions. The initial value of the variable fraction is set to dx. Assuming that the line is to be plotted from 0,0 to 100, 10, the values of dx and dy are 100 and 10, respectively. Thus, fraction is assigned the value 100. The variables x0 and y0 are the starting coordinates of the line. With each iteration of the loop, x0 is increased by 1 and the value of dy subtracted from fraction. When the fraction becomes less than or equal to 0, the y-coordinate is incremented by 1 and the counter reset to dx. The variable dy can be subtracted from counter dx / dy times before it becomes less than or equal to 0, making it a brute-force form of division.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-238" class="post-238 post type-post status-publish format-standard hentry category-miscellaneous">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/a-bicycle-like-no-other/" title="A Bicycle Like No Other" >
@@ -679,303 +1038,6 @@ int main(int argc, int *argv&#91;])
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-209" class="post-209 post type-post status-publish format-standard hentry category-travel-diaries">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/century-mile-to-khandala/" title="Century-mile to Khandala" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/century-mile-to-khandala/" rel="bookmark">Century-mile to Khandala</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/century-mile-to-khandala/" rel="bookmark"><time class="entry-date published" datetime="2008-10-14T15:56:30+05:30">October 14, 2008</time><time class="updated" datetime="2023-01-07T07:50:27+05:30">January 7, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>God bless America.</p>
-
-
-
-<p>We have more American holidays on our company calendar than local ones,&nbsp;probably because most of our business comes from our fair-faced brethren, who&nbsp;would be working over Diwali and Gandhi Jayanti, but probably not on&nbsp;Christmas or in this case, Columbus Day. Since the missus caters to more&nbsp;local demographics and would be working, I had a day to myself to do as I&nbsp;pleased.</p>
-
-
-
-<p>Gautam Raja had pointed out earlier that a century ride was a very&nbsp;American concept and hence often assumed to be in miles. This came about&nbsp;during conversation about my previous trip to Khandala-Pargaon when I gloated&nbsp;about completing a century and a half &#8211; 150 kilometers &#8211; in a single day.&nbsp;Missing out the century-mile accomplishment by a very narrow margin really&nbsp;got my goat and I decided to remedy the problem. And I decided to take off&nbsp;again towards Pargaon, and maybe even further towards Panchgini just to prove&nbsp;what a bad-ass rider I was.</p>
-
-
-
-<h3 class="wp-block-heading">The Heart of the City</h3>
-
-
-
-<p>The route till Panchgini goes well over 60 miles in one direction. In an&nbsp;attempt to reduce the distance a bit I changed it to cut across the city and&nbsp;into Katraj instead of taking the longer route over the Bangalore-Bombay&nbsp;bypass. This was a decision that I was to regret all day.</p>
-
-
-
-<p>The National Highway goes through the heart of the city from Shivajinagar,&nbsp;Shanivarwada Fort, Kasba Peth, Budhwar Peth, Shukrawar Peth, Swar Gate and&nbsp;into Katraj. The road varies from rough rubble in Budhwar Peth to concrete&nbsp;stretches at Katraj. I left home at 5:30 in the morning and headed off&nbsp;towards Ganeshkhind Road. There were shorter routes to Shivajinagar but I put&nbsp;safety ahead and took the longer, better lit road instead. For the first time&nbsp;since we moved here I saw the fountains at Bremen Chowk actually functioning&nbsp;and illuminated &#8211; a pleasant side effect of the ongoing Commonwealth Youth&nbsp;Games. The newly installed fountains at University Chowk were also running,&nbsp;although the cops seen the evening before were absent and traffic moved on of&nbsp;its own accord.</p>
-
-
-
-<p>I hit the highway at Shivajinagar at about 5:45 and was surprised by the&nbsp;amount of traffic already on the road in spite of the early hour &#8211; mostly&nbsp;rickshaws ferrying travellers to various bus stands across the city.</p>
-
-
-
-<p>I really cannot make up my mind about whether the games are good for the&nbsp;city or not.</p>
-
-
-
-<p>On one hand, large portions of the city have been given a makeover to cast&nbsp;a good impression upon our foreign guests. For a change, signals are working&nbsp;and even being enforced. And the general presence of so many pretty tourists&nbsp;really does wonders to boost ones morale, especially when you are sporting a&nbsp;sleek conversation-starter bicycle.</p>
-
-
-
-<p>On the other hand there is this massive wastage that seems to happen&nbsp;everywhere I go. The Pune Municipal Corporation apparently missed the memo&nbsp;about the ongoing power-crunch affecting Maharashtra. Fountains running late&nbsp;into the night are one thing. But having them running well into the next&nbsp;morning just does not make sense. Especially when you stop to consider that&nbsp;the signals right next to them are promptly switched off from 9 in the night&nbsp;till 8 the next morning. And let us not even talk about the gravy train that&nbsp;the road-repair contractors have been riding upon since the last year.</p>
-
-
-
-<p>In the midst of these thoughts I passed the PMC Headquarters and was&nbsp;shocked to see the entire complex lit up with fairy lights. Great! Just&nbsp;great. Entire villages in the state can&#8217;t have a 10 watt light bulb to light&nbsp;up their roads after sundown and these guys were having a party. The freshly&nbsp;cleaned and illuminated fountain at Shanivarwada Fort a little further down&nbsp;the road paled in comparison.</p>
-
-
-
-<p>Most people who know me are pretty certain that there is little room in my&nbsp;life for religion and rituals. But there is this bit of faith deep inside me&nbsp;that keeps the flame burning in troubled times. And this faith drew me into a&nbsp;detour into Kasba Peth just outside the Ganpati mandir there. This temple was&nbsp;installed around 1639 by Queen Jijabai Bhosale, the mother of Shivaji and the&nbsp;idol is venerated as the presiding deity of the city. During the annual&nbsp;Ganesh festival, the Kasba Ganapati idol is the first amongst the five&nbsp;&#8220;Manache Ganapati&#8221; of Pune which lead the immersion procession over Laxmi&nbsp;Road. What makes this place special for me is its beautiful wooden&nbsp;construction and serene atmosphere. Stepping over the threshold of this&nbsp;temple is enough to transport a person back into times long gone. It is a&nbsp;great place to hole into while being lost in your thoughts.</p>
-
-
-
-<p>This morning though I simply stopped outside the temple doors and shot up&nbsp;a quick prayer. And I was off again.</p>
-
-
-
-<p>The rest of the ride was uneventful. Budhwar Peth and Shukrawar Peth&nbsp;looked completely different, devoid as they were of bustling crowds and&nbsp;overwhelming traffic. The sky too had begun to don its mantle of blue by now.&nbsp;But all was yet quiet and only few lights flickered in the closely packed&nbsp;buildings on either side of the narrow road. The only sound was of the chain&nbsp;whirring and the cable lock rattling against the rear rack. I rode on&nbsp;quietly.</p>
-
-
-
-<p>The silence disappeared all too suddenly as I found myself surrounded by&nbsp;black fumes and dirty buses at Swar Gate bus stand. The smell of diesel was&nbsp;thick in the air and all I wanted to do was get out double-quick. The traffic&nbsp;too was problematic, made up as it was of errant rickshaws, 6-seaters and&nbsp;unmindful state transport buses. One of those behemoths could run over me in&nbsp;an instant and not even realize it till much later. I flipped the bird at a&nbsp;few drivers then quickly got out of their way.</p>
-
-
-
-<p>The traffic died down just as quickly as it started though and I was back&nbsp;onto quiet roads. Thankfully the road widened significantly and had an&nbsp;improved surface. School students and newspaper delivery boys began to&nbsp;crisscross my path on their own bikes. Some looked at me and smiled.</p>
-
-
-
-<p>&#8220;Race aahe, race!&#8221; &#8211; It is a race, I heard someone shout.</p>
-
-
-
-<p>Obviously, they did not know that the Commonwealth Youth Games did not&nbsp;have a cycling event in their itinerary.</p>
-
-
-
-<h3 class="wp-block-heading">Beyond Familiar Territory</h3>
-
-
-
-<p>The road had now begun to climb rapidly. By the time I reached Bharatiya&nbsp;Vidyapeeth, I was huffing away in a low 2nd gear. Banners all over the place&nbsp;welcomed President Pratibha Patil, who had just days ago been given a&nbsp;honorary Doctor of Letters degree by this university, which kind of sucks&nbsp;when compared to former President Kalam&#8217;s degree in aeronautical engineering&nbsp;and 30 honorary doctorates. I love that guy. And I hate this one just as&nbsp;much.</p>
-
-
-
-<p>I made it over the slope finally and heaved a sigh of relief. My relief&nbsp;was shortlived though, because the gradient quickly picked up again after the&nbsp;Katraj Bus Stand. To make things worse, the recent monsoons had taken a heavy&nbsp;toll on the road and at that point I would have gladly traded the Navigator&nbsp;for a bike with good shock absorbers instead. Front and rear ones, please. I&nbsp;crawled along uphill in single-digit speeds for about a kilometre before&nbsp;finally giving up and dismounting.</p>
-
-
-
-<p>It was around 7 now and the sun was beginning to be seen over the tops of&nbsp;the mountains. There was quite a nip in the air yet, though and everything&nbsp;was wrapped in fog. I glanced over the edge of the road onto the valley below&nbsp;and saw lush green fields interspersed with patches of bright orange flowers.&nbsp;This called for a picture. When I removed my backpack for the camera, I&nbsp;noticed the vapour rising off my own perspiration-soaked back. Crazy!</p>
-
-
-
-<p>I was ready to move on after some pictures. The road kept changing fast&nbsp;between good and mediocre and I alternated between riding and pushing. The&nbsp;climb continued to get more intense. Riding in low gear was affecting the&nbsp;stability of the bike too causing me to weave over the road in order to&nbsp;maintain my balance at slow speed. With all the buses and taxis passing by at&nbsp;high-speed, such behaviour was an invitation for trouble.</p>
-
-
-
-<p>&#8220;Accident Prone Area&#8221;, the sign read, followed by a steep 180 degree&nbsp;curve. A gaping hole in the guard wall indicated the spot where some unwary&nbsp;driver had ploughed his vehicle off the road into the bushes, or worse, the&nbsp;valley beyond. I was glad that the cycle would never be able to do such&nbsp;damage, but only for a second when it struck me that crossing paths with an&nbsp;over speeding truck probably would leave me much worse off than the wall. I&nbsp;shook off those thoughts from my mind and stopped to take in the breathtaking&nbsp;scenery and some pictures.</p>
-
-
-
-<p>The apex of this climb was the Old Katraj Tunnel. I half-rode and&nbsp;half-pushed my way up the steep ghats for the next half hour before reaching&nbsp;the mouth of the tunnel. At a measly 300 metres long, it was a&nbsp;disappointment. The new tunnel on the Bangalore-Bombay bypass is easily a&nbsp;kilometre or so longer than this one. I flicked on the dynamo just to be&nbsp;safe, even though I could clearly see every inch of the road right up to the&nbsp;other end and rolled through quickly.</p>
-
-
-
-<h3 class="wp-block-heading">Sunshine Highway</h3>
-
-
-
-<p>The view at the other side was completely different. The road was very&nbsp;well laid, and outlined clearly by the same orange flowers I had seen earlier&nbsp;in the valley. The sun too had come up higher since my first break on the&nbsp;ghats and the mist had dissipated. The orange from the backlit flowers cast a&nbsp;beautiful shade on the road ahead and all seemed well again.</p>
-
-
-<div class="wp-block-image">
-<figure class="aligncenter size-full"><img decoding="async" width="640" height="480" src="https://notadesigner.com/wp-content/uploads/2008/10/katraj-tunnel.jpg" alt="" class="wp-image-217"/><figcaption class="wp-element-caption">Sunshine Highway; Katraj</figcaption></figure></div>
-
-
-<p>I stopped for a few pictures before moving on.</p>
-
-
-
-<p>Soon the highway merged into the Bangalore-Bombay bypass. The bike finally&nbsp;was able to pick on some speed on the concrete and half an hour later I had&nbsp;brought my dismal average of 15 km/h at the mouth of the tunnel to a more&nbsp;respectable 19 km/h. My speed on the new road stayed in the early 30&#8217;s&nbsp;through this time.</p>
-
-
-
-<p>I halted at 8:00 sharp for breakfast and a quick call to my wife. I was&nbsp;not hungry really, but went ahead and ordered an idli. It was a long day&nbsp;ahead and I would need all the energy I could get. After refilling my water&nbsp;bottles, I hit the road again.</p>
-
-
-
-<p>Before leaving, I flicked on the radio and plugged it into one ear. This&nbsp;was to be my companion the rest of the day.</p>
-
-
-
-<p>I covered several kilometres over the next hour before the next&nbsp;water-break. It was beginning to get warm now and staying hydrated became a&nbsp;priority.</p>
-
-
-
-<h3 class="wp-block-heading">Whoops!</h3>
-
-
-
-<p><em>Sab Sud-Budh-Hosh Gavaa Ke,<br></em><em>Deewani, Main Paagal, Main Jhalli Ho Gayi.<br></em><em>Main Talli, Main Talli, Main Talli Ho Gayi</em></p>
-
-
-
-<p>Hard Kaur screeched out of the earphones just as I noticed by bicycle act<br>up.</p>
-
-
-
-<p>I noticed a distinct bump with every turn of the wheel. At first I&nbsp;thought it might have to do something with an uneven road surface. When it&nbsp;persisted, I assumed it was a bent rim and stopped to investigate.</p>
-
-
-
-<p>Luckily it was only a flat. I was not carrying my patch kit (another&nbsp;decision I would soon regret) but since I had stopped practically next to a&nbsp;bicycle repair shop that was not much of a bother. I was near Narsapur, just&nbsp;a little ahead of the toll booth.</p>
-
-
-
-<p>The mechanic quickly patched the tube and I was on my way again. I had&nbsp;lost half an hour but was confident of catching up soon.</p>
-
-
-
-<p>The road was undulating, but the bike managed to go at a steady 25-30 km/h&nbsp;throughout. Stopping frequently for water and bananas or a chocolate bar, I&nbsp;managed to keep my energy levels up. In no time at all, I was at Shirwal, the&nbsp;last major town on this route and home to what is probably the only theatre&nbsp;for a radius of 50 kilometres around. Minnisha Lamba looked down adoringly&nbsp;upon my Navigator while Imran Khan pointed his gun threateningly. Sanjay Dutt&nbsp;continued his melancholy stare into emptiness.</p>
-
-
-
-<p>The downhill gradient of the road so far now began to tilt upwards again.&nbsp;Khandala was about 5 kilometres away and I would have been able to do it in a&nbsp;few minutes. Then I noticed that my speed seemed incredibly slow. It was&nbsp;taking tremendous effort to go uphill and the bike stopped rolling even when&nbsp;going downhill if I stopped pedalling. This could mean just one thing &#8211; a&nbsp;flat. Again. Yup. Front tyre. And this time there was no mechanic within an&nbsp;arms reach.</p>
-
-
-
-<p>There wasn&#8217;t even a hut for 5 kilometres in either direction. So I&nbsp;dismounted again and pushed the rest of the way to Khandala. And being a&nbsp;small village, finding help was difficult. The mechanics on the highway only&nbsp;worked on motor vehicles. I was sent further into the village for help. The&nbsp;first mechanic was shut. The second one was going to take an hour to fix it.&nbsp;The third one was finally able to look at the bike and fix it. The valve had&nbsp;given away and the rubber tube inside it had to be replaced.</p>
-
-
-
-<p>But by the time he was done it was 11:30. I had wasted almost 45 minutes&nbsp;because of this flat. It was pretty certain that Panchgini was out of&nbsp;question now. Maybe Wai, but that too was 30 kilometres away.</p>
-
-
-
-<h3 class="wp-block-heading">The Beginning of the End</h3>
-
-
-
-<p>I crossed another toll booth after Khandala and entered a one-way block of&nbsp;the highway. At first it was a pretty decent road &#8211; shady, well built and&nbsp;mostly flat. Then it began to climb again. The trees also cleared out and&nbsp;gave way to small bushes. And then I saw the first major mountain in my way&nbsp;ahead. So tall, that it made the Katraj Ghat look like a walk in the park.&nbsp;Also more conspicuous was the absence of any kind of human settlement for&nbsp;several miles around. And judging by my recent luck with the flat tyres, it&nbsp;seemed like a bad proposition to enter there. But there was something that&nbsp;kept me going &#8211; the odometer, now tantalizingly close to 80 kilometres. If I&nbsp;turned back and went the exact same route as I had come, I would again miss&nbsp;the 160 kilometres and 100 mile mark narrowly. But it seemed really foolish&nbsp;to go halfway into uninhabited area without any preparation.</p>
-
-
-
-<p>While these thoughts ran through my mind, I went past a dhaba, probably&nbsp;the last one on this side of the ghats. I went ahead several metres before&nbsp;deciding to at least have a meal before moving on. It was almost 12:00 noon.</p>
-
-
-
-<p>After a greasy paneer palak and 2 rotis I chatted up the owner about road&nbsp;conditions ahead. He pretty much echoed what I had estimated &#8211; uninhabited&nbsp;land, steep climb and rash drivers. At least there wouldn&#8217;t be any oncoming&nbsp;traffic as the road continued to be a one way through the ghats. He told me&nbsp;that since I was on a bicycle I could turn back right there itself and ride&nbsp;against the traffic without any worry from the highway patrols. But on&nbsp;pushing a bit I came to know of another route across an embankment which cut&nbsp;across the fields and connected this side of the highway with its&nbsp;corresponding road going back towards Khandala. I hopped onto my bike and&nbsp;pedalled towards it and hoped to reach the magic 80 kilometre figure&nbsp;somewhere upon this embankment.</p>
-
-
-
-<h3 class="wp-block-heading">Homeward Bound</h3>
-
-
-
-<p>This was a rough road, yet under construction. But the regular passage of&nbsp;heavy vehicles had flattened it out quite a bit and I was able to make it&nbsp;through with little trouble. The odometer meanwhile climbed painfully slowly&nbsp;towards 80. I reached the other end of the embankment with yet a kilometre&nbsp;and a half to go. Had I ridden the Bangalore-Bombay bypass, I would have&nbsp;completed 75 kilometres at Khandala itself, and would be easily beyond 80&nbsp;kilometres by now. I cursed myself for taking the different route.</p>
-
-
-<div class="wp-block-image">
-<figure class="alignright size-full is-resized"><img decoding="async" src="https://notadesigner.com/wp-content/uploads/2008/10/embankment.jpg" alt="" class="wp-image-216" width="320" height="240"/><figcaption class="wp-element-caption">Embankment beyond Khandala</figcaption></figure></div>
-
-
-<p>The odometer finally ticked past the 80 kilometre figure a while later,&nbsp;and at least before the toll booth. I began to calculate distances in my&nbsp;head. By my estimates, home was around 75 kilometres from Khandala if I took&nbsp;the Katraj-Warje-Chandni Chowk-DRDO-Aundh route. I would have to modify it&nbsp;slightly, maybe even take a detour through Sanghvi before stopping at home if&nbsp;I was to complete 100 miles.</p>
-
-
-
-<p>With this thought in mind I moved ahead.</p>
-
-
-
-<h3 class="wp-block-heading">Misery at 100</h3>
-
-
-
-<p>I touched 100 kilometres at 2:00 pm, with the milestones indicating 40&nbsp;kilometres to Pune. This was going to be a close call for me. Unfortunately,&nbsp;I did not have much time to think about this issue. I got off to take a&nbsp;breather and a sip of water. When I noticed that the rear tyre had gone flat&nbsp;again. I was just ahead of Shirwal and luckily, close to a mechanic. The only&nbsp;consolation was that it had happened here and not 20 kilometres back where&nbsp;there was no help available.</p>
-
-
-<div class="wp-block-image">
-<figure class="alignright size-medium"><img decoding="async" width="450" height="600" src="https://notadesigner.com/wp-content/uploads/2008/10/countryside-450x600.jpg" alt="" class="wp-image-215" srcset="https://notadesigner.com/wp-content/uploads/2008/10/countryside-450x600.jpg 450w, https://notadesigner.com/wp-content/uploads/2008/10/countryside.jpg 480w" sizes="(max-width: 450px) 100vw, 450px" /><figcaption class="wp-element-caption">The countryside on NH4</figcaption></figure></div>
-
-
-<p>I pushed my bike into the village and outside the only &#8220;puncture dukaan&#8221;&nbsp;in the entire hamlet. Locals gathered around to watch this amazing bike as&nbsp;the old man dug out his tools and got to work. The patch from the previous&nbsp;puncture earlier in the morning had given away. This guy tried to peel it off&nbsp;but it was glued to tight. So, this is the best part, he burned it! Liberal&nbsp;amount of adhesive was put onto the old patch and lit up with a match. I&nbsp;watched with bated breath, expecting the entire tube and this guy himself to&nbsp;turn into Wile E. Coyote-style cinder any second. Nothing of that sort happened though, and a few seconds later he doused the flame with a wet rag. The old patch plopped off like an autumn leaf.</p>
-
-
-
-<p>The rest of the task was easy. He patched up the tube and I was on my way again.</p>
-
-
-
-<p>All that stopping had taken the wind out of my sails. I kept getting&nbsp;paranoid about new punctures and stopped to check my tyres every 20 minutes&nbsp;or so. This greatly affected my progress, although I managed to cover 10&nbsp;kilometres in the next half-hour. I was 30 kilometres from Pune with 110&nbsp;kilometres on the odometer.</p>
-
-
-
-<h3 class="wp-block-heading">Desperate Times, Desperate Measures</h3>
-
-
-
-<p>The journey was uneventful until the toll booth. My water supply was&nbsp;completely depleted and I munched on the last energy bar that sustained me&nbsp;till Joshi Wadewale on the outskirts of Pune. I refuelled myself on a masala&nbsp;dosa and water and did a distance check.</p>
-
-
-
-<p>138 kilometres. 22 more to a century.</p>
-
-
-
-<p>In a last desperate attempt, I changed the return route to go over the&nbsp;bypass rather than through Katraj. This would add some precious kilometres to&nbsp;the tally. Going through the new Katraj Tunnel was fun as usual, although the&nbsp;dynamo was not really built to burn at 60 km/h and blew up spectacularly as&nbsp;soon as I reached the other end.</p>
-
-
-
-<p>I stopped for a while to catch my breath after the wild ride through the&nbsp;tunnel and to enjoy the view over the Jhambulwadi Road.</p>
-
-
-
-<p>The road continued to slope downwards right up to Warje and the odometer&nbsp;ticked on furiously. At the Pashankar Showroom, it was showing 148&nbsp;kilometres, with 2.5 kilometres to Baner and another 10 kilometres from there&nbsp;to home. This was going to be really close.</p>
-
-
-<div class="wp-block-image">
-<figure class="alignleft size-full is-resized"><img decoding="async" src="https://notadesigner.com/wp-content/uploads/2008/10/bug.jpg" alt="" class="wp-image-214" width="320" height="240"/><figcaption class="wp-element-caption">Bug near Jhambulwadi</figcaption></figure></div>
-
-
-<p>What caught my eye was the tremendous amount of spruce-up that this road&nbsp;had gone through since my last ride. Flags punctuated the road at regular&nbsp;distances, indicating the path to the sports village. The flyover at Sadanand&nbsp;Hotel had been completed &#8211; from a mound of rubble just two weeks ago, it had&nbsp;been converted into a 4-lane, tarred bridge with an underpass for the Baner&nbsp;to Balewadi traffic. Lights, barriers and parking areas had been set up with&nbsp;appropriate signages. And a strong security cover that checked every car&nbsp;headed towards the complex. I think I got away from security only because I&nbsp;resembled an&nbsp;athlete&nbsp;in training with the helmet.</p>
-
-
-
-<h3 class="wp-block-heading">The Home Stretch</h3>
-
-
-
-<p>Ami finished her work at around 6:30 and called me. Since I was going to&nbsp;be returning by the same route as her commute, I waited for her at along the&nbsp;way. The way back was easy, although traffic did eat into my waning patience.</p>
-
-
-
-<p>I finally watched the odometer tick past the 160 kilometre mark near Spicer College, with a kilometre and a half more to spare.</p>
-
-
-
-<p>Damn. That felt good.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/14/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -984,7 +1046,8 @@ int main(int argc, int *argv&#91;])
 <a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/14/">14</a>
 <span aria-current="page" class="page-numbers current">15</span>
 <a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/16/">16</a>
-<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/17/">17</a>
+<span class="page-numbers dots">&hellip;</span>
+<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/18/">18</a>
 <a class="next page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/16/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -1109,45 +1172,45 @@ int main(int argc, int *argv&#91;])
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
 <a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.335877862595pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.272727272727pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.480916030534pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.87786259542pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9236641221374pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.424242424242pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.833333333333pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9090909090909pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (40 items)">c#</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (41 items)">c#</a>
 <a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9236641221374pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.412213740458pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9090909090909pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.363636363636pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.908396946565pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.848484848485pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9236641221374pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9090909090909pt;" aria-label="learning (2 items)">learning</a>
 <a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.480916030534pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.424242424242pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9236641221374pt;" aria-label="performance (2 items)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.206106870229pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.946564885496pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.206106870229pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9090909090909pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.181818181818pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.893939393939pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.181818181818pt;" aria-label="programming (3 items)">programming</a>
 <a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.480916030534pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9236641221374pt;" aria-label="usability (2 items)">usability</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.424242424242pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9090909090909pt;" aria-label="usability (2 items)">usability</a>
 <a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9236641221374pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9090909090909pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.129770992366pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.090909090909pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1191,6 +1254,7 @@ int main(int argc, int *argv&#91;])
 		  })
 		</script>
 	<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCpp.js?ver=3.0.9b' id='syntaxhighlighter-brush-cpp-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushBash.js?ver=3.0.9b' id='syntaxhighlighter-brush-bash-js'></script>
 <script type='text/javascript'>

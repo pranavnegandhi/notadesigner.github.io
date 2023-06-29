@@ -190,6 +190,211 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-1149" class="post-1149 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-abstract-factory tag-c tag-practical-design-patterns">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/" title="Practical Design Patterns in C# &#8211; Abstract Factory" >
+				<img width="750" height="384" src="https://notadesigner.com/wp-content/uploads/2018/12/IMG_4296-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/" rel="bookmark">Practical Design Patterns in C# &#8211; Abstract Factory</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/" rel="bookmark"><time class="entry-date published" datetime="2018-12-15T22:54:45+05:30">December 15, 2018</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<h3 class="wp-block-heading">Intent</h3>
+
+
+
+<p>The abstract factory design pattern provides an interface to create instances of related objects without directly specifying their concrete classes. This pattern is a superset of the factory method design pattern, as it separates the creation of an object from consumption, while adding the necessary checks to ensure that only related types of objects can be instantiated at a given time.</p>
+
+
+
+<h3 class="wp-block-heading">Problem</h3>
+
+
+
+<p> In this example, we look at an application that offers options to  connect to SQL Server or MySQL database engines to store its data. A rudimentary way of  implementing this functionality is to pepper the code with if-else statements throughout the application, which is impractical, brittle and error prone – all traits to avoid in good code.</p>
+
+
+
+<p class="has-background" style="background-color:#e6f7ff">The source code for this design pattern, and all the others, can be viewed in the <a href="https://github.com/pranavnegandhi/PracticalDesignPatterns">Practical Design Patterns</a> repository.</p>
+
+
+
+<p>A database operation requires types to make a connection to the  database, a command to contain the query and a type to hold a query  parameter. All three have to belong to the same family in order to  operate correctly. Swapping any type of them for a type from another  family is not allowed. E.g. a MySQL connection instance will not be able  to operate with a SQL Server command instance. Therefore, if a program  has to offer the ability to work with various types of database engines, it has to guarantee that only compatible types are instantiated at a given time.</p>
+
+
+<p><img style="margin: auto; display: block" src="https://www.plantuml.com/plantuml/img/XP51JuGm48Nl_HKrNZI6_G5xuCB6nCCc9XwDXr9cboOmO5iq6_M_Iy1bfgN46tdzvhsPXxZnDRGWFqnf5NfXq8CzAGtowL0-AkqxUv5Vua4M5fI7GrbqYA2zwV3kFf3RLc4LQC_AgXP6lr7z2Pt99TOdcr1SV0JRANkjJLK1lZLmyjaAem0YhJdNCtgDeSyKHOQwKSx9eZ60Njxsge6p1K3nfsH3d-MyiBqS73ZnyjvSbLtLVUBkcrFhvroE4jjyB_LKfTj4vzt_uvP3Gf8byVNOlmbcEKFLi3L2axdXC2OkcOQvJuAYlEE5tpZqKQUhvrnEKhBLRJZkTOjCDHldqPAisMYQcEZIfLjcCXSMnyIjyV7GAqbIxYy0" alt="PlantUML Syntax:<br />
+!theme vibrant</p>
+<p>interface IDbFactory {<br />
++ CreateDbConnection()<br />
++ CreateDbCommand()<br />
++ CreateDbParameter()<br />
+}</p>
+<p>interface IDbConnection<br />
+interface IDbCommand<br />
+interface IDbParameter</p>
+<p>IDbFactory -[hidden]left- IDbParameter<br />
+IDbConnection -[hidden]right- IDbCommand<br />
+IDbCommand -[hidden]right- IDbParameter</p>
+<p>class Client #palegreen</p>
+<p>Client -up-> IDbFactory : uses</p>
+<p>SqlFactory .down.|> IDbFactory</p>
+<p>SqlFactory .down.> SqlConnection : creates<br />
+SqlFactory .down.> SqlCommand : creates<br />
+SqlFactory .down.> SqlParameter : creates</p>
+<p>SqlConnection .down.|> IDbConnection<br />
+SqlParameter .down.|> IDbParameter<br />
+SqlCommand .down.|> IDbCommand</p>
+<p>SqlConnection -[hidden]right- SqlCommand<br />
+SqlCommand -[hidden]right- SqlParameter</p>
+<p>MySqlFactory .up.|> IDbFactory</p>
+<p>MySqlFactory .up.> MySqlConnection : creates<br />
+MySqlFactory .up.> MySqlCommand : creates<br />
+MySqlFactory .up.> MySqlParameter : creates</p>
+<p>MySqlConnection .up.|> IDbConnection<br />
+MySqlParameter .up.|> IDbParameter<br />
+MySqlCommand .up.|> IDbCommand</p>
+<p>MySqlConnection -[hidden]right- MySqlCommand<br />
+MySqlCommand -[hidden]right- MySqlParameter</p>
+<p>" usemap="#plantuml_map"></p>
+
+
+
+<h3 class="wp-block-heading">Solution</h3>
+
+
+
+<p>This pattern consists of at least 2 types – one to define the factory interface, and a concrete factory class that implements this interface. More families of related objects are added to the application by implementing more factories.</p>
+
+
+
+<p>The core API is provided by the IDbFactory interface.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public interface IDbFactory
+{
+    IDbConnection CreateDbConnection();
+
+    IDbCommand CreateDbCommand();
+
+    IDbDataParameter CreateDbDataParameter();
+}
+</pre></div>
+
+
+<p><code>IDbFactory</code> defines methods for the database factory.  <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code> are interfaces provided by the framework in the <code>System.Data</code> namespace. All major third-party database vendors provide bindings for their engines which are compatible with these interfaces. </p>
+
+
+
+<h4 class="wp-block-heading">SQL Server Factory </h4>
+
+
+
+<p>When the application has to operate against SQL Server, it instantiates the <code>SqlFactory</code> class, which implements the <code>IDbFactory</code> interface, and returns the SQL Server-specific concrete types for <code>IDbConnection</code>, <code>IDbCommand</code> and <code>IDbDataParameter</code>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class SqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new System.Data.SqlClient.SqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new System.Data.SqlClient.SqlDbCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParmeter()
+    {
+        return new System.Data.SqlClient.SqlParameter();
+    }
+}
+</pre></div>
+
+
+<h4 class="wp-block-heading">MySQL Factory</h4>
+
+
+
+<p>The <code>MySqlFactory</code> class operates in the same way and returns objects from the <code>MySql.Data.MySqlClient</code> namespace.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class MySqlFactory : IDbFactory
+{
+    public IDbConnection CreateDbConnection()
+    {
+        return new MySql.Data.MySqlClient.MySqlConnection();
+    }
+
+    public IDbCommand CreateDbCommand()
+    {
+        return new MySql.Data.MySqlClient.MySqlCommand();
+    }
+
+    public IDbDataParameter CreateDbDataParameter()
+    {
+        return new MySql.Data.MySqlClient.MySqlParameter();
+    }
+}
+</pre></div>
+
+
+<h4 class="wp-block-heading">Usage</h4>
+
+
+
+<p>When the application is launched, it determines the database engine it has to operate against (through UI or configuration or some other means), and then instantiates the appropriate <code>IDbFactory</code> implementation. All objects required to operate on the database are subsequently instantiated from this <code>IDbFactory</code> instance.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class Program
+{
+    public static void Main(string&#091;] args)
+    {
+        IDbFactory factory;
+
+        if (&quot;sql&quot; == args&#091;1])
+        {
+            factory = new SqlFactory();
+        }
+        else
+        {
+            factory = new MySqlFactory();
+        }
+
+        using (var connection = factory.CreateDbConnection())
+        {
+            connection.Open();
+            var command = factory.CreateDbCommand();
+            command.Connection = connection;
+            command.CommandText = &quot;SELECT * FROM &#091;Users] WHERE &#091;UserId] = ?&quot;;
+            var param = factory.CreateDbDataParameter();
+            param.DbType = DbType.Int32;
+            param.Value = 42;
+            command.Parameters.Add(param);
+
+            command.ExecuteReader();
+        }
+    }
+}
+</pre></div>
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-1276" class="post-1276 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-c tag-factory-method tag-practical-design-patterns">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/practical-design-patterns-in-c-factory-method/" title="Practical Design Patterns in C# &ndash; Factory Method" >
@@ -1119,106 +1324,6 @@ namespace Notadesigner.Blog
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1044" class="post-1044 post type-post status-publish format-standard has-post-thumbnail hentry category-construction tag-asp-net tag-c tag-entity-framework">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/the-database-context/" title="The Database Context" >
-				<img width="750" height="384" src="https://notadesigner.com/wp-content/uploads/2018/07/DSC_4507-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/the-database-context/" rel="bookmark">The Database Context</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/the-database-context/" rel="bookmark"><time class="entry-date published" datetime="2018-07-22T14:08:22+05:30">July 22, 2018</time><time class="updated" datetime="2023-01-05T11:40:09+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p><em>This post is part of a series on learning how to use Entity Framework. The rest of the posts in the series are linked below.</em></p>
-
-
-
-<h3 class="wp-block-heading">Basics of Entity Framework</h3>
-
-
-<div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
-</ul></div>
-
-
-
-<h3 class="wp-block-heading">Code First</h3>
-
-
-<div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
-<li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
-<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
-</ul></div>
-
-
-
-<h3 class="wp-block-heading">Database First</h3>
-
-
-<div class="menu-entity-framework-database-first-container"><ul id="menu-entity-framework-database-first-3" class="menu"><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1098"><a>Coming Soon!</a></li>
-</ul></div>
-
-
-
-<hr class="wp-block-separator has-css-opacity"/>
-
-
-
-<p>DbContext is probably the single most important class in the EF API, as it directly represents a connection with the database from the application. A minimal context class inherits from DbContext and exposes DbSet instances for each entity type which has to be stored or retrieved from the database.</p>
-
-
-
-<p>Querying for information retrieval and storage is done through the DbContext instance. If the developer has not overridden any configuration settings, Entity Framework attempts to connect to a database with the fully qualified name of the DbContext class itself.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class ContentContext : DbContext
-    {
-        public ContentContext()
-        {
-        }
-    }
-}
-</pre></div>
-
-
-<p>In the above example, Entity Framework automatically tries to connect to a database called Notadesigner.Blog.ContentContext. This can be overridden by setting the configuration in various ways.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
-namespace Notadesigner.Blog
-{
-    public class ContentContext : DbContext
-    {
-        public ContentContext(&quot;Notadesigner&quot;)
-        {
-        }
-    }
-}
-</pre></div>
-
-
-<p>Other ways to override the default connection name is to add a connection string in the application configuration file and supplying it as a parameter to the DbContext constructor.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/4/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1228,7 +1333,7 @@ namespace Notadesigner.Blog
 <span aria-current="page" class="page-numbers current">5</span>
 <a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/6/">6</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/17/">17</a>
+<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/18/">18</a>
 <a class="next page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/6/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -1342,56 +1447,56 @@ namespace Notadesigner.Blog
 </ul></div></div>		</div><!-- .widget-area .first -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
-			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
+			<div id="nav_menu-33" class="widget widget_nav_menu"><h3 class="widgettitle">Entity Framework Basics</h3><div class="menu-basics-of-entity-framework-container"><ul id="menu-basics-of-entity-framework-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1092"><a href="https://notadesigner.com/introduction-to-orm-entity-framework/">Introduction to ORM &#038; Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1091"><a href="https://notadesigner.com/components-of-entity-framework/">Components of Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1090"><a href="https://notadesigner.com/operating-entity-framework/">Operating Entity Framework</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1089"><a href="https://notadesigner.com/the-database-context/">The Database Context</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1088"><a href="https://notadesigner.com/domain-entities/">Domain Entities</a></li>
-</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-4" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
+</ul></div></div><div id="nav_menu-34" class="widget widget_nav_menu"><h3 class="widgettitle">Code First</h3><div class="menu-entity-framework-code-first-container"><ul id="menu-entity-framework-code-first-3" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1096"><a href="https://notadesigner.com/laying-the-groundwork/">Laying the Groundwork</a></li>
 <li class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1110"><a href="https://notadesigner.com/the-content-data-context/">The Content Data Context</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1100"><a>Accessing the Data</a></li>
 <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
 <a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.335877862595pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.272727272727pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.480916030534pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.87786259542pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9236641221374pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.424242424242pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.833333333333pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9090909090909pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (40 items)">c#</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (41 items)">c#</a>
 <a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9236641221374pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.412213740458pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9090909090909pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.363636363636pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.908396946565pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.848484848485pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9236641221374pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9090909090909pt;" aria-label="learning (2 items)">learning</a>
 <a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.480916030534pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.424242424242pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9236641221374pt;" aria-label="performance (2 items)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.206106870229pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.946564885496pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.206106870229pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9090909090909pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.181818181818pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.893939393939pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.181818181818pt;" aria-label="programming (3 items)">programming</a>
 <a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.480916030534pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9236641221374pt;" aria-label="usability (2 items)">usability</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.424242424242pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9090909090909pt;" aria-label="usability (2 items)">usability</a>
 <a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9236641221374pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9090909090909pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.129770992366pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.090909090909pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>

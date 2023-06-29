@@ -185,6 +185,175 @@ body.custom-background { background-color: #f2f2f2; }
 		<main id="main" class="site-main" role="main">
 
 		
+<article id="post-100" class="post-100 post type-post status-publish format-standard hentry category-technique tag-actionscript tag-memory-leaks">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/the-secret-lives-of-timer-objects/" title="The Secret Lives of Timer Objects" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/the-secret-lives-of-timer-objects/" rel="bookmark">The Secret Lives of Timer Objects</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/the-secret-lives-of-timer-objects/" rel="bookmark"><time class="entry-date published" datetime="2010-12-27T16:18:09+05:30">December 27, 2010</time><time class="updated" datetime="2023-01-05T11:41:21+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>One of the better side-effects of working in memory-managed languages is that you don’t have to bother with manually cleaning up references. This removes a huge chunk of busywork for developers who have one less thing to get their heads around. Allocate an object, use it, and forget about it. The garbage collector will get around to it eventually and clean it out.</p>
+
+
+
+<p>What could be simpler?</p>
+
+
+
+<h3 class="wp-block-heading">Great Power, Great Responsibility</h3>
+
+
+
+<p>However, with ActionScript 3, the bar has been raised substantially. This new incarnation adds a slew of APIs that increase its expressiveness and capabilities. Yes siree! ActionScript is no longer a toy language whose primary arsenal is gotoAndPlay(). There’s an extensive library of native classes that can do stuff like drawing on screen, playing audio, fetching text and binary data from all sorts of data sources, or even launching and communicating with other applications.</p>
+
+
+
+<p>Take that, Java!</p>
+
+
+
+<p>Several of these features mean that its legacy garbage collection techniques have to be replaced with less aggressive methods to identify unused memory. This in turn requires more developer intervention than before to identify which references are no longer required and which ones must be left untouched. The new AS3 garbage collector uses reference counting and mark sweeping (both techniques are covered by Grant Skinner here). And while things are still better than completely manual memory management, building complex or long-running applications requires that the developer have at least a passing understanding of how memory is allocated, references stored, passed around and cleared, and the potential for memory leaks in the midst of all this.</p>
+
+
+
+<p>This is where the typical ActionScript programmer stumbles, mainly because people programming in AS3 often do not have a formal background in computer science or programming and have usually learned the language on their own through books or online tutorials. It is not uncommon to find ActionScript developers for whom this is their first taste of programming.</p>
+
+
+
+<h3 class="wp-block-heading">Our Subject for Today</h3>
+
+
+
+<p>One subtle pitfall is the Timer object which is used to run code on a specific time sequence. This class consolidates the setTimeout and setInterval methods. The API is pretty straightforward – create an instance of the class with its delay and repeat count properties, set up listeners which are triggered at the end of each delay or after the number of delays specified by the repeat count are completed, and finally, call the start() method to begin the countdown.</p>
+
+
+
+<p>A Timer object is different from other types of objects because the garbage collector does not clear it unless it is stopped, even if there are no active references to it.</p>
+
+
+
+<p>Let’s repeat that.</p>
+
+
+
+<p><strong>A Timer object is not cleared by the garbage collector as long as it is running, even when its references are set to null or the variable goes out of scope, and it continues to fire TIMER events as long as it is active</strong>.</p>
+
+
+
+<p>The only way to clear the object from memory and stop events from being fired is to stop it using the stop() or reset() methods.</p>
+
+
+
+<p>The following piece of code illustrates the permanence of Timer objects which haven’t been stopped.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+package 
+{
+    import flash.display.Sprite;
+    import flash.events.Event;
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Main extends Sprite 
+    {
+        public function Main():void 
+        {
+             var t:Timer; // Create timer as a local variable
+
+             t = new Timer(1000);
+             t.addEventListener(TimerEvent.TIMER, this.m_tick);
+             t.start(); // Reference ends here; Timer continues to exist and trigger events
+        }
+
+        private function m_tick(e:TimerEvent):void
+        {
+             trace(&quot;tick&quot;);
+        }
+    }
+}
+</pre></div>
+
+
+<p>This may look like a design flaw in the language to the casual passer-by and elicit a very obvious question.</p>
+
+
+
+<p>“Everything else is cleared automatically. Why leave behind timers?”</p>
+
+
+
+<p>Some thought on the subject will make you realize that the language designers at Adobe weren’t off their rockers after all. This behaviour is by design. In the example code shown above, ‘t’ is a local variable inside the constructor. When the function ends, the variable goes out of scope and there are no more references to the Timer. If the garbage collector cleared it out, it would not fire any events at all. This would essentially mean that a developer could only assign Timer objects to those variables that remain in scope for as long as it is supposed to run, such as member variables inside a class.</p>
+
+
+
+<p>Conversely, a Timer instance which remains active with no way for it to be accessed and stopped is terrible. The object continues to maintain references to listeners and triggers events on them regularly. Listeners can never be garbage collected either because their reference count never goes down to zero. And finally, each active timer occupies a slice of CPU time, bringing the processor down to its knees gradually.</p>
+
+
+
+<p>The Timer object always passes a reference to itself in the target property of the TimerEvents it triggers. The listener can use this reference to stop the Timer. When the listener function ends, the event object goes out of scope and is cleared, taking the reference to the Timer object along with it and in turn, making it available for garbage collection.</p>
+
+
+
+<p>Here is an example that illustrates how this memory leak can inadvertently occur.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+package 
+{
+    import flash.events.TimerEvent;
+    import flash.utils.Timer;
+
+    public class Slideshow
+    {
+        private var m_timer:Timer;
+
+        private var m_isActive:Boolean;
+
+        /**
+         * Example how not to use a timer
+         */
+        public function Start():void
+        {
+             this.m_timer = new Timer(5000); // Create and start a new timer
+             this.m_timer.addEventListener(TimerEvent.TIMER, this.m_next);
+             this.m_timer.start();
+        }
+
+        private function Pause(e:TimerEvent):void
+        {
+             this.m_isActive = false;
+        }
+
+        private function m_next(e:TimerEvent):void
+        {
+             if (!this.m_isActive) return;
+
+             // Code to move to next slide
+        }
+    }
+}
+</pre></div>
+
+
+<p>In the example above, the programmer using this slideshow component is expected to call removeChild() to remove it from the stage. However, because the component does not stop the Timer when it is removed, it will continue to fire the TIMER event for as long as the application is run, and also prevent the memory used by the component from being garbage collected by holding a reference to its m_next method. If multiple instances of the slideshow object are created and disposed using removeChild(), their timers will continue to fire and none of the components will actually be cleared from memory.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-55" class="post-55 post type-post status-publish format-standard hentry category-demonstration tag-actionscript">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/creating-an-underwater-effect-in-actionscript/" title="Creating an Underwater Effect in ActionScript" >
@@ -822,365 +991,6 @@ package
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-44" class="post-44 post type-post status-publish format-standard hentry category-demonstration tag-actionscript">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/breaking-free-from-your-api/" title="Breaking Free from Your API" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/breaking-free-from-your-api/" rel="bookmark">Breaking Free from Your API</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/breaking-free-from-your-api/" rel="bookmark"><time class="entry-date published" datetime="2009-06-05T11:05:13+05:30">June 5, 2009</time><time class="updated" datetime="2023-01-05T11:41:21+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>I have been noticing off-late that as a UI developer, I dabble less in what can be considered programming and more often in HTML and CSS and making them work across the bazillion browsers out there. The closest I get to what can be considered writing lines of code is where the interaction requires a few lines of JavaScript to transition a control in or out of the screen or some Ajax operation to send data across the wire or update the view. And even such programming is greatly abstracted away, thanks to frameworks such as jQuery. With the browser taking care of everything, from drawing widgets, to layout, to handling user interaction, there is little left to do other than send the page layout to the browser. Sadly, that is the lot of most UI developers who have been reduced to pixel-pushers in this advent of web-based applications.</p>
-
-
-
-<p>Even the folks who develop RIAs on platforms such as Flash and Silverlight do not feel the need to get into performance oriented code beyond optimizing network requests.</p>
-
-
-
-<p>Don’t worry about widgets. Don’t fiddle with the whatchamacallit. Don’t! Don’t! It is all done! Just fetch me another recordset, sonny. And make it snappy!</p>
-
-
-
-<p>And though this kind of work does pay the bills, every once in a while someone runs into a problem that cannot be addressed through an API call. When that happens, the first reaction of the average development team is to clutch at their hair and run around in circles screaming “Omigod! Omigod! Omigod!” And though someone on the team usually manages to whack something out over a weekend, it often isn’t the best solution because nobody has done this before! Whereas programmers of yore that I worked with never flinched at getting their hands dirty with low-level stuff, even up to writing custom extensions to their platform in a language like C, many of today’s programmers work on enough abstractions to make the underlying hardware and operating system entirely irrelevant. To them, the browser or virtual machine is the machine.</p>
-
-
-
-<h3 class="wp-block-heading">Where Does One Draw the Line?</h3>
-
-
-
-<p>Let me lead you through a programming exercise using ActionScript that demonstrates the joy of extending missing API calls. We are not inventing new algorithms here, but implementing a simple, well-defined solution for drawing lines on raster displays using the slope-intercept formula. Then we are coming up with a better implementation, using a better algorithm, trading performance and accuracy to reach a balanced result in the end.</p>
-
-
-<p>[swf]http://www.notadesigner.com/wp-content/uploads/2012/10/line.swf, 400, 400[/swf]</p>
-
-
-
-<h3 class="wp-block-heading">The Shape of a Line</h3>
-
-
-
-<p>For those who do not remember high-school geometry and algebra, a line can be specified by providing its start and end coordinates, using the slope-intercept formula to determine the path between these two points. This information used to be enough to display lines on vector displays of yore, which could draw all sorts of mathematically defined shapes. But with the advent of raster displays which only allow discrete pixels to be turned on, lines and other shapes are now displayed by calculating the pixels which approximate the ideal line as closely as possible.</p>
-
-
-
-<p>The slope intercept formula goes as follows –</p>
-
-
-
-<p>y = (y1 &#8211; y0) / (x1 &#8211; x0) * x + b</p>
-
-
-
-<p>This is further condensed into –</p>
-
-
-
-<p>y = m * x + b</p>
-
-
-
-<p>Here m is the slope of the line, which is the ratio of rise against the run. The value b represents the y-intercept, which is the location where the line crosses the origin on the y-axis. So to compute the y-coordinate on any given x-coordinate on that line, you multiply the slope of the line with the x-coordinate and add the y-intercept to the result. To extend this into drawing lines, you would run a loop incrementing a value between the start and end x-coordinates and computing the y-coordinate with each iteration.</p>
-
-
-
-<p>Here is an implementation.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-public static function lineSimple(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
-{
-	/**
-	 * Naive implementation of slope-intercept formula
-	 */
-
-	var m:Number;
-	var b:Number;
-	var dx:Number, dy:Number;
-
-	dx = x1 - x0;
-	dy = y1 - y0;
-
-	if (dx != 0)
-	{
-		m = dy / dx;
-		b = y0 - m * x0;
-		dx = (x1 &gt; x0) ? 1 : -1;
-
-		while (x0 != x1)
-		{
-			x0 += dx;
-			y0 = m * x0 + b;
-
-			bmdCanvas.setPixel32(x0, y0, lColor);
-		}
-	}
-}
-</pre></div>
-
-
-<p>This is a very straight-forward implementation and leaves a lot to be desired. But let us take it line by line to understand it.</p>
-
-
-
-<p>The first 2 lines calculate the difference between the start and end points in both axes. Then it divides dy by dx after checking for a potential divide by zero error and then calculates the slope and the y-intercept of the line. It also changes the value of dx to 1 if the x-coordinate of the second point is greater than the x-coordinate of the first point, or -1 if it is less than.</p>
-
-
-
-<p>We now enter the loop which continues until x0 becomes greater than or equal to x1. Inside this loop it increments the value of x0 by dx (1 or -1) and calculates the value of y0 using the slope-intercept formula. It then places a pixel at the newly calculated coordinate and continues the loop.</p>
-
-
-
-<p>This is a very simple implementation and just barely does the job. In fact, it does not even cover all possible cases that a line-drawing function might run into. For example, this will not work correctly if the slope of the line is greater than 1 (in other words, if the line is taller than it is wider). As the loop iterates over values in the x-axis, it plots exactly one pixel in every column while possibly plotting more than one pixel in the same row. But when the line becomes steep, there are fewer columns than rows. Since the algorithm iterates over the x-axis and computes the position in the y-axis, the distance between consecutive pixels on the y-axis increases as the line becomes steeper and makes for a discontinuous line.</p>
-
-
-
-<h3 class="wp-block-heading">Resolution for Slopes Greater than 1 or Negative Slopes</h3>
-
-
-
-<p>To resolve this issue, with come up with a second iteration of our line drawing function. This function first calculates the slope of the line and if it is less than 1 then it continues using the previously demonstrated algorithm. But if the slope is greater than 1 or less than -1 then it increments the value of the y-axis in the loop and computes the position in the x-axis. The complete implementation is shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-public static function lineImproved(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
-{
-	/**
-	 * Advanced implementation of slope-intercept formula
-	 * to handle slopes greater than 1 or less than -1
-	 */
-
-	var m:Number;
-	var b:Number;
-	var dx:Number, dy:Number;
-
-	dx = x1 - x0;
-	dy = y1 - y0;
-
-	if (Math.abs(dx) &gt; Math.abs(dy))
-	{
-		/**
-		 * Slope is &lt; 1 or &gt; -1
-		 * Increment horizontally
-		 */
-
-		m = dy / dx;
-		b = y0 - m * x0;
-		dx = (x1 &gt; x0) ? 1 : -1;
-
-		while (x0 != x1)
-		{
-			x0 += dx;
-			y0 = m * x0 + b;
-
-			bmdCanvas.setPixel32(x0, y0, lColor);
-		}
-	}
-	else if (dy != 0)
-	{
-		/*
-		 * Slope is &gt; 1 or &lt; -1
-		 * Increment vertically
-		 */
-
-		m = dx / dy;
-		b = x0 - m * y0;
-		dy = (dy &lt; 0) ? -1 : 1;
-
-		while (y0 != y1)
-		{
-			y0 += dy;
-			x0 = m * y0 + b;
-
-			bmdCanvas.setPixel32(x0, y0, lColor);
-		}
-	}
-}
-</pre></div>
-
-
-<p>This program is essentially the same as the previous one but functionally complete to render lines correctly for all possible cases. But there is plenty of room for optimization. Firstly, it uses floating point numbers for what is eventually to be plotted on screen as pixels, which are in whole numbers. Secondly, it computes the value of the next pixel using the slope-intercept formula. This can be optimized away by pre-calculating this equation once out of the loop and then incrementing the value of the row or column in the loop.</p>
-
-
-
-<h3 class="wp-block-heading">Optimization of Inner Loops</h3>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-public static function lineDDA(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
-{
-	/**
-	 * Line drawn using DDA algorithm
-	 * Optimizations are made by replacing the repetitive
-	 * calculations of the slope-intercept formula in
-	 * the loop with 2 division operations outside it
-	 * and instead incrementing the values of x and y
-	 * variables with these pre-computed numbers
-	 * inside the loop
-	 */
-
-	var dx:Number, dy:Number;
-	var steps:Number;
-	var m:Number;
-	var x:Number, y:Number;
-	var xinc:Number, yinc:Number;
-
-	// Determine the direction of incrementation based on the slope
-	dx = x1 - x0;
-	dy = y1 - y0;
-	if (Math.abs(dx) &gt; Math.abs(dy))
-		steps = Math.abs(dx);
-	else
-		steps = Math.abs(dy);
-
-	// Calculate the incrementation for each axes
-	xinc = dx / steps;
-	yinc = dy / steps;
-
-	x = x0;
-	y = y0;
-
-	for (var i:Number = 1; i &lt; steps; i++)
-	{
-		x += xinc;
-		y += yinc;
-		bmdCanvas.setPixel32(x, y, lColor);
-	}
-}
-</pre></div>
-
-
-<p>This algorithm does not use the slope-intercept formula at all. Instead, it calculates the difference between the start and end points and increments the position on both axes in the loop. Whereas calculating the y-coordinate with the slope-intercept formula requires the use of one multiplication and one addition, incrementing the y-coordinate only requires a single addition operation, which makes it blazingly fast.</p>
-
-
-
-<h3 class="wp-block-heading">Further Speed Gains</h3>
-
-
-
-<p>Floating point operations are desirable for plotting on vector graphics terminals because they are capable for drawing a continuous line. But when using raster displays, which only allow plotting discrete points to approximate a true line, floating point data becomes redundant. Thus, if we can find a way to compute a line using only integers, we can speed up our algorithm, while not losing any substantial information because the pixels used to approximate the line are whole numbers anyway.</p>
-
-
-
-<p>Bresenham’s Line Drawing Algorithm uses integers to plot a line on the screen. An implementation is shown below.</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
-public static function lineBresenham2(bmdCanvas:BitmapData, x0:int, y0:int, x1:int, y1:int, lColor:uint)
-{
-	var dx:int;
-	var dy:int;
-	var stepx:int
-	var stepy:int;
-	var counter:int
-
-	// Calculate the difference between the start and end coordinates
-	dx = x1 - x0;
-	dy = y1 - y0;
-
-	// Determine the direction of the increment in both axes
-	if (dx &lt; 0)
-	{
-		dx = -dx;
-		stepx = -1;
-	}
-	else
-	{
-		stepx = 1;
-	}
-
-	if (dy &lt; 0)
-	{
-		dy = -dy;
-		stepy = -1;
-	}
-	else
-	{
-		stepy = 1;
-	}
-
-	bmdCanvas.setPixel32(x0, y0, lColor);
-
-	dx &lt;&lt;= 1;
-	dy &lt;&lt;= 1;
-
-	if (dx &gt; dy)
-	{
-		/** Line is wider than it is taller */
-
-		/**
-		 * Counter is used to track the number of times
-		 * dx is divisible by dy. The value of dy is
-		 * repeatedly subtracted from it on every iteration
-		 * until it becomes less than or equal to 0.
-		 * When that happens, the y-coordinate is incremented
-		 * by stepy and counter is reset to dx.
-		 */
-		counter = dx;
-
-		while (x0 != x1)
-		{
-			/**
-			 * Increment the y-coordinate by stepy when
-			 * the counter becomes less than 0
-			 */
-			if (counter &lt;= 0)
-			{
-				y0 += stepy;
-				counter += dx;
-			}
-
-			// Increment the x-coordinate on every iteration
-			x0 += stepx;
-
-			// Reduce the counter by dy
-			counter -= dy;
-
-			bmdCanvas.setPixel32(x0, y0, lColor);
-		}
-	}
-	else
-	{
-		/** Line is taller than it is wider */
-
-		counter = dy &gt;&gt; 1;
-
-		while (y0 != y1)
-		{
-			if (counter &lt;= 0)
-			{
-				x0 += stepx;
-				counter += dy;
-			}
-
-			y0 += stepy;
-			counter -= dx;
-
-			bmdCanvas.setPixel32(x0, y0, lColor);
-		}
-	}
-}
-</pre></div>
-
-
-<p>Division here is implemented as a series of continuous subtractions. The initial value of the variable fraction is set to dx. Assuming that the line is to be plotted from 0,0 to 100, 10, the values of dx and dy are 100 and 10, respectively. Thus, fraction is assigned the value 100. The variables x0 and y0 are the starting coordinates of the line. With each iteration of the loop, x0 is increased by 1 and the value of dy subtracted from fraction. When the fraction becomes less than or equal to 0, the y-coordinate is incremented by 1 and the counter reset to dx. The variable dy can be subtracted from counter dx / dy times before it becomes less than or equal to 0, making it a brute-force form of division.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="https://notadesigner.com/page/13/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1190,7 +1000,7 @@ public static function lineBresenham2(bmdCanvas:BitmapData, x0:int, y0:int, x1:i
 <span aria-current="page" class="page-numbers current">14</span>
 <a class="page-numbers" href="https://notadesigner.com/page/15/">15</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://notadesigner.com/page/17/">17</a>
+<a class="page-numbers" href="https://notadesigner.com/page/18/">18</a>
 <a class="next page-numbers" href="https://notadesigner.com/page/15/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		</main><!-- #main -->
@@ -1315,45 +1125,45 @@ public static function lineBresenham2(bmdCanvas:BitmapData, x0:int, y0:int, x1:i
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
 <a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.335877862595pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.272727272727pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.480916030534pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.87786259542pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9236641221374pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.424242424242pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.833333333333pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9090909090909pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (40 items)">c#</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (41 items)">c#</a>
 <a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9236641221374pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.412213740458pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9090909090909pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.363636363636pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.908396946565pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.848484848485pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9236641221374pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9090909090909pt;" aria-label="learning (2 items)">learning</a>
 <a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.480916030534pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.424242424242pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9236641221374pt;" aria-label="performance (2 items)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.206106870229pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.946564885496pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.206106870229pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9090909090909pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.181818181818pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.893939393939pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.181818181818pt;" aria-label="programming (3 items)">programming</a>
 <a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.480916030534pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9236641221374pt;" aria-label="usability (2 items)">usability</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.424242424242pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9090909090909pt;" aria-label="usability (2 items)">usability</a>
 <a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9236641221374pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9090909090909pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.129770992366pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.090909090909pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>

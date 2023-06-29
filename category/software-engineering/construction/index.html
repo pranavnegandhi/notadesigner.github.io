@@ -190,6 +190,202 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Category: <span>Construction</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-3285" class="post-3285 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-c">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/notes-on-ray-tracing-in-one-weekend/" title="Notes On Ray Tracing in One Weekend" >
+				<img width="750" height="384" src="https://notadesigner.com/wp-content/uploads/2023/06/IMG_4672-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/notes-on-ray-tracing-in-one-weekend/" rel="bookmark">Notes On Ray Tracing in One Weekend</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/notes-on-ray-tracing-in-one-weekend/" rel="bookmark"><time class="entry-date published" datetime="2023-06-29T08:52:46+05:30">June 29, 2023</time><time class="updated" datetime="2023-06-29T11:42:28+05:30">June 29, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>Peter Shirley&#8217;s <a href="https://raytracing.github.io/books/RayTracingInOneWeekend.html">Ray Tracing in One Weekend</a> had been on my reading list since a long time. Based on brief incursions into its first few chapters, I was aware of the intensive hands-on approach that the book takes to explain its subject matter.</p>
+
+
+
+<p>In addition to the mathematics, this also became a solid opportunity to hone my skills with C# because of several forays into implementing concepts from first-principles. I also encountered some language-specific peculiarities which are uncommon in web development, or as a result of translating the C++ code from the book to C#.</p>
+
+
+
+<p>This blog post contains an ongoing list of lessons learned during this exercise.</p>
+
+
+
+<h3 class="wp-block-heading">Console output can be redirected to a file</h3>
+
+
+
+<p>Now this I knew from earlier, but I&#8217;m adding it here for sake of completeness. Anything that the program prints to the console (through <code>Console.Write()</code> or <code>Console.WriteLine()</code>) can be saved to a file by using the &gt; operator in PowerShell (or most other shells).</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: powershell; title: ; notranslate" title="">
+MyApp.exe &gt; output.log
+</pre></div>
+
+
+<p>The commonly used redirection operators are &gt;, &gt;&gt; and N&gt;, which usually present in all shells, across platforms. PowerShell supports additional techniques to pipe output to files using the Out-File and Tee-File cmdlets.</p>
+
+
+
+<h3 class="wp-block-heading">The C# equivalent to std:cerr is Console.Error</h3>
+
+
+
+<p>The use of stderr is common in several environments because of its convenience and ubiquity. I&#8217;ve seen it less often in colloquial C# for runtime logging, where the <code>ILogger</code> interface has far more traction.</p>
+
+
+
+<p>The <code>Console.Error</code> is a <code>TextWriter</code> instance that prints to a console by default. And it can be changed to point to any other stream, such as a file or a network endpoint.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+Console.Error.WriteLine(&quot;The Thing Broke&quot;);
+</pre></div>
+
+
+<p>But it&#8217;s also possible to use the &gt; operator in PowerShell to redirect the standard error output to any other destination, which is far more convenient and flexible.</p>
+
+
+
+<h3 class="wp-block-heading">The unary minus (-) operator negates a value</h3>
+
+
+
+<p>Easy-peasy. Standard mathematics rules apply. The language has its own rules though, which must be adhered to.</p>
+
+
+
+<ol>
+<li>The operator takes only 1 parameter (hence, unary).</li>
+
+
+
+<li>The parameter must be the same type that contains the operator declaration.</li>
+</ol>
+
+
+
+<h3 class="wp-block-heading">The unary * operator does not multiply a number by itself</h3>
+
+
+
+<p>This was my &#8220;Doh!&#8221; moment. It&#8217;s a pointer dereference operator, of course. I had a temporary brain fade when I read this in the book at first. But the documentation set things right.</p>
+
+
+
+<h3 class="wp-block-heading">Compound assignment operators cannot be explicitly overloaded</h3>
+
+
+
+<p>All compound assignment operators are implicitly overloaded by overloading their corresponding binary operator. These operators are +=, -=, *=, /=, %=, &amp;=, |=, ^=, &lt;&lt;=, &gt;&gt;= and &gt;&gt;&gt;=.</p>
+
+
+
+<h3 class="wp-block-heading">The in modifier on a parameter is a poor man&#8217;s substitute for const</h3>
+
+
+
+<p>Applying the <code>in</code> modifier on a parameter makes it a read only reference. The compiler does not prevent the invocation of mutating methods on an in parameter, but the instance is not modified.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public class Apple
+{
+  public int Size;
+
+  public void Bite()
+  {
+    Size -= 1;
+  }
+}
+</pre></div>
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+public void Program
+{
+  public static void Main()
+  {
+    var fruit = new Apple();
+    Mutate();
+  }
+
+  private static void Mutate(in Apple fruit)
+  {
+    // fruit.Size--; // Won't compile
+    fruit.Bite(); // Compiles and runs on a copy of fruit
+  }
+}
+</pre></div>
+
+
+<p>When the <code>Bite()</code> method is called, it transparently operates on a copy of the original object. The value of <code>Size</code> is never altered in the original instance. This can introduce subtle bugs for the unwary programmer. The <code>const</code> keyword in C++ comes with much stronger guarantees of immutability by completely preventing the invocation of mutable methods.</p>
+
+
+
+<p>And remember, property getters and setters in C# are methods under the hood.</p>
+
+
+
+<h3 class="wp-block-heading">C# 10 adds support for global aliases</h3>
+
+
+
+<p>Declaring an alias allows the programmer to step around class name conflicts when using unalterable code (such as third-party libraries). Earlier versions of the language required that the alias be declared separately in each file where it was to be used. This is no longer necessary. The <code>global</code> modifier makes the alias available across the entire project.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: csharp; title: ; notranslate" title="">
+global using NativeScrollBar = System.Windows.Forms.HScrollBar;
+global using LibraryScrollBar = Vendor.Library.HScrollBar;
+
+var a = new NativeScrollBar();
+var b = new LibraryScrollBar();
+</pre></div>
+
+
+<p>This feature comes in handy when declaring the <code>Color</code> and <code>Point3</code> types as aliases for the <code>Vec3</code> type during the course of the book.</p>
+
+
+
+<h3 class="wp-block-heading">Method inlining is not guaranteed</h3>
+
+
+
+<p>Inline expansion is an optimisation technique that copies the body of the function to the call site. The compiler will almost always do a better job at selecting methods to inline. Besides, C# does not have forced inlining. The JIT heuristics will always be the final authority to determine whether a method should be inlined or not, even when the programmer has explicitly decorated a method with the <code>MethodImplAttribute</code>. So it&#8217;s best to leave it out from your code.</p>
+
+
+
+<h3 class="wp-block-heading">Convert.ToInt32() is different from static_cast&lt;int&gt;</h3>
+
+
+
+<p>This was a significant stumbling block that had a material change on the colour output. In C++, the statement <code>static_cast&lt;int&gt;(255.999)</code> truncates the decimal digit, returning the value 255. The <code>Convert.ToInt32()</code> method in C# rounds to the nearest integer. So <code>Convert.ToInt32(255.999)</code> results in 256, which is outside the 8-bit range of allowed values for each RGB channel. This can give rise to some weird outputs, ranging from wildly incorrect colours, to mosquito noise patterns.</p>
+
+
+
+<p><code>Math.Truncate()</code> could have been used instead, because it truncates the decimal portion of the number and returns only the integral part. But the return type of this method is still a decimal, which has to be cast to an <code>int</code>.</p>
+
+
+
+<p>Eventually, the solution turned out to be simpler than anticipated. Since casting to <code>int</code> also discards the decimal portion, the call to <code>Math.Truncate()</code> can be excluded, and the type can be directly cast to an <code>int</code>.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
+(int)255.999; // Returns 255
+</pre></div>
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-3195" class="post-3195 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-c tag-usability">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/users-dont-read-error-messages/" title="Users Don&#8217;t Read Error Messages" >
@@ -200,7 +396,7 @@ body.custom-background { background-color: #f2f2f2; }
 				<h2 class="entry-title"><a href="https://notadesigner.com/users-dont-read-error-messages/" rel="bookmark">Users Don&#8217;t Read Error Messages</a></h2>
 
 								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/users-dont-read-error-messages/" rel="bookmark"><time class="entry-date published" datetime="2023-06-13T20:03:48+05:30">June 13, 2023</time><time class="updated" datetime="2023-06-14T17:17:41+05:30">June 14, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/users-dont-read-error-messages/" rel="bookmark"><time class="entry-date published" datetime="2023-06-13T20:03:48+05:30">June 13, 2023</time><time class="updated" datetime="2023-06-29T08:47:06+05:30">June 29, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
 				
 				</div><!-- .entry-meta -->
 							</header><!-- .entry-header -->
@@ -547,237 +743,6 @@ while (!result)
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-1594" class="post-1594 post type-post status-publish format-standard has-post-thumbnail hentry category-construction category-software-engineering tag-asp-net-mvc tag-c tag-fitnet">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/valknut-view-models/" title="Valknut &#8211; View Models" >
-				<img width="750" height="384" src="https://notadesigner.com/wp-content/uploads/2020/09/DSC_4600-750x384.jpg" class="single-featured wp-post-image" alt="" decoding="async" />			</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/valknut-view-models/" rel="bookmark">Valknut &#8211; View Models</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/valknut-view-models/" rel="bookmark"><time class="entry-date published" datetime="2020-09-05T18:39:46+05:30">September 5, 2020</time><time class="updated" datetime="2023-01-05T11:39:44+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>The application utilises view models heavily for all kinds of client-side communication. A page view model is an obvious candidate. But even JSON requests and responses are deserialised into a view model for better server-side manipulation.</p>
-
-
-
-<h3 class="wp-block-heading">Core Hierarchy</h3>
-
-
-
-<p>The application view model architecture is highly formalised. It follows a strong hierarchy for transmitting the various kinds of data models to the client and back. The base of this entire hierachy is the class <code>FitNet.Web.ViewModels.EntityViewModel</code>. This class exposes the properties <code>Id</code> and <code>Name</code>.</p>
-
-
-
-<p>All entity view models which are used to enumerate records, show editable forms or delete rows inherit from <code>EntityViewModel</code>. This offers the structure required to perform common sets of actions on these entities irrespective of their individual types and properties.</p>
-
-
-
-<h3 class="wp-block-heading">Page View Model</h3>
-
-
-
-<p>This is a generic class that is designed for transmitting data for a standard HTML output. It has a single generic type parameter that has to inherit from the <code>EntityViewModel</code>. This class exposes the properties <code>Title</code>, <code>Permalink</code> and <code>Entity</code>. The type of <code>Entity</code> matches the type of the generic parameter.</p>
-
-
-
-<p>All entity controllers can use this class to generate an editor page with a shared set of page properties and layout hosting a form with entity type-specific fields.</p>
-
-
-
-<h3 class="wp-block-heading">DataTables View Models</h3>
-
-
-
-<p>DataTables is a popular jQuery plugin for rendering grids on the client-side. It supports dynamic retrieval of data, page-wise splitting, record offsets and many other features required for viewing collections.</p>
-
-
-
-<p>This library is utilised heavily in Valknut, and as a result, the back-end provides built-in view models for data retrieval and submission directly through DataTables.</p>
-
-
-
-<p>The classes required for this feature are listed below.</p>
-
-
-
-<ul>
-<li>FitNet.Web.ViewModels.DataTables.RequestViewModel</li>
-
-
-
-<li>FitNet.Web.ViewModels.DataTables.ColumnViewModel</li>
-
-
-
-<li>FitNet.Web.ViewModels.DataTables.OrderViewModel</li>
-
-
-
-<li>FitNet.Web.ViewModels.DataTables.SearchViewModel</li>
-
-
-
-<li>FitNet.Web.ViewModels.DataTables.ResponseViewModel</li>
-</ul>
-
-
-
-<h4 class="wp-block-heading">Request View Models</h4>
-
-
-
-<p>This is a composite class that organises several other view models into a single instance. When the plugin makes an AJAX request, the request is serialised into this type. It&#8217;s native properties are <code>Draw</code>, <code>Start</code>, <code>Length</code> and <code>Error</code>. These properties are required for cache-busting, record navigation and error handling.</p>
-
-
-
-<p>The <code>Search</code> property contains an instance of the <code>SearchViewModel</code>, while <code>Columns</code> and <code>Order</code> are collections of type <code>ColumnViewModel</code> and <code>OrderViewModel</code> respectively.</p>
-
-
-
-<h5 class="wp-block-heading">Server-side Processing</h5>
-
-
-
-<p>An AJAX request from a DataTables instance can be processed on the client-side or on the server. In the former scenario, all data is retrieved in a single network operation and stored in memory on the client. This is convenient and quick for small data sets.</p>
-
-
-
-<p>But if your data sets are large or contain an indefinite number of rows, server-side processing is more efficient. For this, the plugin sends some additional information with each request.</p>
-
-
-
-<ol>
-<li>Column Data</li>
-
-
-
-<li>Column Name</li>
-
-
-
-<li>Column Searchable</li>
-
-
-
-<li>Column Orderable</li>
-
-
-
-<li>Column Search Value</li>
-
-
-
-<li>Column Search RegEx</li>
-
-
-
-<li>Column to Order By</li>
-
-
-
-<li>Direction of Ordering</li>
-
-
-
-<li>Record Number to Start At</li>
-
-
-
-<li>Length of Data Set</li>
-
-
-
-<li>Global Search Value</li>
-
-
-
-<li>Global Search RegEx</li>
-</ol>
-
-
-
-<p>Column and ordering parameters are an indexed collection. The entire request is URL encoded. An example of the body sent is shown below (with the request split into multiple lines for legibility).</p>
-
-
-<div class="wp-block-syntaxhighlighter-code "><pre class="brush: plain; title: ; notranslate" title="">
-draw=1&amp;
-columns&#91;0]&#91;data]=Name&amp;
-columns&#91;0]&#91;name]=&amp;
-columns&#91;0]&#91;searchable]=true&amp;
-columns&#91;0]&#91;orderable]=true&amp;
-columns&#91;0]&#91;search]&#91;value]=&amp;
-columns&#91;0]&#91;search]&#91;regex]=false&amp;
-columns&#91;1]&#91;data]=Id&amp;
-columns&#91;1]&#91;name]=&amp;
-columns&#91;1]&#91;searchable]=true&amp;
-columns&#91;1]&#91;orderable]=false&amp;
-columns&#91;1]&#91;search]&#91;value]=&amp;
-columns&#91;1]&#91;search]&#91;regex]=false&amp;
-order&#91;0]&#91;column]=0&amp;
-order&#91;0]&#91;dir]=asc&amp;
-start=0&amp;
-length=10&amp;
-search&#91;value]=&amp;
-search&#91;regex]=false
-</pre></div>
-
-
-<h4 class="wp-block-heading"><a href="https://github.com/pranavnegandhi/notadesigner.github.io/blob/master/view-models.md#column-view-model"></a>Column View Model</h4>
-
-
-
-<p>The column fields are deserialised into an instance of this class. Each column has its own instance, and each instance has the properties <code>Data</code>, <code>Name</code>, <code>Searchable</code>, <code>Orderable</code>, <code>Start</code>, <code>Length</code>, as well as a nested instance of the search view model.</p>
-
-
-
-<p>The server can utilise these values to perform any additional ordering or filtering on the result data set before dispatching it back to the client.</p>
-
-
-
-<h4 class="wp-block-heading">Order View Model</h4>
-
-
-
-<p>This is a very simple class consisting of only two properties – <code>Column</code> and <code>Direction</code>. The first is the index of the primary sorting column, and the second is a string containing the value <code>asc</code> or <code>desc</code>.</p>
-
-
-
-<p>The server can utilise these properties to sort the data on the server.</p>
-
-
-
-<h4 class="wp-block-heading">Search View Model</h4>
-
-
-
-<p>This class contains the properties <code>Value</code> and <code>RegEx</code>, which is used to transmit keywords or regular expressions to the server. The data set can be filtered against these parameters before returning it to the client.</p>
-
-
-
-<h4 class="wp-block-heading">Response View Model</h4>
-
-
-
-<p>In addition to the collection of records, the DataTables instance also requires some additional information such as the current page number. This view model implements properties for these values.</p>
-
-
-
-<p>The complete list of properties are <code>Draw</code>, <code>Start</code>, <code>RecordsFiltered</code>, <code>RecordsTotal</code>, <code>Search</code>, <code>Error</code> and <code>Data</code>. The last one is an <code>ICollection</code> instance and contains the rows to be rendered.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><span aria-current="page" class="page-numbers current">1</span>
@@ -908,45 +873,45 @@ search&#91;regex]=false
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
 <a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.335877862595pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.272727272727pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.480916030534pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.87786259542pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9236641221374pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.424242424242pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.833333333333pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9090909090909pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (40 items)">c#</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (41 items)">c#</a>
 <a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9236641221374pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.412213740458pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9090909090909pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.363636363636pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.908396946565pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.848484848485pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9236641221374pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9090909090909pt;" aria-label="learning (2 items)">learning</a>
 <a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.480916030534pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.424242424242pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9236641221374pt;" aria-label="performance (2 items)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.206106870229pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.946564885496pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.206106870229pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9090909090909pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.181818181818pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.893939393939pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.181818181818pt;" aria-label="programming (3 items)">programming</a>
 <a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.480916030534pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9236641221374pt;" aria-label="usability (2 items)">usability</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.424242424242pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9090909090909pt;" aria-label="usability (2 items)">usability</a>
 <a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9236641221374pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9090909090909pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.129770992366pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.090909090909pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -990,8 +955,9 @@ search&#91;regex]=false
 		  })
 		</script>
 	<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
-<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPowerShell.js?ver=3.0.9b' id='syntaxhighlighter-brush-powershell-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushPlain.js?ver=3.0.9b' id='syntaxhighlighter-brush-plain-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>
 <script type='text/javascript'>
 	(function(){
 		var corecss = document.createElement('link');

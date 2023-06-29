@@ -190,6 +190,189 @@ body.custom-background { background-color: #f2f2f2; }
 					<h1 class="page-title">Author: <span>Pranav Negandhi</span></h1>				</header><!-- .page-header -->
 
 				
+<article id="post-748" class="post-748 post type-post status-publish format-standard hentry category-technique tag-actionscript">
+	<div class="blog-item-wrap">
+				<a href="https://notadesigner.com/sharing-code-static-and-dynamic-libraries-in-actionscript/" title="Sharing Code &#8211; Static and Dynamic Libraries in ActionScript" >
+							</a>
+		<div class="post-inner-content">
+			<header class="entry-header page-header">
+
+				<h2 class="entry-title"><a href="https://notadesigner.com/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark">Sharing Code &#8211; Static and Dynamic Libraries in ActionScript</a></h2>
+
+								<div class="entry-meta">
+					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/sharing-code-static-and-dynamic-libraries-in-actionscript/" rel="bookmark"><time class="entry-date published" datetime="2014-09-18T17:27:46+05:30">September 18, 2014</time><time class="updated" datetime="2023-01-05T11:40:55+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
+				
+				</div><!-- .entry-meta -->
+							</header><!-- .entry-header -->
+
+						<div class="entry-content">
+
+				
+<p>When I was in school, practically nobody had access to the internet. As a result, every student would have two essential items in his toolkit &#8211; an encyclopedia and a membership to a library. Homework, projects and supplementary studies were highly dependent on both of them.</p>
+
+
+
+<p>Encyclopedias ranged from simple one-book units that specialized in a single subject, to multi-volume tomes spanning practically every topic imaginable (or at least deemed allowably imaginable by its publishers) by a school student. In both cases, the research was already done by someone else. When we were assigned a project on the solar system, nobody expected us to discover the planets in it. The planets remained discovered. All we had to do was read about them and share the information when making a presentation to the class.</p>
+
+
+
+<h3 class="wp-block-heading">Code Libraries</h3>
+
+
+
+<p>It is heartening to know that somebody creating computer languages took this to heart and invented the concept of code libraries &#8211; units of code written by people who are really good in the domain, then shared with the also rans who just wanted to implement their business applications without knowing the mathematics of relational databases or the bit-juggling that network libraries perform.</p>
+
+
+
+<p>Libraries are compiled separately from the application that ends up eventually using them. They are linked to the application through a process that maps function calls in the application code with function addresses in the library. This process, predictably, is called linking.</p>
+
+
+
+<p>Code stored in statically linked libraries is copied into the application executable at compile time, resulting an individual copy being created for every application that uses the library. Static libraries become an integral part of the application that uses them and cannot be shared with other applications. If the library is modified in any manner, the application must be recompiled and relinked with the new version in order to utilize those changes.</p>
+
+
+
+<p>Dynamic libraries are stored in a shared location, and are linked to the application at runtime by the operating system or other environment controller such as a virtual machine. The metaphor falls apart a bit when it comes to sharing dynamic libraries &#8211; in a physical library, only one member can borrow a book at a time, whereas any number of programs can concurrently use the code stored in a dynamic library.</p>
+
+
+
+<p>With static linking, it is enough to include those parts of the library that are directly and indirectly referenced by the target executable (or target library). With dynamic libraries, the entire library is loaded, as it is not known in advance which functions will be invoked by applications. Whether this advantage is significant in practice depends on the structure of the library.</p>
+
+
+
+<p>Other than the obvious benefit of being able to compile units of code separately, either type of libraries offer their own individual benefits also. Statically linked code guarantees that all required code units are present and compatible with the application. Dynamically linked libraries may be of a different version than what the application requires, or not be present at all. Either case either causes a runtime error, or requires defensive code and reduced functionality in the application. Static linking also simplifies product distribution by reducing the number of files to be shipped and installed.</p>
+
+
+
+<p>All said and done, both types of libraries are popular and well-worn concepts in computer programming. Many modern languages support either method, usually both.</p>
+
+
+
+<h3 class="wp-block-heading">Code Libraries in the Flash Ecosystem</h3>
+
+
+
+<p>Adobe&#8217;s MXML compiler offers several parameters for programmers to employ libraries &#8211; both static and dynamic &#8211; in their code.</p>
+
+
+
+<p>Static linking is almost identical to how it is used in conventional languages. Dynamic linking works slightly differently from Windows&#8217; Dynamically Linked Libraries and Unix&#8217;s Shared Objects due to the browser-based operation of the Flash Player. But these differences are at an implementation level only. The concepts remain the same.</p>
+
+
+
+<h4 class="wp-block-heading">Static Linking</h4>
+
+
+
+<p>To statically link a library into an application, the compiler offers the library-path and include-libraries directives.</p>
+
+
+
+<h5 class="wp-block-heading">library-path</h5>
+
+
+
+<p>When a library is specified using the library-path directive, the compiler includes only those assets and classes that are referenced in the application. For example, if the Math library contains IntegerArithmetic and FloatArithmetic for performing arithmetic operations on two separate numeric data types, but the client application only uses integers, the FloatArithmetic class is excluded from the output. This reduces the file size of the application SWF.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc Main.mxml -output=Main.swf -library-path=math.swc</code></pre>
+
+
+
+<h5 class="wp-block-heading">include-libraries</h5>
+
+
+
+<p>The include-libraries directive packages the entire library, irrespective of what the compiler thinks is used in the application. This comes in handy in a dynamic language like ActionScript because all method calls do not necessarily get tested for linkages by the compiler.</p>
+
+
+<div class="wp-block-syntaxhighlighter-code "><pre class="brush: as3; title: ; notranslate" title="">
+var classRef:Class = getDefinitionByName(&quot;com.notadesigner.math.FloatArithmetic&quot;) as Class;
+var instance:Object = new classRef();
+instance&#91;&quot;add&quot;](10.5, 2.5); // Linkage not tested by the compiler
+</pre></div>
+
+
+<p>The include-libraries directive is used like this.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc Main.mxml -output=Main.swf -include-libraries=math.swc</code></pre>
+
+
+
+<h5 class="wp-block-heading">static-link-runtime-shared-libraries</h5>
+
+
+
+<p>This directive is a convenient shortcut to convert runtime shared libraries into static libraries without significant changes to the compiler configuration files. Simply setting its value to true causes the compiler to embed all RSLs into the application. This is a handy way to investigate library-related problems when debugging the application.</p>
+
+
+
+<pre class="wp-block-code"><code>mxml Main.mxml -output=Main.swf -static-link-runtime-shared-libraries=true</code></pre>
+
+
+
+<h4 class="wp-block-heading">Dynamic Linking</h4>
+
+
+
+<p>A Runtime Shared Library (commonly abbreviated to RSL) is loaded by the application before it begins execution. Loading a RSL is a complicated task if done in plain ActionScript, but is taken care of automatically if the application builds on the Spark or MX Application class.</p>
+
+
+
+<p>Adobe-provided framework libraries are the most obvious use case for using RSLs. All Flex-based applications depend upon these files. By caching them after the first time they are downloaded, future applications can be started much faster as they do not need to download the same code again. Custom libraries can also take advantage of the same technique.</p>
+
+
+
+<p>Flash libraries are compiled using the compc utility, that ships as part of the Flex SDK. It generates a SWC file which is a compressed archive containing a SWF (named library.swf) and an XML (catalog.xml). To use this library, the developer must manually extract the SWF from the SWC using an archival utility (such as PKZip) and place it where the application can download it at runtime. As a good practice, the SWF is also usually renamed from library.swf to something more meaningful.</p>
+
+
+
+<h5 class="wp-block-heading">runtime-shared-library-path</h5>
+
+
+
+<p>This directive is used to specify the location of RSL files for the compiler.&nbsp;The compiler requires the names of both, the SWC as well as the extracted SWF, separated by a comma.</p>
+
+
+
+<pre class="wp-block-code"><code>mxmlc -o=main.swf -runtime-shared-library-path=libs/math.swc,bin/math.swf Main.mxml</code></pre>
+
+
+
+<h4 class="wp-block-heading">Related Directives</h4>
+
+
+
+<p>The Flex compiler provides two other directives to externalize the application&#8217;s assets and code fragments. The compiler tests linkages against these assets at compile-time, but leaves them out of the application binary. Libraries that contain these assets or classes are required at runtime, and the Flash Player throws a runtime error if they are not available.</p>
+
+
+
+<p>These directives are useful when creating modules which are loaded dynamically into an application that they share code with. The application is linked to the requisite RSL, and the module does not need to fetch it again. However, the compiler still needs to test the linkages against the symbols &#8211; either against the original source code or a compiled binary. These directives assist in that task.</p>
+
+
+
+<h5 class="wp-block-heading">external-library-path</h5>
+
+
+
+<p>The compiler uses SWC files specified at these paths to test linkages with the application code, but does not compile the binaries into the application itself.</p>
+
+
+
+<h5 class="wp-block-heading">externs</h5>
+
+
+
+<p>This directive points to source files containing assets or classes which will be available at runtime. The compiler uses the source files for link testing, but does not compile them into the application binary.</p>
+
+							</div><!-- .entry-content -->
+					</div>
+	</div>
+</article><!-- #post-## -->
+
 <article id="post-728" class="post-728 post type-post status-publish format-standard hentry category-demonstration tag-php tag-spreadsheet tag-wordpress">
 	<div class="blog-item-wrap">
 				<a href="https://notadesigner.com/a-spreadsheet-of-posts-for-wordpress/" title="A Spreadsheet of Posts for WordPress" >
@@ -1127,111 +1310,6 @@ AND  00000100 // Underline enum
 	</div>
 </article><!-- #post-## -->
 
-<article id="post-531" class="post-531 post type-post status-publish format-standard hentry category-construction tag-usability tag-user-interface">
-	<div class="blog-item-wrap">
-				<a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/" title="Nothing Is So Simple That it Cannot Be Difficult" >
-							</a>
-		<div class="post-inner-content">
-			<header class="entry-header page-header">
-
-				<h2 class="entry-title"><a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/" rel="bookmark">Nothing Is So Simple That it Cannot Be Difficult</a></h2>
-
-								<div class="entry-meta">
-					<span class="posted-on"><i class="fa fa-calendar-alt"></i> <a href="https://notadesigner.com/nothing-is-so-simple-that-it-cannot-be-difficult/" rel="bookmark"><time class="entry-date published" datetime="2012-12-21T18:19:25+05:30">December 21, 2012</time><time class="updated" datetime="2023-01-05T11:40:55+05:30">January 5, 2023</time></a></span><span class="byline"> <i class="fa fa-user"></i> <span class="author vcard"><a class="url fn n" href="https://notadesigner.com/author/pranavnegandhi/">Pranav Negandhi</a></span></span>
-				
-				</div><!-- .entry-meta -->
-							</header><!-- .entry-header -->
-
-						<div class="entry-content">
-
-				
-<p>Long years in the software industry have conditioned me to dread last-minute feature additions. Something as innocuous as a mailer subscription form can turn into a minefield of security and privacy concerns if done incorrectly. In the book Peopleware, writers Tom&nbsp;DeMarco and Timothy Lister have expressed how managing software projects is less of a technical challenge and more of a social interaction maze. Keeping clients happy while still being able to convince them about the intensive behind-the-scenes work behind the simplest of features takes a lot of people-skill.</p>
-
-
-
-<p>Incomplete or inaccurate specifications can complicate the problem even further. This can be a result of the specifications being created by inexperienced people, or people with little or no understanding of UX or software. This becomes particularly insidious because the presence of a specification (even if it is only superficial) lulls stakeholders into thinking that the project is under control. But all sorts of bad things begin to happen once the rubber meets the road. Designers work towards an incomplete layout. Engineers make an incomplete product, which results either in customer dissatisfaction or time and cost overruns.</p>
-
-
-
-<p>A seemingly simple feature such as pagination requires quite a bit of programming just to make it work at all. More code has to be written to consider common cases such as representation of and navigation through large data sets. Usability issues have to be taken into account, such as device specifics to handle different input systems such as touch screens, keyboards and mouse clicks.</p>
-
-
-
-<p>Product requirements often begin with a very vague idea of what is required. &#8220;A blog application needs comments&#8221;, says the product manager. So the engineering team gets to work and churns out a comment form, and a display mechanism. But nobody expected Jeff Atwood to deploy the software on his website, which regularly gets 3000 comments in the first 10 minutes of a post being put up, and nobody can now open his website any more because the database server choked on retrieving so many comments for a million simultaneous visitors (yes, even if they are flat discussions).</p>
-
-
-
-<p>After Jeff posts a rant on his website, the product manager eats his hat and gets back to writing a specification for the comment pagination, as he should have to begin with. This is his design from the first draft of the specification.</p>
-
-
-
-<pre class="wp-block-preformatted">Previous | <strong>1</strong> | 2 | 3 | 4 | 5 | Next</pre>
-
-
-
-<p>The engineering lead looks at the design and notices that it is still incomplete. The Previous and Next buttons will not do anything useful if the visitor is already on the first or last page. So those links will have to be disabled as necessary. The revised design looks like this.</p>
-
-
-
-<pre class="wp-block-preformatted"><span style="color: #c0c0c0;">Previous</span> |&nbsp;<strong>1</strong>&nbsp;| 2 | 3 | 4 | 5 | Next</pre>
-
-
-
-<pre class="wp-block-preformatted">Previous |&nbsp;1&nbsp;| 2 | 3 | 4 | <strong>5</strong> | <span style="color: #c0c0c0;">Next</span></pre>
-
-
-
-<p>But what happens when there are more than 5 pages of comments on the post? If they keep increasing the page count, eventually it will have to be wrapped to the next line or made to run off the screen, either of which looks very ugly.</p>
-
-
-
-<pre class="wp-block-preformatted"><span style="color: #c0c0c0;">Previous</span> |&nbsp;<strong>1</strong>&nbsp;| 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | Next</pre>
-
-
-
-<p>Somebody suggests letting users type in the page number in a text field that also doubles up as the current page indicator.</p>
-
-
-
-<pre class="wp-block-preformatted">First |&nbsp;<input style="width: 50px;" type="text">&nbsp;| Last</pre>
-
-
-
-<p>While this is easy, it is not very user friendly. How many pages of comments do we have in all? What happens if the visitor enters too large a number or a non-numeric value? Visitors on mobile devices probably will not be very pleased to have to type very frequently.</p>
-
-
-
-<p>After yet another round of discussion, the team finally decides that visitors are probably not interested in viewing every comment on the blog. Yet, showing the total number of comments would be desirable for Jeff because it is a measure of his popularity. Fitness models measure bicep circumference. Geeks measure blog comments.</p>
-
-
-
-<p>Somebody suggests the following user interface, which seems to fit the bill.</p>
-
-
-
-<pre class="wp-block-preformatted"><strong>1</strong>&nbsp;| 2 | 3 | 4 | 5 ... 274</pre>
-
-
-
-<pre class="wp-block-preformatted">1&nbsp;... 65 | <strong>66</strong> | 67 | 68 ... 274</pre>
-
-
-
-<pre class="wp-block-preformatted">1&nbsp;... 270 |&nbsp;271&nbsp;| 272&nbsp;| 273 | <strong>274</strong></pre>
-
-
-
-<p>The first and last page links are always displayed. The rest of the links are dedicated to displaying the current page number and a range of values around it. For the end user &#8211; the website visitor &#8211; the control is very simple and easy to learn at a glance.</p>
-
-
-
-<p>Of course, this entire exercise is moot if it is done without proper usability testing with relevant target audiences in mind. Formal testing methods are often inaccessible to small teams, but hallway tests can still provide feedback, and results in a much better product.</p>
-
-							</div><!-- .entry-content -->
-					</div>
-	</div>
-</article><!-- #post-## -->
-
 	<nav class="navigation pagination" aria-label="Posts">
 		<h2 class="screen-reader-text">Posts navigation</h2>
 		<div class="nav-links"><a class="prev page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/9/"><i class="fa fa-chevron-left"></i> Newer posts</a>
@@ -1241,7 +1319,7 @@ AND  00000100 // Underline enum
 <span aria-current="page" class="page-numbers current">10</span>
 <a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/11/">11</a>
 <span class="page-numbers dots">&hellip;</span>
-<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/17/">17</a>
+<a class="page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/18/">18</a>
 <a class="next page-numbers" href="https://notadesigner.com/author/pranavnegandhi/page/11/">Older posts <i class="fa fa-chevron-right"></i></a></div>
 	</nav>
 		 </main><!-- #main -->
@@ -1366,45 +1444,45 @@ AND  00000100 // Underline enum
 <li id="menu-item-1101" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1101"><a>Rethinking the Data Model</a></li>
 </ul></div></div><div id="block-3" class="widget widget_block widget_tag_cloud"><p class="wp-block-tag-cloud"><a href="https://notadesigner.com/tag/net/" class="tag-cloud-link tag-link-72 tag-link-position-1" style="font-size: 8pt;" aria-label=".net (1 item)">.net</a>
 <a href="https://notadesigner.com/tag/abstract-factory/" class="tag-cloud-link tag-link-56 tag-link-position-2" style="font-size: 8pt;" aria-label="abstract-factory (1 item)">abstract-factory</a>
-<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.335877862595pt;" aria-label="actionscript (11 items)">actionscript</a>
+<a href="https://notadesigner.com/tag/actionscript/" class="tag-cloud-link tag-link-28 tag-link-position-3" style="font-size: 16.272727272727pt;" aria-label="actionscript (11 items)">actionscript</a>
 <a href="https://notadesigner.com/tag/actionscript-native-extensions/" class="tag-cloud-link tag-link-33 tag-link-position-4" style="font-size: 8pt;" aria-label="actionscript native-extensions (1 item)">actionscript native-extensions</a>
 <a href="https://notadesigner.com/tag/adapter/" class="tag-cloud-link tag-link-68 tag-link-position-5" style="font-size: 8pt;" aria-label="adapter (1 item)">adapter</a>
 <a href="https://notadesigner.com/tag/apache/" class="tag-cloud-link tag-link-44 tag-link-position-6" style="font-size: 8pt;" aria-label="apache (1 item)">apache</a>
-<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.480916030534pt;" aria-label="asp.net (9 items)">asp.net</a>
-<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.87786259542pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
-<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9236641221374pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
+<a href="https://notadesigner.com/tag/asp-net/" class="tag-cloud-link tag-link-48 tag-link-position-7" style="font-size: 15.424242424242pt;" aria-label="asp.net (9 items)">asp.net</a>
+<a href="https://notadesigner.com/tag/asp-net-mvc/" class="tag-cloud-link tag-link-67 tag-link-position-8" style="font-size: 13.833333333333pt;" aria-label="asp.net mvc (6 items)">asp.net mvc</a>
+<a href="https://notadesigner.com/tag/bit-hacking/" class="tag-cloud-link tag-link-18 tag-link-position-9" style="font-size: 9.9090909090909pt;" aria-label="bit-hacking (2 items)">bit-hacking</a>
 <a href="https://notadesigner.com/tag/bridge/" class="tag-cloud-link tag-link-70 tag-link-position-10" style="font-size: 8pt;" aria-label="bridge (1 item)">bridge</a>
 <a href="https://notadesigner.com/tag/builder/" class="tag-cloud-link tag-link-59 tag-link-position-11" style="font-size: 8pt;" aria-label="builder (1 item)">builder</a>
-<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (40 items)">c#</a>
+<a href="https://notadesigner.com/tag/c/" class="tag-cloud-link tag-link-19 tag-link-position-12" style="font-size: 22pt;" aria-label="c# (41 items)">c#</a>
 <a href="https://notadesigner.com/tag/c-lang/" class="tag-cloud-link tag-link-42 tag-link-position-13" style="font-size: 8pt;" aria-label="c-lang (1 item)">c-lang</a>
-<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9236641221374pt;" aria-label="coding-horror (2 items)">coding-horror</a>
-<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.412213740458pt;" aria-label="entity-framework (7 items)">entity-framework</a>
+<a href="https://notadesigner.com/tag/coding-horror/" class="tag-cloud-link tag-link-31 tag-link-position-14" style="font-size: 9.9090909090909pt;" aria-label="coding-horror (2 items)">coding-horror</a>
+<a href="https://notadesigner.com/tag/entity-framework/" class="tag-cloud-link tag-link-51 tag-link-position-15" style="font-size: 14.363636363636pt;" aria-label="entity-framework (7 items)">entity-framework</a>
 <a href="https://notadesigner.com/tag/factory-method/" class="tag-cloud-link tag-link-60 tag-link-position-16" style="font-size: 8pt;" aria-label="factory-method (1 item)">factory-method</a>
-<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.908396946565pt;" aria-label="fitnet (10 items)">fitnet</a>
+<a href="https://notadesigner.com/tag/fitnet/" class="tag-cloud-link tag-link-46 tag-link-position-17" style="font-size: 15.848484848485pt;" aria-label="fitnet (10 items)">fitnet</a>
 <a href="https://notadesigner.com/tag/language-primer/" class="tag-cloud-link tag-link-17 tag-link-position-18" style="font-size: 8pt;" aria-label="language primer (1 item)">language primer</a>
-<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9236641221374pt;" aria-label="learning (2 items)">learning</a>
+<a href="https://notadesigner.com/tag/learning/" class="tag-cloud-link tag-link-24 tag-link-position-19" style="font-size: 9.9090909090909pt;" aria-label="learning (2 items)">learning</a>
 <a href="https://notadesigner.com/tag/memory-leaks/" class="tag-cloud-link tag-link-29 tag-link-position-20" style="font-size: 8pt;" aria-label="memory-leaks (1 item)">memory-leaks</a>
-<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.480916030534pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
+<a href="https://notadesigner.com/tag/motorcycle-touring/" class="tag-cloud-link tag-link-9 tag-link-position-21" style="font-size: 15.424242424242pt;" aria-label="motorcycle-touring (9 items)">motorcycle-touring</a>
 <a href="https://notadesigner.com/tag/mysql/" class="tag-cloud-link tag-link-45 tag-link-position-22" style="font-size: 8pt;" aria-label="mysql (1 item)">mysql</a>
 <a href="https://notadesigner.com/tag/native-extensions/" class="tag-cloud-link tag-link-32 tag-link-position-23" style="font-size: 8pt;" aria-label="native-extensions (1 item)">native-extensions</a>
 <a href="https://notadesigner.com/tag/number-system/" class="tag-cloud-link tag-link-23 tag-link-position-24" style="font-size: 8pt;" aria-label="number system (1 item)">number system</a>
 <a href="https://notadesigner.com/tag/objective-c/" class="tag-cloud-link tag-link-15 tag-link-position-25" style="font-size: 8pt;" aria-label="objective-c (1 item)">objective-c</a>
 <a href="https://notadesigner.com/tag/optimisation/" class="tag-cloud-link tag-link-66 tag-link-position-26" style="font-size: 8pt;" aria-label="optimisation (1 item)">optimisation</a>
-<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9236641221374pt;" aria-label="performance (2 items)">performance</a>
-<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.206106870229pt;" aria-label="php (3 items)">php</a>
-<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.946564885496pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
-<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.206106870229pt;" aria-label="programming (3 items)">programming</a>
+<a href="https://notadesigner.com/tag/performance/" class="tag-cloud-link tag-link-65 tag-link-position-27" style="font-size: 9.9090909090909pt;" aria-label="performance (2 items)">performance</a>
+<a href="https://notadesigner.com/tag/php/" class="tag-cloud-link tag-link-25 tag-link-position-28" style="font-size: 11.181818181818pt;" aria-label="php (3 items)">php</a>
+<a href="https://notadesigner.com/tag/practical-design-patterns/" class="tag-cloud-link tag-link-49 tag-link-position-29" style="font-size: 14.893939393939pt;" aria-label="practical-design-patterns (8 items)">practical-design-patterns</a>
+<a href="https://notadesigner.com/tag/programming/" class="tag-cloud-link tag-link-16 tag-link-position-30" style="font-size: 11.181818181818pt;" aria-label="programming (3 items)">programming</a>
 <a href="https://notadesigner.com/tag/prototype/" class="tag-cloud-link tag-link-62 tag-link-position-31" style="font-size: 8pt;" aria-label="prototype (1 item)">prototype</a>
 <a href="https://notadesigner.com/tag/singleton/" class="tag-cloud-link tag-link-63 tag-link-position-32" style="font-size: 8pt;" aria-label="singleton (1 item)">singleton</a>
 <a href="https://notadesigner.com/tag/spreadsheet/" class="tag-cloud-link tag-link-27 tag-link-position-33" style="font-size: 8pt;" aria-label="spreadsheet (1 item)">spreadsheet</a>
 <a href="https://notadesigner.com/tag/sql/" class="tag-cloud-link tag-link-64 tag-link-position-34" style="font-size: 8pt;" aria-label="sql (1 item)">sql</a>
 <a href="https://notadesigner.com/tag/state/" class="tag-cloud-link tag-link-50 tag-link-position-35" style="font-size: 8pt;" aria-label="state (1 item)">state</a>
-<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.480916030534pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
-<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9236641221374pt;" aria-label="usability (2 items)">usability</a>
+<a href="https://notadesigner.com/tag/tour-of-hampi/" class="tag-cloud-link tag-link-8 tag-link-position-36" style="font-size: 15.424242424242pt;" aria-label="tour-of-hampi (9 items)">tour-of-hampi</a>
+<a href="https://notadesigner.com/tag/usability/" class="tag-cloud-link tag-link-21 tag-link-position-37" style="font-size: 9.9090909090909pt;" aria-label="usability (2 items)">usability</a>
 <a href="https://notadesigner.com/tag/user-interface/" class="tag-cloud-link tag-link-22 tag-link-position-38" style="font-size: 8pt;" aria-label="user interface (1 item)">user interface</a>
-<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9236641221374pt;" aria-label="version-control (2 items)">version-control</a>
+<a href="https://notadesigner.com/tag/version-control/" class="tag-cloud-link tag-link-43 tag-link-position-39" style="font-size: 9.9090909090909pt;" aria-label="version-control (2 items)">version-control</a>
 <a href="https://notadesigner.com/tag/wordpress/" class="tag-cloud-link tag-link-26 tag-link-position-40" style="font-size: 8pt;" aria-label="wordpress (1 item)">wordpress</a>
-<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.129770992366pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
+<a href="https://notadesigner.com/tag/wpf/" class="tag-cloud-link tag-link-41 tag-link-position-41" style="font-size: 13.090909090909pt;" aria-label="wpf (5 items)">wpf</a></p></div>		</div><!-- .widget-area .second -->
 		
 				<div class="col-sm-4 footer-widget" role="complementary">
 			<div id="nav_menu-35" class="widget widget_nav_menu"><h3 class="widgettitle">Creational Design Patterns</h3><div class="menu-creational-design-patterns-container"><ul id="menu-creational-design-patterns" class="menu"><li id="menu-item-1333" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1333"><a href="https://notadesigner.com/practical-design-patterns-in-c-abstract-factory/">Abstract Factory</a></li>
@@ -1448,6 +1526,7 @@ AND  00000100 // Underline enum
 		  })
 		</script>
 	<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shCore.js?ver=3.0.9b' id='syntaxhighlighter-core-js'></script>
+<script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushAS3.js?ver=3.0.9b' id='syntaxhighlighter-brush-as3-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/third-party-brushes/shBrushObjC.js?ver=20091207' id='syntaxhighlighter-brush-objc-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushXml.js?ver=3.0.9b' id='syntaxhighlighter-brush-xml-js'></script>
 <script type='text/javascript' src='https://notadesigner.com/wp-content/plugins/syntaxhighlighter/syntaxhighlighter3/scripts/shBrushCSharp.js?ver=3.0.9b' id='syntaxhighlighter-brush-csharp-js'></script>

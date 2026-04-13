@@ -581,37 +581,37 @@ ul.epsilon-upsell-requirements {
  */
 #available-widgets [class^='newsmag_widget_posts_column-'] .widget-title::before,
 #available-widgets [class*=' newsmag_widget_posts_column-'] .widget-title::before {
-    content: url('../img/posts_column.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_column.png');
     top: 2px;
 }
 
 #available-widgets [class^='newsmag_widget_posts_list_vertical-'] .widget-title::before,
 #available-widgets [class*=' newsmag_widget_posts_list_vertical-'] .widget-title::before {
-    content: url('../img/posts_vertical_list.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_vertical_list.png');
     top: 2px;
 }
 
 #available-widgets [class^='newsmag_widget_posts_list_horizontal-'] .widget-title::before,
 #available-widgets [class*=' newsmag_widget_posts_list_horizontal-'] .widget-title::before {
-    content: url('../img/posts_horizontal.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_horizontal.png');
     top: 2px;
 }
 
 #available-widgets [class^='newsmag_widget_posts_grid-'] .widget-title::before,
 #available-widgets [class*=' newsmag_widget_posts_grid-'] .widget-title::before {
-    content: url('../img/posts_grid.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_grid.png');
     top: 0;
 }
 
 #available-widgets [class^='newsmag_slider_widget-'] .widget-title::before,
 #available-widgets [class*=' newsmag_slider_widget-'] .widget-title::before {
-    content: url('../img/posts_slider.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_slider.png');
     top: 0;
 }
 
 #available-widgets [class^='newsmag_widget_posts_carousel-'] .widget-title::before,
 #available-widgets [class*=' newsmag_widget_posts_carousel-'] .widget-title::before {
-    content: url('../img/posts_carousel.png');
+    content: url('https://notadesigner.com/wp-content/themes/sparkling/inc/libraries/epsilon-framework/assets/img/posts_carousel.png');
     top: 0;
 }
 

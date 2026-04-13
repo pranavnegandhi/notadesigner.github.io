@@ -1,7 +1,7 @@
 /* 
 * always include base css to get basic styling for header etc.
 */
-@import url(easy-table.css);
+@import url(https://notadesigner.com/wp-content/plugins/easy-table/css/easy-table.css);
 
 /* Use foundation zurb
  * Requires: normalize.css */

@@ -6,11 +6,11 @@
  */
 @font-face {
     font-family: 'Academicons';
-    src:url('../fonts/academicons.eot?v=1.8.6');
-    src:url('../fonts/academicons.eot?v=1.8.6') format('embedded-opentype'),
-        url('../fonts/academicons.ttf?v=1.8.6') format('truetype'),
-        url('../fonts/academicons.woff?v=1.8.6') format('woff'),
-        url('../fonts/academicons.svg?v=1.8.6#academicons') format('svg');
+    src:url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/academicons.eot?v=1.8.6');
+    src:url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/academicons.eot?v=1.8.6') format('embedded-opentype'),
+        url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/academicons.ttf?v=1.8.6') format('truetype'),
+        url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/academicons.woff?v=1.8.6') format('woff'),
+        url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/academicons.svg?v=1.8.6#academicons') format('svg');
     font-weight: normal;
     font-style: normal;
 }

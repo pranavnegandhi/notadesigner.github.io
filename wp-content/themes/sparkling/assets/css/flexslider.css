@@ -15,8 +15,8 @@
  * ====================================================================================================================*/
 @font-face {
     font-family: 'flexslider-icon';
-    src: url('../fonts/flexslider-icon.eot');
-    src: url('../fonts/flexslider-icon.eot?#iefix') format('embedded-opentype'), url('../fonts/flexslider-icon.woff') format('woff'), url('../fonts/flexslider-icon.ttf') format('truetype'), url('../fonts/flexslider-icon.svg#flexslider-icon') format('svg');
+    src: url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/flexslider-icon.eot');
+    src: url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/flexslider-icon.eot#iefix') format('embedded-opentype'), url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/flexslider-icon.woff') format('woff'), url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/flexslider-icon.ttf') format('truetype'), url('https://notadesigner.com/wp-content/themes/sparkling/assets/fonts/flexslider-icon.svg#flexslider-icon') format('svg');
     font-weight: normal;
     font-style: normal;
 }

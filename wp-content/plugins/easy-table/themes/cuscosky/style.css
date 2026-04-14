@@ -1,7 +1,7 @@
 /* 
 * always include base css to get basic styling for header etc.
 */
-@import url(https://notadesigner.com/wp-content/plugins/easy-table/css/easy-table.css);
+@import url(/wp-content/plugins/easy-table/css/easy-table.css);
 /* 
 	Cusco Sky table styles
 	written by Braulio Soncco http://www.buayacorp.com

@@ -151,16 +151,31 @@ remote with the migration source; `master` still serves the live WordPress stati
 export and stays untouched until cutover. Modern GitHub Pages with the
 `actions/deploy-pages` artifact does not need a separate `gh-pages` branch.
 
-- [ ] `.github/workflows/deploy.yml`: checkout → `scripts/update-hugo.ps1` (or
-  `peaceiris/actions-hugo` pinned to the version in `tools/hugo/.version`) →
-  `hugo --minify` → upload Pages artifact → `actions/deploy-pages`. Hugo Book
-  theme needs to be present at build time; either add as a submodule or have
-  the workflow clone it.
-- [ ] Test deploy to a staging URL or branch-based preview before flipping
-  production
-- [ ] Cutover: switch GitHub Pages source from `master` to the workflow output;
-  verify live site at `notadesigner.com`. Optionally tag `master` as
-  `archive/wordpress-era` and delete the branch.
+- [x] **Hugo Book theme as a git submodule** (decision 2026-05-10) at
+  `hugo-site/themes/hugo-book` pinned to `ae912cc`. The previous arrangement —
+  a gitignored bare checkout — wouldn't survive a CI clone. `.gitmodules` is
+  tracked; CI uses `actions/checkout@v4` with `submodules: recursive`. Local
+  contributors run `git submodule update --init --recursive` once after clone.
+- [x] **`.github/workflows/deploy.yml`** — single workflow, two jobs:
+  - **build:** checkout (with submodules) → read Hugo version from
+    `tools/hugo/.version` → `peaceiris/actions-hugo` pinned to that version
+    (extended) → `scripts/update-ruffle.ps1` via pwsh → `actions/configure-pages`
+    → `hugo --minify --gc --baseURL <pages-url>/` → `actions/upload-pages-artifact`.
+  - **deploy:** `actions/deploy-pages` only. Conditional: runs on every push
+    to `main`, and on `workflow_dispatch` unless the `dry_run` input is true.
+    `concurrency: pages, cancel-in-progress: false` so an in-flight deploy
+    isn't cancelled mid-publish.
+- [ ] **First validating run** — push the workflow YAML and let the build job
+  run. While GitHub Pages source is still set to `master` (WordPress era),
+  the deploy step will fail at `actions/configure-pages` ("Pages source is
+  set to 'Deploy from a branch'"). That's the intended safety: the build
+  artifact is uploadable and inspectable before the user flips anything.
+  Or use `workflow_dispatch` with `dry_run: true` to skip the deploy job
+  entirely while we eyeball the build.
+- [ ] **Cutover:** GitHub repo Settings → Pages → Source → "GitHub Actions".
+  Then either re-run the latest workflow or push any commit to `main`.
+  Verify `notadesigner.com` serves the Hugo build. Optionally tag `master`
+  as `archive/wordpress-era` and delete the branch.
 
 ## Phase 6 — Steady-state authoring loop
 

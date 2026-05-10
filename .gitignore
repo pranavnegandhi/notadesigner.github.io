@@ -3,10 +3,8 @@ hugo-site/public/
 hugo-site/resources/
 hugo-site/.hugo_build.lock
 
-# Hugo theme — cloned/checked out separately, not tracked here.
-# A future setup script (or a submodule, if we add one) is responsible for
-# placing hugo-book at hugo-site/themes/hugo-book/.
-hugo-site/themes/
+# Hugo theme — tracked as a git submodule. See .gitmodules.
+# (No ignore rule needed; submodule entries are explicit in the index.)
 
 # Self-hosted Ruffle bundle. Fetched by scripts/update-ruffle.ps1.
 hugo-site/static/ruffle/

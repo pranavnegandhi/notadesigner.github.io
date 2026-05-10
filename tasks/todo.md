@@ -141,8 +141,8 @@ Run via 4 parallel agents; outputs in `tasks/phase3/`:
   - **Thumbnails embedded inline where larger originals exist** in the WP archive (e.g. 175×175 `morning-glory` thumb when 600×800 was sitting unused). Fixed by `scripts/scan-thumbnails.ps1` (read-only audit) and `scripts/upgrade-thumbnails.ps1` (curated swap list). Scope: 20 swaps across 8 posts; one redundant case (`countryside` 450×600 → 480×640) deliberately skipped.
 - [x] **Repository bootstrapped to GitHub:** `git init` 2026-05-10; pushed `main` to `git@github.com:pranavnegandhi/notadesigner.github.io.git` as a new branch alongside the existing `master`. `master` (WordPress-era live site) untouched until cutover. Identity scoped repo-locally as `Pranav Negandhi <pranav@notadesigner.com>`. Build outputs, Hugo binary, Ruffle bundle, and theme are gitignored — reproduced via `scripts/update-hugo.ps1` and `scripts/update-ruffle.ps1`.
 - [ ] Final QA — round 2: spot-check 20+ posts across years now that the figure/thumbnail systemic issues are fixed
-- [ ] Cutover: see Phase 5 (depends on the Actions workflow existing)
-- [ ] Decommission: shut down WP laptop, archive WXR + `wp-content/uploads/` to cold storage
+- [x] **Cutover (2026-05-10):** GitHub Pages source already on "GitHub Actions" before this session; `github-pages` environment had a deployment-branch policy restricting to `master`. User updated the policy to allow `main`, re-ran the workflow, deploy went green. `notadesigner.com` now serves the Hugo build from `main` via `actions/deploy-pages`.
+- [ ] Decommission: shut down WP laptop, archive WXR + `wp-content/uploads/` to cold storage. `master` branch can be deleted (or tagged `archive/wordpress-era`) once you're confident in the new live site.
 
 ## Phase 5 — Deploy via GitHub Actions
 
@@ -165,17 +165,17 @@ export and stays untouched until cutover. Modern GitHub Pages with the
     to `main`, and on `workflow_dispatch` unless the `dry_run` input is true.
     `concurrency: pages, cancel-in-progress: false` so an in-flight deploy
     isn't cancelled mid-publish.
-- [ ] **First validating run** — push the workflow YAML and let the build job
-  run. While GitHub Pages source is still set to `master` (WordPress era),
-  the deploy step will fail at `actions/configure-pages` ("Pages source is
-  set to 'Deploy from a branch'"). That's the intended safety: the build
-  artifact is uploadable and inspectable before the user flips anything.
-  Or use `workflow_dispatch` with `dry_run: true` to skip the deploy job
-  entirely while we eyeball the build.
-- [ ] **Cutover:** GitHub repo Settings → Pages → Source → "GitHub Actions".
-  Then either re-run the latest workflow or push any commit to `main`.
-  Verify `notadesigner.com` serves the Hugo build. Optionally tag `master`
-  as `archive/wordpress-era` and delete the branch.
+- [x] **First validating run (2026-05-10):** push to main triggered the
+  workflow; build job succeeded; deploy job failed with *"Invalid deployment
+  branch... Deployments are only allowed from master"*. The `github-pages`
+  environment had a deployment-branch policy restricting to `master` only —
+  inherited from the legacy WP-era setup. User updated the policy via
+  Settings → Environments → github-pages to allow `main`, re-ran the
+  workflow, both jobs went green. Site is live.
+- [ ] **Optional cleanup:** tag `master` as `archive/wordpress-era` and
+  delete the branch from origin once you're confident in the new live site.
+  Also remove `master` from the environment's deployment-branch policy if
+  you added it earlier as a fallback.
 
 ## Phase 6 — Steady-state authoring loop
 

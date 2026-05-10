@@ -95,7 +95,7 @@ upgrade-thumbnails → hand-replace `[swf]` TODO markers with `{{< flash >}}` sh
 ### Notes for editorial review (carried forward)
 
 - Aligned-figure list (`wxr-audit/aligned-figures.tsv`): 41 figures across 10 posts where original WP layout used `alignleft`/`alignright` text wrapping; current theme renders them centred. User accepted this trade-off.
-- Flash TODOs (3 markers in 2 posts) still need screenshots from the live site (Phase 5).
+- ~~Flash TODOs~~ — resolved Phase 4 via self-hosted Ruffle, see below.
 - PlantUML SVG render still pending (Phase 6); 10 `.puml` source files in bundles, but no rendered SVGs yet — those references will 404 until the render-puml script runs.
 
 ## Phase 3 — URL parity audit ✅ COMPLETE
@@ -136,15 +136,31 @@ Run via 4 parallel agents; outputs in `tasks/phase3/`:
   - [x] 3 TODO markers replaced with `{{< flash >}}` invocations across 2 posts
   - [x] Smoke-test: all three play in Firefox at localhost:1313
 - [x] `[table]` shortcode — only instance was in a draft (Phase 1 audit), no action needed
-- [ ] Final QA: spot-check 20+ posts across years for rendering glitches
-- [ ] Cutover: push to `main`, verify Pages deploy, confirm live site
+- [x] **Final QA pass — round 1 (2026-05-10):** user spot-checked older posts; surfaced two systemic issues, both resolved in place:
+  - **Image captions rendered inline with the image** (e.g. "Sunshine Highway: Katraj" on `century-mile-to-khandala`). The WP-era pattern of an image followed by caption text on the next line collapses into a single `<p>`. Fixed by `scripts/fix-figure-captions.ps1` wrapping the pattern in `<figure>/<figcaption>` HTML. Scope: 56 occurrences across 16 posts. Distinct caption styling added in `static/css/site.css` (smaller, italic, centred, muted, flush against the image — `margin-top: 0`).
+  - **Thumbnails embedded inline where larger originals exist** in the WP archive (e.g. 175×175 `morning-glory` thumb when 600×800 was sitting unused). Fixed by `scripts/scan-thumbnails.ps1` (read-only audit) and `scripts/upgrade-thumbnails.ps1` (curated swap list). Scope: 20 swaps across 8 posts; one redundant case (`countryside` 450×600 → 480×640) deliberately skipped.
+- [x] **Repository bootstrapped to GitHub:** `git init` 2026-05-10; pushed `main` to `git@github.com:pranavnegandhi/notadesigner.github.io.git` as a new branch alongside the existing `master`. `master` (WordPress-era live site) untouched until cutover. Identity scoped repo-locally as `Pranav Negandhi <pranav@notadesigner.com>`. Build outputs, Hugo binary, Ruffle bundle, and theme are gitignored — reproduced via `scripts/update-hugo.ps1` and `scripts/update-ruffle.ps1`.
+- [ ] Final QA — round 2: spot-check 20+ posts across years now that the figure/thumbnail systemic issues are fixed
+- [ ] Cutover: see Phase 5 (depends on the Actions workflow existing)
 - [ ] Decommission: shut down WP laptop, archive WXR + `wp-content/uploads/` to cold storage
 
 ## Phase 5 — Deploy via GitHub Actions
 
-- [ ] Reuse existing `notadesigner.com` repo with new branch structure: `main` = source, `gh-pages` = built output)
-- [ ] `.github/workflows/deploy.yml`: checkout → setup-hugo → `hugo --minify` → deploy to Pages
-- [ ] Test deploy to a staging path before flipping production
+Repo: `git@github.com:pranavnegandhi/notadesigner.github.io.git`. `main` already on
+remote with the migration source; `master` still serves the live WordPress static
+export and stays untouched until cutover. Modern GitHub Pages with the
+`actions/deploy-pages` artifact does not need a separate `gh-pages` branch.
+
+- [ ] `.github/workflows/deploy.yml`: checkout → `scripts/update-hugo.ps1` (or
+  `peaceiris/actions-hugo` pinned to the version in `tools/hugo/.version`) →
+  `hugo --minify` → upload Pages artifact → `actions/deploy-pages`. Hugo Book
+  theme needs to be present at build time; either add as a submodule or have
+  the workflow clone it.
+- [ ] Test deploy to a staging URL or branch-based preview before flipping
+  production
+- [ ] Cutover: switch GitHub Pages source from `master` to the workflow output;
+  verify live site at `notadesigner.com`. Optionally tag `master` as
+  `archive/wordpress-era` and delete the branch.
 
 ## Phase 6 — Steady-state authoring loop
 
@@ -159,13 +175,11 @@ Run via 4 parallel agents; outputs in `tasks/phase3/`:
 ## Decisions (locked)
 
 - **Converter language:** C# console app (`AngleSharp` + `ReverseMarkdown` + `XDocument`)
-- **Hugo theme:** built from zero, no parent
+- **Converter is frozen** post-Phase-1 — migrated markdown is the source of truth; mechanical fixups live in `scripts/`, not in the converter (decision 2026-05-10)
+- **Hugo theme:** Hugo Book, with project-local layout overrides for archives, feed, post single, shortcodes, and head injection (decision revised mid-Phase-2 from "build from zero")
+- **Sidebar order:** chronological (theme default; alphabetical override tried 2026-05-10 and reverted)
 - **Comments:** disabled — drop entirely, no preservation needed
 - **Search:** none
 - **RSS:** `/feed/` URL must stay byte-identical (subscribers depend on it)
-
-## Known unknowns to resolve during Phase 1
-
-- The 1 `[table]` shortcode — needs eyeball
-- The `wp:syntaxhighlighter/code` block's exact serialization in the WXR — may need conversion tweaks
-- Long-tail HTML weirdness in older posts (classic editor era) — discover via dry-run warnings log
+- **Flash content:** preserved interactively via self-hosted Ruffle, not screenshots
+- **Co-Authored-By trailer:** not added to commits in this repo

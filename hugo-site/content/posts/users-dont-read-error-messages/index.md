@@ -24,7 +24,9 @@ But when one particularly gnarly ticket refused to go away in spite of their num
 
 When I remoted into the customer’s screen, this dialog was sitting there in plain sight.
 
-![](clickonce-cannot-be-started.png)
-Say what, now?
+<figure>
+  <img src="clickonce-cannot-be-started.png" alt="">
+  <figcaption>Say what, now?</figcaption>
+</figure>
 
 I proceeded to click the Details button, which showed an in-depth description of the error along with a helpful stack trace. In the end it turned out to be something completely external to the application. I think it was a misconfigured proxy, which had to be doubled right back to the customer's own IT team to be resolved. The employee could have saved themselves a lot of time and anguish by being a bit more attentive.

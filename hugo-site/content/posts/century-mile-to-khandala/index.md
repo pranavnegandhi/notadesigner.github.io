@@ -62,8 +62,10 @@ The apex of this climb was the Old Katraj Tunnel. I half-rode and half-pushed my
 
 The view at the other side was completely different. The road was very well laid, and outlined clearly by the same orange flowers I had seen earlier in the valley. The sun too had come up higher since my first break on the ghats and the mist had dissipated. The orange from the backlit flowers cast a beautiful shade on the road ahead and all seemed well again.
 
-![](katraj-tunnel.jpg)
-Sunshine Highway; Katraj
+<figure>
+  <img src="katraj-tunnel.jpg" alt="">
+  <figcaption>Sunshine Highway; Katraj</figcaption>
+</figure>
 
 I stopped for a few pictures before moving on.
 
@@ -108,8 +110,10 @@ After a greasy paneer palak and 2 rotis I chatted up the owner about road condit
 
 This was a rough road, yet under construction. But the regular passage of heavy vehicles had flattened it out quite a bit and I was able to make it through with little trouble. The odometer meanwhile climbed painfully slowly towards 80. I reached the other end of the embankment with yet a kilometre and a half to go. Had I ridden the Bangalore-Bombay bypass, I would have completed 75 kilometres at Khandala itself, and would be easily beyond 80 kilometres by now. I cursed myself for taking the different route.
 
-![](embankment.jpg)
-Embankment beyond Khandala
+<figure>
+  <img src="embankment.jpg" alt="">
+  <figcaption>Embankment beyond Khandala</figcaption>
+</figure>
 
 The odometer finally ticked past the 80 kilometre figure a while later, and at least before the toll booth. I began to calculate distances in my head. By my estimates, home was around 75 kilometres from Khandala if I took the Katraj-Warje-Chandni Chowk-DRDO-Aundh route. I would have to modify it slightly, maybe even take a detour through Sanghvi before stopping at home if I was to complete 100 miles.
 
@@ -119,8 +123,10 @@ With this thought in mind I moved ahead.
 
 I touched 100 kilometres at 2:00 pm, with the milestones indicating 40 kilometres to Pune. This was going to be a close call for me. Unfortunately, I did not have much time to think about this issue. I got off to take a breather and a sip of water. When I noticed that the rear tyre had gone flat again. I was just ahead of Shirwal and luckily, close to a mechanic. The only consolation was that it had happened here and not 20 kilometres back where there was no help available.
 
-![](countryside-450x600.jpg)
-The countryside on NH4
+<figure>
+  <img src="countryside-450x600.jpg" alt="">
+  <figcaption>The countryside on NH4</figcaption>
+</figure>
 
 I pushed my bike into the village and outside the only "puncture dukaan" in the entire hamlet. Locals gathered around to watch this amazing bike as the old man dug out his tools and got to work. The patch from the previous puncture earlier in the morning had given away. This guy tried to peel it off but it was glued to tight. So, this is the best part, he burned it! Liberal amount of adhesive was put onto the old patch and lit up with a match. I watched with bated breath, expecting the entire tube and this guy himself to turn into Wile E. Coyote-style cinder any second. Nothing of that sort happened though, and a few seconds later he doused the flame with a wet rag. The old patch plopped off like an autumn leaf.
 
@@ -140,8 +146,10 @@ I stopped for a while to catch my breath after the wild ride through the tunnel 
 
 The road continued to slope downwards right up to Warje and the odometer ticked on furiously. At the Pashankar Showroom, it was showing 148 kilometres, with 2.5 kilometres to Baner and another 10 kilometres from there to home. This was going to be really close.
 
-![](bug.jpg)
-Bug near Jhambulwadi
+<figure>
+  <img src="bug.jpg" alt="">
+  <figcaption>Bug near Jhambulwadi</figcaption>
+</figure>
 
 What caught my eye was the tremendous amount of spruce-up that this road had gone through since my last ride. Flags punctuated the road at regular distances, indicating the path to the sports village. The flyover at Sadanand Hotel had been completed - from a mound of rubble just two weeks ago, it had been converted into a 4-lane, tarred bridge with an underpass for the Baner to Balewadi traffic. Lights, barriers and parking areas had been set up with appropriate signages. And a strong security cover that checked every car headed towards the complex. I think I got away from security only because I resembled an athlete in training with the helmet.
 

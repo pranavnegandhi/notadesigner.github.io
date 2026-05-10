@@ -16,8 +16,10 @@ The original idea was to leave early by 5:30 in the morning. Lonavala is just a 
 
 I donned a jacket to keep out the cold and took off. It was well past daybreak and there was no need for additional lights on the bike. The dynamo on my bike had anyway been damaged earlier and I was not very keen on wasting time attaching the lights from my wife’s bike onto my own. I could feel the nip in the air even as I carried the bike downstairs. The cold air struck my bare legs as I began to ride. Winter’s here, I thought to myself.
 
-![](lions-point-climb-175x175.jpg)
-Climbing up to Lion's Point
+<figure>
+  <img src="lions-point-climb-175x175.jpg" alt="">
+  <figcaption>Climbing up to Lion's Point</figcaption>
+</figure>
 
 The journey up to Lonavala itself was rather uneventful. I clipped along at a steady 20 km/h and stopped for a bite every hour. It was yet quite cold and the warm missal-pao at 8:30 am provided welcome relief. I was just beyond Vadgaon and just a few kilometres away from Kamshet Ghat. During my previous trips to Lonavala on the Exodus, I had been unable to ride up this incline and had to resort to pushing the bike up. But I was confident that the Navigator would change the equation entirely.
 
@@ -33,8 +35,10 @@ I munched upon a few biscuits while ruminating upon my further plan of action. C
 
 ### Destination – Lions Point
 
-![](lions-point-view-422x600.jpg)
-View from the top
+<figure>
+  <img src="lions-point-view-422x600.jpg" alt="">
+  <figcaption>View from the top</figcaption>
+</figure>
 
 Since I had no interest in stopping at Bhushi Dam, I continued to ride further on. There were two navy and air-force installations further down the road so I was expecting some sort of end-of-the-road sign ahead. Surprisingly, no such thing happened. The road branched off towards the navy base a little further, leaving me with more roads to explore. And signs began to welcome me to Amby Valley.
 

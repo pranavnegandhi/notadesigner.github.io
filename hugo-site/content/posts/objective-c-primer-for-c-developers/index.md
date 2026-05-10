@@ -70,8 +70,10 @@ The history of this two-step construction can be traced back to the days of NeXT
 
 Sending messages to objects imbibes the philosophy of tell, don't ask as championed by Sharp. A message in Objective-C is identified by the enclosing brackets ([ and ]) around the message name and the receiver. Messages are sent by clients to instances or classes. Objects contain methods to handle those messages. Messages have a method type - either instance or class (denoted by the - and + symbols, respectively). Message signatures must declare a return type (or void if they return nothing), and the types of all parameters.
 
-![](method-declaration-syntax.png)
-The syntax of a method declaration
+<figure>
+  <img src="method-declaration-syntax.png" alt="">
+  <figcaption>The syntax of a method declaration</figcaption>
+</figure>
 
 All messages are declared in the class interface. The definitions are stored in the implementation.
 

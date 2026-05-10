@@ -64,8 +64,10 @@ Over time, the quality of the codebase improved, and our knowledge of its intern
 
 Come January 2021, disaster struck. Flash had been on its last legs since a long time. But nobody expected Adobe to pull the rug from under us by forcefully removing the plug-in from all computers. This bricked every deployed instance of the application. Nothing could be displayed on any screen without the Flash Player.
 
-![](flash-disabled.png)
-He's dead, Jim.
+<figure>
+  <img src="flash-disabled.png" alt="">
+  <figcaption>He's dead, Jim.</figcaption>
+</figure>
 
 We scrambled to find workarounds, such as installing older versions of Flash Player that did not contain the the self-destruct switch, blocking Windows Updates, and even deploying older versions of Windows that shipped with working versions of Flash. These were all temporary solutions. The juggernaut was unstoppable, and we were fielding support calls every week that involved a missing Flash Player. In addition to the technical complexities, Adobe had also revoked the license to install and run the Flash Player. Continuing to use it was exposing the company to legal ramifications that nobody wanted to deal with. We needed an alternative for Flash as soon as possible.
 

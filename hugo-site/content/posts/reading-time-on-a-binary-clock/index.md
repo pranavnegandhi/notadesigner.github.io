@@ -53,13 +53,17 @@ Being able to read binary representations is obviously an essential requirement 
 
 There are two types of binary clocks possible - ones that use binary coded decimals, and true binary clocks.
 
-![](binary-coded-decimal-clock.png)
-A clock face that uses binary-coded decimal notation
+<figure>
+  <img src="binary-coded-decimal-clock.png" alt="">
+  <figcaption>A clock face that uses binary-coded decimal notation</figcaption>
+</figure>
 
 A BCD clock face is divided into six columns - two for each component of the time. Each column contains up to four rows, one for each power of two. The leftmost two columns represent the hour, the middle two are minute columns and the last two represent seconds. Each column represents a single base 10 digit of time. For example, if the value of column one is 1 and that of column 2 is 0, then the clock is representing the 10th hour of the day, or after 10 am. Similarly, if the value in column three and four is 3 and 2 respectively, the clock is in the 32nd minute of the current hour.
 
-![](true-binary-clock.png)
-A clock face that represents time components in pure binary notation
+<figure>
+  <img src="true-binary-clock.png" alt="">
+  <figcaption>A clock face that represents time components in pure binary notation</figcaption>
+</figure>
 
 True binary clocks represent each time component in a single column. Such clocks require only three columns, and up to six rows in each column to adequately cover all required values. Each column represents the absolute value of the component in binary encoding. For example, 0b001010 in the hour column represents 10 (1 × 2³ + 1 × 2¹). 0b100000 in the minutes column represents the 32nd minute of the hour. Together, the two values indicate the time as 10:32 am.
 

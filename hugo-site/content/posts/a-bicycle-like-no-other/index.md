@@ -13,8 +13,10 @@ Post-conversion look of the bike
 
 It is no secret that I am a big fan of the Navigator bicycle. Although it is not a top of the line product, it hits a sweet spot between features, comfort and affordability. There are times when I crib about the less than stellar performance of many of its components. But that cribs quickly die down after I consider that better performance would involve unpleasant tasks like spending money.
 
-![](navigator-brakes-175x175.jpg)
-Cheap-ass local brake levers
+<figure>
+  <img src="navigator-brakes-175x175.jpg" alt="">
+  <figcaption>Cheap-ass local brake levers</figcaption>
+</figure>
 
 At the time of purchase I had also hoped it would be less of an attention getter than a Trek or Merida. But I can safely say that is misguided hope because the Navigator is definitely a class better in design, style and finish than other Indian brands and easily sticks out in a crowd. But I still do leave it unattended in public areas at times with just a cable lock to hold it down and thankfully, have always returned to find it as I had left it. I am pretty certain that a Bianchi Aeron or a Merida Crossway left like that on the busy streets of Sadashiv Peth would disappear faster than bank executives after a bailout.
 

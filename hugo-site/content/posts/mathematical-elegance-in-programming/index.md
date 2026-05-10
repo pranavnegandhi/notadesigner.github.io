@@ -14,8 +14,10 @@ Project Euler is a collection of mathematical problems for the programmer who en
 
 ### Understanding the sum of numbers from 1 to N
 
-![](sum-of-numbers-a.png)
-Diagram A
+<figure>
+  <img src="sum-of-numbers-a.png" alt="">
+  <figcaption>Diagram A</figcaption>
+</figure>
 
 Diagram A shows a square with each side 10 units long. A green diagonal cuts the square into two equal triangles. The number of squares making up the square equals 10 x 10 = 100.
 
@@ -23,8 +25,10 @@ Diagram B shows one half of the triangle, whose base and height are 10 units for
 
 A similar blue triangle is placed above the red triangle in diagram C, in a way that both triangles are touching but do not overlap. Both triangles encompass 55 units and have sides of 10 units each. They combine to make a rectangle that is 10 units wide and 11 units tall. The total number of cells in the rectangle is 55 + 55 = 10 \* 11 = 110.
 
-![](sum-of-numbers-b.png)
-Diagram B
+<figure>
+  <img src="sum-of-numbers-b.png" alt="">
+  <figcaption>Diagram B</figcaption>
+</figure>
 
 Thus it can be seen how the total number of cells in one triangle (i.e. N + (N - 1) + (N - 2)...+ 1) can be computed by calculating the area encompassed by a rectangle that is N \* (N + 1) and dividing the result by 2.
 
@@ -34,8 +38,10 @@ The good part is that solving a problem helps an individual build an insight tha
 
 The first problem in Project Euler asks to add all the natural numbers below 1000 which are multiples of 3 or 5. The straightforward way to resolve this is to use a loop from 1 to 999 that uses a modulus operation to evaluate each integer between 1 and 1000 with 3 and 5, adding the ones that are perfectly divisible and discarding the rest.
 
-![](sum-of-numbers-c.png)
-Diagram C
+<figure>
+  <img src="sum-of-numbers-c.png" alt="">
+  <figcaption>Diagram C</figcaption>
+</figure>
 
 Here’s an implementation of this code in ActionScript.
 

@@ -57,8 +57,10 @@ This method begins by fetching the current time and extracting its components. O
 
 The drawBinary method draws 6 boxes, vertically stacked, in a single column to represent the value in pure binary.
 
-![](binary.png)
-The application running in pure binary mode
+<figure>
+  <img src="binary.png" alt="">
+  <figcaption>The application running in pure binary mode</figcaption>
+</figure>
 
 ```csharp
 for (i = 0; i < 6; i++)
@@ -97,7 +99,9 @@ This is applied in a continuous loop through all the bits in the number. The col
 
 The second function - drawBCD - has the same signature as drawBinary. The only difference is in the way it represents the number on the canvas. Instead of drawing the component value in a single column, it splits it into two decimal digits and draws each digit in its own column. The individual digits are extracted by dividing and modding with 10, then calling the drawBinary function for each digit.
 
-![](binary-coded-decimal.png)
-The application running in BCD mode
+<figure>
+  <img src="binary-coded-decimal.png" alt="">
+  <figcaption>The application running in BCD mode</figcaption>
+</figure>
 
 The Visual Studio solution for this project can be [downloaded from here as a ZIP archive](binaryclock.zip).

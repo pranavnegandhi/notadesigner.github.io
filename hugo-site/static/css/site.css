@@ -1,0 +1,20 @@
+/* Site-level CSS overrides on top of the Hugo Book theme. */
+
+/* Figure captions: visually distinct from body paragraphs. */
+.markdown figure {
+  text-align: center;
+}
+
+.markdown figure img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+}
+
+.markdown figure figcaption {
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--color-secondary, #666);
+  margin-top: 0;
+  text-align: center;
+}

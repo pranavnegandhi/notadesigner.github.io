@@ -25,8 +25,10 @@ The initial product idea germinated in the year 2016 as a means to store persona
 
 After remaining shelved for a very long time, I picked it up again in 2020 to breathe some life back into it. Among other things, I changed it into a web application since that was a platform I knew well by then, and renamed it to a much more distinguished Valknut, invoking imagery of Norse mythology, Viking warriors and Valhalla.
 
-![](valknut-logos.png)
-Does a workout even count if you don't feel at the threshold of Valhalla by the time it's complete?
+<figure>
+  <img src="valknut-logos.png" alt="">
+  <figcaption>Does a workout even count if you don't feel at the threshold of Valhalla by the time it's complete?</figcaption>
+</figure>
 
 ### Project Status
 

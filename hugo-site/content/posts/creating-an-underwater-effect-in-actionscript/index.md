@@ -50,21 +50,29 @@ public function Draw(e:Event):void
 
 We use [the Bresenham line drawing algorithm](/breaking-free-from-your-api/ "Breaking Free from Your API") instead of setPixel to plot the curve on the bitmap for better fidelity.
 
-![](wave-effect-a.jpg)
-Image A: The image is taller than the red viewport
+<figure>
+  <img src="wave-effect-a.jpg" alt="">
+  <figcaption>Image A: The image is taller than the red viewport</figcaption>
+</figure>
 
 ### Creating Waves with Images
 
 The same principles can be used to create a wave effect on an image. Instead of plotting points on a canvas, columns of an image are scaled up or down depending upon the shape of the wave. The image is scaled down at points where the wave forms a crest and scaled up wherever the wave forms a trough.
 
-![](wave-effect-b.jpg)
-Image B: Extract a single vertical slice
+<figure>
+  <img src="wave-effect-b.jpg" alt="">
+  <figcaption>Image B: Extract a single vertical slice</figcaption>
+</figure>
 
-![](wave-effect-c.jpg)
-Image C: Scale the extracted portion
+<figure>
+  <img src="wave-effect-c.jpg" alt="">
+  <figcaption>Image C: Scale the extracted portion</figcaption>
+</figure>
 
-![](wave-effect-d.jpg)
-Image D: Paste the slice back into the image
+<figure>
+  <img src="wave-effect-d.jpg" alt="">
+  <figcaption>Image D: Paste the slice back into the image</figcaption>
+</figure>
 
 Because of the scaling required, the image we use is larger than the viewable area. Image A illustrates this. The red outline is the viewable area of our movie, whereas the image used is taller than that. If the image is not tall enough you will see white patches at the bottom of the movie when the animation begins.
 

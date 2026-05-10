@@ -140,7 +140,13 @@ Run via 4 parallel agents; outputs in `tasks/phase3/`:
   - **Image captions rendered inline with the image** (e.g. "Sunshine Highway: Katraj" on `century-mile-to-khandala`). The WP-era pattern of an image followed by caption text on the next line collapses into a single `<p>`. Fixed by `scripts/fix-figure-captions.ps1` wrapping the pattern in `<figure>/<figcaption>` HTML. Scope: 56 occurrences across 16 posts. Distinct caption styling added in `static/css/site.css` (smaller, italic, centred, muted, flush against the image — `margin-top: 0`).
   - **Thumbnails embedded inline where larger originals exist** in the WP archive (e.g. 175×175 `morning-glory` thumb when 600×800 was sitting unused). Fixed by `scripts/scan-thumbnails.ps1` (read-only audit) and `scripts/upgrade-thumbnails.ps1` (curated swap list). Scope: 20 swaps across 8 posts; one redundant case (`countryside` 450×600 → 480×640) deliberately skipped.
 - [x] **Repository bootstrapped to GitHub:** `git init` 2026-05-10; pushed `main` to `git@github.com:pranavnegandhi/notadesigner.github.io.git` as a new branch alongside the existing `master`. `master` (WordPress-era live site) untouched until cutover. Identity scoped repo-locally as `Pranav Negandhi <pranav@notadesigner.com>`. Build outputs, Hugo binary, Ruffle bundle, and theme are gitignored — reproduced via `scripts/update-hugo.ps1` and `scripts/update-ruffle.ps1`.
-- [ ] Final QA — round 2: spot-check 20+ posts across years now that the figure/thumbnail systemic issues are fixed
+- [x] **Final QA — round 2 (2026-05-10):** automated sweep of the live site
+  via `scripts/qa-live.ps1`. 95/95 URLs returned 200 (home + archives + about
+  + feed + RSS + sitemap + robots + author archive + all 87 posts), 9/9
+  aliases redirected, 36 sample-post assets all 200, structural spot checks
+  all passed (figcaption on caption-fix posts, ruffle.js on Flash posts,
+  diagram-N.svg on PlantUML posts). The sweep itself surfaced and helped fix
+  a Pages-disabled outage — see lessons.md.
 - [x] **Cutover (2026-05-10):** GitHub Pages source already on "GitHub Actions" before this session; `github-pages` environment had a deployment-branch policy restricting to `master`. User updated the policy to allow `main`, re-ran the workflow, deploy went green. `notadesigner.com` now serves the Hugo build from `main` via `actions/deploy-pages`.
 - [x] **Decommission (2026-05-10):** WP laptop shut down. WXR + `wp-content/uploads/` archived to cold storage. Repo default branch flipped from `master` to `main` via `gh api`; `master` deleted from origin. No archive tag (user explicitly declined — `git reflog` and the cold-storage archive are sufficient if a 2010-2026 WP-era artifact is ever needed).
 

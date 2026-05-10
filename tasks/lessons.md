@@ -57,3 +57,21 @@ The `GIT_SSH` route makes git use the same Windows OpenSSH binary that `ssh -T` 
 **Why:** the user's "track source only" answer to the gitignore-scope question describes a *concept*, not a per-file approval. Scratch and source can look identical at the filesystem level — a `2026-04-12-foo.md` could be a draft destined for `content/posts/` or could be working notes that should never ship. Same for `*.html` files that could be templates, components, or just saved-page reference dumps.
 
 **Fix:** before the bootstrap `git add`, do a quick `git status --short | grep -v hugo-site/` (or equivalent) to surface anything at the repo root or in unexpected directories. Read the first 2-3 lines of unfamiliar files. Confirm with the user before adding them. Cheap to ask, expensive to retroactively rewrite history if the cleanup becomes important (e.g. accidentally committing a draft you later want never to have shipped).
+
+## Deleting the legacy Pages source branch silently disables Pages
+
+**Symptom:** repo's Pages site was already cut over to `build_type=workflow` and successfully deploying from `main`. Default branch was flipped from `master` to `main` via `gh api PATCH default_branch`, then `git push --delete origin master`. The next workflow run failed at `actions/configure-pages@v5` with *"Get Pages site failed... Please verify that the repository has Pages enabled and configured to build using GitHub Actions"*. `gh api /repos/.../pages` returned 404 — Pages site was gone.
+
+**Why:** GitHub appears to disable a Pages site when its historically-bound source branch is deleted, *even if* the build_type has been switched to `workflow`. The custom-domain CNAME goes with it.
+
+**Fix (in this order):**
+
+1. Re-create the Pages site:
+   ```powershell
+   gh api -X POST /repos/<owner>/<repo>/pages -f "build_type=workflow"
+   gh api -X PUT  /repos/<owner>/<repo>/pages -f "cname=<your-domain>"
+   ```
+2. Add a `CNAME` file to `static/` (Hugo) or wherever your build pipeline copies static assets into the artifact. Every deploy then re-asserts the custom domain — bulletproof against future Pages-site recreations.
+3. Set `enablement: true` on `actions/configure-pages` so the workflow auto-re-enables Pages if it ever finds it disabled.
+
+**Prevention:** if you ever delete a branch that historically served Pages (even via a since-replaced source mode), check `gh api /repos/.../pages` immediately after — don't wait for the next workflow run to discover the breakage.

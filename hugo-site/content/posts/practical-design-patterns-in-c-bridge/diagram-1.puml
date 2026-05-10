@@ -1,0 +1,20 @@
+!theme vibrant
+
+class Playlist {
++PlayAsync()
+}
+
+interface IPlaylistImpl {
++IsEmpty()
++Next()
++Reset()
+}
+
+Playlist o-down-> IPlaylistImpl
+
+class Client #palegreen
+
+Client -left-> Playlist
+
+LinearPlaylistImpl .up.|> IPlaylistImpl
+RandomizedPlaylistImpl .up.|> IPlaylistImpl

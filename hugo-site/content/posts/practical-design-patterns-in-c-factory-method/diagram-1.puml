@@ -1,0 +1,21 @@
+!theme vibrant
+
+interface IFileWriterFactory {
++ Create()
+}
+
+interface IFileWriter {
++ Write(data:byte[], fileName:string)
+}
+
+IFileWriterFactory ..>IFileWriter : creates
+
+JpegWriter .up.|> IFileWriter
+PngWriter .up.|> IFileWriter
+
+JpegWriterFactory .down.|> IFileWriterFactory
+PngWriterFactory .down.|> IFileWriterFactory
+
+class Client #palegreen
+
+Client -left-> IFileWriterFactory : uses

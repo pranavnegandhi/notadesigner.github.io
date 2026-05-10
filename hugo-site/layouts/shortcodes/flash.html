@@ -1,0 +1,52 @@
+{{- /*
+  Embed a SWF from the post's bundle, played via Ruffle (self-hosted at /ruffle/).
+  Resolves src against Page.Resources so URLs work regardless of rendering context.
+
+  Usage: {{< flash src="line.swf" width="400" height="400" caption="…" >}}
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $width := .Get "width" | default "400" -}}
+{{- $height := .Get "height" | default "400" -}}
+{{- $caption := .Get "caption" -}}
+{{- /* baseRel: optional path (relative to the post bundle) that Ruffle uses
+       as the SWF's base URL for resolving relative loads inside the SWF.
+       Use this when a SWF has baked-in relative paths from its original
+       hosting layout. Example: baseRel="wp-content/uploads/2012/10/" */ -}}
+{{- $baseRel := .Get "baseRel" -}}
+{{- $url := "" -}}
+{{- with .Page.Resources.GetMatch $src -}}{{ $url = .RelPermalink }}{{- end -}}
+{{- if not $url -}}{{ $url = $src }}{{- end -}}
+{{- $base := "" -}}
+{{- if $baseRel -}}{{ $base = printf "%s%s" .Page.RelPermalink $baseRel }}{{- end -}}
+{{- $id := printf "ruffle-%s-%d" .Page.File.UniqueID .Ordinal -}}
+<figure class="flash-embed">
+  <div id="{{ $id }}" class="ruffle-mount" style="width:{{ $width }}px;height:{{ $height }}px;max-width:100%"></div>
+  {{- with $caption }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end }}
+</figure>
+<script>
+(function(){
+  function mount(){
+    if (!window.RufflePlayer) { setTimeout(mount, 50); return; }
+    var host = document.getElementById({{ $id | jsonify | safeJS }});
+    if (!host || host.dataset.ruffleMounted) return;
+    host.dataset.ruffleMounted = "1";
+    var player = window.RufflePlayer.newest().createPlayer();
+    player.style.width = "100%";
+    player.style.height = "100%";
+    host.appendChild(player);
+    player.load({
+      url: {{ $url | jsonify | safeJS }},
+      {{- with $base }}
+      base: {{ . | jsonify | safeJS }},
+      {{- end }}
+      autoplay: "auto",
+      unmuteOverlay: "visible"
+    });
+  }
+  mount();
+})();
+</script>
+{{- if not (.Page.Scratch.Get "ruffleLoaded") -}}
+  {{- .Page.Scratch.Set "ruffleLoaded" true -}}
+  <script src="/ruffle/ruffle.js"></script>
+{{- end -}}

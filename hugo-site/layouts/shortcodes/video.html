@@ -1,0 +1,20 @@
+{{- /*
+  Embed a video by name from the post's bundle. Resolves both the video and
+  the optional poster via Page.Resources so URLs work regardless of where the
+  post content is rendered (single, home page, RSS, etc.).
+
+  Usage: {{< video src="fire-128.mp4" poster="fire-256-poster.gif" caption="…" >}}
+*/ -}}
+{{- $src := .Get "src" -}}
+{{- $poster := .Get "poster" -}}
+{{- $caption := .Get "caption" -}}
+{{- $srcUrl := "" -}}
+{{- $posterUrl := "" -}}
+{{- with .Page.Resources.GetMatch $src -}}{{ $srcUrl = .RelPermalink }}{{- end -}}
+{{- with .Page.Resources.GetMatch $poster -}}{{ $posterUrl = .RelPermalink }}{{- end -}}
+{{- if not $srcUrl -}}{{ $srcUrl = $src }}{{- end -}}
+{{- if and $poster (not $posterUrl) -}}{{ $posterUrl = $poster }}{{- end -}}
+<figure class="video">
+  <video controls{{ with $posterUrl }} poster="{{ . }}"{{ end }} src="{{ $srcUrl }}"></video>
+  {{- with $caption }}<figcaption>{{ . | safeHTML }}</figcaption>{{ end -}}
+</figure>

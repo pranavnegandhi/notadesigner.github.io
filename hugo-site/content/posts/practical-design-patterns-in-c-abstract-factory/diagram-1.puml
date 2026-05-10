@@ -1,0 +1,45 @@
+!theme vibrant
+
+interface IDbFactory {
++ CreateDbConnection()
++ CreateDbCommand()
++ CreateDbParameter()
+}
+
+interface IDbConnection
+interface IDbCommand
+interface IDbParameter
+
+IDbFactory -[hidden]left- IDbParameter
+IDbConnection -[hidden]right- IDbCommand
+IDbCommand -[hidden]right- IDbParameter
+
+class Client #palegreen
+
+Client -up-> IDbFactory : uses
+
+SqlFactory .down.|> IDbFactory
+
+SqlFactory .down.> SqlConnection : creates
+SqlFactory .down.> SqlCommand : creates
+SqlFactory .down.> SqlParameter : creates
+
+SqlConnection .down.|> IDbConnection
+SqlParameter .down.|> IDbParameter
+SqlCommand .down.|> IDbCommand
+
+SqlConnection -[hidden]right- SqlCommand
+SqlCommand -[hidden]right- SqlParameter
+
+MySqlFactory .up.|> IDbFactory
+
+MySqlFactory .up.> MySqlConnection : creates
+MySqlFactory .up.> MySqlCommand : creates
+MySqlFactory .up.> MySqlParameter : creates
+
+MySqlConnection .up.|> IDbConnection
+MySqlParameter .up.|> IDbParameter
+MySqlCommand .up.|> IDbCommand
+
+MySqlConnection -[hidden]right- MySqlCommand
+MySqlCommand -[hidden]right- MySqlParameter

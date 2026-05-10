@@ -1,0 +1,69 @@
+baseURL = "https://notadesigner.com/"
+title = "Not a Designer"
+theme = "hugo-book"
+defaultContentLanguage = "en"
+
+[languages.en]
+  locale = "en-US"
+  weight = 1
+enableRobotsTXT = true
+enableEmoji = false
+buildDrafts = false
+buildFuture = false
+canonifyURLs = false
+disableKinds = []
+
+# Match WordPress permalink structure exactly so /<slug>/ keeps working.
+[permalinks]
+  [permalinks.page]
+    posts = "/:slug/"
+  [permalinks.term]
+    categories = "/category/:slug/"
+    tags = "/tag/:slug/"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[pagination]
+  pagerSize = 10
+
+# Chroma server-side syntax highlighting; classes-based so theme controls colours.
+[markup.highlight]
+  noClasses = false
+  lineNos = false
+  codeFences = true
+  guessSyntax = true
+  tabWidth = 4
+
+[markup.goldmark.renderer]
+  unsafe = true   # required so raw <video>, <figure>, <ul> we emit pass through
+
+[outputs]
+  # Single canonical RSS lives at /feed/ (defined by content/feed/_index.md).
+  # Hugo's per-section auto-RSS would compete with that; turn it off everywhere.
+  home = ["HTML", "ROBOTS"]
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]
+
+# Image processing defaults (used by archives thumbnail crops, etc.)
+[imaging]
+  resampleFilter = "Lanczos"
+  quality = 82
+  anchor = "Smart"
+
+[params]
+  description = "Articles by Pranav Negandhi on programming, CS fundamentals, and web development."
+  author = "Pranav Negandhi"
+
+  # Hugo Book params
+  BookSection = "posts"          # sidebar tree of posts
+  BookToC = true                 # right-side table of contents on each post
+  BookSearch = true              # client-side search
+  BookComments = false
+  BookSearchExcludePages = ["feed"]
+  BookHideEditOnGitHub = true
+  BookPortableLinks = "warning"  # resolve relative image refs against page bundle resources;
+                                 # works regardless of where the post content is rendered
+                                 # (single, home, RSS, etc). "warning" logs missing references.

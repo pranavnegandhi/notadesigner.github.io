@@ -1,0 +1,23 @@
+!theme vibrant
+interface Notadesigner.Activities.IActivity<tparameter> {
++Execute(parameter:TParameter):TParameter
+}
+
+class Notadesigner.Activities.Sequencer<tparameter> {
++Add(activity:IActivity<tparameter>)
++Execute(input:TParameter):TParameter
+}
+
+abstract class Notadesigner.Activities.Activity<tparameter> {
+# OnExecuteCompleted()
+}
+
+class Client #palegreen
+
+Notadesigner.Activities.Activity ..|> Notadesigner.Activities.IActivity
+Notadesigner.Activities.Sequencer --> Notadesigner.Activities.IActivity : executes
+Notadesigner.Text.HyperlinkTransformation ..|> Notadesigner.Activities.Activity
+Notadesigner.Text.DedupFilter ..|> Notadesigner.Activities.Activity
+
+Client -down-> Notadesigner.Activities.Sequencer : calls
+Notadesigner.Activities.Sequencer -up-> Client : notifies completion

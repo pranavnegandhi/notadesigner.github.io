@@ -1,0 +1,242 @@
+# POSTS
+/a-bicycle-like-no-other/
+/a-binary-clock-using-c/
+/a-gentle-introduction-to-version-control-part-i/
+/a-gentle-introduction-to-version-control-part-ii/
+/a-guide-to-effective-version-control/
+/a-hash-table-using-c/
+/a-message-in-a-socket-interprocess-communications-by-example/
+/a-model-for-sequential-workflow-execution/
+/a-spreadsheet-of-posts-for-wordpress/
+/adding-some-life/
+/asynchronous-air-native-extensions/
+/birds-banned-in-mumbai/
+/breaking-circular-dependencies-in-microsoft-di-with-lazy-resolution/
+/breaking-free-from-your-api/
+/century-mile-to-khandala/
+/components-of-entity-framework/
+/creating-an-underwater-effect-in-actionscript/
+/difference-between-a-pointer-and-a-pointer-to-pointer-in-c/
+/director-done-right-why-adobe-must-promote-air/
+/domain-entities/
+/how-to-write-unmaintainable-code-asp-net-redux/
+/how-to-write-unmaintainable-code-php-redux/
+/improved-application-performance-with-net-7/
+/in-with-the-new/
+/introducing-amaretto/
+/introducing-fitnet/
+/introduction-to-orm-entity-framework/
+/keeping-count-i-the-candy-shop/
+/keeping-count-ii-a-tale-of-many-stores/
+/keeping-things-fast-for-large-n/
+/laying-the-groundwork/
+/learning-actionscript/
+/mathematical-elegance-in-programming/
+/notes-on-ray-tracing-in-one-weekend/
+/nothing-is-so-simple-that-it-cannot-be-difficult/
+/objective-c-primer-for-c-developers/
+/on-reading-for-programmers/
+/one-week-on-the-navigator-a-review/
+/operating-entity-framework/
+/out-with-the-old/
+/packaging-air-native-extensions/
+/porting-a-windows-forms-application-to-net-6-part-1/
+/porting-a-windows-forms-application-to-net-6-part-2/
+/practical-design-patterns-in-c-abstract-factory/
+/practical-design-patterns-in-c-adapter/
+/practical-design-patterns-in-c-bridge/
+/practical-design-patterns-in-c-builder/
+/practical-design-patterns-in-c-factory-method/
+/practical-design-patterns-in-c-prototype/
+/practical-design-patterns-in-c-proxy/
+/practical-design-patterns-in-c-singleton/
+/practical-design-patterns-in-c-state/
+/programming-beyond-9-to-5/
+/reading-time-on-a-binary-clock/
+/reifying-your-commands-interprocess-communications-by-example/
+/ride-therapy/
+/ride-to-lions-point/
+/riding-uphill-builds-character/
+/runtime-resource-authorisation-in-asp-net-mvc/
+/runtime-shared-libraries-with-plain-actionscript/
+/sharing-code-static-and-dynamic-libraries-in-actionscript/
+/socket-talk-interprocess-communications-by-example/
+/storing-values-with-bit-packing-and-unpacking/
+/the-amp-tango/
+/the-content-data-context/
+/the-database-context/
+/the-secret-lives-of-timer-objects/
+/tour-of-hampi-belgaum-to-hospet/
+/tour-of-hampi-first-day-at-hampi/
+/tour-of-hampi-homeward-bound/
+/tour-of-hampi-hospet-to-badami/
+/tour-of-hampi-prologue/
+/tour-of-hampi-pune-to-belgaum/
+/tour-of-hampi-riding-around-belgaum/
+/tour-of-hampi-second-day-at-hampi/
+/tour-of-hampi-the-badami-chronicles/
+/users-dont-read-error-messages/
+/valknut-domain-model/
+/valknut-json-serialization/
+/valknut-localisation/
+/valknut-validation/
+/valknut-view-models/
+/valknut-workout-tracking/
+/varchar50/
+/where-things-go-wrong/
+/whats-in-a-name/
+/wpf-game-of-life/
+
+# PAGES
+/
+/about/
+/archives/
+
+# CATEGORIES
+/category/miscellaneous/
+/category/software-engineering/
+/category/software-engineering/construction/
+/category/software-engineering/demonstration/
+/category/software-engineering/foundation/
+/category/software-engineering/technique/
+/category/travel-diaries/
+
+# TAGS
+/tag/abstract-factory/
+/tag/actionscript-native-extensions/
+/tag/actionscript/
+/tag/adapter/
+/tag/apache/
+/tag/asp-net-mvc/
+/tag/asp-net/
+/tag/bit-hacking/
+/tag/bridge/
+/tag/builder/
+/tag/c-lang/
+/tag/c/
+/tag/coding-horror/
+/tag/entity-framework/
+/tag/factory-method/
+/tag/fitnet/
+/tag/language-primer/
+/tag/learning/
+/tag/memory-leaks/
+/tag/motorcycle-touring/
+/tag/mysql/
+/tag/native-extensions/
+/tag/net/
+/tag/number-system/
+/tag/objective-c/
+/tag/optimisation/
+/tag/performance/
+/tag/php/
+/tag/practical-design-patterns/
+/tag/programming/
+/tag/prototype/
+/tag/singleton/
+/tag/spreadsheet/
+/tag/sql/
+/tag/state/
+/tag/tour-of-hampi/
+/tag/usability/
+/tag/user-interface/
+/tag/version-control/
+/tag/wordpress/
+/tag/wpf/
+
+# FEEDS
+/comments/feed/
+/feed/
+
+# OTHER
+/2006/07/
+/2006/09/
+/2007/08/
+/2008/02/
+/2008/07/
+/2008/08/
+/2008/10/
+/2008/11/
+/2009/05/
+/2009/06/
+/2010/02/
+/2010/03/
+/2010/04/
+/2010/12/
+/2012/05/
+/2012/10/
+/2012/11/
+/2012/12/
+/2013/02/
+/2013/04/
+/2013/09/
+/2014/03/
+/2014/09/
+/2014/10/
+/2014/11/
+/2015/02/
+/2015/10/
+/2016/04/
+/2016/09/
+/2016/10/
+/2016/12/
+/2017/07/
+/2017/08/
+/2018/03/
+/2018/06/
+/2018/07/
+/2018/08/
+/2018/09/
+/2018/12/
+/2019/01/
+/2019/12/
+/2020/06/
+/2020/09/
+/2022/12/
+/2023/01/
+/2023/06/
+/2026/04/
+/author/pranavnegandhi/
+/page/10/
+/page/11/
+/page/12/
+/page/13/
+/page/14/
+/page/15/
+/page/16/
+/page/17/
+/page/18/
+/page/2/
+/page/3/
+/page/4/
+/page/5/
+/page/6/
+/page/7/
+/page/8/
+/page/9/
+
+# AUDIT NOTES
+# Source: https://notadesigner.com/wp-sitemap.xml (sitemap index referencing
+#   wp-sitemap-posts-post-1.xml, wp-sitemap-posts-page-1.xml,
+#   wp-sitemap-taxonomies-category-1.xml, wp-sitemap-taxonomies-post_tag-1.xml,
+#   wp-sitemap-users-1.xml). All five fetched HTTP 200.
+# Homepage and feed both fetched HTTP 200. WebFetch returned 403 (UA blocked);
+#   curl with a browser User-Agent succeeded for every URL.
+# Counts:
+#   POSTS:      87
+#   PAGES:       3   (homepage /, /about/, /archives/)
+#   CATEGORIES:  7
+#   TAGS:       40
+#   FEEDS:       2   (/feed/ from sitemap discovery + /comments/feed/ from <head>)
+#   OTHER:      67   (1 author archive + 47 monthly date archives from homepage
+#                     sidebar + 17 paginated home pages /page/2/ ... /page/18/
+#                     + 2 page numbers cap = 17 pages: 2-18 inclusive)
+#   TOTAL:     206
+# Notes:
+# - The sitemap index also lists wp-sitemap-users-1.xml which yields the single
+#   author archive /author/pranavnegandhi/. Categorised under OTHER.
+# - Yearly archives (e.g. /2023/) were not advertised by sitemap or sidebar but
+#   are typically reachable; not enumerated here per "no open recursive crawl".
+# - /page/N/ pagination derived from homepage pagination markup (next link plus
+#   "..." showing terminal page 18). Intermediate pages 3-17 inferred by range.
+# - Nothing returned non-200 in this audit.

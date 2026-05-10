@@ -1,0 +1,19 @@
+!theme vibrant
+
+class DiskInfoProvider {
++CollectAsync()
+}
+
+class Completed <<event>>
+
+DiskInfoProvider --> ManagementClass : create
+DiskInfoProvider --> ManagementOperationObserver : create
+DiskInfoProvider ..> Completed : handle
+
+class Client #palegreen
+
+Client -right-> DiskInfoProvider : uses
+
+ManagementOperationObserver -right-> Completed : dispatch
+
+ManagementClass --> ManagementOperationObserver : notify

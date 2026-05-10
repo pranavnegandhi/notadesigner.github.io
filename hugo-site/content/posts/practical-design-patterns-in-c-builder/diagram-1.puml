@@ -1,0 +1,22 @@
+!theme vibrant
+
+interface IMessageBuilder<TMessage> {
++AddressedTo(recipient:string):EmailBuilder
++From(sender:string):EmailBuilder
++WithBody(body:string):EmailBuilder
++WithSubject(subject:string):EmailBuilder
++GetResults():TMessage
+}
+
+class EmailBuilder<MailMessage>
+EmailBuilder ..|> IMessageBuilder
+EmailBuilder -left-> MailMessage : builds
+
+class JsonBuilder<string>
+JsonBuilder ..|> IMessageBuilder
+JsonBuilder -right-> string : builds
+
+class Client #palegreen
+
+Client --> EmailBuilder : calls
+Client --> JsonBuilder : calls

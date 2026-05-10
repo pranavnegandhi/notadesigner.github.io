@@ -1,0 +1,20 @@
+!theme vibrant
+
+interface ICloneable<T> {
++ Clone()
+}
+
+class Document {
+-version
++CreatedOn
++Text
++Clone()
+}
+
+class Client #palegreen
+
+Document .up.|> ICloneable
+
+Document -down-> Document : clones
+
+Client -right-> Document

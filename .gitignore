@@ -1,0 +1,34 @@
+# Hugo
+hugo-site/public/
+hugo-site/resources/
+hugo-site/.hugo_build.lock
+
+# Hugo theme — cloned/checked out separately, not tracked here.
+# A future setup script (or a submodule, if we add one) is responsible for
+# placing hugo-book at hugo-site/themes/hugo-book/.
+hugo-site/themes/
+
+# Self-hosted Ruffle bundle. Fetched by scripts/update-ruffle.ps1.
+hugo-site/static/ruffle/
+
+# Pinned Hugo binary. Fetched by scripts/update-hugo.ps1 using the version
+# in tools/hugo/.version (which IS tracked).
+tools/hugo/*
+!tools/hugo/.version
+
+# C# converter build output
+tools/wxr-to-hugo/bin/
+tools/wxr-to-hugo/obj/
+
+# Editor / IDE
+.vs/
+.vscode/
+*.user
+*.suo
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Claude Code project-local config (user-specific allowlist, not shared)
+.claude/settings.local.json

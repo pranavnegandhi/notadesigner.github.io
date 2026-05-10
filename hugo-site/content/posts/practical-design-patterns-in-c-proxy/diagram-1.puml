@@ -1,0 +1,15 @@
+!theme vibrant
+
+interface INumberConversionService {
++NumberToWords(number:ulong)
+}
+
+NumberConversionServiceClient .up.|> INumberConversionService
+
+NumberConversionService .up.|> INumberConversionService
+
+NumberConversionServiceClient o-right-> NumberConversionService
+
+class Client #palegreen
+
+Client --> INumberConversionService

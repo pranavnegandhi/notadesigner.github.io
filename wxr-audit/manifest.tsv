@@ -1,0 +1,104 @@
+post_id	date	slug	status	categories	tags	featured_image	content_chars	plantuml	swf	table
+104	0000-00-00 00:00:00	learning-rest-by-example-i-application-resources	draft	software-engineering			12127	0	0	0
+394	0000-00-00 00:00:00		draft	software-engineering			393	0	0	0
+609	0000-00-00 00:00:00		draft	uncategorized			665	0	0	0
+2584	0000-00-00 00:00:00		draft	uncategorized			3776	3	0	0
+3192	0000-00-00 00:00:00		draft	uncategorized			1271	0	0	0
+3414	0000-00-00 00:00:00		draft	uncategorized			8024	0	0	0
+2963	1999-12-31 19:30:00	gadhera	draft	miscellaneous			135	0	0	0
+33	2005-11-25 05:27:39	where-things-go-wrong	publish	construction			4650	0	0	0
+202	2006-07-09 09:55:40	birds-banned-in-mumbai	publish	miscellaneous			2362	0	0	0
+199	2006-07-12 09:49:40	a-search-for-the-truth	draft	miscellaneous			3767	0	0	0
+39	2006-07-13 05:32:08	learning-actionscript	publish	software-engineering			2817	0	0	0
+35	2006-09-22 05:29:16	keeping-count-i-the-candy-shop	publish	construction			4068	0	0	0
+37	2006-09-23 05:30:27	keeping-count-ii-a-tale-of-many-stores	publish	construction			4877	0	0	0
+29	2007-08-10 05:20:35	the-amp-tango	publish	technique	apache,mysql,php		8886	0	0	0
+59	2008-02-22 07:18:36	a-gentle-introduction-to-version-control-part-i	publish	construction	version-control		14383	0	0	0
+61	2008-02-23 07:24:31	a-gentle-introduction-to-version-control-part-ii	publish	construction	version-control		12755	0	0	0
+205	2008-07-18 10:21:08	riding-uphill-builds-character	publish	travel-diaries			10229	0	0	0
+207	2008-08-04 10:22:46	one-week-on-the-navigator-a-review	publish	miscellaneous			7739	0	0	0
+209	2008-10-14 10:26:30	century-mile-to-khandala	publish	travel-diaries			25496	0	0	0
+224	2008-10-23 11:05:41	ride-therapy	publish	miscellaneous			2585	0	0	0
+42	2008-11-18 05:33:51	difference-between-a-pointer-and-a-pointer-to-pointer-in-c	publish	technique	c-lang		4313	0	0	0
+228	2008-11-30 11:08:15	ride-to-lions-point	publish	travel-diaries			10074	0	0	0
+238	2009-05-11 11:24:24	a-bicycle-like-no-other	publish	miscellaneous			15683	0	0	0
+44	2009-06-05 05:35:13	breaking-free-from-your-api	publish	demonstration	actionscript		14058	0	1	0
+46	2010-02-21 05:36:15	how-to-write-unmaintainable-code-php-redux	publish	technique	coding-horror,php		12245	0	0	0
+48	2010-03-03 05:39:08	director-done-right-why-adobe-must-promote-air	publish	construction	actionscript		8210	0	0	0
+50	2010-04-01 05:40:25	mathematical-elegance-in-programming	publish	technique	actionscript		8456	0	0	0
+55	2010-04-27 07:16:51	creating-an-underwater-effect-in-actionscript	publish	demonstration	actionscript		8706	0	2	0
+100	2010-12-27 10:48:09	the-secret-lives-of-timer-objects	publish	technique	actionscript,memory-leaks		8229	0	0	0
+253	2012-05-11 11:40:29	tour-of-hampi-prologue	publish	travel-diaries	motorcycle-touring,tour-of-hampi		2464	0	0	0
+257	2012-05-12 11:43:31	tour-of-hampi-pune-to-belgaum	publish	travel-diaries	motorcycle-touring,tour-of-hampi		7852	0	0	0
+267	2012-05-13 12:13:17	tour-of-hampi-riding-around-belgaum	publish	travel-diaries	motorcycle-touring,tour-of-hampi		6784	0	0	0
+278	2012-05-14 12:21:51	tour-of-hampi-belgaum-to-hospet	publish	travel-diaries	motorcycle-touring,tour-of-hampi		11471	0	0	0
+324	2012-05-15 13:10:48	tour-of-hampi-first-day-at-hampi	publish	travel-diaries	motorcycle-touring,tour-of-hampi		8473	0	0	0
+338	2012-05-16 13:21:07	tour-of-hampi-second-day-at-hampi	publish	travel-diaries	motorcycle-touring,tour-of-hampi		11283	0	0	0
+369	2012-05-17 14:09:57	tour-of-hampi-hospet-to-badami	publish	travel-diaries	motorcycle-touring,tour-of-hampi		5078	0	0	0
+373	2012-05-18 14:14:04	tour-of-hampi-the-badami-chronicles	publish	travel-diaries	motorcycle-touring,tour-of-hampi		2284	0	0	0
+375	2012-05-19 14:15:42	tour-of-hampi-homeward-bound	publish	travel-diaries	motorcycle-touring,tour-of-hampi		4701	0	0	0
+1	2012-10-01 05:39:58	on-reading-for-programmers	publish	foundation	learning		4682	0	0	0
+19	2012-10-02 06:26:22	programming-beyond-9-to-5	publish	foundation	learning		3176	0	0	0
+22	2012-10-06 12:20:32	introducing-amaretto	publish	miscellaneous			2222	0	0	0
+418	2012-11-02 07:20:14	web-design-course-timetable	draft	smcs			3147	0	0	1
+447	2012-11-02 08:46:42	software-requirements	draft	smcs			1159	0	0	0
+410	2012-11-16 17:14:42	reading-time-on-a-binary-clock	publish	foundation	bit-hacking,number-system		6706	0	0	0
+513	2012-11-27 09:21:10	a-binary-clock-using-c	publish	demonstration	c		6317	0	0	0
+531	2012-12-21 12:49:25	nothing-is-so-simple-that-it-cannot-be-difficult	publish	construction	usability,user-interface		6324	0	0	0
+400	2013-01-19 09:13:48		draft	uncategorized			904	0	0	0
+570	2013-02-08 11:26:38	storing-values-with-bit-packing-and-unpacking	publish	technique	bit-hacking,c,programming		9373	0	0	0
+581	2013-04-14 08:51:24	wpf-game-of-life	publish	demonstration	c,wpf		9878	0	0	0
+615	2013-09-28 09:14:39	objective-c-primer-for-c-developers	publish	software-engineering	language-primer,objective-c,programming		21205	0	0	0
+728	2014-03-05 10:14:12	a-spreadsheet-of-posts-for-wordpress	publish	demonstration	php,spreadsheet,wordpress		6721	0	0	0
+748	2014-09-18 11:57:46	sharing-code-static-and-dynamic-libraries-in-actionscript	publish	technique	actionscript		10806	0	0	0
+784	2014-10-05 14:22:23	runtime-shared-libraries-with-plain-actionscript	publish	technique	actionscript		8749	0	0	0
+813	2014-11-18 02:40:50	packaging-air-native-extensions	publish	technique	actionscript,native-extensions		3842	0	0	0
+826	2015-02-11 09:17:33	asynchronous-air-native-extensions	publish	technique	actionscript-native-extensions		7702	0	0	0
+836	2015-10-30 13:33:27	a-guide-to-effective-version-control	publish	construction			9256	0	0	0
+860	2016-04-14 04:36:47	whats-in-a-name	publish	construction			6430	0	0	0
+922	2016-06-18 10:24:00		draft	travel-diaries	oh-joy		4322	0	0	0
+924	2016-06-19 14:57:00		draft	travel-diaries	oh-joy		2836	0	0	0
+926	2016-06-20 15:51:00		draft	travel-diaries	oh-joy		3218	0	0	0
+884	2016-09-26 16:41:00	a-message-in-a-socket-interprocess-communications-by-example	publish	technique	actionscript,c		26785	0	0	0
+908	2016-10-03 13:28:22	socket-talk-interprocess-communications-by-example	publish	technique	actionscript,c		16270	0	0	0
+915	2016-10-17 16:35:19	reifying-your-commands-interprocess-communications-by-example	publish	technique	actionscript,c		4945	0	0	0
+977	2016-12-01 14:26:42	introducing-fitnet	publish	demonstration	c,fitnet,wpf		8384	0	0	0
+986	2016-12-08 14:43:00	out-with-the-old	publish	demonstration	c,fitnet,wpf		4259	0	0	0
+994	2016-12-15 00:29:00	in-with-the-new	publish	demonstration	c,fitnet,wpf		9404	0	0	0
+1006	2016-12-22 01:11:00	adding-some-life	publish	demonstration	c,fitnet,wpf		4552	0	0	0
+936	2017-07-17 14:18:00	a-model-for-sequential-workflow-execution	publish	technique	c		10365	1	0	0
+950	2017-08-27 06:41:00	a-hash-table-using-c	publish	foundation	c		11789	0	0	0
+1027	2018-03-19 01:06:00	how-to-write-unmaintainable-code-asp-net-redux	publish	technique	asp-net,c,coding-horror	http://pranav-laptop:81/wp-content/uploads/2018/03/DSC_5049.jpg	12629	0	0	0
+1030	2018-06-11 04:43:00	practical-design-patterns-in-c-state	publish	construction	c,practical-design-patterns,state	http://pranav-laptop:81/wp-content/uploads/2018/06/DSC_4129.jpg	6647	0	0	0
+1038	2018-07-01 12:15:29	introduction-to-orm-entity-framework	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/07/Untitled-1.jpg	2565	0	0	0
+1040	2018-07-08 12:23:00	components-of-entity-framework	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/07/DSC_4259.jpg	5782	0	0	0
+1042	2018-07-15 12:23:37	operating-entity-framework	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/07/DSC_4149.jpg	2058	0	0	0
+1044	2018-07-22 08:38:22	the-database-context	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/07/DSC_4507.jpg	2541	0	0	0
+1046	2018-07-28 22:29:46	domain-entities	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/07/IMG_0036.jpg	4814	0	0	0
+1070	2018-08-04 08:58:17	laying-the-groundwork	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/08/IMG_0594.jpg	11985	0	0	0
+1108	2018-09-13 12:39:35	the-content-data-context	publish	construction	asp-net,c,entity-framework	http://pranav-laptop:81/wp-content/uploads/2018/09/IMG_0441.jpg	11122	0	0	0
+1276	2018-12-08 15:59:40	practical-design-patterns-in-c-factory-method	publish	construction	c,factory-method,practical-design-patterns	http://pranav-laptop:81/wp-content/uploads/2018/12/IMG_0311.jpg	5239	1	0	0
+1149	2018-12-15 17:24:45	practical-design-patterns-in-c-abstract-factory	publish	construction	abstract-factory,c,practical-design-patterns	http://pranav-laptop:81/wp-content/uploads/2018/12/IMG_4296.jpg	7421	1	0	0
+1287	2018-12-22 13:21:31	practical-design-patterns-in-c-builder	publish	construction	builder,c,practical-design-patterns	http://pranav-laptop:81/wp-content/uploads/2018/12/DSC_6026.jpg	8269	1	0	0
+1349	2018-12-29 16:37:33	practical-design-patterns-in-c-prototype	publish	construction	c,practical-design-patterns,prototype	http://pranav-laptop:81/wp-content/uploads/2018/12/DSC_4901.jpg	6218	1	0	0
+1371	2019-01-05 17:38:38	practical-design-patterns-in-c-singleton	publish	construction	c,practical-design-patterns,singleton	http://pranav-laptop:81/wp-content/uploads/2019/01/DSC_4695.jpg	7988	1	0	0
+1632	2019-01-10 03:44:00	practical-design-patterns-in-c-adapter	publish	construction	adapter,c,practical-design-patterns	http://pranav-laptop:81/wp-content/uploads/2019/01/DSC_4763.jpg	5650	1	0	0
+1628	2019-01-13 01:31:00	practical-design-patterns-in-c-proxy	publish	construction		http://pranav-laptop:81/wp-content/uploads/2019/01/DSC_4737.jpg	4432	1	0	0
+1688	2019-01-20 12:42:00	practical-design-patterns-in-c-bridge	publish	construction	bridge,c,practical-design-patterns	http://pranav-laptop:81/wp-content/uploads/2019/01/DSC_4704.jpg	6360	1	0	0
+1445	2019-07-29 14:59:13		draft	uncategorized			3194	0	0	0
+1447	2019-12-05 16:21:00	runtime-resource-authorisation-in-asp-net-mvc	publish	technique	asp-net,c,programming	http://pranav-laptop:81/wp-content/uploads/2019/12/DSC_4889.jpg	9748	0	0	0
+1566	2020-06-23 11:45:57	keeping-things-fast-for-large-n	publish	software-engineering,technique	optimisation,performance,sql	http://pranav-laptop:81/wp-content/uploads/2020/06/IMG_20210612_102559.jpg	7934	0	0	0
+1582	2020-09-02 07:05:00	valknut-workout-tracking	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/IMG_4289.jpg	4294	0	0	0
+1584	2020-09-03 08:09:00	valknut-domain-model	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/vlcsnap-2021-01-11-12h42m33s116.jpg	5534	0	0	0
+1586	2020-09-03 09:08:51	valknut-localisation	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/IMG_3806.jpg	5409	0	0	0
+1590	2020-09-04 02:13:48	valknut-validation	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/DSC_5030.jpg	3450	0	0	0
+1594	2020-09-05 13:09:46	valknut-view-models	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/DSC_4600.jpg	8637	0	0	0
+1597	2020-09-08 05:12:29	valknut-json-serialization	publish	construction,software-engineering	asp-net-mvc,c,fitnet	http://pranav-laptop:81/wp-content/uploads/2020/09/DSC_4230.jpg	2420	0	0	0
+1992	2022-12-24 10:26:16	porting-a-windows-forms-application-to-net-6-part-1	publish	construction,software-engineering	c	http://pranav-laptop:81/wp-content/uploads/2022/12/IMG_20190924_125400.jpg	10392	0	0	0
+2042	2022-12-28 17:11:02	porting-a-windows-forms-application-to-net-6-part-2	publish	construction,software-engineering	c	http://pranav-laptop:81/wp-content/uploads/2022/12/DSC_0142.jpg	6518	0	0	0
+2994	2023-01-18 09:22:02	breaking-circular-dependencies-in-microsoft-di-with-lazy-resolution	publish	software-engineering,technique	c	http://pranav-laptop:81/wp-content/uploads/2022/12/IMG_3381.jpg	8674	1	0	0
+3059	2023-01-25 07:27:17	improved-application-performance-with-net-7	publish	demonstration,software-engineering	net,c,performance	http://pranav-laptop:81/wp-content/uploads/2023/01/IMG_4435.jpg	10003	0	0	0
+3195	2023-06-13 14:33:48	users-dont-read-error-messages	publish	construction,software-engineering	c,usability	http://pranav-laptop:81/wp-content/uploads/2023/06/DSC_5149.jpg	2391	0	0	0
+3285	2023-06-29 03:22:46	notes-on-ray-tracing-in-one-weekend	publish	construction,software-engineering	c	http://pranav-laptop:81/wp-content/uploads/2023/06/IMG_4672.jpg	9116	0	0	0
+3350	2026-04-13 07:42:02	varchar50	publish	software-engineering,technique	c,optimisation,performance	http://pranav-laptop:81/wp-content/uploads/2026/04/IMG_5259.jpg	11447	0	0	0
+3394	2026-04-14 14:20:59	__trashed	trash	uncategorized			12855	0	0	0

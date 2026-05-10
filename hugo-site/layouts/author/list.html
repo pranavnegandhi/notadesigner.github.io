@@ -1,0 +1,67 @@
+{{ define "main" }}
+<style>
+  .archive-list { list-style: none; padding: 0 !important; margin: 0; }
+  .archive-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    text-align: left;
+    direction: ltr;
+  }
+  .archive-thumb { flex: 0 0 60px; width: 60px; height: 60px; }
+  .archive-thumb img { width: 60px; height: 60px; border-radius: 4px; display: block; }
+  .archive-thumb--empty { background: var(--gray-200); border-radius: 4px; }
+  .archive-meta { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .archive-meta a { font-weight: 600; }
+  .archive-meta time { color: var(--gray-500); font-size: 0.85em; }
+  .pager { display: flex; gap: 0.5rem; justify-content: center; margin: 2rem 0 0; flex-wrap: wrap; }
+  .pager a, .pager span { padding: 0.4rem 0.7rem; border: 1px solid var(--gray-200); border-radius: 4px; }
+  .pager .pager-current { background: var(--gray-200); font-weight: 600; }
+</style>
+<article class="markdown book-article">
+  <h1>{{ .Title }}</h1>
+
+  {{ $posts := where site.RegularPages "Type" "posts" }}
+  {{ $paginator := .Paginate $posts }}
+
+  <ul class="archive-list">
+    {{ range $paginator.Pages }}
+    <li>
+      {{ $thumb := "" }}
+      {{ with .Resources.GetMatch "featured.*" }}
+        {{ $thumb = .Fill "120x120 smart" }}
+      {{ end }}
+      {{ if $thumb }}
+        <a class="archive-thumb" href="{{ .RelPermalink }}"><img src="{{ $thumb.RelPermalink }}" alt="" loading="lazy"></a>
+      {{ else }}
+        <span class="archive-thumb archive-thumb--empty"></span>
+      {{ end }}
+      <span class="archive-meta">
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+      </span>
+    </li>
+    {{ end }}
+  </ul>
+
+  {{ if gt $paginator.TotalPages 1 }}
+  <nav class="pager" aria-label="Pagination">
+    {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" rel="prev">&larr; Newer</a>
+    {{ end }}
+    {{ range $paginator.Pagers }}
+      {{ if eq . $paginator }}
+        <span class="pager-current">{{ .PageNumber }}</span>
+      {{ else }}
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      {{ end }}
+    {{ end }}
+    {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" rel="next">Older &rarr;</a>
+    {{ end }}
+  </nav>
+  {{ end }}
+</article>
+{{ end }}

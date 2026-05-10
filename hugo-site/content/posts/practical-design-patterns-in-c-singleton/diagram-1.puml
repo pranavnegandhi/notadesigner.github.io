@@ -1,0 +1,10 @@
+!theme vibrant
+
+class ConnectionPool {
+-{static}instance:ConnectionPool
+-released:ISet
+-acquired:ISet
++Acquire()
++Release(connection:IDbConnection)
++{static}Instance:ConnectionPool
+}

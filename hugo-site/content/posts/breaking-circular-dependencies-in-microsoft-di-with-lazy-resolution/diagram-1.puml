@@ -1,0 +1,20 @@
+@startuml
+
+object Welcome
+object "License Key Entry" as LicenseKeyEntry
+
+object "Registration Form" as RegistrationForm
+object Review
+object Completed
+
+Welcome -down-&gt; LicenseKeyEntry
+
+LicenseKeyEntry -right-&gt; RegistrationForm : Next
+RegistrationForm -left-&gt; LicenseKeyEntry : Back
+
+RegistrationForm -down-&gt; Review : Next
+Review -up-&gt; RegistrationForm : Back
+
+Review -&gt; Completed : Register
+
+@enduml

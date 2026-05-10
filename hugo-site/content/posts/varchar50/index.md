@@ -1,0 +1,100 @@
+---
+title: "varchar(50)"
+date: 2026-04-13T07:42:02Z
+slug: varchar50
+aliases: ["/varchar50/"]
+images: ["featured.jpg"]
+categories:
+  - "Software Engineering"
+  - "Technique"
+tags:
+  - "c#"
+  - "optimisation"
+  - "performance"
+featured_image: featured.jpg
+wp_post_id: 3350
+---
+
+In the summer of 2014, I made an official visit to our development centre in Srinagar. I was the newest member of the team, coming from 15 years in the trenches among product and graphic designers, trying to hustle my way into engineering. The plan was simple: spend the week at the office, put faces to names, absorb context. I had been working as a consultant since 2010 on a small, critical aspect of this product, which was written in ActionScript. This move into core engineering was the career breakthrough I had been looking for.
+
+On Wednesday, the office was empty. A public holiday I hadn't known about. The rest of the team was scattered across the city with their families, phones on silent. I was alone in a hotel room with my laptop, and nothing to do but poke at the codebase.
+
+So I did what any bored developer would do. I started stepping through the application with a debugger.
+
+### Five Minutes of Silence
+
+The product was a content management system for digital signage – the screens you see in malls, airports, hotel lobbies. Content operators would log in, upload images and videos, and publish them to their organisation’s displays. The system was designed for multi-tenancy from day one, anticipating thousands of customers, each managing their own library of content.
+
+The content menu was the first thing an operator would see after logging in. It showed a list of every content object they had uploaded for their organisation. A prolific operator might have hundreds of items, and the menu would dutifully render all of them – no pagination, no filtering, no search. Just a flat list, top to bottom. And this page had been a thorn in our side for ages, taking an eternity to render. The team had accepted slowness as a sign of great things to come – a product so popular that the servers literally couldn't keep up.
+
+I put a breakpoint on the first line of the function and pressed F5. The debugger hit the breakpoint, I pressed F10 to step over, next, next, next and then... nothing. The execution indicator just sat there, frozen on a query invocation, while the application waited for the database to respond.
+
+I played a game of Solitaire on my ancient Blackberry. I still had to wait several seconds after the game was done for the query to return.
+
+About five minutes. For a query that should have been one of the simplest operations in the entire application – give me all the content rows where the user ID matches the currently logged-in operator. A single-clause WHERE query. The kind of thing you write in your first SQL tutorial.
+
+When the query finally returned, the page would render in a blink. The bottleneck wasn't the network, wasn't the rendering pipeline, wasn't the application code. It was that one query, sitting in a tight choke-point at the entrance of the entire user experience, taking minutes to answer the simplest possible question.
+
+### Opening the Hood
+
+There was nobody to ask. The Skype group chat was silent. All contacts offline. Just me, the database, and SQL Server Management Studio.
+
+So I opened the table definition for the Content table and started reading.
+
+No primary key.
+
+I blinked, scrolled down. No indexes. Not a single one – not on the user ID column, not on the organisation ID column, not on anything.
+
+I checked the Users table. No foreign key relationship to Content. I checked the Organisations table. Same story. I started clicking through table after table, a growing sense of disbelief settling in.
+
+Most of the database had no primary keys, no indexes, and no foreign key constraints. The relational database was relational in name only. It was a collection of flat, unstructured heaps with no way for the query engine to find anything without scanning every single row from top to bottom.
+
+That single-clause WHERE query on the Content table? Without an index on the user ID column, SQL Server had no choice. It would start at the first row and walk through every record in the table, comparing each user ID against the one it was looking for. A full table scan, every time, for every operator, on every page load.
+
+### The Type That Lied
+
+Then I noticed something worse.
+
+The Content table stored user IDs as `varchar` – a string type. But the Users table defined its ID column as `uniqueidentifier` – a UUID. The same conceptual value, the same data, stored as two incompatible types across two tables that needed to talk to each other.
+
+This meant that every join between Content and Users required an implicit type conversion on every row. SQL Server would silently cast one type to the other, row by row, before it could even begin comparing values. And implicit conversions are index killers – even if you added an index later, the query optimizer couldn't use it efficiently because the types didn't match.
+
+How does a database end up like this? The answer came to me months later when using SQL Server Management Studio. When you add a new column to an existing table using the SSMS visual designer, the default data type is `varchar(10)`. The team knew that wasn't long enough for a 32-character hyphenated hex string. So they changed the length to 50. A safety margin of 14 extra characters, just to make sure nothing would overflow.
+
+And since SQL Server won't create a foreign key between mismatched types, that single decision – storing UUIDs as strings – had quietly made referential integrity impossible. The missing foreign keys weren't an oversight. They were a consequence.
+
+They had looked at the default. They had thought about it. They had done arithmetic. And they had arrived at a solution that was wrong in a way that their reasoning couldn't catch – because a UUID isn't a string. It's a fixed-length 128-bit value. The right column type was `uniqueidentifier`, not a `varchar` of any length. The extra padding wasn't protecting them from overflow. It was padding the gap between what they knew and what the database needed.
+
+Column after column, table after table, `varchar(50)` had quietly become the team's universal data type – a cargo cult solution that felt safe because it had never visibly failed.
+
+### The Moment It Became Real
+
+That evening, still in the hotel room, I opened SSMS and created an index by hand on the Content table's user ID column.
+
+I ran the query again.
+
+Sub-second. The column was still a `varchar`. The types still didn't match. But even a misguided index was better than none at all.
+
+I sat back in my chair and just stared at the result. I knew what indexes were. I had read about them – that they were tree structures that helped databases find rows without scanning every record, that they were one of the fundamental performance tools in any relational system. I could have recited the textbook explanation.
+
+But knowing something intellectually and watching it transform a five-minute query into a sub-second response are two completely different experiences. A concept I had filed away under "things databases do" suddenly had weight and texture and consequence.
+
+An index. A single index on a single column. That was the difference between an application that was unusable and one that felt instant.
+
+### The Fix That Wasn't
+
+I brought my findings to the CEO the next day. He pulled in the lead developer, who agreed that the database needed some work. That weekend, the lead went through the schema and added primary keys to all the tables. Not indexes. Primary keys. He called it done.
+
+The engineering team, meanwhile, was also in the middle of porting the application from ASP.NET WebForms to ASP.NET MVC. As part of the UI redesign, someone replaced the synchronous menu with an AJAX call. Now instead of the page hanging for five minutes with a blank screen, it would show a spinning GIF while the content loaded in the background.
+
+The query was still slow. But the spinner made it *feel* faster, and that was enough to take the pressure off. The CEO was satisfied. The team moved on to other things.
+
+The spinning GIF spun on for years.
+
+### The Long Game
+
+It took a long time for the database to get the rearchitecting it needed. The lead eventually left the company taking along most of his reports, and I moved into his role. Only then, with the authority to prioritize the work and a team I could trust, did the schema get properly rebuilt – with correct data types, foreign keys, meaningful indexes, and the kind of structural integrity that a multi-tenant system should have had from the start.
+
+The content menu loaded in under a second after that index was added. The query hadn't changed. The data hadn't changed. The hardware hadn't changed. The only thing that changed was that the database finally knew where to look.
+
+I think about that hotel room in Srinagar sometimes. Not because the technical fix was clever – adding an index is about as basic as it gets. But because it was the first time I learned that awareness and conscientiousness are two very different things. And that sometimes, the most important thing a debugger can teach you has nothing to do with the code you're stepping through.

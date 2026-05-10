@@ -1,0 +1,46 @@
+{{ define "main" }}
+<style>
+  .archive-list { list-style: none; padding: 0 !important; margin: 0; }
+  .archive-list li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--gray-200);
+    text-align: left;
+    direction: ltr;
+  }
+  .archive-thumb { flex: 0 0 60px; width: 60px; height: 60px; }
+  .archive-thumb img { width: 60px; height: 60px; border-radius: 4px; display: block; }
+  .archive-thumb--empty { background: var(--gray-200); border-radius: 4px; }
+  .archive-meta { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; line-height: 1.3; text-align: left; }
+  .archive-meta a { font-weight: 600; }
+  .archive-meta time { color: var(--gray-500); font-size: 0.85em; }
+</style>
+<article class="markdown book-article">
+  <h1>{{ .Title }}</h1>
+
+  {{ range (where site.RegularPages "Type" "posts").GroupByDate "2006" }}
+    <h2 style="margin-top:2em;">{{ .Key }}</h2>
+    <ul class="archive-list">
+      {{ range .Pages }}
+      <li>
+        {{ $thumb := "" }}
+        {{ with .Resources.GetMatch "featured.*" }}
+          {{ $thumb = .Fill "120x120 smart" }}
+        {{ end }}
+        {{ if $thumb }}
+          <a class="archive-thumb" href="{{ .RelPermalink }}"><img src="{{ $thumb.RelPermalink }}" alt="" loading="lazy"></a>
+        {{ else }}
+          <span class="archive-thumb archive-thumb--empty"></span>
+        {{ end }}
+        <span class="archive-meta">
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2" }}</time>
+        </span>
+      </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+</article>
+{{ end }}

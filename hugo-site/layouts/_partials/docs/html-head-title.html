@@ -1,0 +1,3 @@
+{{- $page := partial "docs/title" . -}}
+{{- if and $page (ne $page .Site.Title) -}}{{ $page }} | {{ end -}}
+{{- .Site.Title -}}

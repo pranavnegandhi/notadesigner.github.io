@@ -55,7 +55,7 @@ The [Brahma Jinalaya](http://www.karnataka.com/gadag/lakkundi-brahma-jinalaya/) 
 According to the description board put up by the ASI outside, the temple was once used to worship a larger idol of an unknown tirthankara. Its name probably originates from either the Brahma idol inside the sanctum, or from the approval the temple received from the Brahmanas of Lokkigundi.
 
 <figure>
-  <img src="brahma-jinalaya-shikhara-450x600.jpg" alt="">
+  <img src="brahma-jinalaya-shikhara.jpg" alt="">
   <figcaption>Shikhara at the Brahma Jinalaya</figcaption>
 </figure>
 
@@ -73,12 +73,12 @@ We spent a good two hours in just these three sites at Lakkundi. If you have tim
 The road is currently being rebuilt from the junction of SH 67 and NH 13 all the way up to Hospet, which caused a lot of trouble. The dust and uneven surface are the least of worries. One also has to deal with rash driving between laden construction vehicles and frequent detours. To make matters worse, repairs were also ongoing at College Road, a major thoroughfare in the city of Hospet. In all, the last 20 kilometres took us close to an hour to cover. After a week of honing my handling skills on bad roads, I think I might be able to do it much faster.
 
 <figure>
-  <img src="kasivisvanath-temple-doorway-175x175.jpg" alt="">
+  <img src="kasivisvanath-temple-doorway.jpg" alt="">
   <figcaption>Decorative door panels, assembled from nine layers of intricate carvings</figcaption>
 </figure>
 
 <figure>
-  <img src="kasivisvanath-temple-exteriors-175x175.jpg" alt="">
+  <img src="kasivisvanath-temple-exteriors.jpg" alt="">
   <figcaption>Rows of elephants, horses and mythical creatures surround the plinth of the temple</figcaption>
 </figure>
 

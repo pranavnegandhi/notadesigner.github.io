@@ -17,7 +17,7 @@ The original idea was to leave early by 5:30 in the morning. Lonavala is just a 
 I donned a jacket to keep out the cold and took off. It was well past daybreak and there was no need for additional lights on the bike. The dynamo on my bike had anyway been damaged earlier and I was not very keen on wasting time attaching the lights from my wife’s bike onto my own. I could feel the nip in the air even as I carried the bike downstairs. The cold air struck my bare legs as I began to ride. Winter’s here, I thought to myself.
 
 <figure>
-  <img src="lions-point-climb-175x175.jpg" alt="">
+  <img src="lions-point-climb.jpg" alt="">
   <figcaption>Climbing up to Lion's Point</figcaption>
 </figure>
 
@@ -36,7 +36,7 @@ I munched upon a few biscuits while ruminating upon my further plan of action. C
 ### Destination – Lions Point
 
 <figure>
-  <img src="lions-point-view-422x600.jpg" alt="">
+  <img src="lions-point-view.jpg" alt="">
   <figcaption>View from the top</figcaption>
 </figure>
 

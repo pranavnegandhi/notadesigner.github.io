@@ -37,7 +37,7 @@ This circuit covers the Krishna Temple, Ugra Narsimha idol, underground Shiva Te
 We started off with the [Krishna Temple](http://hampi.in/krishna-temple), which takes at least an hour for a casual look around. While the complex is not all that large as such, it has several structures and some well-preserved relief sculptures which immediately catch the eye. For those with an eye for detail and the time to spare, this site itself can consume several hours.
 
 <figure>
-  <img src="krishna-temple-dasha-avatar-450x600.jpg" alt="">
+  <img src="krishna-temple-dasha-avatar.jpg" alt="">
   <figcaption>Dasha Avatar reliefs at the temple gates</figcaption>
 </figure>
 
@@ -46,7 +46,7 @@ Krishnadevaraya commissioned construction in the 16th century to celebrate his v
 The underground Shiva Temple, up next in the route map, was a bit of a downer due to lack of maintenance and the resultant flooding of the interiors. Architecturally too, this place is nothing particularly substantial to speak of. It is a convenient location to waste away hot afternoons due to its cooler temperatures and surrounding gardens. Bring a food basket and a mat to make a picnic out of it.
 
 <figure>
-  <img src="pillar-of-exquisite-beauty-450x600.jpg" alt="">
+  <img src="pillar-of-exquisite-beauty.jpg" alt="">
   <figcaption>Tourists strike a pose inside the mukhmantapa at the Hazara Rama Temple</figcaption>
 </figure>
 
@@ -55,7 +55,7 @@ Another location great for hiding out from the sun and heat is the mosque, just 
 This is easily one of the nicest and best-preserved sites here, on par with the Krishna Temple. This temple is popular for the carved reliefs of the Ramayana on its walls. While this site is not as large as any of the other temple complexes in Hampi, its importance is greatly elevated due to its central location in the royal enclosure. Historians believe that this temple was used as a private shrine for the king and the royal family.
 
 <figure>
-  <img src="hazara-rama-temple-175x175.jpg" alt="">
+  <img src="hazara-rama-temple.jpg" alt="">
   <figcaption>At the Hazara Rama Temple</figcaption>
 </figure>
 
@@ -73,7 +73,7 @@ Vittala Temple is a lot more easily accessible from the royal enclosure side. Yo
 The day ended with an early ride back to the hotel, mediocre but convenient hotel room service dinner and an early lights-out in preparation for the ride to Badami the next day.
 
 <figure>
-  <img src="riding-through-hampi-175x175.jpg" alt="">
+  <img src="riding-through-hampi.jpg" alt="">
   <figcaption>Riding through the dusty roads between sites</figcaption>
 </figure>
 

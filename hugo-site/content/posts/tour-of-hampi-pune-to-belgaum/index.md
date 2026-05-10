@@ -14,7 +14,7 @@ wp_post_id: 257
 The night before we were to leave turned out to last longer than I had anticipated, in spite of my best efforts to get things done on time. Work and packing were taking a toll on my already stretched nerves. Which is why when I finally hit the sack at 1 am, I knew there was no way I'd be getting up on time again to ride out at 6. Being delayed turned out to be a trend through the rest of the journey, one which I would like to avoid in future trips. Morning hours are the best to ride in. Once past 11 am in peak summer, the heat takes a significant toll on strength and sanity.
 
 <figure>
-  <img src="smiles-afire-450x600.jpg" alt="">
+  <img src="smiles-afire.jpg" alt="">
   <figcaption>Bright smiles along the way</figcaption>
 </figure>
 
@@ -25,7 +25,7 @@ Being close to peak hours, the traffic had already become thick throughout Pune 
 After Shirwal, traffic began to thin out again up to the Khambatki ghat climb. There too, most of the traffic was caused by a single multi-axle truck climbing up hill on the narrow incline. Typical of this hour, many cagers were eager to get past the big vehicle and took a lot of needless risks in the process like driving into the rough and boulder-strewn shoulder. Being hesitant to take risks that could result in us turning into road pizza so early in the journey, I took the safer option to trail at a safe distance until cleared to pass by the driver. Roads became empty again until the end of the ghat at the other side. Thankfully most of the cagers turned off at the Surur junction towards Panchgani and Mahabaleshwar.
 
 <figure>
-  <img src="contemplative-175x175.jpg" alt="">
+  <img src="contemplative.jpg" alt="">
   <figcaption>Weighing the risks of getting killed while riding through district Kolhapur</figcaption>
 </figure>
 

@@ -42,6 +42,26 @@ Replace the current `Markdown → paste into WP → Simply Static → zip → Gi
 - [x] Log warnings, image failures, flash TODOs, media TODOs to `wxr-audit/` artifacts
 - [x] Iterative dry runs across years; final state: 87 posts converted, 0 warnings, 0 image failures
 
+### Converter is frozen — post-conversion fixups live in `scripts/`
+
+Decision 2026-05-10: the converter (`tools/wxr-to-hugo/`) is treated as bootstrap-only.
+The migrated markdown is now the source of truth. Two mechanical issues turned up
+post-conversion and were fixed by standalone PowerShell scripts rather than by
+modifying and re-running the converter:
+
+- `scripts/fix-figure-captions.ps1` — wraps the WP-era `image\ncaption` markdown
+  pattern in `<figure>/<figcaption>` HTML. Idempotent. Scope: 56 occurrences across
+  16 posts.
+- `scripts/scan-thumbnails.ps1` — scans posts for size-suffix thumbnails
+  (`*-WxH.ext`) where a larger variant exists in the WP archive. Read-only.
+- `scripts/upgrade-thumbnails.ps1` — applies a hand-curated list of thumbnail-to-
+  full-size swaps, copying the full-size from the WP archive and deleting the
+  orphaned thumbnail. Scope: 20 swaps across 8 posts.
+
+Order if you ever bootstrap from WXR again: converter → fix-figure-captions →
+scan-thumbnails (review output) → curate the upgrade list in upgrade-thumbnails →
+upgrade-thumbnails → hand-replace `[swf]` TODO markers with `{{< flash >}}` shortcodes.
+
 ## Phase 2 — Hugo site scaffold ✅ COMPLETE (with carry-overs)
 
 - [x] Hugo site scaffolded at `hugo-site/`, content from converter wired in

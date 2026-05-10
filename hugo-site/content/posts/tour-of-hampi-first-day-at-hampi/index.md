@@ -42,7 +42,7 @@ The royal enclosure falls on the other side of the main approach road to Hampi. 
 The convenience of having your own vehicle, especially a small fuel-powered moped or motorcycle, is unmatched. We saw seweral foreign tourists on rental mopeds. Indian visitors generally have their own vehicles or rent autorickshaws. Some walk. I did not see any obviously touristy-looking Indians on rental mopeds, although they are very common with the locals. Cars are fine, but they cannot go into narrow tracks which are common in the religious centre. If you don't mind riding in the heat, you can rent a bicycle. We only saw one tourist on a rental bicycle in Hampi for this reason. Autorickshaws are also available if you prefer, but they are expensive. In any case, expect to do a lot of walking. Even with a motor vehicle to travel between different sites, most of the palaces and temple complexes are very large from within. On our first day, we walked from Hemakuta Hill all the way up to the Vittala Temple, back to Hampi Bazar for lunch in the afternoon, and then back again to Vittala Temple to take photographs in the mellow evening light. Then we walked back to the parking lot near Sasivekalu Ganesh Temple, which added up to at least 8-10 kilometres in all.
 
 <figure>
-  <img src="purandara-dasa-mandapa-450x600.jpg" alt="">
+  <img src="purandara-dasa-mandapa.jpg" alt="">
   <figcaption>Whiling away the hot afternoon at the Purandara Dasa Mandapa</figcaption>
 </figure>
 

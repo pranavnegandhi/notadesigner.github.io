@@ -8,26 +8,26 @@ categories:
 wp_post_id: 238
 ---
 
-[![](navigator-full-view-800x532.jpg)](/a-bicycle-like-no-other/navigator-full-view/)
+[![](navigator-full-view.jpg)](/a-bicycle-like-no-other/navigator-full-view/)
 Post-conversion look of the bike
 
 It is no secret that I am a big fan of the Navigator bicycle. Although it is not a top of the line product, it hits a sweet spot between features, comfort and affordability. There are times when I crib about the less than stellar performance of many of its components. But that cribs quickly die down after I consider that better performance would involve unpleasant tasks like spending money.
 
 <figure>
-  <img src="navigator-brakes-175x175.jpg" alt="">
+  <img src="navigator-brakes.jpg" alt="">
   <figcaption>Cheap-ass local brake levers</figcaption>
 </figure>
 
 At the time of purchase I had also hoped it would be less of an attention getter than a Trek or Merida. But I can safely say that is misguided hope because the Navigator is definitely a class better in design, style and finish than other Indian brands and easily sticks out in a crowd. But I still do leave it unattended in public areas at times with just a cable lock to hold it down and thankfully, have always returned to find it as I had left it. I am pretty certain that a Bianchi Aeron or a Merida Crossway left like that on the busy streets of Sadashiv Peth would disappear faster than bank executives after a bailout.
 
-[![](navigator-front-shifter-175x175.jpg)](/a-bicycle-like-no-other/navigator-front-shifter/)
+[![](navigator-front-shifter.jpg)](/a-bicycle-like-no-other/navigator-front-shifter/)
 Ultegra front shifters (friction-only)
 
 ### Big Man on a Little Bike and Other Justifications
 
 It took some time for my interest to deepen in bicycling enough to consider things like fitting. But a chat with Rajesh Nair after a ride around Pune found me fumbling with body measurements and running the numbers through an online fit calculator. A few minutes later, the bearded old man working at the Competitive Cyclist announced his verdict. The Navigator was at least 2 centimetres smaller than what would be an ideal size for me.
 
-[![](navigator-rear-shifter-175x175.jpg)](/a-bicycle-like-no-other/navigator-rear-shifter/)
+[![](navigator-rear-shifter.jpg)](/a-bicycle-like-no-other/navigator-rear-shifter/)
 Ultegra rear shifters (can be run indexed or in friction mode)
 
 This explained all the shoulder pain that I had been experiencing after long or fast-paced rides. The upright posture was also inefficient due to increased resistance in windy conditions, and although I was not very certain at that time, there was a gut feeling that the stooped posture on drops would increase pedalling power.
@@ -50,7 +50,7 @@ Finally, if the store owner you approach for this modification does not have a c
 
 So, work hard at learning the mechanics, brand names, model numbers, prices and warranty before even approaching a dealer. Then, when he spouts some bullshit about thumb shifters costing Rs. 1000 apiece, you can call it.
 
-[![](navigator-computer-175x175.jpg)](/a-bicycle-like-no-other/navigator-computer/)
+[![](navigator-computer.jpg)](/a-bicycle-like-no-other/navigator-computer/)
 Cateye Strada cycle-computer (recommended!)
 
 You must study, study and study some more, followed by a written examination and a trial by fire before getting into any such stuff. If you are fortunate enough to have access to more established high-end cycling communities and dealers then you can be exempted from the examination and trial by fire because chances are the service technicians know what they are doing. But since their counterparts in India often believe that the hammer is the solution to all derailleur alignment problems, you need to make up for their knowledge gaps. It helps to be physically present at the store to keep an eye on what shenanigans the bike store employees are up to with your mobile, to lend a hand for some of the simpler tasks and maybe picking up a few pointers along the way.

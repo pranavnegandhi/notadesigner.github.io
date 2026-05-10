@@ -14,7 +14,7 @@ wp_post_id: 267
 We woke up on time for a change, although we were still quite fatigued by yesterday's long ride. Anvith called at 5:15 sharp. He was at the hotel gates. We loaded up some essentials and leftover snacks from the day before, and piled up outside the gates.
 
 <figure>
-  <img src="morning-glory-175x175.jpg" alt="">
+  <img src="morning-glory.jpg" alt="">
   <figcaption>Morning glory</figcaption>
 </figure>
 
@@ -23,7 +23,7 @@ We woke up on time for a change, although we were still quite fatigued by yester
 We followed him through empty streets of Belgaum until we were out of the city and in the countryside. It didn't take long either. While the city roads were quite manageable, the surface turned to hell in the countryside. The Impulse handled it all very well, while the Thunderbird, with its lazy geometry and loaded with the pillion, felt like an ox. We reached Yellurgarh an hour since leaving the hotel room. Thankfully, the last climb up to the fort gates was made up of excellent tarmac. Bad roads were forgiven for the experience of leaning Anna through those curves.
 
 <figure>
-  <img src="its-showtime-175x175.jpg" alt="">
+  <img src="its-showtime.jpg" alt="">
   <figcaption>It's showtime!</figcaption>
 </figure>
 
@@ -50,7 +50,7 @@ The rains played spoilsport again by pouring down for exactly an hour at 4. Anvi
 The fort has a history stretching back to the 13th century. It's earliest construction was undertaken by a king called Jaya Raya. Over the years, it has gone through several extensions and additions under the Rashtrakutas, kings of Vijayanagar (or Hampi), Sultans of Bijapur, Marathas and finally, the British. It is currently controlled by the Belgaum Cantonment Board and houses some wings of the defence forces. It is open to the public, however, due in no small part to the presence of several temples and mosques inside the fort. Being short on time, we only managed to check out the Kamal Basadi Jain temple, dedicated to the twenty second Tirthankara, Neminath. Photography is prohibited inside the fort premises, which is a pity because this temple has some really beautiful architecture.
 
 <figure>
-  <img src="stealing-my-thunder-450x600.jpg" alt="">
+  <img src="stealing-my-thunder.jpg" alt="">
   <figcaption>Anvith steals my thunder with his new Impulse</figcaption>
 </figure>
 

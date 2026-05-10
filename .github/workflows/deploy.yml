@@ -51,6 +51,12 @@ jobs:
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          # Re-create the Pages site automatically if it's somehow been
+          # disabled (happened once when the legacy `master` source branch
+          # was deleted post-cutover). The CNAME file in static/ handles
+          # the custom-domain side.
+          enablement: true
 
       - name: Build with Hugo
         env:

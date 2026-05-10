@@ -49,3 +49,11 @@ player.load({ url: {{ $url | jsonify | safeJS }} })
 - Or: load the key into MSYS2's ssh-agent instead, in a Git Bash session: `eval $(ssh-agent); ssh-add ~/.ssh/id_ed25519`. (Different agent per shell session — annoying.)
 
 The `GIT_SSH` route makes git use the same Windows OpenSSH binary that `ssh -T` uses, so it sees the same agent and the same loaded key.
+
+## Don't sweep loose root-level files into a bootstrap commit
+
+**Symptom:** during `git init`, `git add .` happily stages every file in the project root — including pre-existing scratch (drafts not yet placed under `content/`, saved HTML pages used for one-off diff comparisons, half-finished notes). They get baked into the initial commit and have to be cleaned up separately afterward.
+
+**Why:** the user's "track source only" answer to the gitignore-scope question describes a *concept*, not a per-file approval. Scratch and source can look identical at the filesystem level — a `2026-04-12-foo.md` could be a draft destined for `content/posts/` or could be working notes that should never ship. Same for `*.html` files that could be templates, components, or just saved-page reference dumps.
+
+**Fix:** before the bootstrap `git add`, do a quick `git status --short | grep -v hugo-site/` (or equivalent) to surface anything at the repo root or in unexpected directories. Read the first 2-3 lines of unfamiliar files. Confirm with the user before adding them. Cheap to ask, expensive to retroactively rewrite history if the cleanup becomes important (e.g. accidentally committing a draft you later want never to have shipped).

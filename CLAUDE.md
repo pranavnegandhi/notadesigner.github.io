@@ -51,6 +51,7 @@ Once a draft is polished:
 3. **Diagrams (optional):** drop `diagram-N.puml` files into the bundle, then run `.\scripts\render-puml.ps1` to produce sibling `.svg` files. Reference them in the markdown as `![](diagram-1.svg)`. The render script uses the public plantuml.com web service (local rendering would need Java 11+; this machine has Java 8). Both `.puml` and `.svg` are committed — the deploy pipeline doesn't re-render.
 4. **Local preview:** `.\tools\hugo\hugo.exe server` from `hugo-site/` (or just `hugo server` if you have it on PATH). Visit `http://localhost:1313/<slug>/`. Hugo's hot reload picks up most edits; restart the server after touching shortcodes or template files.
 5. **Publish:** flip `draft: true` → remove the line (or set to `false`), `git add` + `git commit` + `git push origin main`. The `.github/workflows/deploy.yml` workflow rebuilds and redeploys to `notadesigner.com`.
+6. **Verify the live site:** `.\scripts\qa-live.ps1` — automated smoke test against `https://notadesigner.com`. Three passes: every post URL + auxiliary page returns 200; every alias redirects; a curated sample of posts has every linked asset (images, SVGs, code zips, Ruffle bundle) returning 200; structural spot checks confirm the recent feature work is still wired up. Run it after any push that touches content, infrastructure, or the deploy workflow — it catches issues like a missing CNAME or a disabled Pages site that wouldn't show up in the workflow's own green checkmark.
 
 ### Repo layout (recap)
 
@@ -59,7 +60,7 @@ Once a draft is polished:
 - `hugo-site/static/` — site-wide assets (CSS, the self-hosted Ruffle bundle for Flash posts)
 - `hugo-site/themes/hugo-book/` — git submodule, do not edit; layer overrides via `hugo-site/layouts/`
 - `tools/wxr-to-hugo/` — original WordPress migration converter; **frozen**, do not re-run unless you want to overwrite hand edits
-- `scripts/` — operational PowerShell: `new-post.ps1`, `render-puml.ps1`, `update-hugo.ps1`, `update-ruffle.ps1`, plus the one-off migration fixers (`fix-figure-captions.ps1`, `scan-thumbnails.ps1`, `upgrade-thumbnails.ps1`) kept for documentation
+- `scripts/` — operational PowerShell: `new-post.ps1`, `render-puml.ps1`, `qa-live.ps1`, `update-hugo.ps1`, `update-ruffle.ps1`, plus the one-off migration fixers (`fix-figure-captions.ps1`, `scan-thumbnails.ps1`, `upgrade-thumbnails.ps1`) kept for documentation
 - `tasks/` — `todo.md` (migration status / open items), `lessons.md` (gotchas worth remembering), `phase3/` (URL parity audit artefacts)
 
 ### Setting up a fresh clone

@@ -176,15 +176,25 @@ export and stays untouched until cutover. Modern GitHub Pages with the
   `gh api -X PATCH /repos/.../-f default_branch=main`; `master` deleted
   from origin via `git push --delete origin master`. No archive tag.
 
-## Phase 6 — Steady-state authoring loop
+## Phase 6 — Steady-state authoring loop ✅ COMPLETE
 
-- [ ] Document the new flow in `CLAUDE.md`:
-  - `mkdir content/posts/<slug>/`, drop `index.md` + `featured.jpg` + any `.puml`
-  - For PlantUML: run `scripts/render-puml.ps1` (writes `.svg` next to `.puml`)
-  - `hugo server` for local preview
-  - `git push` to publish
-- [ ] Write `scripts/render-puml.ps1` (wraps `plantuml.jar -tsvg` over all `.puml` files in `content/`)
-- [ ] Write `scripts/new-post.ps1` (scaffolds bundle directory with frontmatter template)
+- [x] **`scripts/render-puml.ps1`:** renders every `.puml` under `hugo-site/content/`
+  into a sibling `.svg`. Local rendering was attempted first and failed
+  (machine has Java 8, modern PlantUML 1.2026.x needs Java 11+), so the script
+  uses the public plantuml.com web service via the `~h<hex>` URL format —
+  no compression or custom base64 implementation required. Idempotent:
+  skips files where `.svg` is newer than `.puml` unless `-Force` is passed.
+  Run produced 10 SVGs from the 10 `.puml` files in the migration; one needed
+  a one-off HTML-entity unescape (`-&gt;` → `->`) where the converter had
+  leaked HTML encoding into the diagram source.
+- [x] **`scripts/new-post.ps1`:** bundle scaffolder.
+  `.\scripts\new-post.ps1 -Slug … -Title … [-Categories …] [-Tags …]`.
+  Creates `hugo-site/content/posts/<slug>/index.md` with frontmatter
+  (`draft: true` by default), validates slug format, errors on collision.
+- [x] **`CLAUDE.md` Publishing flow section** documents the new authoring
+  loop: scaffold → assets → diagrams → preview → publish. Also updated the
+  Article Specifications section (was describing pre-Hugo flat directory),
+  added a Repo layout recap and a fresh-clone setup checklist.
 
 ## Decisions (locked)
 

@@ -7,14 +7,14 @@ object "Registration Form" as RegistrationForm
 object Review
 object Completed
 
-Welcome -down-&gt; LicenseKeyEntry
+Welcome -down-> LicenseKeyEntry
 
-LicenseKeyEntry -right-&gt; RegistrationForm : Next
-RegistrationForm -left-&gt; LicenseKeyEntry : Back
+LicenseKeyEntry -right-> RegistrationForm : Next
+RegistrationForm -left-> LicenseKeyEntry : Back
 
-RegistrationForm -down-&gt; Review : Next
-Review -up-&gt; RegistrationForm : Back
+RegistrationForm -down-> Review : Next
+Review -up-> RegistrationForm : Back
 
-Review -&gt; Completed : Register
+Review -> Completed : Register
 
 @enduml
